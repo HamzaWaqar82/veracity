@@ -19,8 +19,8 @@ Frontend (Next.js) ──► Backend (FastAPI) ──► PostgreSQL + pgvector �
 ```bash
 # Backend
 cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
+uv sync
+uv run uvicorn main:app --reload
 
 # Frontend
 cd frontend
@@ -31,8 +31,13 @@ npm run dev
 ## Eval
 
 ```bash
-cd eval
-python harness.py --api-url http://localhost:8000
+uv run python eval/harness.py --api-url http://localhost:8000
+```
+
+## Pre-commit
+
+```bash
+uv run pre-commit install
 ```
 
 ## Repo Structure

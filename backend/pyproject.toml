@@ -1,0 +1,30 @@
+[project]
+name = "fsms-backend"
+version = "0.1.0"
+description = "FSMS RAG Backend — FastAPI + pgvector + OpenRouter"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.6",
+    "uvicorn[standard]>=0.34.0",
+    "psycopg2-binary>=2.9.10",
+    "pgvector>=0.3.6",
+    "httpx>=0.28.1",
+    "pydantic>=2.10.3",
+    "python-dotenv>=1.0.1",
+    "langchain>=0.3.14",
+    "langchain-community>=0.3.14",
+    "langchain-openai>=0.2.14",
+    "langgraph>=0.2.63",
+    "langsmith>=0.2.4",
+    "sse-starlette>=2.2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.8.0",
+    "pre-commit>=4.0.0",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
