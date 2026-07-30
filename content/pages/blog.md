@@ -4,32 +4,46 @@ slug: blog
 order: 6
 ---
 
-# Blog
+# FSMS Blog — Insights on Transparent Workforce Analytics
 
-## Remote Work Transparency: Why Monitoring Does Not Have to Mean Distrust
+Thought leadership, product deep-dives, and practical guides for building trust-driven productivity cultures in small-to-medium businesses.
 
-As remote and hybrid work become permanent fixtures in how businesses operate, managers face a real challenge: how do you know your team is working without resorting to surveillance?
+---
 
-The answer is not more data. It is better data — collected transparently, shared openly, and used for coaching instead of punishment. When employees understand exactly what is being tracked and why, and when they can see their own data alongside their manager's view, monitoring becomes a tool for alignment rather than a source of anxiety.
+<div class="blog-card-grid">
 
-At FSMS, we have found that teams who introduce monitoring with full transparency see higher engagement than teams who deploy tools without explanation. The difference is trust. When you show your team that you trust them enough to be transparent about what you track, they trust you back.
+## How FSMS Calculates Your Productivity Score
 
-## Understanding the EU AI Act: What It Means for Workforce Analytics
+**A complete walkthrough of the scoring methodology — the formula, the inputs, the confidence indicators, and why we publish it all.**
 
-The European Union's Artificial Intelligence Act, which entered into force in 2024, classifies certain employee-monitoring applications as high-risk AI systems. This classification triggers requirements for risk assessment, human oversight, transparency, and accuracy.
+The productivity score is the metric every employee and manager sees first. Understanding how it is calculated — what counts, what does not, and why — is essential for using it effectively.
 
-FSMS was designed with the AI Act in mind. We do not use emotion recognition, biometric categorization, or any of the prohibited AI practices under Article 5 of the Act. Our productivity scoring is transparent — the methodology is published and auditable. Our visual monitoring features require explicit human intervention to view screenshots. No automated decision-making affects employment outcomes.
+[Read the full article →](/blog/how-productivity-scoring-works)
 
-For businesses operating in the EU, the AI Act requires that any high-risk AI system used for employee evaluation be registered in an EU database and undergo a conformity assessment. FSMS provides the documentation and controls needed to support these requirements.
+---
 
-## Five Signs Your Team Needs Better Productivity Data — Not More Surveillance
+## Transparent Monitoring for Modern Teams
 
-How do you know if your team needs better productivity insights rather than more oversight? Look for these signs:
+**Why the old approach to employee monitoring is failing, and how a trust-first alternative produces better outcomes for everyone.**
 
-1. **Managers rely on gut feel.** If your managers cannot point to objective data when discussing productivity, they are making decisions on incomplete information.
-2. **Burnout is hard to spot.** Without trend data, you will only notice burnout after it has already affected performance.
-3. **Resource allocation is reactive.** The team that shouts loudest gets the headcount, not the team that needs it most.
-4. **Meetings are the only visible work.** When the only thing managers can see is calendar activity, the default response is more meetings.
-5. **Productivity conversations feel personal.** Without objective data, feedback feels like an attack. With it, the conversation shifts to patterns and solutions.
+The traditional monitoring playbook — capture everything, hide the agent, report data without context — is increasingly rejected by employees and regulators alike. This article explores the alternative.
 
-FSMS gives you the data to address all five signs without crossing into surveillance territory.
+[Read the full article →](/blog/transparent-monitoring-for-modern-teams)
+
+---
+
+## The SMB Guide to Workforce Analytics
+
+**A practical guide for small-to-medium business leaders implementing workforce analytics for the first time — what to track, how to roll it out, and how to avoid common pitfalls.**
+
+Implementing workforce analytics in an SMB is different from deploying it in a large enterprise. Fewer resources, closer team relationships, and different regulatory obligations all change the approach.
+
+[Read the full article →](/blog/smb-guide-to-workforce-analytics)
+
+---
+
+</div>
+
+## Subscribe
+
+New articles published monthly. Contact us at support@fsms.dev to suggest topics or ask questions.
