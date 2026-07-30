@@ -10,10 +10,7 @@ jobs:
       - uses: astral-sh/setup-uv@v3
         with:
           version: "latest"
-      - run: uv sync --only-dev
-        working-directory: backend
-      - run: uv run ruff check . ../eval/
-        working-directory: backend
+      - run: uvx ruff check backend/ eval/
 
   eval:
     runs-on: ubuntu-latest
