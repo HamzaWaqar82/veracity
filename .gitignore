@@ -26,9 +26,6 @@ out/
 .DS_Store
 Thumbs.db
 
-# Eval results (kept in repo, but individual runs)
-eval/results/*.json
-
 # Secrets
 *.pem
 *.key
