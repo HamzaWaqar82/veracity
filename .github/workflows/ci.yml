@@ -12,7 +12,8 @@ jobs:
           version: "latest"
       - run: uv sync --only-dev
         working-directory: backend
-      - run: uv run ruff check backend/ eval/
+      - run: uv run ruff check . ../eval/
+        working-directory: backend
 
   eval:
     runs-on: ubuntu-latest
