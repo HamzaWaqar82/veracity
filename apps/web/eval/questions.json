@@ -1,0 +1,444 @@
+[
+  {
+    "id": "Q-001",
+    "category": "answerable_single",
+    "question": "What is FSMS?",
+    "expected_answer": "FSMS, which stands for Fair Screen Monitoring System, is a workforce-analytics platform for small-to-medium businesses with ten to two hundred employees. It provides transparent employee activity monitoring with productivity scoring, optional visual monitoring, and compliance governance tools. FSMS is designed to give managers productivity data without creating a surveillance culture.",
+    "expected_citation": "/faq#what-is-fsms",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-002",
+    "category": "answerable_single",
+    "question": "How is FSMS different from traditional employee monitoring?",
+    "expected_answer": "Traditional monitoring tools collect as much data as possible and often operate without clear employee awareness. FSMS takes the opposite approach: we collect only the minimum data needed for productivity analytics, every employee can see their own data in real time, the Agent is always visible and identifiable in the system tray, and we never log keystrokes or record audio or video. We publish our productivity scoring methodology, and our screenshot monitoring is opt-in with employee notification on every capture.",
+    "expected_citation": "/faq#how-is-fsms-different",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-003",
+    "category": "answerable_single",
+    "question": "Can employees see their own data in FSMS?",
+    "expected_answer": "Yes, every employee has access to their own FSMS dashboard, which shows the same activity timeline, productivity score, and trend data that their manager sees. There is no data hidden from employees. The employee dashboard also includes a complete access log showing who has viewed their data and when.",
+    "expected_citation": "/faq#can-employees-see",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-004",
+    "category": "answerable_single",
+    "question": "What is Private Time mode in FSMS?",
+    "expected_answer": "Private Time is an employee-initiated feature that pauses all data capture except session duration. When Private Time is active, the Agent stops collecting application usage, URLs, and screenshots. Only the start time, end time, and total duration of the Private Time session are recorded. Managers see that Private Time was used but not what the employee did during that period. Employees can activate Private Time with one click from the system tray icon or the FSMS dashboard.",
+    "expected_citation": "/faq#what-is-private-time",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-005",
+    "category": "answerable_single",
+    "question": "Does FSMS integrate with Slack?",
+    "expected_answer": "Yes, FSMS integrates with Slack. Managers can receive daily productivity summaries, anomaly alerts, and team benchmarking reports directly in their Slack workspace. Employees can use the FSMS Slack app to check their own productivity score, request Private Time, and view their activity timeline without opening the FSMS web portal. Setup takes less than five minutes.",
+    "expected_citation": "/integrations#slack",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-006",
+    "category": "answerable_single",
+    "question": "Which operating systems does the FSMS Agent support?",
+    "expected_answer": "The FSMS Agent supports Windows 10 and 11, macOS Ventura and later, and Ubuntu 22.04 and later and other major Linux distributions.",
+    "expected_citation": "/faq#which-operating-systems",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-007",
+    "category": "answerable_single",
+    "question": "What happens if the FSMS Agent loses connectivity?",
+    "expected_answer": "The Agent caches activity data locally using AES-256 encryption. It continues to capture and store data until connectivity is restored. When the connection is reestablished, the Agent syncs all cached data to the server in order of capture time. The local cache is automatically cleared after successful sync. The maximum offline cache duration is seven days.",
+    "expected_citation": "/faq#what-happens-if-the-agent",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-008",
+    "category": "answerable_single",
+    "question": "Is training included with FSMS?",
+    "expected_answer": "Starter and Growth plans include access to our documentation library and video tutorials. Enterprise plans include a dedicated onboarding session with a customer success manager, customized training materials for managers and employees, and access to best-practice guides for introducing monitoring transparently to your team.",
+    "expected_citation": "/faq#is-training-included",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-009",
+    "category": "answerable_single",
+    "question": "Does FSMS ever log keystrokes?",
+    "expected_answer": "No. FSMS never logs keystrokes, key counts, or any form of keyboard input. This is a deliberate architectural constraint that applies at every tier, now and in all future versions. Keystroke logging is incompatible with our data minimization principle and our compliance positioning under the EU AI Act.",
+    "expected_citation": "/faq#does-fsms-ever-log",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-010",
+    "category": "answerable_single",
+    "question": "How long does a typical FSMS deployment take?",
+    "expected_answer": "A typical FSMS deployment takes less than one day. After creating an organization account, you generate installation links or packages for your team's operating systems. Employees install the Agent, grant the required permissions, and appear in the dashboard within minutes of the first heartbeat. No server setup, configuration files, or IT infrastructure changes are needed.",
+    "expected_citation": "/faq#how-long-does-deployment",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-011",
+    "category": "answerable_single",
+    "question": "What compliance regulations does FSMS comply with?",
+    "expected_answer": "FSMS is designed for compliance with the GDPR (European Union), the EU AI Act, and US state electronic monitoring laws including Connecticut and New York. Our compliance infrastructure includes jurisdiction-aware notice engines, tamper-evident audit logging, configurable data retention with automated deletion, and Data Subject Access Request workflows.",
+    "expected_citation": "/faq#which-jurisdictions",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-012",
+    "category": "answerable_single",
+    "question": "How does the FSMS Google Calendar integration work?",
+    "expected_answer": "FSMS integrates with Google Calendar to enable meeting-aware idle detection. When an employee has a calendar event, FSMS records the time as in meeting rather than idle, and meeting time is not penalized in productivity scoring. The integration also enables automatic scheduling of Private Time during focus blocks marked in the calendar. Calendar data is read-only. FSMS never creates, modifies, or deletes calendar events.",
+    "expected_citation": "/integrations#google-calendar",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-013",
+    "category": "answerable_single",
+    "question": "How is FSMS data encrypted?",
+    "expected_answer": "All data in transit is encrypted using TLS 1.3. All data at rest in the server database is encrypted using AES-256. Screenshots use per-file encryption keys that are stored separately from the screenshot data. The Agent's local cache uses AES-256 encryption with a device-specific key that is never transmitted to the server.",
+    "expected_citation": "/faq#how-is-data-encrypted",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-014",
+    "category": "answerable_single",
+    "question": "Who is FSMS designed for?",
+    "expected_answer": "FSMS is built for small-to-medium businesses with ten to two hundred employees who want visibility into how their teams work without deploying invasive surveillance tools. It is particularly suited for remote-first and hybrid teams, managers who need objective productivity data for coaching conversations, and organizations that need compliance-ready monitoring controls.",
+    "expected_citation": "/faq#who-is-fsms-for",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-015",
+    "category": "answerable_single",
+    "question": "Can employees install the FSMS Agent themselves?",
+    "expected_answer": "Yes, employees can install the FSMS Agent themselves. The installation process guides them through granting the required operating system permissions. For Enterprise plans, administrators can deploy the Agent remotely using MDM tools such as Microsoft Intune, Jamf Pro, or a similar solution.",
+    "expected_citation": "/faq#can-employees-install",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-016",
+    "category": "pricing",
+    "question": "How much does the Starter plan cost per user?",
+    "expected_answer": "The Starter plan costs $6 per user per month, billed monthly. With annual billing, it is $60 per user per year ($5 per user per month).",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-017",
+    "category": "pricing",
+    "question": "How much does the Growth plan cost per user?",
+    "expected_answer": "The Growth plan costs $12 per user per month, billed monthly. With annual billing, it is $120 per user per year ($10 per user per month).",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-018",
+    "category": "pricing",
+    "question": "How much does the Enterprise plan cost per user?",
+    "expected_answer": "The Enterprise plan costs $24 per user per month, billed monthly. With annual billing, it is $240 per user per year ($20 per user per month).",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-019",
+    "category": "pricing",
+    "question": "Does the Starter plan include screenshot monitoring?",
+    "expected_answer": "No, the Starter plan does not include screenshot monitoring. Screenshot monitoring is available on the Growth plan (10-minute interval) and the Enterprise plan (configurable interval).",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-020",
+    "category": "pricing",
+    "question": "What is the user limit on the Growth plan?",
+    "expected_answer": "The Growth plan supports up to fifty users. If you exceed the limit, you must upgrade to the Enterprise plan, which has unlimited users.",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-021",
+    "category": "pricing",
+    "question": "What API rate limit does the Enterprise plan include?",
+    "expected_answer": "The Enterprise plan includes API access with a rate limit of ten thousand requests per hour.",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-022",
+    "category": "pricing",
+    "question": "Does the Growth plan include SSO and SAML integration?",
+    "expected_answer": "No, SSO and SAML integration is only available on the Enterprise plan.",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-023",
+    "category": "pricing",
+    "question": "Is there a free trial for FSMS?",
+    "expected_answer": "Yes, all plans include a fourteen-day free trial with full access to all features of the chosen plan. No credit card is required.",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-024",
+    "category": "pricing",
+    "question": "What support does the Starter plan include?",
+    "expected_answer": "The Starter plan includes email support with a response within one business day.",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-025",
+    "category": "pricing",
+    "question": "How does annual billing work for FSMS?",
+    "expected_answer": "Annual billing is available at a discount of two months per year. Annual Starter is $60 per user per year ($5 per user per month). Annual Growth is $120 per user per year ($10 per user per month). Annual Enterprise is $240 per user per year ($20 per user per month).",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-026",
+    "category": "cross_product",
+    "question": "How does screenshot monitoring differ across the FSMS plans?",
+    "expected_answer": "The Starter plan does not include screenshot monitoring. The Growth plan includes screenshot monitoring with a ten-minute capture interval. The Enterprise plan includes screenshot monitoring with a configurable interval that can be set from every one minute to every sixty minutes.",
+    "expected_citation": "/features",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-027",
+    "category": "cross_product",
+    "question": "Which FSMS plans include API access and what are the rate limits?",
+    "expected_answer": "The Starter plan does not include API access. The Growth plan includes API access with a rate limit of one thousand requests per hour. The Enterprise plan includes API access with a rate limit of ten thousand requests per hour.",
+    "expected_citation": "/features",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-028",
+    "category": "cross_product",
+    "question": "How does team benchmarking differ between Growth and Enterprise?",
+    "expected_answer": "The Growth plan includes team benchmarking with aggregate scores only, where individual scores are not visible to other team members. The Enterprise plan includes both aggregate and identifiable team benchmarking, which can optionally show individual scores within a team with employee consent where required by local regulation.",
+    "expected_citation": "/features",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-029",
+    "category": "cross_product",
+    "question": "Compare the support levels across all three FSMS plans.",
+    "expected_answer": "The Starter plan includes email support with response within one business day. The Growth plan includes in-app chat support with response within four hours during business hours. The Enterprise plan includes dedicated support with a named account manager and one-hour response during business hours, plus 24/7 support for critical issues.",
+    "expected_citation": "/features",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-030",
+    "category": "cross_product",
+    "question": "Which FSMS plans include SSO and SAML integration?",
+    "expected_answer": "SSO and SAML integration is only available on the Enterprise plan. It is not included in the Starter or Growth plans.",
+    "expected_citation": "/features",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-031",
+    "category": "cross_product",
+    "question": "How do user limits differ across FSMS plans?",
+    "expected_answer": "The Starter plan supports up to ten users. The Growth plan supports up to fifty users. The Enterprise plan supports unlimited users.",
+    "expected_citation": "/features",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-032",
+    "category": "cross_product",
+    "question": "Which FSMS plans include custom data retention and compliance reports?",
+    "expected_answer": "Custom data retention and compliance reports are only available on the Enterprise plan. They are not included in the Starter or Growth plans.",
+    "expected_citation": "/features",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-033",
+    "category": "cross_product",
+    "question": "What features are shared across all FSMS plans?",
+    "expected_answer": "Features shared across all plans include real-time dashboard, offline caching with AES-256 encryption, meeting-aware idle detection, data encryption with TLS 1.3 and AES-256, and GDPR compliance with standard data processing controls.",
+    "expected_citation": "/features#shared-across-all-plans",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-034",
+    "category": "multi_turn",
+    "question": "Does the Enterprise plan include API access?",
+    "expected_answer": "Yes, the Enterprise plan includes API access with a rate limit of ten thousand requests per hour.",
+    "expected_citation": "/features",
+    "multi_turn_chain": [
+      {
+        "question": "What about the Growth plan?",
+        "expected_answer": "The Growth plan also includes API access, but with a lower rate limit of one thousand requests per hour. The Starter plan does not include API access.",
+        "expected_citation": "/features"
+      }
+    ]
+  },
+  {
+    "id": "Q-035",
+    "category": "multi_turn",
+    "question": "What plans does FSMS offer?",
+    "expected_answer": "FSMS offers three plans: Starter at $6 per user per month, Growth at $12 per user per month, and Enterprise at $24 per user per month.",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": [
+      {
+        "question": "Which one includes screenshot monitoring?",
+        "expected_answer": "Screenshot monitoring is included in the Growth plan with a ten-minute interval and the Enterprise plan with a configurable interval. It is not included in the Starter plan.",
+        "expected_citation": "/features"
+      }
+    ]
+  },
+  {
+    "id": "Q-036",
+    "category": "multi_turn",
+    "question": "How much does the Enterprise plan cost?",
+    "expected_answer": "The Enterprise plan costs $24 per user per month, or $240 per user per year with annual billing.",
+    "expected_citation": "/pricing",
+    "multi_turn_chain": [
+      {
+        "question": "Does it include SSO?",
+        "expected_answer": "Yes, the Enterprise plan includes SSO and SAML integration with providers such as Okta, Azure AD, and Google Workspace.",
+        "expected_citation": "/features"
+      }
+    ]
+  },
+  {
+    "id": "Q-037",
+    "category": "multi_turn",
+    "question": "Tell me about the FSMS Starter plan.",
+    "expected_answer": "The Starter plan costs $6 per user per month and includes activity tracking, app and URL classification, daily productivity score, employee dashboard, and email support. It supports up to ten users.",
+    "expected_citation": "/features#starter",
+    "multi_turn_chain": [
+      {
+        "question": "Can I add more than 10 users?",
+        "expected_answer": "No, the Starter plan has a hard limit of ten users. If you need more than ten users, you need to upgrade to the Growth plan which supports up to fifty users, or the Enterprise plan which has unlimited users.",
+        "expected_citation": "/pricing"
+      }
+    ]
+  },
+  {
+    "id": "Q-038",
+    "category": "multi_turn",
+    "question": "Do you integrate with Jira?",
+    "expected_answer": "Yes, FSMS integrates with Jira. The integration correlates activity data with project tickets and allows managers to view productivity trends per project, per sprint, or per team member.",
+    "expected_citation": "/integrations#jira",
+    "multi_turn_chain": [
+      {
+        "question": "What about Asana?",
+        "expected_answer": "Yes, FSMS also integrates with Asana. The integration tracks project-level productivity trends and helps identify workload imbalances across Asana projects.",
+        "expected_citation": "/integrations#asana"
+      }
+    ]
+  },
+  {
+    "id": "Q-039",
+    "category": "multi_turn",
+    "question": "What data does the FSMS Agent collect?",
+    "expected_answer": "The FSMS Agent collects application usage data, URL visits from supported browsers, and system state including idle and active status. Data is captured at sixty-second heartbeat intervals. On Growth and Enterprise plans, the Agent also captures periodic screenshots.",
+    "expected_citation": "/faq#what-data-does-the",
+    "multi_turn_chain": [
+      {
+        "question": "Can employees see their own data?",
+        "expected_answer": "Yes, every employee has access to their own FSMS dashboard, which shows the same activity timeline, productivity score, and trend data that their manager sees. There is no data hidden from employees.",
+        "expected_citation": "/faq#can-employees-see"
+      }
+    ]
+  },
+  {
+    "id": "Q-040",
+    "category": "multi_turn",
+    "question": "Is FSMS legal to use?",
+    "expected_answer": "Yes, FSMS is designed to comply with applicable laws including the GDPR in the European Union, the EU AI Act, and relevant US state electronic monitoring statutes such as Connecticut General Statute Section 31-48d and New York Labor Law Section 52-c.",
+    "expected_citation": "/faq#is-fsms-legal",
+    "multi_turn_chain": [
+      {
+        "question": "Which specific US states does it comply with?",
+        "expected_answer": "FSMS is designed for compliance with US state electronic monitoring laws including Connecticut and New York.",
+        "expected_citation": "/faq#which-jurisdictions"
+      }
+    ]
+  },
+  {
+    "id": "Q-041",
+    "category": "unanswerable",
+    "question": "Does FSMS integrate with Salesforce?",
+    "expected_answer": "FSMS does not have information about a Salesforce integration. Please contact our sales team for integration inquiries.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-042",
+    "category": "unanswerable",
+    "question": "Can I export FSMS data to QuickBooks?",
+    "expected_answer": "FSMS does not have information about QuickBooks export. Please contact our support team for specific data export questions.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-043",
+    "category": "unanswerable",
+    "question": "Is there a mobile app for FSMS where employees can check their data?",
+    "expected_answer": "FSMS does not have information about a mobile app. Please contact our sales team for the latest information about available platforms.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-044",
+    "category": "unanswerable",
+    "question": "Can FSMS detect when employees are using a VPN?",
+    "expected_answer": "FSMS does not have information about VPN detection. Please contact our support team if you have specific technical questions.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-045",
+    "category": "unanswerable",
+    "question": "Does FSMS offer time tracking or timesheet features?",
+    "expected_answer": "FSMS does not have information about time tracking or timesheet features. FSMS is a productivity analytics platform, not a time tracking tool. Please contact us for more details about our capabilities.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-046",
+    "category": "unanswerable",
+    "question": "Can FSMS block websites or applications that employees should not use?",
+    "expected_answer": "FSMS does not have information about website or application blocking. FSMS is a monitoring and analytics tool, not a content blocking solution. Please contact our sales team for more information.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-047",
+    "category": "unanswerable",
+    "question": "Does FSMS integrate with BambooHR?",
+    "expected_answer": "FSMS does not have information about a BambooHR integration. Our current integrations include Slack, Jira, Asana, and Google Calendar. Please contact us for integration requests.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-048",
+    "category": "unanswerable",
+    "question": "What is the refund policy for FSMS?",
+    "expected_answer": "FSMS does not have information about a refund policy. Please contact our sales team at sales@fsms.dev for billing and refund questions.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-049",
+    "category": "unanswerable",
+    "question": "Does FSMS offer a partner or reseller program?",
+    "expected_answer": "FSMS does not have information about a partner or reseller program. Please contact our sales team for partnership inquiries.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  },
+  {
+    "id": "Q-050",
+    "category": "unanswerable",
+    "question": "Can FSMS be installed on employee personal devices?",
+    "expected_answer": "FSMS does not have information about installation on personal devices. FSMS is designed for installation on company-managed workstations. Please contact our sales team for specific deployment questions.",
+    "expected_citation": "/contact",
+    "multi_turn_chain": null
+  }
+]

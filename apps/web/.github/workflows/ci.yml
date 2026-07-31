@@ -1,0 +1,31 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+      - run: uvx ruff check backend/ eval/
+
+  eval:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+      - run: uv sync
+        working-directory: backend
+      - run: uv run python ../eval/harness.py --api-url ${{ secrets.API_URL }}
+      - run: |
+          git config user.name "CI Bot"
+          git config user.email "bot@fsms.dev"
+          git add eval/results/
+          git commit -m "chore: add eval results [skip ci]" || true
+          git push
