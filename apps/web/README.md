@@ -1,6 +1,8 @@
 # FSMS Website & RAG Assistant
 
-Marketing site for **Fair Screen Monitoring System** — a transparent, privacy-respecting employee monitoring platform — with an embedded RAG chatbot answering questions from site content.
+Marketing site for **FSMS — Fair Surveillance Management System** — a transparent, privacy-respecting employee monitoring platform — with an embedded RAG chatbot answering questions from site content.
+
+> This is `apps/web` in the FSMS monorepo. Requirements and brand live in `docs/` at the repo root (`docs/web/`, `docs/company/`) — local-only, not committed. CI lives at the repo root: `.github/workflows/web-ci.yml`.
 
 ## Architecture
 
@@ -15,6 +17,8 @@ Frontend (Next.js) ──► Backend (FastAPI) ──► PostgreSQL + pgvector �
 - **Eval:** LangSmith eval suite
 
 ## Quick Start
+
+All commands run from `apps/web/`.
 
 ```bash
 # Backend
@@ -48,7 +52,7 @@ uv run pre-commit install
 ├── content/        # Markdown (single source of truth)
 │   ├── pages/      #   Website page content
 │   └── faq/        #   FAQ entries
-├── eval/           # Eval questions, harness, results
-├── docs/           # Architecture, decisions
-└── .github/workflows/  # CI
+└── eval/           # Eval questions, harness, results
 ```
+
+Requirements and brand live outside this app, at the monorepo root `docs/` (gitignored). CI is at the root `.github/workflows/web-ci.yml`. See `PRODUCT.md` for the current build status.

@@ -8,7 +8,11 @@ web
 
 ## Stack
 
-Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4. Frontend lives in `frontend/`. Deployed to Vercel. Backend is Python FastAPI + LangChain at `backend/`, PostgreSQL + pgvector, OpenRouter → Mistral/Mixtral.
+Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4. Frontend lives at `apps/web/frontend/`. Deployed to Vercel. Backend is Python FastAPI + LangChain at `apps/web/backend/`, PostgreSQL + pgvector, OpenRouter → Mistral/Mixtral.
+
+## Repo Context
+
+This app is `apps/web` in the **FSMS monorepo** (`staff-monitoring-system`), which also contains `apps/app` (the core SaaS — not built yet) and `packages/` (empty). Work is scoped to one app per session — never mix. Requirements and brand live in `docs/` at the repo root — `docs/company/` is shared brand, `docs/web/` is this app's requirements, `docs/saas/` is the other app — and are **local-only, not committed to git**. `docs/company/brand.md` is the single source of truth for positioning, tone, and messaging; represent it verbatim, never re-derive it.
 
 ## Users
 
@@ -37,7 +41,7 @@ A sales and marketing website for the FSMS workforce analytics platform. Its job
 - They want answers to specific questions: pricing, features, compliance, integrations
 - The chatbot must answer accurately from site content alone, never from model prior knowledge
 - A wrong pricing answer fails the entire project — zero tolerance
-- Content is markdown in the repo, serving as single source of truth for both rendered pages and chatbot retrieval
+- Content is markdown at `apps/web/content/`, serving as single source of truth for both rendered pages and chatbot retrieval
 
 ## Capabilities and Constraints
 
@@ -77,13 +81,24 @@ A sales and marketing website for the FSMS workforce analytics platform. Its job
 ## Evidence on Hand
 
 - 15,535 words of content across `content/pages/` (9 pages) and `content/faq/faq.md` (37 entries)
-- All content grounded in the SRS v4 specification (4607-line requirements document)
-- Backend RAG pipeline at `backend/` — FastAPI, LangChain, PostgreSQL + pgvector, OpenRouter
-- Eval framework at `eval/` — 50-question set, LangSmith harness, score history
-- Frontend scaffold at `frontend/` — Next.js 15, Tailwind v4, TypeScript
-- Architecture diagram, decisions document, and README at repo root
+- All content grounded in the website requirements — `docs/web/srs-rag-chatbot-v1.md` and `docs/web/FSMS-WEB-Evaluation-Specification.md` — plus `docs/company/brand.md`. (Local-only; the old "SRS v4" document is deliberately excluded from this monorepo — references to it map to `docs/web/` here.)
+- Backend RAG pipeline at `apps/web/backend/` — FastAPI, LangChain, PostgreSQL + pgvector, OpenRouter
+- Eval framework at `apps/web/eval/` — 50-question set, LangSmith harness, score history
+- Frontend scaffold at `apps/web/frontend/` — Next.js 15, Tailwind v4, TypeScript
+- App README at `apps/web/README.md` (no architecture diagram or decisions doc yet — write fresh when needed)
 - Full stakeholder research dossier with competitor analysis (Teramind, ActivTrak, Hubstaff, Time Doctor gaps mapped)
 - Published feature-by-feature comparison table in content against all named competitors
+
+## Current Build Status
+
+PRODUCT.md describes the **target product**. What is actually committed in this repo today:
+
+- **Complete:** content corpus (`apps/web/content/`), eval harness + 50-question set (`apps/web/eval/`), backend/frontend/config scaffold
+- **Stubbed:** `apps/web/backend/ingestion.py` and `apps/web/backend/rag.py` are `pass` placeholders; `apps/web/backend/main.py` exposes only `/health` — there is no `/api/chat` route yet
+- **Not built:** rendered site pages (frontend serves a "Coming soon" page), chatbot UI + API client, live ingestion, passing eval
+- The one committed eval result (`apps/web/eval/results/20260730T094852Z.json`) is **0/50 passed, all connection errors** — the harness never ran against a live backend
+
+The website is the pre-MVP build: content and evaluation precede implementation. Building the pipeline and pages is the next phase of work.
 
 ## Product Principles
 

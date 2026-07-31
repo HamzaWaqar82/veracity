@@ -1,6 +1,10 @@
-name: CI
+name: Web CI
 
 on: [push, pull_request]
+
+defaults:
+  run:
+    working-directory: apps/web
 
 jobs:
   lint:
@@ -21,8 +25,9 @@ jobs:
         with:
           version: "latest"
       - run: uv sync
-        working-directory: backend
+        working-directory: apps/web/backend
       - run: uv run python ../eval/harness.py --api-url ${{ secrets.API_URL }}
+        working-directory: apps/web/backend
       - run: |
           git config user.name "CI Bot"
           git config user.email "bot@fsms.dev"
