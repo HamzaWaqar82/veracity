@@ -12,7 +12,7 @@ Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4. Frontend lives a
 
 ## Repo Context
 
-This app is `apps/web` in the **FSMS monorepo** (`staff-monitoring-system`), which also contains `apps/app` (the core SaaS — not built yet) and `packages/` (empty). Work is scoped to one app per session — never mix. Requirements and brand live in `docs/` at the repo root — `docs/company/` is shared brand, `docs/web/` is this app's requirements, `docs/saas/` is the other app — and are **local-only, not committed to git**. `docs/company/brand.md` is the single source of truth for positioning, tone, and messaging; represent it verbatim, never re-derive it.
+This app is `apps/web` in the **Veracity monorepo** (`veracity`), which also contains `apps/app` (the core SaaS — not built yet) and `packages/` (empty). Work is scoped to one app per session — never mix. Requirements and brand live in `docs/` at the repo root — `docs/company/` is shared brand, `docs/web/` is this app's requirements, `docs/saas/` is the other app — and are **local-only, not committed to git**. `docs/company/brand.md` is the single source of truth for positioning, tone, and messaging; represent it verbatim, never re-derive it.
 
 ## Users
 
@@ -22,22 +22,22 @@ This app is `apps/web` in the **FSMS monorepo** (`staff-monitoring-system`), whi
 
 ## Product Purpose
 
-A sales and marketing website for the FSMS workforce analytics platform. Its job is to explain what FSMS is, demonstrate why it is different, answer visitor questions via an embedded RAG chatbot, and convert interest into demos/trials. The site itself is the pre-MVP build — it ships before any core SaaS code exists — so its content markets a product that is being built, not yet live.
+A sales and marketing website for the Veracity workforce analytics platform. Its job is to explain what Veracity is, demonstrate why it is different, answer visitor questions via an embedded RAG chatbot, and convert interest into demos/trials. The site itself is the pre-MVP build — it ships before any core SaaS code exists — so its content markets a product that is being built, not yet live.
 
 ## Positioning
 
-**For** SMBs with remote and hybrid teams (10–200 employees)  
-**who** are caught between surveillance tools that destroy trust and time trackers that can't verify real productivity,  
-**our** FSMS (Fair Surveillance Management System)  
-**is a** workforce analytics platform  
-**that** delivers verifiable productivity insights through employee-visible monitoring — published scoring with confidence indicators, client-side redaction, drift-proof compliance, and structural privacy guarantees.  
-**Unlike** heavyweight surveillance suites like Teramind or oversimplified binary trackers like ActivTrak,  
+**For** SMBs with remote and hybrid teams (10–200 employees)
+**who** are caught between surveillance tools that destroy trust and time trackers that can't verify real productivity,
+**our** Veracity
+**is a** workforce analytics platform
+**that** delivers verifiable productivity insights through employee-visible monitoring — published scoring with confidence indicators, client-side redaction, drift-proof compliance, and structural privacy guarantees.
+**Unlike** heavyweight surveillance suites like Teramind or oversimplified binary trackers like ActivTrak,
 **we** make trust architectural — the agent doesn't just claim to be transparent, it proves it by reporting its actual capture state on every heartbeat, and the server alerts when reality drifts from policy.
 
 ## Operating Context
 
 - Visitors arrive at the site from search, referral, or direct — researching workforce monitoring tools
-- They compare FSMS against known alternatives (Teramind, ActivTrak, Hubstaff, Time Doctor)
+- They compare Veracity against known alternatives (Teramind, ActivTrak, Hubstaff, Time Doctor)
 - They want answers to specific questions: pricing, features, compliance, integrations
 - The chatbot must answer accurately from site content alone, never from model prior knowledge
 - A wrong pricing answer fails the entire project — zero tolerance
@@ -45,8 +45,8 @@ A sales and marketing website for the FSMS workforce analytics platform. Its job
 
 ## Capabilities and Constraints
 
-- 7 pages (Home, Features, Pricing, About/Blog, Integrations, Compliance, Case Studies) + FAQ with 37 entries
-- 15,535 words of real, non-placeholder content across all pages
+- 9 pages (Home, Features, Pricing, About, Blog, Integrations, Compliance, Case Studies, Why Veracity) + 3 blog posts + FAQ with 37 entries
+- 19,179 words of real, non-placeholder content across all pages
 - 3 product tiers with overlapping features (Starter $6/mo, Growth $12/mo, Enterprise $24/mo)
 - Pricing comparison table — single source of truth for all pricing answers
 - RAG chatbot embedded site-wide, answering only from site content
@@ -66,7 +66,7 @@ A sales and marketing website for the FSMS workforce analytics platform. Its job
 
 ## Brand Commitments
 
-- **Name:** FSMS — Fair Surveillance Management System
+- **Name:** Veracity
 - **Tagline:** "Workforce Analytics Built on Trust, Not Surveillance"
 - **Voice:** Transparent, principled, contrarian, educational. Speaks in specific, verifiable claims, not slogans. Explains the "why" behind every design decision. Honest enough to state where the product does not fit.
 - **Core promise:** You don't have to choose between visibility and trust.
@@ -75,13 +75,13 @@ A sales and marketing website for the FSMS workforce analytics platform. Its job
   - No continuous video recording
   - No stealth or covert mode
   - No emotion recognition or biometric inference
-- **Tone shifts by page intent:** Reassuring on Home, persuasive on Why-FSMS, specification-grade on Features, personal on About
-- **Anti-selling:** Explicitly states when FSMS is not the right fit (enterprises 200+, DLP needs, on-premise, covert monitoring)
+- **Tone shifts by page intent:** Reassuring on Home, persuasive on Why-Veracity, specification-grade on Features, personal on About
+- **Anti-selling:** Explicitly states when Veracity is not the right fit (enterprises 200+, DLP needs, on-premise, covert monitoring)
 
 ## Evidence on Hand
 
-- 15,535 words of content across `content/pages/` (9 pages) and `content/faq/faq.md` (37 entries)
-- All content grounded in the website requirements — `docs/web/srs-rag-chatbot-v1.md` and `docs/web/FSMS-WEB-Evaluation-Specification.md` — plus `docs/company/brand.md`. (Local-only; the old "SRS v4" document is deliberately excluded from this monorepo — references to it map to `docs/web/` here.)
+- 19,179 words of content across `content/pages/` (12 files: 9 pages + 3 blog posts) and `content/faq/faq.md` (37 entries)
+- All content grounded in the website requirements — `docs/web/srs-rag-chatbot-v1.md` and `docs/web/Veracity-WEB-Evaluation-Specification.md` — plus `docs/company/brand.md`. (Local-only; the old "SRS v4" document is deliberately excluded from this monorepo — references to it map to `docs/web/` here.)
 - Backend RAG pipeline at `apps/web/backend/` — FastAPI, LangChain, PostgreSQL + pgvector, OpenRouter
 - Eval framework at `apps/web/eval/` — 50-question set, LangSmith harness, score history
 - Frontend scaffold at `apps/web/frontend/` — Next.js 15, Tailwind v4, TypeScript

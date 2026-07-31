@@ -1,6 +1,6 @@
-# FSMS Monorepo
+# Veracity Monorepo
 
-Monorepo for **FSMS** (Fair Surveillance Management System) — a workforce activity monitoring / productivity analytics SaaS — plus its marketing website and content-grounded RAG assistant.
+Monorepo for **Veracity** — a workforce activity monitoring / productivity analytics SaaS — plus its marketing website and content-grounded RAG assistant.
 
 ## Layout
 
@@ -16,7 +16,7 @@ The two apps are independent products that share one brand. Work in **one app pe
 
 ## apps/web — Website & RAG Assistant
 
-Marketing site for FSMS with an embedded chatbot that answers only from site content.
+Marketing site for Veracity with an embedded chatbot that answers only from site content.
 
 ```
 Frontend (Next.js) ──► Backend (FastAPI) ──► PostgreSQL + pgvector ──► OpenRouter (Mistral/Mixtral)

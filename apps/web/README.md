@@ -1,8 +1,8 @@
-# FSMS Website & RAG Assistant
+# Veracity Website & RAG Assistant
 
-Marketing site for **FSMS — Fair Surveillance Management System** — a transparent, privacy-respecting employee monitoring platform — with an embedded RAG chatbot answering questions from site content.
+Marketing site for **Veracity** — a transparent, privacy-respecting employee monitoring platform — with an embedded RAG chatbot answering questions from site content.
 
-> This is `apps/web` in the FSMS monorepo. Requirements and brand live in `docs/` at the repo root (`docs/web/`, `docs/company/`) — local-only, not committed. CI lives at the repo root: `.github/workflows/web-ci.yml`.
+> This is `apps/web` in the Veracity monorepo. Requirements and brand live in `docs/` at the repo root (`docs/web/`, `docs/company/`) — local-only, not committed. CI lives at the repo root: `.github/workflows/web-ci.yml`.
 
 ## Architecture
 
@@ -40,8 +40,12 @@ uv run python eval/harness.py --api-url http://localhost:8000
 
 ## Pre-commit
 
+The pre-commit config and secrets baseline live at the repo root (the git root), so hooks run from there:
+
 ```bash
-uv run pre-commit install
+cd ../..  # repo root
+uv run --project apps/web/backend pre-commit install
+uv run --project apps/web/backend pre-commit run --all-files
 ```
 
 ## Repo Structure

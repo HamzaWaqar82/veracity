@@ -1,16 +1,16 @@
 ---
-title: How FSMS Calculates Your Productivity Score
+title: How Veracity Calculates Your Productivity Score
 slug: blog/how-productivity-scoring-works
 order: 1
 ---
 
-# How FSMS Calculates Your Productivity Score
+# How Veracity Calculates Your Productivity Score
 
 *A complete walkthrough of the scoring methodology — the formula, the inputs, the confidence indicators, and why we publish it all.*
 
 ---
 
-Every employee and manager who uses FSMS sees a daily productivity score. It appears on the dashboard as a number between 0 and 100, alongside a breakdown of how time was spent and a confidence indicator. Understanding how this score is calculated — what counts, what does not, and why — is essential for using the data effectively.
+Every employee and manager who uses Veracity sees a daily productivity score. It appears on the dashboard as a number between 0 and 100, alongside a breakdown of how time was spent and a confidence indicator. Understanding how this score is calculated — what counts, what does not, and why — is essential for using the data effectively.
 
 This article explains the scoring methodology in detail. The same explanation is available inside the product through the "How is this calculated?" expandable section on the employee dashboard.
 
@@ -18,11 +18,11 @@ This article explains the scoring methodology in detail. The same explanation is
 
 ## What the Score Measures
 
-The FSMS productivity score measures the proportion of active work time that an employee spends in productive applications and activities, adjusted for passive-attention states like meetings and reading.
+The Veracity productivity score measures the proportion of active work time that an employee spends in productive applications and activities, adjusted for passive-attention states like meetings and reading.
 
 It is not a measure of:
 - Hours worked (idle time is excluded, not penalized)
-- Output volume (FSMS does not measure output quality or quantity)
+- Output volume (Veracity does not measure output quality or quantity)
 - Performance against peers (benchmarking is a separate feature)
 - Effort (Private Time is excluded entirely)
 
@@ -80,7 +80,7 @@ denominator = 14,400,000 + 7,200,000 + 3,600,000 + (0.5 × 3,600,000) = 14,400,0
 
 score = round((16,200,000 / 27,000,000) × 100) = round(60.0) = **60**
 
-This matches the acceptance criterion specified in the FSMS Software Requirements Specification (PA-FR-001, AC-001-1).
+This matches the acceptance criterion specified in the Veracity Software Requirements Specification (PA-FR-001, AC-001-1).
 
 ---
 
@@ -130,17 +130,17 @@ Scores are calculated:
 
 ## Why We Publish the Methodology
 
-FSMS publishes the full scoring methodology for three reasons:
+Veracity publishes the full scoring methodology for three reasons:
 
 1. **Trust.** When employees understand exactly how their score is calculated, they can see that the system is fair and transparent. A black-box score breeds suspicion; a published formula invites understanding.
 2. **Accuracy.** Published methodology means anyone can verify the calculation. If an employee believes their score is wrong, they can check the inputs and the math, and file a dispute if something is incorrect.
-3. **No false precision.** FSMS never claims a single "accuracy percentage" (e.g., "greater than 95% accurate") anywhere in the product. The published methodology is the only accuracy representation. This is a deliberate product requirement that distinguishes FSMS from tools that make unverifiable accuracy claims.
+3. **No false precision.** Veracity never claims a single "accuracy percentage" (e.g., "greater than 95% accurate") anywhere in the product. The published methodology is the only accuracy representation. This is a deliberate product requirement that distinguishes Veracity from tools that make unverifiable accuracy claims.
 
 ---
 
 ## Disputing a Score
 
-If an employee believes their productivity score is inaccurate — because an application was miscategorized, an activity was misclassified, or the calculation was applied incorrectly — they can file a dispute through the FSMS dashboard.
+If an employee believes their productivity score is inaccurate — because an application was miscategorized, an activity was misclassified, or the calculation was applied incorrectly — they can file a dispute through the Veracity dashboard.
 
 The dispute workflow includes:
 1. Submitting the date range and reason for the dispute

@@ -1,8 +1,8 @@
-"""Eval harness for FSMS RAG chatbot — LangSmith test suite.
+"""Eval harness for Veracity RAG chatbot — LangSmith test suite.
 
 Usage:
     uv run python eval/harness.py --api-url http://localhost:8000
-    uv run python eval/harness.py --api-url https://fsms-backend.onrender.com
+    uv run python eval/harness.py --api-url https://veracity-backend.onrender.com
 """
 
 import argparse
@@ -413,7 +413,7 @@ def print_summary(summary: dict):
 
 async def amain():
     parser = argparse.ArgumentParser(
-        description="FSMS RAG chatbot eval harness"
+        description="Veracity RAG chatbot eval harness"
     )
     parser.add_argument("--api-url", required=True, help="Base URL of the FastAPI backend")
     parser.add_argument(

@@ -57,11 +57,11 @@ Several states have enacted electronic monitoring notice laws:
 - **Delaware (DE Title 19 § 705):** Requires notice of electronic monitoring policies.
 - **Colorado (CO Rev. Stat. § 8-2-127):** Requires notice and consent.
 
-FSMS provides jurisdiction-aware policy templates and acknowledgment tracking to help organizations meet these requirements, but you should always consult legal counsel for your specific situation.
+Veracity provides jurisdiction-aware policy templates and acknowledgment tracking to help organizations meet these requirements, but you should always consult legal counsel for your specific situation.
 
 ## Step 3: Choose the Right Scope
 
-The most successful FSMS deployments are targeted. You do not need to monitor every employee from day one.
+The most successful Veracity deployments are targeted. You do not need to monitor every employee from day one.
 
 ### Who to Include
 
@@ -96,7 +96,7 @@ The configuration choices you make during setup have a disproportionate impact o
 
 ### Be Explicit About What You Are Not Collecting
 
-Tell your team explicitly that FSMS does not:
+Tell your team explicitly that Veracity does not:
 - Log keystrokes
 - Record audio or video
 - Run in stealth mode
@@ -117,7 +117,7 @@ How you introduce workforce analytics matters more than which tool you choose. T
 
 ## Step 6: Use the Data Constructively
 
-The data from FSMS is most valuable when it is used to improve team dynamics, not to enforce compliance.
+The data from Veracity is most valuable when it is used to improve team dynamics, not to enforce compliance.
 
 ### Coaching Conversations
 
@@ -155,8 +155,8 @@ If most of your team consistently shows "Uncertain — Mixed Context" confidence
 ### Over-Monitoring
 More data is not better data. If you find yourself checking individual activity logs daily, you are using the tool wrong. The dashboard is designed for trends and exceptions, not minute-by-minute surveillance.
 
-## Getting Started with FSMS
+## Getting Started with Veracity
 
-FSMS was purpose-built for SMBs implementing workforce analytics for the first time. The guided setup wizard configures your organization in under 30 minutes. The employee dashboard gives every team member immediate visibility into their data. And the jurisdiction-aware compliance controls help you meet your regulatory obligations from day one.
+Veracity was purpose-built for SMBs implementing workforce analytics for the first time. The guided setup wizard configures your organization in under 30 minutes. The employee dashboard gives every team member immediate visibility into their data. And the jurisdiction-aware compliance controls help you meet your regulatory obligations from day one.
 
 [Start your free trial →](/pricing) · [Read our case studies →](/case-studies) · [Back to blog](/blog)

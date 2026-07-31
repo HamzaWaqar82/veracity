@@ -4,7 +4,7 @@ slug: blog
 order: 6
 ---
 
-# FSMS Blog — Insights on Transparent Workforce Analytics
+# Veracity Blog — Insights on Transparent Workforce Analytics
 
 Thought leadership, product deep-dives, and practical guides for building trust-driven productivity cultures in small-to-medium businesses.
 
@@ -12,7 +12,7 @@ Thought leadership, product deep-dives, and practical guides for building trust-
 
 <div class="blog-card-grid">
 
-## How FSMS Calculates Your Productivity Score
+## How Veracity Calculates Your Productivity Score
 
 **A complete walkthrough of the scoring methodology — the formula, the inputs, the confidence indicators, and why we publish it all.**
 
@@ -46,4 +46,4 @@ Implementing workforce analytics in an SMB is different from deploying it in a l
 
 ## Subscribe
 
-New articles published monthly. Contact us at support@fsms.dev to suggest topics or ask questions.
+New articles published monthly. Contact us at support@veracity.dev to suggest topics or ask questions.

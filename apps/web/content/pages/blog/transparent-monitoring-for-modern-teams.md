@@ -43,13 +43,13 @@ Traditional tools operate on the assumption that collecting more data yields bet
 
 Meaningful productivity insights come from structured, classified, and contextualized data — not from raw activity streams.
 
-## The FSMS Alternative
+## The Veracity Alternative
 
-FSMS was designed from the ground up as a transparent alternative. Every design decision resolves in favor of visibility, employee control, and data minimization.
+Veracity was designed from the ground up as a transparent alternative. Every design decision resolves in favor of visibility, employee control, and data minimization.
 
 ### Visible Always
 
-The FSMS Agent is always visible and identifiable in the system tray. It shows a clear indicator when it is capturing data and when it is not. There is no stealth mode, no hidden capture, no way to run the Agent without the employee knowing.
+The Veracity Agent is always visible and identifiable in the system tray. It shows a clear indicator when it is capturing data and when it is not. There is no stealth mode, no hidden capture, no way to run the Agent without the employee knowing.
 
 This is not a configuration option. It is a design requirement that applies at every tier.
 
@@ -67,7 +67,7 @@ The sensitive-app exclusion list prevents capture during banking, password manag
 
 ### Published Methodology
 
-FSMS publishes its entire scoring methodology — the formula, the inputs, the weights, the edge cases. Every employee can see exactly how their score is calculated. No black box, no proprietary algorithm, no unverifiable accuracy claims.
+Veracity publishes its entire scoring methodology — the formula, the inputs, the weights, the edge cases. Every employee can see exactly how their score is calculated. No black box, no proprietary algorithm, no unverifiable accuracy claims.
 
 ## Outcomes of the Transparent Approach
 
@@ -90,8 +90,8 @@ Transitioning from a surveillance mindset to a transparent monitoring approach r
 1. **Explain the why before the what.** Before deploying any tool, have a team meeting explaining what will be tracked, why, and how the data will be used. Address concerns directly.
 2. **Lead with transparency.** Make sure every employee can see their own data before managers see team data. Let employees explore the dashboard and understand what the system knows about them.
 3. **Start with privacy.** Configure generous Private Time allowances and a broad sensitive-app exclusion list. You can always tighten controls later, but starting with trust sets the right tone.
-4. **Use data for coaching, not punishment.** The first time a manager uses FSMS data in a performance improvement plan without having used it in coaching conversations, trust is lost. Build the coaching habit first.
+4. **Use data for coaching, not punishment.** The first time a manager uses Veracity data in a performance improvement plan without having used it in coaching conversations, trust is lost. Build the coaching habit first.
 
-FSMS provides the tools for this transition. The guided setup wizard helps administrators configure the right policy template. The employee dashboard gives every team member immediate visibility into their data. And Private Time ensures that every employee maintains control over their privacy.
+Veracity provides the tools for this transition. The guided setup wizard helps administrators configure the right policy template. The employee dashboard gives every team member immediate visibility into their data. And Private Time ensures that every employee maintains control over their privacy.
 
 [Back to blog](/blog) · [Explore features](/features) · [View pricing](/pricing) · [Start free trial](/pricing)

@@ -4,29 +4,29 @@ slug: home
 order: 1
 ---
 
-# Fair Screen Monitoring System — Workforce Analytics Built on Trust, Not Surveillance
+# Veracity — Workforce Analytics Built on Trust, Not Surveillance
 
-FSMS is a cloud-native workforce-analytics platform designed specifically for small-to-medium businesses with 10 to 200 employees. We give managers objective productivity data while giving every employee full transparency into what is tracked, when, and why. FSMS is positioned explicitly as a workforce-analytics tool — not a security or DLP product — with trust-preserving defaults at every tier.
+Veracity is a cloud-native workforce-analytics platform designed specifically for small-to-medium businesses with 10 to 200 employees. We give managers objective productivity data while giving every employee full transparency into what is tracked, when, and why. Veracity is positioned explicitly as a workforce-analytics tool — not a security or DLP product — with trust-preserving defaults at every tier.
 
 ## The Problem: You Cannot Manage What You Cannot See
 
 Remote and hybrid work have made it harder for managers to understand how their teams spend time. The traditional response — deploying surveillance software that captures everything, hides itself from employees, and reports activity without context — erodes trust, drives away talent, and often creates more resentment than insight. Employees feel watched. Managers get data they cannot act on. Productivity conversations become personal rather than constructive.
 
-## The FSMS Approach: Collect Less, Show More
+## The Veracity Approach: Collect Less, Show More
 
-FSMS takes the opposite approach from traditional monitoring tools. We collect only what is necessary for meaningful productivity analytics, we show every employee exactly what we know about them, and we never operate in secret. Our desktop Agent runs visibly on every workstation with a clear indicator in the system tray. There is no stealth mode, no hidden capture, no data collected without the employee's knowledge.
+Veracity takes the opposite approach from traditional monitoring tools. We collect only what is necessary for meaningful productivity analytics, we show every employee exactly what we know about them, and we never operate in secret. Our desktop Agent runs visibly on every workstation with a clear indicator in the system tray. There is no stealth mode, no hidden capture, no data collected without the employee's knowledge.
 
 ### Three Core Principles
 
-**Data Minimization.** FSMS does not log keystrokes, record audio or video, capture webcam or microphone data, or perform continuous screen recording. Our activity tracking captures application names, window titles, and URL domains at sixty-second heartbeat intervals — enough to understand work patterns, not enough to invade privacy. Screenshot capture (optional, on Growth and Enterprise plans) happens at fixed intervals with client-side redaction and encryption. This is a deliberate architectural constraint that applies at every tier, now and in all future versions.
+**Data Minimization.** Veracity does not log keystrokes, record audio or video, capture webcam or microphone data, or perform continuous screen recording. Our activity tracking captures application names, window titles, and URL domains at sixty-second heartbeat intervals — enough to understand work patterns, not enough to invade privacy. Screenshot capture (optional, on Growth and Enterprise plans) happens at fixed intervals with client-side redaction and encryption. This is a deliberate architectural constraint that applies at every tier, now and in all future versions.
 
-**Employee Visibility.** Every employee can see exactly what data FSMS has collected about them in real time through their personal dashboard — the same data their manager sees. The Agent is always identifiable in the system tray with a visible status indicator. Private Time mode lets employees pause all capture with one click; only the session duration is recorded. There is no data hidden from employees. The employee dashboard includes a complete access log showing who has viewed their data and when.
+**Employee Visibility.** Every employee can see exactly what data Veracity has collected about them in real time through their personal dashboard — the same data their manager sees. The Agent is always identifiable in the system tray with a visible status indicator. Private Time mode lets employees pause all capture with one click; only the session duration is recorded. There is no data hidden from employees. The employee dashboard includes a complete access log showing who has viewed their data and when.
 
-**Compliance-First Design.** FSMS is built to comply with the General Data Protection Regulation (GDPR), the EU Artificial Intelligence Act, and relevant US state electronic monitoring statutes including Connecticut General Statute Section 31-48d and New York Labor Law Section 52-c. Our compliance infrastructure includes jurisdiction-aware notice engines, tamper-evident audit logging, configurable data retention with automated deletion, Data Subject Access Request (DSAR) workflows, and Data Protection Impact Assessment (DPIA) support. We do not perform emotion recognition, biometric categorization, or any form of automated decision-making that the AI Act restricts.
+**Compliance-First Design.** Veracity is built to comply with the General Data Protection Regulation (GDPR), the EU Artificial Intelligence Act, and relevant US state electronic monitoring statutes including Connecticut General Statute Section 31-48d and New York Labor Law Section 52-c. Our compliance infrastructure includes jurisdiction-aware notice engines, tamper-evident audit logging, configurable data retention with automated deletion, Data Subject Access Request (DSAR) workflows, and Data Protection Impact Assessment (DPIA) support. We do not perform emotion recognition, biometric categorization, or any form of automated decision-making that the AI Act restricts.
 
-## How FSMS Works
+## How Veracity Works
 
-The FSMS platform has three components:
+The Veracity platform has three components:
 
 **The Agent.** A cross-platform desktop application installed on each employee workstation. The Agent captures activity data — application usage, window titles, URL visits — at sixty-second heartbeat intervals and transmits it to the server over encrypted TLS 1.3 connections. On plans that include it, the Agent also captures periodic screenshots with client-side redaction and encryption. The Agent supports Windows 10 and 11, macOS Ventura and later, and major Linux distributions including Ubuntu 22.04 and later.
 
@@ -36,7 +36,7 @@ The FSMS platform has three components:
 
 ## Product Activity States
 
-The FSMS Agent tracks employee activity through four primary states:
+The Veracity Agent tracks employee activity through four primary states:
 
 **ACTIVE.** The employee is actively using the workstation — keyboard or mouse input detected within the idle threshold (default: 180 seconds of inactivity).
 
@@ -48,7 +48,7 @@ The FSMS Agent tracks employee activity through four primary states:
 
 ## Three Plans for Every Team Size
 
-FSMS offers three tiered plans with overlapping but distinguishable features:
+Veracity offers three tiered plans with overlapping but distinguishable features:
 
 | Feature | Starter | Growth | Enterprise |
 |---------|---------|--------|------------|
@@ -85,16 +85,16 @@ See the [Features page](/features) for a detailed breakdown and the [Pricing pag
 
 ## Trusted by Growing Teams
 
-> "We needed visibility into our remote team's workflow without making people feel like they were being spied on. FSMS gave us exactly that — actionable productivity data with zero creep factor. The fact that our employees can see everything we see made adoption smooth and trust high."
+> "We needed visibility into our remote team's workflow without making people feel like they were being spied on. Veracity gave us exactly that — actionable productivity data with zero creep factor. The fact that our employees can see everything we see made adoption smooth and trust high."
 >
 > *— Sarah Chen, CEO, Luminate Digital (45 employees)*
 
-> "As a compliance officer, I was skeptical about employee monitoring tools. FSMS is the first platform I have seen that genuinely prioritizes privacy. The audit trail, consent management, and data retention controls give me everything I need for GDPR compliance without the usual surveillance baggage."
+> "As a compliance officer, I was skeptical about employee monitoring tools. Veracity is the first platform I have seen that genuinely prioritizes privacy. The audit trail, consent management, and data retention controls give me everything I need for GDPR compliance without the usual surveillance baggage."
 >
 > *— Marcus Okonkwo, Head of Compliance, Helios Consulting (120 employees)*
 
 ## Ready to See the Difference?
 
-FSMS offers a fourteen-day free trial on all plans with full access to all features of the chosen plan. No credit card required. Explore our features, compare plans, or contact our sales team for a personalized walkthrough.
+Veracity offers a fourteen-day free trial on all plans with full access to all features of the chosen plan. No credit card required. Explore our features, compare plans, or contact our sales team for a personalized walkthrough.
 
 [Explore Features](/features) · [View Pricing](/pricing) · [Start Free Trial](/pricing) · [Contact Sales](/about)

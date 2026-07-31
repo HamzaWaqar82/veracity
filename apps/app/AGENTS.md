@@ -1,6 +1,6 @@
 # AGENTS.md — apps/app (Core SaaS)
 
-You are working **only** on the FSMS core SaaS product. Nothing exists here yet — scaffold only. See root `AGENTS.md` first.
+You are working **only** on the Veracity core SaaS product. Nothing exists here yet — scaffold only. See root `AGENTS.md` first.
 
 ## Goals
 
@@ -10,7 +10,7 @@ You are working **only** on the FSMS core SaaS product. Nothing exists here yet 
 
 ## Sources of truth (read only these)
 
-- **Requirements:** `docs/saas/FSMS-SRS-v3.md` — the authoritative baseline. Modules: AT, VM, PA, ES, CG, BUS, NFR. Requirement IDs like `AT-FR-001`, MoSCoW priority, effort, and evidence tags (`[COMPLAINT]` `[LEGAL]` `[GAP]` `[UNVALIDATED]`) are part of the requirement — never drop them. Supporting artifacts in `docs/saas/` (RE process plan, dossier, elicitation log, analysis report, validation report).
+- **Requirements:** `docs/saas/Veracity-SRS-v3.md` — the authoritative baseline. Modules: AT, VM, PA, ES, CG, BUS, NFR. Requirement IDs like `AT-FR-001`, MoSCoW priority, effort, and evidence tags (`[COMPLAINT]` `[LEGAL]` `[GAP]` `[UNVALIDATED]`) are part of the requirement — never drop them. Supporting artifacts in `docs/saas/` (RE process plan, dossier, elicitation log, analysis report, validation report).
 - **Brand:** `docs/company/brand.md` — product-facing expression of the brand; the never-ever guarantees (no keystrokes, no continuous video, no stealth, no emotion recognition) are binding constraints.
 
 Ignore `docs/web/` entirely.

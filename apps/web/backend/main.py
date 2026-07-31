@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="FSMS RAG Backend", version="0.1.0")
+app = FastAPI(title="Veracity RAG Backend", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -14,4 +14,4 @@ app.add_middleware(
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "service": "fsms-rag-backend"}
+    return {"status": "ok", "service": "veracity-rag-backend"}

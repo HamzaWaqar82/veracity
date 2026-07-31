@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main>FSMS — Coming soon</main>;
+  return <main>Veracity — Coming soon</main>;
 }

@@ -4,9 +4,9 @@ slug: features
 order: 2
 ---
 
-# FSMS Features — Complete Guide by Plan Tier
+# Veracity Features — Complete Guide by Plan Tier
 
-Three plans, one philosophy. Every tier of FSMS includes core activity tracking, productivity analytics, employee self-service dashboards, and compliance infrastructure. Upgrade for deeper visibility with screenshot monitoring, team benchmarking, API access, and advanced administrative controls. FSMS is a cloud-native SaaS platform — no on-premise deployment is available.
+Three plans, one philosophy. Every tier of Veracity includes core activity tracking, productivity analytics, employee self-service dashboards, and compliance infrastructure. Upgrade for deeper visibility with screenshot monitoring, team benchmarking, API access, and advanced administrative controls. Veracity is a cloud-native SaaS platform — no on-premise deployment is available.
 
 ---
 
@@ -16,7 +16,7 @@ Designed for small teams (up to 10 users) that need lightweight productivity vis
 
 ### Activity Tracking
 
-**Application and Window Title Logging.** The FSMS Agent captures the active application name, executable path, process ID, and window title at sixty-second heartbeat intervals. On macOS, the Agent uses the Accessibility API to read the frontmost application. On Linux, the Agent reads the _NET_ACTIVE_WINDOW property via X11 or the native Wayland protocol. On Windows, the Agent uses the GetForegroundWindow and GetWindowText APIs. If the Agent cannot obtain a window title (for example, on Wayland without a portal), it reports a degradation state and continues capturing available data.
+**Application and Window Title Logging.** The Veracity Agent captures the active application name, executable path, process ID, and window title at sixty-second heartbeat intervals. On macOS, the Agent uses the Accessibility API to read the frontmost application. On Linux, the Agent reads the _NET_ACTIVE_WINDOW property via X11 or the native Wayland protocol. On Windows, the Agent uses the GetForegroundWindow and GetWindowText APIs. If the Agent cannot obtain a window title (for example, on Wayland without a portal), it reports a degradation state and continues capturing available data.
 
 **URL Tracking (Domain Default).** The Agent captures the active browser domain (not the full URL path) by default. Organizations can optionally enable full-path URL capture at the policy level. The URL capture mode is reported in every heartbeat and visible to employees in their activity log and policy display. URL data is treated as personal data subject to retention policies and DSAR export.
 
@@ -72,7 +72,7 @@ Where:
 
 Indicators are displayed next to the score with color-coded icons (green/orange/gray) and tooltip explanations. Managers see the same indicators for aggregate team views.
 
-**No Accuracy Percentage Claims.** FSMS never claims a single "accuracy percentage" (e.g., "greater than 95% accurate") anywhere in the product, in any UI, API response, or documentation. The published methodology is the only accuracy representation.
+**No Accuracy Percentage Claims.** Veracity never claims a single "accuracy percentage" (e.g., "greater than 95% accurate") anywhere in the product, in any UI, API response, or documentation. The published methodology is the only accuracy representation.
 
 **Peak Productivity Hours.** The system identifies the employee's most productive time window each day based on their classified activity distribution. Peak hours are shown on the employee dashboard and available via API.
 
@@ -103,9 +103,9 @@ From the dashboard or Agent system tray, employees can:
 
 ### Meeting-Aware Idle Detection
 
-FSMS integrates with Google Calendar and Outlook to detect scheduled meetings automatically. When an employee has a calendar event during work hours, the Agent records the time as PASSIVE-ATTENTION rather than IDLE, even without keyboard or mouse input. This prevents legitimate meeting time from being miscategorized as idle time or penalized in scoring.
+Veracity integrates with Google Calendar and Outlook to detect scheduled meetings automatically. When an employee has a calendar event during work hours, the Agent records the time as PASSIVE-ATTENTION rather than IDLE, even without keyboard or mouse input. This prevents legitimate meeting time from being miscategorized as idle time or penalized in scoring.
 
-Calendar data is read-only — FSMS never creates, modifies, or deletes calendar events. OAuth tokens for calendar access are encrypted at rest (AES-256) and associated with the employee record.
+Calendar data is read-only — Veracity never creates, modifies, or deletes calendar events. OAuth tokens for calendar access are encrypted at rest (AES-256) and associated with the employee record.
 
 ### Data Encryption (All Tiers)
 

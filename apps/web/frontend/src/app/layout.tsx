@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FSMS — Fair Screen Monitoring",
-  description: "Transparent, privacy-respecting employee monitoring for modern teams.",
+  title: "Veracity",
+  description: "Workforce Analytics Built on Trust, Not Surveillance.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

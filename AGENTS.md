@@ -2,7 +2,7 @@
 
 ## What this repo is
 
-The **FSMS monorepo**: two independent apps sharing one brand.
+The **Veracity monorepo**: two independent apps sharing one brand.
 
 - `apps/web/` — the marketing website + content-grounded RAG assistant (the only app with code today).
 - `apps/app/` — the core SaaS (Activity Tracking, Visual Monitoring, Productivity Analytics, Employee Self-Service, Compliance & Governance, Business/Admin). **Not built yet** — scaffold only.
@@ -23,14 +23,14 @@ This repo exists because two products were previously confused by mixing their r
 ```
 docs/
   company/   brand.md, vision.md        — SHARED by both apps
-  saas/      FSMS RE artifacts          — SaaS requirements
-  web/       srs-rag-chatbot-v1.md, FSMS-WEB-Evaluation-Specification.md, Rag Chatbot..docx
+  saas/      Veracity RE artifacts       — SaaS requirements
+  web/       srs-rag-chatbot-v1.md, Veracity-WEB-Evaluation-Specification.md, Rag Chatbot..docx
 ```
 
 Key authority notes:
 
-- `docs/saas/FSMS-SRS-v3.md` — authoritative SaaS baseline. Modules: AT, VM, PA, ES, CG, BUS, NFR. Requirements carry IDs (`AT-FR-001`), MoSCoW priorities, effort, and **evidence tags** `[COMPLAINT]` `[LEGAL]` `[GAP]` `[UNVALIDATED]` — tags are part of the requirement, never drop them.
-- `docs/web/srs-rag-chatbot-v1.md` — website + RAG requirements (FR-SITE / FR-BOT / FR-DATA / NFR-* / EVAL / PROC / DEL). `docs/web/FSMS-WEB-Evaluation-Specification.md` — standalone, authoritative 50-question eval spec, maintained independently of any SRS.
+- `docs/saas/Veracity-SRS-v3.md` — authoritative SaaS baseline. Modules: AT, VM, PA, ES, CG, BUS, NFR. Requirements carry IDs (`AT-FR-001`), MoSCoW priorities, effort, and **evidence tags** `[COMPLAINT]` `[LEGAL]` `[GAP]` `[UNVALIDATED]` — tags are part of the requirement, never drop them.
+- `docs/web/srs-rag-chatbot-v1.md` — website + RAG requirements (FR-SITE / FR-BOT / FR-DATA / NFR-* / EVAL / PROC / DEL). `docs/web/Veracity-WEB-Evaluation-Specification.md` — standalone, authoritative 50-question eval spec, maintained independently of any SRS.
 - **SRS v4 and the Phase-6 baseline are deliberately excluded** from this repo: v4 merged website + SaaS constraints into one document and confused coding agents. Website and SaaS requirements are separate on purpose. If you see a reference to "SRS v4 §3.7 / WEB module," that content belongs to `docs/web/` here.
 - `ENGINEERING-CONCEPTS.md` and `IMPLEMENTATION-PLAN.md` do not exist yet — write them fresh when needed, don't expect them.
 
@@ -45,6 +45,6 @@ Read `apps/app/AGENTS.md` before working there. Nothing exists yet — do not in
 ## Gotchas
 
 - `docs/web/` contains `Rag Chatbot..docx` — always quote paths.
-- `FSMS-SRS-v3.md` duplicates its title block (intro repeated after the TOC) — a known artifact of merging modular parts, not something to "fix."
+- `Veracity-SRS-v3.md` duplicates its title block (intro repeated after the TOC) — a known artifact of merging modular parts, not something to "fix."
 - The website content ground-claims "SRS v4 grounding" (see `apps/web/content/`) — that grounding document is intentionally not in this repo; the brand + `docs/web/` requirements are the working sources.
 - No root build commands. Every app has its own toolchain (see per-app READMEs). `apps/web` = Next.js + FastAPI/uv; `apps/app` = nothing yet.

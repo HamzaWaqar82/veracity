@@ -1,7 +1,7 @@
 [project]
-name = "fsms-backend"
+name = "veracity-backend"
 version = "0.1.0"
-description = "FSMS RAG Backend — FastAPI + pgvector + OpenRouter"
+description = "Veracity RAG Backend — FastAPI + pgvector + OpenRouter"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.115.6",

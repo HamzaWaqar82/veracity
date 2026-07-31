@@ -4,19 +4,19 @@ slug: integrations
 order: 7
 ---
 
-# FSMS Integrations — Connect Your Workflow
+# Veracity Integrations — Connect Your Workflow
 
-FSMS connects with the tools your team already uses. Our integrations enrich productivity data with context from your existing workflow, enabling more accurate activity classification and richer analytics. All integrations described here are included in every FSMS plan unless otherwise noted.
+Veracity connects with the tools your team already uses. Our integrations enrich productivity data with context from your existing workflow, enabling more accurate activity classification and richer analytics. All integrations described here are included in every Veracity plan unless otherwise noted.
 
 ---
 
 ## Slack
 
-The FSMS Slack integration brings productivity insights directly into your communication workflow.
+The Veracity Slack integration brings productivity insights directly into your communication workflow.
 
 **For Managers.** Receive daily productivity summaries, anomaly alerts (significant score changes or drift events), and team benchmarking reports directly in your Slack workspace. Managers can configure which metrics are shared and how frequently summaries are sent — daily, weekly, or real-time for critical alerts.
 
-**For Employees.** Employees can use the FSMS Slack app to:
+**For Employees.** Employees can use the Veracity Slack app to:
 - Check their current productivity score
 - View their activity timeline
 - Start and stop Private Time
@@ -27,7 +27,7 @@ The FSMS Slack integration brings productivity insights directly into your commu
 
 ## Jira
 
-The FSMS Jira integration correlates activity data with project tickets to give context to productivity metrics.
+The Veracity Jira integration correlates activity data with project tickets to give context to productivity metrics.
 
 **Capabilities.**
 - Maps tracked application and URL activity to Jira projects and issues
@@ -37,11 +37,11 @@ The FSMS Jira integration correlates activity data with project tickets to give 
 
 **Requirements.** The integration requires a Jira Cloud subscription and admin access to configure the connection. Jira Data Center and Jira Server are not supported.
 
-**Data Flow.** The integration reads issue and project metadata to associate activity events with tickets. FSMS does not write to Jira — no issues are created, modified, or deleted by the integration.
+**Data Flow.** The integration reads issue and project metadata to associate activity events with tickets. Veracity does not write to Jira — no issues are created, modified, or deleted by the integration.
 
 ## Asana
 
-The FSMS Asana integration tracks project-level productivity trends and helps identify workload imbalances.
+The Veracity Asana integration tracks project-level productivity trends and helps identify workload imbalances.
 
 **Capabilities.**
 - Syncs project and task data to give each activity event a project context
@@ -53,19 +53,19 @@ The FSMS Asana integration tracks project-level productivity trends and helps id
 
 ## Google Calendar
 
-The FSMS Google Calendar integration enables meeting-aware idle detection and automatic Private Time scheduling.
+The Veracity Google Calendar integration enables meeting-aware idle detection and automatic Private Time scheduling.
 
-**Meeting-Aware Idle Detection.** When an employee has a calendar event during work hours, FSMS records the time as PASSIVE-ATTENTION rather than IDLE. This prevents legitimate meeting time from being penalized in productivity scoring. The detection works with Google Calendar and Outlook calendars.
+**Meeting-Aware Idle Detection.** When an employee has a calendar event during work hours, Veracity records the time as PASSIVE-ATTENTION rather than IDLE. This prevents legitimate meeting time from being penalized in productivity scoring. The detection works with Google Calendar and Outlook calendars.
 
 **Automatic Private Time Scheduling.** Employees who mark time as "Focusing" in Google Calendar will have Private Time activated automatically for the duration of the event. This allows employees to designate deep-focus periods where all capture is paused.
 
-**Read-Only Access.** Calendar data is read-only. FSMS never creates, modifies, or deletes calendar events. OAuth tokens for calendar access are encrypted at rest (AES-256) and associated with the employee record.
+**Read-Only Access.** Calendar data is read-only. Veracity never creates, modifies, or deletes calendar events. OAuth tokens for calendar access are encrypted at rest (AES-256) and associated with the employee record.
 
-**Setup.** Employees connect their calendar through the FSMS employee dashboard using OAuth 2.0. The integration supports Google Workspace and Microsoft 365 (Outlook) calendars.
+**Setup.** Employees connect their calendar through the Veracity employee dashboard using OAuth 2.0. The integration supports Google Workspace and Microsoft 365 (Outlook) calendars.
 
 ## REST API
 
-All Growth and Enterprise plans include access to the FSMS REST API for custom integrations, data export, and workflow automation.
+All Growth and Enterprise plans include access to the Veracity REST API for custom integrations, data export, and workflow automation.
 
 ### Rate Limits
 
@@ -92,13 +92,13 @@ The API provides access to:
 
 ### Documentation
 
-Full API documentation with request/response schemas, example requests, and error codes is provided after account creation. The documentation is available at `https://docs.fsms.dev/api`.
+Full API documentation with request/response schemas, example requests, and error codes is provided after account creation. The documentation is available at `https://docs.veracity.dev/api`.
 
 ## Planned Integrations (Roadmap)
 
-The following integrations are on the FSMS roadmap but not yet available:
+The following integrations are on the Veracity roadmap but not yet available:
 - **GitHub and GitLab** — correlate activity data with development activity
 - **HubSpot and Salesforce** — correlate activity with CRM workflows
 - **Microsoft Teams** — meeting detection and notifications within Teams
 
-Integration priorities are driven by customer demand. Contact sales@fsms.dev to request an integration.
+Integration priorities are driven by customer demand. Contact sales@veracity.dev to request an integration.

@@ -4,7 +4,7 @@ slug: pricing
 order: 3
 ---
 
-# FSMS Pricing — Plans, Features, and Billing
+# Veracity Pricing — Plans, Features, and Billing
 
 Simple, per-user pricing with no hidden fees. All plans include a fourteen-day free trial with full access to all features of the chosen plan. No credit card required for the trial. At the end of the trial, you will be asked to choose a plan and provide payment information.
 
@@ -76,7 +76,7 @@ Best for organizations with unlimited users that need full control. Everything i
 
 ### How Billing Is Calculated
 
-Billing is calculated per active user per month. An active user is any employee who has the FSMS Agent installed and has sent at least one heartbeat in the billing period. Employees who have not sent a heartbeat for thirty consecutive days are classified as inactive and are not billed. Billing is calculated at the end of each billing period based on the average number of active users during that period.
+Billing is calculated per active user per month. An active user is any employee who has the Veracity Agent installed and has sent at least one heartbeat in the billing period. Employees who have not sent a heartbeat for thirty consecutive days are classified as inactive and are not billed. Billing is calculated at the end of each billing period based on the average number of active users during that period.
 
 ### Annual Billing Discount
 
@@ -101,22 +101,22 @@ When your organization reaches ninety percent of your plan's user limit, all org
 
 ### Non-Profit and Educational Discounts
 
-FSMS offers a twenty percent discount for verified non-profit organizations and accredited educational institutions. Contact sales@fsms.dev with your verification documents to have the discount applied to your account. The discount applies to monthly and annual billing on all plans.
+Veracity offers a twenty percent discount for verified non-profit organizations and accredited educational institutions. Contact sales@veracity.dev with your verification documents to have the discount applied to your account. The discount applies to monthly and annual billing on all plans.
 
 ### Payment Methods
 
-FSMS accepts major credit cards and debit cards (Visa, Mastercard, American Express, Discover). Enterprise plans may be eligible for invoicing (net-30 terms) for annual contracts. Contact sales@fsms.dev for invoicing inquiries.
+Veracity accepts major credit cards and debit cards (Visa, Mastercard, American Express, Discover). Enterprise plans may be eligible for invoicing (net-30 terms) for annual contracts. Contact sales@veracity.dev for invoicing inquiries.
 
 ### Data Retention After Cancellation
 
-When an organization cancels their FSMS subscription, all collected data is retained for 30 days (grace period for reactivation). After the grace period expires, all data is permanently deleted. Retention policies during the active subscription period are configurable on Enterprise plans.
+When an organization cancels their Veracity subscription, all collected data is retained for 30 days (grace period for reactivation). After the grace period expires, all data is permanently deleted. Retention policies during the active subscription period are configurable on Enterprise plans.
 
 ---
 
-## What FSMS Does Not Offer
+## What Veracity Does Not Offer
 
 The following are deliberate exclusions across all plans and are not available at any tier:
-- **Keystroke logging** — FSMS never logs keystrokes, key counts, or any form of keyboard input content
+- **Keystroke logging** — Veracity never logs keystrokes, key counts, or any form of keyboard input content
 - **Continuous video or screen recording** — periodic screenshots only, never continuous recording
 - **Stealth or covert monitoring** — the Agent is always visible and identifiable in the system tray
 - **Audio or webcam capture** — no microphone or webcam data collection

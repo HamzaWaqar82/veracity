@@ -1,6 +1,6 @@
 # AGENTS.md — apps/web (Website & RAG Assistant)
 
-You are working **only** on the FSMS marketing website and its content-grounded RAG assistant. This is the only app with code today. See root `AGENTS.md` first.
+You are working **only** on the Veracity marketing website and its content-grounded RAG assistant. This is the only app with code today. See root `AGENTS.md` first.
 
 ## Goals
 
@@ -10,7 +10,7 @@ You are working **only** on the FSMS marketing website and its content-grounded 
 
 ## Sources of truth (read only these)
 
-- **Requirements:** `docs/web/srs-rag-chatbot-v1.md` (FR-SITE / FR-BOT / FR-DATA / NFR / EVAL / PROC / DEL) and `docs/web/FSMS-WEB-Evaluation-Specification.md` (the 50-question eval harness spec)
+- **Requirements:** `docs/web/srs-rag-chatbot-v1.md` (FR-SITE / FR-BOT / FR-DATA / NFR / EVAL / PROC / DEL) and `docs/web/Veracity-WEB-Evaluation-Specification.md` (the 50-question eval harness spec)
 - **Brand:** `docs/company/brand.md` — represent positioning, voice, and messaging **verbatim**. Never re-derive or invent brand/positioning from requirements. The site is grounded in the SaaS brand; do not let SaaS requirements leak in as marketing claims.
 - **App context:** `PRODUCT.md` (this directory) and `content/` (markdown = single source of truth for both rendered pages and retrieval)
 

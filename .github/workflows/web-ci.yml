@@ -30,7 +30,7 @@ jobs:
         working-directory: apps/web/backend
       - run: |
           git config user.name "CI Bot"
-          git config user.email "bot@fsms.dev"
+          git config user.email "bot@veracity.dev"
           git add eval/results/
           git commit -m "chore: add eval results [skip ci]" || true
           git push
