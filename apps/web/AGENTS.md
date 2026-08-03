@@ -12,7 +12,8 @@ You are working **only** on the Veracity marketing website and its content-groun
 
 - **Requirements:** `docs/web/srs-rag-chatbot-v1.md` (FR-SITE / FR-BOT / FR-DATA / NFR / EVAL / PROC / DEL) and `docs/web/Veracity-WEB-Evaluation-Specification.md` (the 50-question eval harness spec)
 - **Brand:** `docs/company/brand.md` — represent positioning, voice, and messaging **verbatim**. Never re-derive or invent brand/positioning from requirements. The site is grounded in the SaaS brand; do not let SaaS requirements leak in as marketing claims.
-- **App context:** `PRODUCT.md` (this directory) and `content/` (markdown = single source of truth for both rendered pages and retrieval)
+- **App context:** `PRODUCT.md` (this directory), `content/`, and `DECISIONS.md` (decision log — read it; D-001 defines the content model)
+- **Content model (see DECISIONS.md D-001):** `content/` markdown is the **fact authority + retrieval corpus** — the bot answers ONLY from it, and it is kept detailed so the bot never guesses. Frontend copy lives in **components**, written for the page: terse, SEO/UX-optimized. The page is a **non-contradicting subset** of the corpus — shorter, never different. Edits do **not** auto-propagate between channels.
 
 Ignore `docs/saas/` entirely.
 
@@ -26,6 +27,7 @@ Ignore `docs/saas/` entirely.
 ## Eval culture (hard gates)
 
 - Pricing/plan answers are zero-tolerance: **one violation fails the module** — treat pricing as a distinct, higher-scrutiny code path
+- Frontend copy must never contradict the corpus — `npm run check:facts` gates the build (prices, guarantees, plan limits, compliance statutes, trial terms)
 - Run the eval suite (`uv run python eval/harness.py --api-url http://localhost:8000`) and **commit score history** to `eval/results/` on each run
 - Any PR touching retrieval logic must state eval scores before/after
 - Unanswerable questions must be refused **and** routed to a contact channel; hedging counts as wrong

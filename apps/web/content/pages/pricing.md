@@ -76,7 +76,7 @@ Best for organizations with unlimited users that need full control. Everything i
 
 ### How Billing Is Calculated
 
-Billing is calculated per active user per month. An active user is any employee who has the Veracity Agent installed and has sent at least one heartbeat in the billing period. Employees who have not sent a heartbeat for thirty consecutive days are classified as inactive and are not billed. Billing is calculated at the end of each billing period based on the average number of active users during that period.
+Billing is calculated per active user per month. An active user is any employee who has the Veracity Agent installed and has sent at least one heartbeat in the billing period. Employees who have not sent a heartbeat for thirty consecutive days are classified as inactive and are not billed. Billing is calculated at the end of each billing period based on the average number of active users during that period. There is no minimum seat requirement and no setup fee — you can start with a single user.
 
 ### Annual Billing Discount
 

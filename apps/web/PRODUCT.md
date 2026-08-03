@@ -2,6 +2,10 @@
 
 <!-- impeccable:product-schema 1 -->
 
+## Register
+
+brand
+
 ## Platform
 
 web
@@ -41,7 +45,7 @@ A sales and marketing website for the Veracity workforce analytics platform. Its
 - They want answers to specific questions: pricing, features, compliance, integrations
 - The chatbot must answer accurately from site content alone, never from model prior knowledge
 - A wrong pricing answer fails the entire project — zero tolerance
-- Content is markdown at `apps/web/content/`, serving as single source of truth for both rendered pages and chatbot retrieval
+- Content is markdown at `apps/web/content/` — the **fact authority + retrieval corpus** for the chatbot. Frontend copy lives in components as a condensed, non-contradicting subset (see `DECISIONS.md` D-001). Page structure (titles, nav, anchors) is derived from the corpus at build time
 
 ## Capabilities and Constraints
 
@@ -49,16 +53,12 @@ A sales and marketing website for the Veracity workforce analytics platform. Its
 - 19,179 words of real, non-placeholder content across all pages
 - 3 product tiers with overlapping features (Starter $6/mo, Growth $12/mo, Enterprise $24/mo)
 - Pricing comparison table — single source of truth for all pricing answers
-- RAG chatbot embedded site-wide, answering only from site content
-- Streaming responses (SSE) via Python FastAPI backend
-- Multi-turn conversation with referential follow-up resolution
-- Cross-product comparison with per-fact citations
-- Prompt-injection resistance — retrieved content treated as untrusted data
-- Live re-ingestion demo: edit markdown, re-run ingestion, answer changes
-- Responsive across mobile (375px+), tablet (768px+), desktop (1024px+)
-- Lighthouse 90+ on Performance and Accessibility
-- Keyboard navigation and screen reader support
-- Deliberate design system with tokens and component patterns
+- **Built:** home page as bespoke React components; other pages via a Next.js dynamic `[...slug]` route (16 routes) whose titles/nav/anchors derive from the markdown corpus; mega-menu header with panels grounded in page anchors; mobile full-screen dialog nav; design system with tokens (`globals.css`) and documented components
+- **Target (not yet built):** RAG chatbot embedded site-wide answering only from site content; streaming responses (SSE) via Python FastAPI backend; multi-turn conversation with referential follow-up resolution; cross-product comparison with per-fact citations; live re-ingestion demo (edit markdown, re-run ingestion, answer changes)
+- Prompt-injection resistance — retrieved content treated as untrusted data (pipeline design principle)
+- Responsive across mobile (375px+), tablet (768px+), desktop (1024px+) — verified, zero horizontal overflow
+- WCAG 2.1 AA: contrast ≥4.5:1 verified, keyboard navigation and `:focus-visible`, `prefers-reduced-motion` honored
+- Lighthouse 90+ on Performance and Accessibility (target, verified via headless probes)
 - No no-code/low-code builders
 - No fine-tuning of any model
 - No client-side secrets — all keyed calls proxied server-side
@@ -78,27 +78,54 @@ A sales and marketing website for the Veracity workforce analytics platform. Its
 - **Tone shifts by page intent:** Reassuring on Home, persuasive on Why-Veracity, specification-grade on Features, personal on About
 - **Anti-selling:** Explicitly states when Veracity is not the right fit (enterprises 200+, DLP needs, on-premise, covert monitoring)
 
+## Conversion & proof
+
+- **Primary CTA:** Start Free Trial — 14 days, full access to all features of the chosen plan, no credit card required.
+- **Secondary fallbacks:** View Pricing (for price-shopping visitors) and Contact Sales (for visitors not ready to self-serve).
+- **The line a visitor remembers after 10 seconds:** You don't have to choose between visibility and trust.
+- **Belief ladder (in order, before the primary CTA):**
+  1. Today's options are both broken for SMBs — surveillance tools destroy trust, time trackers can't verify real productivity.
+  2. Real visibility doesn't require covert monitoring; transparency can be the mechanism, not the risk.
+  3. Veracity's trust isn't a promise, it's architectural — employee-visible capture, published confidence indicators, client-side redaction, drift detection — and it's priced for SMBs, not enterprises.
+  4. Starting is safe and cheap: 14-day free trial, no credit card, no seat minimum, all features included.
+- **Proof on hand:** real narrative case studies at `content/pages/case-studies.md` (Luminate Digital and peers), the 19,179-word grounded content corpus, the published feature-by-feature comparison against named competitors, and the 50-question eval harness + committed score history at `apps/web/eval/`.
+
+## Brand Personality
+
+- **Three words:** Trustworthy, precise, humane.
+- **Voice:** transparent, principled, contrarian, educational — specific, verifiable claims, never slogans; explains the "why" behind every design decision; honest enough to state where the product does not fit.
+- **Emotional goal:** the combined strategy — calm confidence (the relief of "we can stop guessing"), clear-eyed reassurance (someone finally explains monitoring without fear-mongering), and principled conviction (a brand with backbone, on the employee's side).
+- **Tone shifts by page intent:** reassuring on Home, persuasive on Why-Veracity, specification-grade on Features, personal on About.
+
+## Anti-references
+
+This site must never read as:
+
+- **A generic AI/SaaS template** — cream/sand backgrounds, gradient text, tiny uppercase eyebrows on every section, identical icon-card grids.
+- **A surveillance / enterprise-tool aesthetic** — dark control-center dashboards, cold dense grids, red alert accents, CCTV overtones.
+- **A dark cyber / hacker aesthetic** — glowing neon, terminal fonts, "we see everything" overtones.
+- **A corporate brochure** — stock-photo blandness, vague slogans, no specifics, no backbone.
+
 ## Evidence on Hand
 
 - 19,179 words of content across `content/pages/` (12 files: 9 pages + 3 blog posts) and `content/faq/faq.md` (37 entries)
 - All content grounded in the website requirements — `docs/web/srs-rag-chatbot-v1.md` and `docs/web/Veracity-WEB-Evaluation-Specification.md` — plus `docs/company/brand.md`. (Local-only; the old "SRS v4" document is deliberately excluded from this monorepo — references to it map to `docs/web/` here.)
 - Backend RAG pipeline at `apps/web/backend/` — FastAPI, LangChain, PostgreSQL + pgvector, OpenRouter
 - Eval framework at `apps/web/eval/` — 50-question set, LangSmith harness, score history
-- Frontend scaffold at `apps/web/frontend/` — Next.js 15, Tailwind v4, TypeScript
+- Frontend implementation at `apps/web/frontend/` — Next.js 15 (App Router), React 19, Tailwind v4, TypeScript; 16 static routes, titles/nav/anchors derived from the markdown corpus, presentation copy in components (see `DECISIONS.md` D-001); design system captured in `apps/web/DESIGN.md` with `.impeccable/design.json` sidecar and live-mode config at `.impeccable/live/config.json`
 - App README at `apps/web/README.md` (no architecture diagram or decisions doc yet — write fresh when needed)
 - Full stakeholder research dossier with competitor analysis (Teramind, ActivTrak, Hubstaff, Time Doctor gaps mapped)
 - Published feature-by-feature comparison table in content against all named competitors
 
 ## Current Build Status
 
-PRODUCT.md describes the **target product**. What is actually committed in this repo today:
+PRODUCT.md describes the **target product**. What is actually in this repo today:
 
-- **Complete:** content corpus (`apps/web/content/`), eval harness + 50-question set (`apps/web/eval/`), backend/frontend/config scaffold
+- **Complete:** content corpus (`apps/web/content/` — 9 pages, 3 blog posts, 37 FAQ entries), eval harness + 50-question set (`apps/web/eval/`), and the rendered marketing site — Next.js frontend serving 16 static routes with page structure derived from the markdown corpus and presentation copy in components (see `DECISIONS.md` D-001), with the full design system (tokens, mega-menu header, dialog mobile nav, CursorRing, ten home-page sections) verified responsive and accessible
 - **Stubbed:** `apps/web/backend/ingestion.py` and `apps/web/backend/rag.py` are `pass` placeholders; `apps/web/backend/main.py` exposes only `/health` — there is no `/api/chat` route yet
-- **Not built:** rendered site pages (frontend serves a "Coming soon" page), chatbot UI + API client, live ingestion, passing eval
-- The one committed eval result (`apps/web/eval/results/20260730T094852Z.json`) is **0/50 passed, all connection errors** — the harness never ran against a live backend
+- **Not built:** chatbot UI + API client, live ingestion, streaming answers, passing eval (the one committed eval result `apps/web/eval/results/20260730T094852Z.json` is 0/50 passed, all connection errors — the harness never ran against a live backend)
 
-The website is the pre-MVP build: content and evaluation precede implementation. Building the pipeline and pages is the next phase of work.
+The website is the pre-MVP build: content, evaluation, and the marketing pages precede the chatbot pipeline. Building the backend pipeline and chatbot UI is the next phase of work.
 
 ## Product Principles
 
@@ -108,7 +135,7 @@ The website is the pre-MVP build: content and evaluation precede implementation.
 
 3. **Eval-first.** Measure before you build. The 50-question evaluation set was written before any retrieval code. Scores are committed to the repo on every run. Early low scores are reported, not hidden.
 
-4. **Content is the single source of truth.** One markdown content layer serves both the rendered website and the chatbot retrieval corpus. Editing content and re-running ingestion changes both — demonstrable live.
+4. **Content is the fact authority; the page is its subset.** The markdown corpus serves the chatbot retrieval and carries every hard fact (prices, guarantees, limits, compliance). Rendered pages derive their structure from it and keep a condensed, copywritten presentation that must never contradict it. A build-time fact check (`npm run check:facts`) blocks drift. Editing content and re-running ingestion changes the bot's answers — demonstrable live.
 
 5. **Transparency through constraint.** What we deliberately exclude (no keystrokes, no video, no stealth, no emotion AI) defines the product as much as what we include. These are marketed as product guarantees, not engineering footnotes.
 
