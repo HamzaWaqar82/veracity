@@ -1,1 +1,224 @@
 @import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-spectral), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+  /* Fresh Greens light surface — pure white body, mint only where it earns it */
+  --color-bg: oklch(1 0 0);
+  --color-surface: oklch(0.955 0.02 152);
+  --color-surface-deep: oklch(0.93 0.03 152);
+  --color-ink: oklch(0.207 0.03 168); /* Carbon Black #081C15 */
+  --color-muted: oklch(0.476 0.078 162); /* Hunter Green #2D6A4F */
+  --color-line: oklch(0.875 0.03 157); /* celadon hairline */
+
+  /* Fresh Greens ramp — pinned hue ~161 */
+  --color-primary: oklch(0.476 0.078 162); /* Hunter Green #2D6A4F */
+  --color-primary-deep: oklch(0.348 0.055 163); /* Pine Teal #1B4332 */
+  --color-primary-soft: oklch(0.938 0.042 150); /* Frosted Mint #D8F3DC */
+  --color-pine: oklch(0.596 0.098 161); /* Sea Green #40916C — icon green */
+  --color-mint: oklch(0.879 0.061 157); /* Celadon #B7E4C7 — hero band */
+
+  /* Accent — cool teal, the verification voice (semantic contrast to green) */
+  --color-accent: oklch(0.42 0.085 205);
+  --color-accent-soft: oklch(0.935 0.028 205);
+
+  /* Hero — fresh mint band, deep-pine ink */
+  --color-hero-ink: oklch(0.348 0.055 163); /* Pine Teal — headline on band */
+  --color-hero-muted: oklch(0.476 0.078 162); /* Hunter Green — lede on band */
+  --color-hero-line: oklch(0.763 0.101 161); /* Mint Leaf #74C69D */
+  --color-hero-panel: oklch(0.995 0.004 155); /* ledger card */
+
+  /* On-dark — pine surfaces (footer, final CTA) */
+  --color-on-dark: oklch(0.938 0.042 150); /* Frosted Mint text */
+  --color-on-dark-muted: oklch(0.82 0.061 157); /* Celadon text */
+  --color-on-dark-line: oklch(0.45 0.055 163); /* hairline on pine */
+
+  /* Product activity states — the full-palette moment */
+  --color-state-active: oklch(0.706 0.118 161); /* Mint Leaf #52B788 */
+  --color-state-passive: oklch(0.55 0.11 225);
+  --color-state-idle: oklch(0.49 0.03 160);
+  --color-state-private: oklch(0.62 0.12 82);
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --spacing-section: clamp(4.5rem, 11vw, 8rem);
+  --spacing-section-sm: clamp(3rem, 7vw, 5rem);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full text-[0.9375rem] font-semibold transition-colors duration-200;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-deep;
+  }
+
+  .btn-white {
+    @apply bg-white text-primary hover:bg-primary-soft;
+  }
+
+  .btn-inverse {
+    @apply bg-white text-primary-deep hover:bg-primary-soft;
+  }
+
+  .btn-outline {
+    @apply border border-line text-ink hover:border-ink hover:bg-surface;
+  }
+
+  .btn-outline-hero {
+    @apply border border-hero-line text-hero-ink hover:border-hero-ink hover:bg-white/40;
+  }
+}
+
+/* ————— Motion ————— */
+
+@keyframes v-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.v-pulse {
+  animation: v-pulse 2.4s var(--ease-out-quint) infinite;
+}
+
+/* Movement optimizations for GSAP-driven animation */
+html.js .hero-layer,
+html.js .hero-panel,
+html.js .hero-chip {
+  will-change: transform;
+}
+
+html.js .js-states-cell,
+html.js .js-principles-num,
+html.js .js-how-num,
+html.js .js-tilt-inner,
+html.js .js-capture-card,
+html.js .js-capture-inner,
+html.js .js-approach-divider-line {
+  will-change: transform;
+}
+
+/* Approach capture-card spotlight — faint pine tint, reads on white */
+.approach-spotlight {
+  background: radial-gradient(closest-side, oklch(0.476 0.078 162 / 0.07), transparent 70%);
+  will-change: transform;
+}
+
+/* Cursor ring — trailing teal accent (desktop, fine pointer, motion OK only) */
+.cursor-ring {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 9999px;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .cursor-ring {
+    display: block;
+  }
+}
+
+/* CTA spotlight — soft radial light that follows the cursor over the final panel */
+.cta-spotlight {
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.16), transparent 70%);
+  will-change: transform;
+}
+
+/* No-JS fallback: everything is visible and static by default */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
