@@ -9,8 +9,9 @@ const blogPostSlugs = [
 ];
 
 export function generateStaticParams() {
+  const staticPages = ["features"];
   return [
-    ...contentPageSlugs.map((slug) => ({ slug: [slug] })),
+    ...contentPageSlugs.filter((slug) => !staticPages.includes(slug)).map((slug) => ({ slug: [slug] })),
     ...blogPostSlugs.map((slug) => ({ slug: ["blog", slug] })),
   ];
 }
