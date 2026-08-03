@@ -15,7 +15,7 @@ const never = [
   "Emotion or biometric inference",
 ];
 const visible = [
-  "The Agent sits visibly in every system tray with a live capture indicator — nothing runs in secret.",
+  "The Agent sits visibly in every system tray with a live capture indicator. Nothing runs in secret.",
   "Employees see the same real-time data their manager sees, so trust replaces resentment.",
   "A complete access log tells each employee who viewed their data, and when.",
 ];
@@ -164,7 +164,7 @@ export function Approach() {
               <div className="js-capture-group">
                 <h3 className="font-display text-xl font-semibold">What Veracity captures</h3>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
-                  Activity data at sixty-second heartbeat intervals — enough to understand work
+                  Activity data at sixty-second heartbeat intervals: enough to understand work
                   patterns, not enough to invade privacy.
                 </p>
                 <ul className="mt-5 space-y-3">
@@ -186,7 +186,7 @@ export function Approach() {
               <div className="js-capture-group">
                 <h3 className="font-display text-xl font-semibold">What Veracity never captures</h3>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
-                  By deliberate architectural constraint — at every tier, now and in all future
+                  A deliberate architectural constraint at every tier, now and in all future
                   versions.
                 </p>
                 <ul className="mt-5 space-y-3">

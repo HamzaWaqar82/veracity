@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Veracity",
   },
   description:
-    "Workforce analytics for small-to-medium businesses with remote and hybrid teams. Verifiable productivity data your employees can see — no keystroke logging, no stealth mode, no surveillance.",
+    "Workforce analytics for small-to-medium businesses with remote and hybrid teams. Verifiable productivity data your employees can see, with no keystroke logging, no stealth mode, and no surveillance.",
   openGraph: {
     siteName: "Veracity",
     type: "website",

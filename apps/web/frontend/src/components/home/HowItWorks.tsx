@@ -92,10 +92,10 @@ export function HowItWorks() {
                 i === 0 ? "js-how-col lg:pr-12" : i === components.length - 1 ? "js-how-col lg:pl-12" : "js-how-col lg:px-12"
               }
             >
-              <p className="js-how-num font-display text-5xl font-semibold leading-none text-primary">
-                {c.n}
+              <p className="js-how-num inline-block rounded-full border border-line bg-bg px-3.5 py-1.5 text-xs font-bold tracking-[0.16em] text-primary">
+                COMPONENT {c.n}
               </p>
-              <h3 className="mt-5 font-display text-2xl font-semibold">{c.name}</h3>
+              <h3 className="mt-4 font-display text-2xl font-semibold">{c.name}</h3>
               <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted">{c.body}</p>
               <ul className="mt-7 flex flex-wrap gap-2">
                 {c.specs.map((s) => (

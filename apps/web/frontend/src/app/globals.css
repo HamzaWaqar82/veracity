@@ -9,7 +9,7 @@
   --color-surface: oklch(0.955 0.02 152);
   --color-surface-deep: oklch(0.93 0.03 152);
   --color-ink: oklch(0.207 0.03 168); /* Carbon Black #081C15 */
-  --color-muted: oklch(0.476 0.078 162); /* Hunter Green #2D6A4F */
+  --color-muted: oklch(0.45 0.018 165); /* neutral gray-green #4C5953 — secondary prose, not green */
   --color-line: oklch(0.875 0.03 157); /* celadon hairline */
 
   /* Fresh Greens ramp — pinned hue ~161 */
@@ -25,7 +25,7 @@
 
   /* Hero — fresh mint band, deep-pine ink */
   --color-hero-ink: oklch(0.348 0.055 163); /* Pine Teal — headline on band */
-  --color-hero-muted: oklch(0.476 0.078 162); /* Hunter Green — lede on band */
+  --color-hero-muted: oklch(0.45 0.018 165); /* neutral gray-green #4C5953 — lede on band */
   --color-hero-line: oklch(0.763 0.101 161); /* Mint Leaf #74C69D */
   --color-hero-panel: oklch(0.995 0.004 155); /* ledger card */
 
@@ -160,9 +160,7 @@
 }
 
 /* Movement optimizations for GSAP-driven animation */
-html.js .hero-layer,
-html.js .hero-panel,
-html.js .hero-chip {
+html.js .hero-panel {
   will-change: transform;
 }
 

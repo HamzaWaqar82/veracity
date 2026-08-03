@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "How much does Veracity cost, and is there a free trial?",
-    a: "Veracity starts at $6 per user per month (Starter), $12 (Growth), and $24 (Enterprise), with no seat minimum and no add-on creep. Every plan includes a 14-day free trial with full access to all features of your chosen plan — no credit card required.",
+    a: "Veracity starts at $6 per user per month (Starter), $12 (Growth), and $24 (Enterprise), with no seat minimum and no add-on creep. Every plan includes a 14-day free trial with full access to all features of your chosen plan, with no credit card required.",
   },
   {
     q: "When is Veracity not the right fit?",

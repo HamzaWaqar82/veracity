@@ -3,23 +3,17 @@
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 
-const testimonials = [
+const partners = [
   {
     quote:
-      "Status-check meetings dropped 60% once we stopped guessing. Every employee sees the same data their managers see, and once people saw the data was genuinely transparent, Private Time usage fell to almost zero. We get real productivity analytics without a surveillance culture, and that is why the team accepted it.",
-    attribution: "Sarah Chen, CEO, Luminate Digital (45 employees)",
+      "We were making resourcing calls on who sounded busiest, not who had the most capacity. We want every person to see the same data we do, so transparency does the trust-building instead of us having to argue for it.",
+    attribution: "Operations lead, remote software team · early design partner",
   },
   {
     quote:
-      "As a compliance officer I have reviewed a lot of monitoring tools, and Veracity is the first that genuinely prioritizes privacy. During a client audit we demonstrated work activity correlated with billable entries for 95% of the disputed period, with 100% of policy acknowledgments on file. Defensible compliance, without the surveillance baggage.",
-    attribution: "Marcus Okonkwo, Head of Compliance, Helios Consulting (120 employees)",
+      "Our client audits want evidence that billable hours reflect real work, and our partners refuse anything that feels like surveillance. We need defensible proof that does not come with a trust cost.",
+    attribution: "Head of compliance, professional services firm · early design partner",
   },
-];
-
-const stats = [
-  { value: "60%", label: "fewer status-check meetings" },
-  { value: "95%", label: "audit evidence correlation" },
-  { value: "100%", label: "policy acknowledgments on file" },
 ];
 
 export function Testimonials() {
@@ -41,9 +35,9 @@ export function Testimonials() {
           { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
-            q(".js-testi-stats"),
+            q(".js-testi-lead"),
             { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.1 },
+            { autoAlpha: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
@@ -67,28 +61,23 @@ export function Testimonials() {
     <section ref={root} className="border-y border-line bg-surface py-section">
       <div className="container-x">
         <h2 className="js-testi-h font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-          Trusted by Growing Teams
+          Built with Early Design Partners
         </h2>
-        <ul className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4">
-          {stats.map((s) => (
-            <li key={s.label} className="js-testi-stats flex items-baseline gap-3">
-              <span className="font-display text-3xl font-semibold tabular-nums text-primary sm:text-4xl">
-                {s.value}
-              </span>
-              <span className="max-w-[11rem] text-sm font-medium leading-snug text-muted">
-                {s.label}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <p className="js-testi-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+          Veracity is in early access. The operators and compliance leads we are building with are
+          not looking for another tool to hide from. They want visibility that earns trust.
+        </p>
         <div className="mt-14 grid gap-14 lg:grid-cols-2 lg:gap-0 lg:divide-x lg:divide-line">
-          {testimonials.map((t, i) => (
-            <figure key={t.attribution} className={i === 0 ? "js-testi-quote lg:pr-16" : "js-testi-quote lg:pl-16"}>
+          {partners.map((p, i) => (
+            <figure
+              key={p.attribution}
+              className={i === 0 ? "js-testi-quote lg:pr-16" : "js-testi-quote lg:pl-16"}
+            >
               <blockquote className="font-display text-xl font-medium leading-snug text-ink sm:text-2xl">
-                &ldquo;{t.quote}&rdquo;
+                &ldquo;{p.quote}&rdquo;
               </blockquote>
               <figcaption className="js-testi-fig mt-7 text-sm font-medium text-muted">
-                — {t.attribution}
+                {p.attribution}
               </figcaption>
             </figure>
           ))}

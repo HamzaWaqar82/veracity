@@ -49,7 +49,7 @@ export default async function ContentStubPage({
       </h1>
       <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
         This page is part of the full Veracity website and is being written now. While it is, the
-        product&apos;s core commitments are already live on the home page — pricing, features, and
+        product&apos;s core commitments are already live on the home page: pricing, features, and
         compliance are all stated there.
       </p>
     </div>

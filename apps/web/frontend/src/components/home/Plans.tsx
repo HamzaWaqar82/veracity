@@ -82,7 +82,7 @@ export function Plans() {
         <div className="js-plans-wrap relative mt-12 overflow-x-auto rounded-2xl border border-line bg-bg">
           <table className="w-full min-w-[42rem] border-collapse text-left text-sm tabular-nums">
             <caption className="sr-only">
-              Veracity pricing — Starter, Growth, and Enterprise plan features
+              Veracity pricing: Starter, Growth, and Enterprise plan features
             </caption>
             <thead>
               <tr className="border-b border-line">

@@ -7,14 +7,14 @@ const principles = [
   {
     n: "01",
     title: "Data Minimization",
-    body: "Veracity never logs keystrokes, records audio or video, or captures webcam or microphone data. Activity tracking covers application names, window titles, and URL domains at sixty-second heartbeat intervals — enough to understand work patterns, not enough to invade privacy. Screenshot capture is optional on Growth and Enterprise plans, at fixed intervals with client-side redaction and encryption. A deliberate architectural constraint at every tier, now and in all future versions.",
-    chip: "A deliberate architectural constraint — every tier, now and always",
+    body: "Veracity never logs keystrokes, records audio or video, or captures webcam or microphone data. Activity tracking covers application names, window titles, and URL domains at sixty-second heartbeat intervals: enough to understand work patterns, not enough to invade privacy. Screenshot capture is optional on Growth and Enterprise plans, at fixed intervals with client-side redaction and encryption. A deliberate architectural constraint at every tier, now and in all future versions.",
+    chip: "A deliberate architectural constraint at every tier, now and always",
   },
   {
     n: "02",
     title: "Employee Visibility",
-    body: "Every employee sees exactly what Veracity has collected about them in real time through a personal dashboard — the same data their manager sees. The Agent stays visible in the system tray with a live status indicator. Private Time pauses all capture with one click; only session duration is recorded. A complete access log shows who viewed their data and when. No data is hidden from employees.",
-    chip: "The same data their manager sees — in real time",
+    body: "Every employee sees exactly what Veracity has collected about them in real time through a personal dashboard with the same data their manager sees. The Agent stays visible in the system tray with a live status indicator. Private Time pauses all capture with one click; only session duration is recorded. A complete access log shows who viewed their data and when. No data is hidden from employees.",
+    chip: "The same data their manager sees, in real time",
   },
   {
     n: "03",
@@ -103,8 +103,8 @@ export function Principles() {
         <div className="mt-14">
           {principles.map((p) => (
             <div key={p.n} className="js-principles-row grid gap-5 border-t border-line py-10 md:grid-cols-[5.5rem_1fr_auto] md:items-start md:gap-10">
-              <p className="js-principles-num font-display text-3xl font-medium leading-none text-primary">
-                {p.n}
+              <p className="js-principles-num mt-1 inline-block rounded-full border border-line bg-bg px-3.5 py-1.5 text-xs font-bold tracking-[0.16em] text-primary">
+                PRINCIPLE {p.n}
               </p>
               <div>
                 <h3 className="font-display text-2xl font-semibold">{p.title}</h3>

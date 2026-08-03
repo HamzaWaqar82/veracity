@@ -84,13 +84,13 @@ export const nav = {
         columns: [
           {
             links: [
-              { label: "Starter — $6 per user / month", href: "/pricing#starter" },
-              { label: "Growth — $12 per user / month", href: "/pricing#growth" },
-              { label: "Enterprise — $24 per user / month", href: "/pricing#enterprise" },
+              { label: "Starter · $6 per user / month", href: "/pricing#starter" },
+              { label: "Growth · $12 per user / month", href: "/pricing#growth" },
+              { label: "Enterprise · $24 per user / month", href: "/pricing#enterprise" },
             ],
           },
         ],
-        cta: { label: "Start Free Trial", href: "/pricing" },
+        cta: { label: "Get Early Access", href: "/early-access" },
       },
     },
     {
@@ -111,7 +111,7 @@ export const nav = {
             heading: "Trust & Compliance",
             links: [
               { label: "Compliance & Trust Center", href: "/compliance" },
-              { label: "What We Collect — and Never Collect", href: "/compliance#data-collection-what-we-collect-and-what-we-do-not" },
+              { label: "What We Collect and Never Collect", href: "/compliance#data-collection-what-we-collect-and-what-we-do-not" },
               { label: "Security Architecture", href: "/compliance#security-architecture" },
               { label: "Retention & Portability", href: "/compliance#data-processing-and-retention" },
             ],

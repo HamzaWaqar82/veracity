@@ -9,7 +9,7 @@ export function Footer() {
           <div>
             <p className="font-display text-2xl font-semibold tracking-tight">Veracity</p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-on-dark-muted">
-              Workforce analytics for small and medium businesses — built on transparency, not
+              Workforce analytics for small and medium businesses, built on transparency, not
               surveillance.
             </p>
             <p className="mt-6 text-sm font-semibold text-on-dark">

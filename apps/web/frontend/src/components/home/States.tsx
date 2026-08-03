@@ -9,14 +9,14 @@ const states = [
     name: "ACTIVE",
     color: "oklch(0.706 0.118 161)",
     noteColor: "oklch(0.476 0.078 162)",
-    desc: "The employee is actively using the workstation — keyboard or mouse input detected within the idle threshold (default: 180 seconds of inactivity).",
+    desc: "The employee is actively using the workstation: keyboard or mouse input detected within the idle threshold (default: 180 seconds of inactivity).",
     note: "Idle threshold: 180 seconds",
   },
   {
     name: "PASSIVE",
     color: "oklch(0.55 0.11 225)",
     noteColor: "oklch(0.43 0.095 225)",
-    desc: "The employee is engaged but not inputting — reading a document, watching a training video, or in a meeting. Passive attention is detected via calendar integration (Google Calendar, Outlook) or heuristic window analysis.",
+    desc: "The employee is engaged but not inputting: reading a document, watching a training video, or in a meeting. Passive attention is detected via calendar integration (Google Calendar, Outlook) or heuristic window analysis.",
     note: "Calendar + heuristic detection",
   },
   {

@@ -45,10 +45,10 @@ export function Header({ nav }: { nav: NavItem[] }) {
           <MegaMenu items={nav} scrolled={scrolled} />
           <div className="flex items-center gap-3">
             <Link
-              href="/pricing"
+              href="/early-access"
               className={`btn btn-lg hidden md:inline-flex ${scrolled ? "btn-primary" : "btn-white"}`}
             >
-              Start Free Trial
+              Get Early Access
             </Link>
             <button
               type="button"
@@ -145,10 +145,10 @@ export function Header({ nav }: { nav: NavItem[] }) {
               ),
             )}
             <div className="mt-10">
-              <Link href="/pricing" onClick={close} className="btn btn-lg btn-primary w-full">
-                Start Free Trial
+              <Link href="/early-access" onClick={close} className="btn btn-lg btn-primary w-full">
+                Get Early Access
               </Link>
-              <p className="mt-3 text-center text-sm text-muted">14-day free trial · No credit card</p>
+              <p className="mt-3 text-center text-sm text-muted">Early access · 14-day free trial at launch</p>
             </div>
           </nav>
         </div>
