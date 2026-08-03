@@ -109,7 +109,7 @@ export function Header({ nav }: { nav: NavItem[] }) {
                         )}
                         <ul>
                           {column.links.map((link) => (
-                            <li key={link.href}>
+                            <li key={`${link.href} ${link.label}`}>
                               <Link
                                 href={link.href}
                                 onClick={close}

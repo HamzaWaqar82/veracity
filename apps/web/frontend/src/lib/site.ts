@@ -122,7 +122,6 @@ export const nav = {
               { label: "Case Studies", href: "/case-studies" },
               { label: "What Customers Say", href: "/why-veracity#what-customers-say" },
               { label: "The Fair Monitoring Manifesto", href: "/about" },
-              { label: "About Veracity", href: "/about" },
             ],
           },
         ],

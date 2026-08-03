@@ -138,7 +138,7 @@ export function MegaMenu({ items, scrolled }: { items: NavItem[]; scrolled: bool
                         )}
                         <ul className="space-y-0.5">
                           {column.links.map((link) => (
-                            <li key={link.href}>
+                            <li key={`${link.href} ${link.label}`}>
                               <Link
                                 href={link.href}
                                 onClick={close}

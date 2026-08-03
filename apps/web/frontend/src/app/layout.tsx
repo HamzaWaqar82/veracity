@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${figtree.variable} ${spectral.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${figtree.variable} ${spectral.variable}`}>
       <body className="bg-bg text-ink antialiased">
         <Script id="js-detection" strategy="beforeInteractive">
           {`document.documentElement.classList.add("js")`}
