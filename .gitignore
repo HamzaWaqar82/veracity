@@ -1,10 +1,14 @@
 # Requirements docs are local-only by decision — never commit
 docs/
 
+# Design-tool working state (DESIGN.md is the committed artifact)
+.impeccable/
+
 # JS/TS
 node_modules/
 .next/
 out/
+*.tsbuildinfo
 
 # Python
 __pycache__/
