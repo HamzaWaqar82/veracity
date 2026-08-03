@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { MinusIcon } from "@/components/icons";
 import { tierLabel, type Capability } from "./features-data";
@@ -15,6 +15,14 @@ export function CapabilitySection({ capability }: { capability: Capability }) {
       const q = gsap.utils.selector(root);
       mm.add({ motion: MOTION }, (ctx) => {
         if (!ctx.conditions?.motion) return;
+
+        q(".js-draw").forEach((path) => {
+          const len = (path as unknown as SVGPathElement).getTotalLength();
+          gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+        });
+
+        const draws = q(".js-draw");
+
         const tl = gsap.timeline({
           defaults: { ease: EASE },
           scrollTrigger: { trigger: root.current, start: "top 72%" },
@@ -32,26 +40,32 @@ export function CapabilitySection({ capability }: { capability: Capability }) {
           );
 
         const wrap = root.current?.querySelector<HTMLElement>(".js-cap-wrap");
-        if (wrap) {
-          const items = gsap.utils.toArray<HTMLElement>(".js-cap-entry", wrap);
-          if (!items.length) return;
-          if (isGrid) {
-            gsap.fromTo(
-              items,
-              { autoAlpha: 0, y: 40 },
-              {
-                autoAlpha: 1,
-                y: 0,
-                ease: "none",
-                stagger: 0.11,
-                scrollTrigger: { trigger: wrap, start: "top 84%", end: "top 34%", scrub: 0.8 },
-              },
-            );
-          } else {
-            gsap.fromTo(
-              items,
-              { autoAlpha: 0, y: 20 },
-              { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09, delay: 0.1 },
+        if (!wrap) return;
+        const items = gsap.utils.toArray<HTMLElement>(".js-cap-entry", wrap);
+        if (!items.length) return;
+
+        if (isGrid) {
+          const scrubTl = gsap.timeline({
+            scrollTrigger: { trigger: wrap, start: "top 84%", end: "top 34%", scrub: 0.8 },
+          });
+          scrubTl.fromTo(items, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, ease: "none", stagger: 0.11 });
+          if (draws.length) {
+            scrubTl.to(draws, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" }, "-=0.3");
+          }
+        } else {
+          const dividers = gsap.utils.toArray<HTMLElement>(".js-cap-divider > div", wrap);
+          const entriesTl = gsap.timeline({
+            defaults: { ease: EASE },
+            scrollTrigger: { trigger: wrap, start: "top 82%" },
+          });
+          entriesTl
+            .fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09 }, 0.1)
+            .fromTo(dividers, { scaleX: 0 }, { scaleX: 1, duration: 0.6, stagger: 0.06 }, "-=0.4");
+          if (draws.length) {
+            entriesTl.to(
+              draws,
+              { strokeDashoffset: 0, duration: 0.55, ease: "power1.inOut", stagger: 0.06 },
+              "-=0.45",
             );
           }
         }
@@ -104,15 +118,18 @@ export function CapabilitySection({ capability }: { capability: Capability }) {
             ))}
           </div>
         ) : (
-          <div className="js-cap-wrap mt-12 overflow-hidden rounded-2xl border border-line bg-bg">
-            {capability.entries.map((entry) => (
-              <article
-                key={entry.id}
-                id={entry.id}
-                className="js-cap-entry scroll-mt-24 border-b border-line px-6 py-7 last:border-b-0 sm:px-9 sm:py-8"
-              >
-                <FeatureEntryBody entry={entry} />
-              </article>
+          <div className="js-cap-wrap js-cap-ledger mt-12 overflow-hidden rounded-2xl border border-line bg-bg">
+            {capability.entries.map((entry, i) => (
+              <Fragment key={entry.id}>
+                {i > 0 && (
+                  <div className="js-cap-divider h-px overflow-hidden" aria-hidden="true">
+                    <div className="h-full w-full origin-left bg-line" />
+                  </div>
+                )}
+                <article id={entry.id} className="js-cap-entry scroll-mt-24 px-6 py-7 sm:px-9 sm:py-8">
+                  <FeatureEntryBody entry={entry} />
+                </article>
+              </Fragment>
             ))}
           </div>
         )}
@@ -125,7 +142,7 @@ function FeatureEntryBody({ entry }: { entry: Capability["entries"][number] }) {
   return (
     <>
       <header className="flex flex-wrap items-center gap-3">
-        <span aria-hidden="true" className="size-2.5 shrink-0 rounded-full bg-pine" />
+        <span aria-hidden="true" className="js-cap-dot size-2.5 shrink-0 rounded-full bg-pine" />
         <h3 className="font-display text-xl font-semibold">{entry.name}</h3>
         <span
           className={
@@ -141,7 +158,7 @@ function FeatureEntryBody({ entry }: { entry: Capability["entries"][number] }) {
       {entry.refusal && (
         <p className="mt-4 flex items-start gap-2.5 text-[0.9375rem] leading-relaxed text-accent">
           <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-accent-soft">
-            <MinusIcon className="size-3" />
+            <MinusIcon pathClassName="js-draw" className="size-3" />
           </span>
           {entry.refusal}
         </p>

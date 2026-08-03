@@ -131,3 +131,72 @@ export const capabilities: Capability[] = [
     ],
   },
 ];
+
+export type ExampleDay = {
+  label: string;
+  note: string;
+  productive: number;
+  passive: number;
+  neutral: number;
+  unproductive: number;
+  idle: number;
+  privateTime: number;
+};
+
+export const exampleDays: ExampleDay[] = [
+  {
+    label: "Deep work day",
+    note: "Blocked focus, a training video, and a light administrative tail.",
+    productive: 300,
+    passive: 60,
+    neutral: 45,
+    unproductive: 15,
+    idle: 40,
+    privateTime: 20,
+  },
+  {
+    label: "Meetings & reviews",
+    note: "Back-to-back calls, review reads, and a short shopping detour.",
+    productive: 180,
+    passive: 150,
+    neutral: 60,
+    unproductive: 30,
+    idle: 45,
+    privateTime: 15,
+  },
+  {
+    label: "Interrupted day",
+    note: "Fragmented focus, constant context switches, and an errand break.",
+    productive: 120,
+    passive: 45,
+    neutral: 90,
+    unproductive: 120,
+    idle: 75,
+    privateTime: 30,
+  },
+  {
+    label: "Steady hybrid",
+    note: "Mixed focus with a protected private-time block at lunch.",
+    productive: 240,
+    passive: 90,
+    neutral: 60,
+    unproductive: 30,
+    idle: 40,
+    privateTime: 20,
+  },
+];
+
+export type ScoreInput = Pick<ExampleDay, "productive" | "passive" | "neutral" | "unproductive">;
+
+export type ScoreBreakdown = {
+  numerator: number;
+  denominator: number;
+  score: number | null;
+};
+
+export function computeScore(input: ScoreInput): ScoreBreakdown {
+  const numerator = input.productive + 0.5 * input.passive;
+  const denominator = input.productive + input.neutral + input.unproductive + 0.5 * input.passive;
+  const score = denominator > 0 ? Math.min(100, Math.round((numerator / denominator) * 100)) : null;
+  return { numerator, denominator, score };
+}

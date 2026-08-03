@@ -170,8 +170,48 @@ html.js .js-how-num,
 html.js .js-tilt-inner,
 html.js .js-capture-card,
 html.js .js-capture-inner,
-html.js .js-approach-divider-line {
+html.js .js-approach-divider-line,
+html.js .js-method-card,
+html.js .js-method-row,
+html.js .js-ledger-wrap,
+html.js .js-ledger-row,
+html.js .js-cap-entry,
+html.js .js-cap-divider,
+html.js .js-cap-dot,
+html.js .js-feature-cta,
+html.js .js-plan-panel,
+html.js .js-plan-cta,
+html.js .js-table-matrix,
+html.js .js-table-row,
+html.js .js-table-group-row,
+html.js .js-bill-row,
+html.js .js-bill-rule,
+html.js .js-never-card,
+html.js .js-never-stamp,
+html.js .js-faq-row {
   will-change: transform;
+}
+
+/* Feature page jump-nav — active section pill */
+.js-jump-link.is-active {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+/* Capability ledger rows — desktop hover: bg shift + pine dot scale */
+@media (hover: hover) and (pointer: fine) {
+  .js-cap-ledger .js-cap-entry {
+    transition: background-color 0.3s var(--ease-out-quint);
+  }
+  .js-cap-ledger .js-cap-entry:hover {
+    background-color: var(--color-surface);
+  }
+  .js-cap-ledger .js-cap-dot {
+    transition: transform 0.3s var(--ease-out-quint);
+  }
+  .js-cap-ledger .js-cap-entry:hover .js-cap-dot {
+    transform: scale(1.4);
+  }
 }
 
 /* Approach capture-card spotlight — faint pine tint, reads on white */
