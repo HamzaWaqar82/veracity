@@ -128,17 +128,25 @@ export function Plans() {
             </tbody>
           </table>
         </div>
-        <p className="js-plans-foot mt-8 max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
-          See the{" "}
-          <Link href="/features" className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary">
-            Features page
-          </Link>{" "}
-          for a detailed breakdown and the{" "}
-          <Link href="/pricing" className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary">
-            Pricing page
-          </Link>{" "}
-          for complete pricing information.
-        </p>
+        <div className="js-plans-foot mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
+            See the{" "}
+            <Link href="/features" className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary">
+              Features page
+            </Link>{" "}
+            for a detailed breakdown and the{" "}
+            <Link href="/pricing" className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary">
+              Pricing page
+            </Link>{" "}
+            for complete pricing information.
+          </p>
+          <Link
+            href="/early-access"
+            className="btn btn-primary btn-lg shrink-0"
+          >
+            Get Early Access
+          </Link>
+        </div>
       </div>
     </section>
   );

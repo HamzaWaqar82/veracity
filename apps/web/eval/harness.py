@@ -116,7 +116,7 @@ async def score_question_llm(
         content = result["choices"][0]["message"]["content"].strip().upper()
         passed = "PASS" in content
         return passed, content
-    except Exception as e:  # noqa: BLE001
+    except Exception as e:
         return False, f"judge_error: {e}"
 
 
@@ -149,9 +149,10 @@ def score_question(
 
 async def collect_sse_stream(
     client: httpx.AsyncClient, url: str, payload: dict, timeout: float = 30.0
-) -> tuple[str, float, str | None]:
+) -> tuple[str, float, str | None, str | None]:
     tokens: list[str] = []
     citations = None
+    session_id = None
     start = time.monotonic()
     first_token = None
     try:
@@ -173,17 +174,19 @@ async def collect_sse_stream(
                     tokens.append(data.get("content", ""))
                 elif data.get("type") == "citations":
                     citations = json.dumps(data.get("sources", []))
+                elif data.get("type") == "session":
+                    session_id = data.get("session_id")
                 elif data.get("type") == "done":
                     break
     except httpx.ConnectError:
-        return "", 0.0, "connection_error"
+        return "", 0.0, "connection_error", None
     except httpx.TimeoutException:
-        return "", 0.0, "timeout_error"
+        return "", 0.0, "timeout_error", None
     except httpx.HTTPStatusError as e:
-        return "", 0.0, f"http_error_{e.response.status_code}"
+        return "", 0.0, f"http_error_{e.response.status_code}", None
 
     elapsed = time.monotonic() - start
-    return "".join(tokens), elapsed, citations
+    return "".join(tokens), elapsed, citations, session_id
 
 
 async def run_question(
@@ -203,7 +206,7 @@ async def run_question(
 
     session_id = None
     payload = {"message": q["question"], "session_id": session_id}
-    response_text, latency, error = await collect_sse_stream(
+    response_text, latency, error, _ = await collect_sse_stream(
         client, f"{api_url}/api/chat", payload
     )
 
@@ -283,9 +286,11 @@ async def run_multi_turn_question(
         + q["multi_turn_chain"]
     ):
         payload = {"message": turn["question"], "session_id": session_id}
-        response_text, _latency, error = await collect_sse_stream(
+        response_text, _latency, error, new_session_id = await collect_sse_stream(
             client, f"{api_url}/api/chat", payload
         )
+        if new_session_id:
+            session_id = new_session_id
         if error:
             sub_results.append({
                 "turn": i,

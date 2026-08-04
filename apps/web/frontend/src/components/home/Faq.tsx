@@ -15,11 +15,11 @@ const faqs = [
   },
   {
     q: "Is Veracity compliant with GDPR, the EU AI Act, and US monitoring laws?",
-    a: "Veracity is built to comply with the General Data Protection Regulation (GDPR), the EU Artificial Intelligence Act, and US state electronic monitoring statutes including Connecticut General Statute §31-48d and New York Labor Law §52-c. It includes jurisdiction-aware notice engines, tamper-evident audit logging, automated data retention, DSAR workflows, and DPIA support, and performs no emotion recognition or biometric categorization.",
+    a: "Veracity is built to comply with the General Data Protection Regulation (GDPR), the EU Artificial Intelligence Act, and US state electronic monitoring statutes including Connecticut General Statute §31-48d, New York Labor Law §52-c, Delaware Title 19 §705, and Colorado Revised Statute §8-2-127. It includes jurisdiction-aware notice engines, tamper-evident audit logging, automated data retention, DSAR workflows, and DPIA support, and performs no emotion recognition or biometric categorization.",
   },
   {
     q: "How much does Veracity cost, and is there a free trial?",
-    a: "Veracity starts at $6 per user per month (Starter), $12 (Growth), and $24 (Enterprise), with no seat minimum and no add-on creep. Every plan includes a 14-day free trial with full access to all features of your chosen plan, with no credit card required.",
+    a: "Veracity starts at $6 per user per month (Starter), $12 (Growth), and $24 (Enterprise), with no seat minimum and no add-on creep. Every plan includes a 14-day free trial, with full access to all features of your chosen plan and no credit card required.",
   },
   {
     q: "When is Veracity not the right fit?",

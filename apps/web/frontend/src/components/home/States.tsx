@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
-import { attachTilt } from "@/lib/cursor";
+import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 
 const states = [
   {
@@ -84,16 +83,6 @@ export function States() {
           }
         }
       });
-
-      mm.add({ motion: MOTION, hover: HOVER }, (ctx) => {
-        if (!ctx.conditions?.motion || !ctx.conditions?.hover) return;
-        const cleanups: (() => void)[] = [];
-        gsap.utils.toArray<HTMLElement>(".js-states-cell", grid.current ?? root.current!).forEach((cell) => {
-          const inner = cell.querySelector<HTMLElement>(".js-tilt-inner");
-          cleanups.push(attachTilt(cell, 4, inner ?? undefined));
-        });
-        return () => cleanups.forEach((fn) => fn());
-      });
     },
     { scope: root },
   );
@@ -110,24 +99,22 @@ export function States() {
         </p>
         <div
           ref={grid}
-          className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 [perspective:1200px]"
+          className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2"
         >
           {states.map((s) => (
             <div key={s.name} className="js-states-cell bg-bg p-7 sm:p-9">
-              <div className="js-tilt-inner">
-                <div className="flex items-center gap-3">
-                  <span
-                    aria-hidden="true"
-                    className="size-2.5 rounded-full"
-                    style={{ backgroundColor: s.color }}
-                  />
-                  <h3 className="text-[0.8125rem] font-bold tracking-[0.16em]">{s.name}</h3>
-                </div>
-                <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted">{s.desc}</p>
-                <p className="mt-5 text-[0.9375rem] font-semibold" style={{ color: s.noteColor }}>
-                  {s.note}
-                </p>
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="size-2.5 rounded-full"
+                  style={{ backgroundColor: s.color }}
+                />
+                <h3 className="text-[0.8125rem] font-bold tracking-[0.16em]">{s.name}</h3>
               </div>
+              <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted">{s.desc}</p>
+              <p className="mt-5 text-[0.9375rem] font-semibold" style={{ color: s.noteColor }}>
+                {s.note}
+              </p>
             </div>
           ))}
         </div>

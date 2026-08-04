@@ -116,7 +116,7 @@ export function FeaturesHero() {
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link href="/early-access" className="btn btn-lg btn-primary js-feature-cta">
-            Start Free Trial
+            Get Early Access
           </Link>
           <Link href="/pricing" className="btn btn-lg btn-outline-hero js-feature-cta">
             Compare plans

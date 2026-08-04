@@ -2,8 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { gsap, useGSAP, EASE, MOTION, DESKTOP, HOVER } from "@/lib/motion";
-import { attachSpotlight, attachTilt } from "@/lib/cursor";
+import { gsap, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
 import { MinusIcon } from "@/components/icons";
 import { computeScore, exampleDays } from "./features-data";
 
@@ -19,7 +18,7 @@ const legend = [
   { label: "productive", weight: "Full weight", color: "oklch(0.706 0.118 161)" },
   { label: "passive", weight: "Half weight", color: "oklch(0.55 0.11 225)" },
   { label: "neutral", weight: "Full weight", color: "oklch(0.45 0.018 165)" },
-  { label: "unproductive", weight: "Full weight", color: "oklch(0.66 0.15 60)" },
+  { label: "unproductive", weight: "Full weight", color: "oklch(0.56 0.145 42)" },
   { label: "idle", weight: "Excluded · never penalized", color: "oklch(0.49 0.03 160)" },
   { label: "private time", weight: "Excluded entirely", color: "oklch(0.62 0.12 82)" },
 ];
@@ -33,7 +32,7 @@ const ledgerRows: {
   { key: "productive", label: "productive", color: "oklch(0.706 0.118 161)" },
   { key: "passive", label: "passive", color: "oklch(0.55 0.11 225)" },
   { key: "neutral", label: "neutral", color: "oklch(0.45 0.018 165)" },
-  { key: "unproductive", label: "unproductive", color: "oklch(0.66 0.15 60)" },
+  { key: "unproductive", label: "unproductive", color: "oklch(0.56 0.145 42)" },
   { key: "idle", label: "idle", color: "oklch(0.49 0.03 160)", excluded: true },
   { key: "privateTime", label: "private time", color: "oklch(0.62 0.12 82)", excluded: true },
 ];
@@ -55,7 +54,6 @@ function RefreshIcon({ className = "" }: { className?: string }) {
 export function Methodology() {
   const root = useRef<HTMLElement>(null);
   const card = useRef<HTMLDivElement>(null);
-  const spotlight = useRef<HTMLDivElement>(null);
   const ping = useRef<HTMLSpanElement>(null);
   const band = useRef<HTMLDivElement>(null);
   const scoreRef = useRef<HTMLSpanElement>(null);
@@ -164,15 +162,6 @@ export function Methodology() {
           },
         );
       });
-
-      mm.add({ motion: MOTION, hover: HOVER }, (ctx) => {
-        if (!ctx.conditions?.motion || !ctx.conditions?.hover) return;
-        const cleanups: (() => void)[] = [];
-        const inner = card.current?.querySelector<HTMLElement>(".js-method-inner");
-        if (card.current) cleanups.push(attachTilt(card.current, 3, inner ?? undefined));
-        if (spotlight.current) cleanups.push(attachSpotlight(spotlight.current));
-        return () => cleanups.forEach((fn) => fn());
-      });
     },
     { scope: root },
   );
@@ -253,19 +242,6 @@ export function Methodology() {
               className="absolute -inset-3 rounded-3xl border border-hero-line/60 [transform:translateZ(-24px)]"
             />
             <div className="js-method-inner relative overflow-hidden rounded-2xl bg-hero-panel shadow-[0_28px_60px_-28px_rgba(27,67,50,0.45)] [transform:translateZ(14px)]">
-              <div
-                ref={spotlight}
-                aria-hidden="true"
-                className="approach-spotlight pointer-events-none absolute"
-                style={{
-                  left: "50%",
-                  top: "50%",
-                  width: "42rem",
-                  height: "42rem",
-                  marginLeft: "-21rem",
-                  marginTop: "-21rem",
-                }}
-              />
               <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
                 <p className="text-xs font-bold tracking-[0.16em] text-on-dark">PUBLISHED METHODOLOGY</p>
                 <p className="text-xs font-semibold text-on-dark-muted">VER 1.0</p>
@@ -442,9 +418,6 @@ export function Methodology() {
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 bg-primary-soft px-5 py-3">
             <p className="text-[0.6875rem] font-semibold text-primary">
               Every score recomputes from the displayed minutes via the published formula above.
-            </p>
-            <p className="text-[0.6875rem] font-semibold text-primary">
-              No accuracy-percentage claims, anywhere.
             </p>
           </div>
         </div>

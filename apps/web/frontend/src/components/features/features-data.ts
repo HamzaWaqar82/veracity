@@ -18,7 +18,7 @@ export type Capability = {
 
 export const tierLabel: Record<Tier, string> = {
   all: "All plans",
-  growth: "Growth +",
+  growth: "Growth and above",
   enterprise: "Enterprise",
 };
 

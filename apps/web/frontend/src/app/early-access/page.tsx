@@ -4,12 +4,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Early Access",
   description:
-    "Veracity is in early access. Pre-register now and you will get a 14-day free trial with full access to every feature of your plan at launch, with no credit card and no seat minimum.",
+    "Veracity is in early access. Pre-register now and you will get a 14-day free trial with full access to every feature of your chosen plan, with no credit card and no seat minimum.",
 };
 
 const promises = [
   {
-    title: "A real 14-day trial at launch",
+    title: "A real 14-day trial",
     body: "Full access to every feature of the plan you choose, with no credit card required.",
   },
   {

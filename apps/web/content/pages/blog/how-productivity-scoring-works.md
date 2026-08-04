@@ -34,7 +34,7 @@ The score is designed to answer one specific question: *Of the time an employee 
 
 The score is calculated using Methodology v1.0 with the following formula:
 
-```
+```text
 productivity_score = round(
   (productive_ms + 0.5 * passive_ms) /
   (productive_ms + neutral_ms + unproductive_ms + 0.5 * passive_ms) * 100

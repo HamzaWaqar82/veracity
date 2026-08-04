@@ -173,7 +173,7 @@ export function Hero() {
             <span className="text-hero-line" aria-hidden="true">
               ·
             </span>
-            <span>14-day free trial at launch</span>
+            <span>14-day free trial</span>
             <span className="text-hero-line" aria-hidden="true">
               ·
             </span>

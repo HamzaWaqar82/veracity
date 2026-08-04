@@ -19,8 +19,8 @@ const principles = [
   {
     n: "03",
     title: "Compliance-First Design",
-    body: "Veracity is built to comply with the General Data Protection Regulation (GDPR), the EU Artificial Intelligence Act, and US state electronic monitoring statutes including Connecticut General Statute §31-48d and New York Labor Law §52-c. Compliance tooling includes jurisdiction-aware notice engines, tamper-evident audit logging, configurable data retention with automated deletion, DSAR workflows, and DPIA support. We do not perform emotion recognition, biometric categorization, or any automated decision-making the AI Act restricts.",
-    chip: "GDPR · EU AI Act · CT §31-48d · NY LL §52-c",
+    body: "Veracity is built to comply with the General Data Protection Regulation (GDPR), the EU Artificial Intelligence Act, and US state electronic monitoring statutes including Connecticut General Statute §31-48d, New York Labor Law §52-c, Delaware Title 19 §705, and Colorado Revised Statute §8-2-127. Compliance tooling includes jurisdiction-aware notice engines, tamper-evident audit logging, configurable data retention with automated deletion, DSAR workflows, and DPIA support. We do not perform emotion recognition, biometric categorization, or any automated decision-making the AI Act restricts.",
+    chip: "GDPR · EU AI Act · CT · NY · DE · CO",
   },
 ];
 

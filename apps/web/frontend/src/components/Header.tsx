@@ -148,7 +148,7 @@ export function Header({ nav }: { nav: NavItem[] }) {
               <Link href="/early-access" onClick={close} className="btn btn-lg btn-primary w-full">
                 Get Early Access
               </Link>
-              <p className="mt-3 text-center text-sm text-muted">Early access · 14-day free trial at launch</p>
+              <p className="mt-3 text-center text-sm text-muted">Early access · 14-day free trial</p>
             </div>
           </nav>
         </div>
