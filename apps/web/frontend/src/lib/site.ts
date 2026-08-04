@@ -155,25 +155,3 @@ export const footer = {
     { label: "Blog", href: "/blog" },
   ],
 } satisfies Record<string, { label: string; href: string }[]>;
-
-export const contentPageSlugs = [
-  "features",
-  "pricing",
-  "why-veracity",
-  "blog",
-  "integrations",
-  "compliance",
-  "case-studies",
-  "about",
-];
-
-export function readContentTitle(pageSlug: string): string | null {
-  const file = pageSlug.startsWith("blog/")
-    ? path.join(contentRoot, "blog", `${pageSlug.slice("blog/".length)}.md`)
-    : path.join(contentRoot, `${pageSlug}.md`);
-  try {
-    return String(matter(fs.readFileSync(file, "utf8")).data.title ?? "");
-  } catch {
-    return null;
-  }
-}
