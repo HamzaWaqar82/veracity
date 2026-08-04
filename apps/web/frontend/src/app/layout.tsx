@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CursorRing } from "@/components/CursorRing";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import { nav } from "@/lib/site";
 
 const figtree = Figtree({
@@ -46,13 +47,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </Script>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
         >
           Skip to content
         </a>
         <Header nav={nav.main} />
         <main id="main">{children}</main>
         <Footer />
+        <ChatWidget />
         <CursorRing />
       </body>
     </html>

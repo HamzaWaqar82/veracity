@@ -40,7 +40,18 @@
   --color-state-idle: oklch(0.49 0.03 160);
   --color-state-private: oklch(0.62 0.12 82);
 
+  /* Scoring category — the one warm tone outside the 4-state closed set.
+     Deliberate: "unproductive" is a scored negative category (full weight),
+     so it must not read as PRIVATE_TIME amber (excluded entirely). */
+  --color-unproductive: oklch(0.56 0.145 42); /* rust/terracotta — distinct from private gold */
+
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Skip link sits above the sticky header (z-50) and cursor ring (z-80) */
+  --z-index-skip: 100;
+
+  /* Chat launcher + panel — above content and cursor, below the skip link */
+  --z-index-chat: 90;
 
   --spacing-section: clamp(4.5rem, 11vw, 8rem);
   --spacing-section-sm: clamp(3rem, 7vw, 5rem);
@@ -159,36 +170,39 @@
   animation: v-pulse 2.4s var(--ease-out-quint) infinite;
 }
 
-/* Movement optimizations for GSAP-driven animation */
-html.js .hero-panel {
-  will-change: transform;
+@keyframes v-chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-html.js .js-states-cell,
-html.js .js-principles-num,
-html.js .js-how-num,
-html.js .js-tilt-inner,
-html.js .js-capture-card,
-html.js .js-capture-inner,
-html.js .js-approach-divider-line,
-html.js .js-method-card,
-html.js .js-method-row,
-html.js .js-ledger-wrap,
-html.js .js-ledger-row,
-html.js .js-cap-entry,
-html.js .js-cap-divider,
-html.js .js-cap-dot,
-html.js .js-feature-cta,
-html.js .js-plan-panel,
-html.js .js-plan-cta,
-html.js .js-table-matrix,
-html.js .js-table-row,
-html.js .js-table-group-row,
-html.js .js-bill-row,
-html.js .js-bill-rule,
-html.js .js-never-card,
-html.js .js-never-stamp,
-html.js .js-faq-row {
+.v-chat-in {
+  animation: v-chat-in 0.25s var(--ease-out-quint);
+}
+
+@keyframes v-chat-dot {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.v-chat-dot {
+  animation: v-chat-dot 1s var(--ease-out-quint) infinite;
+}
+
+/* Movement optimizations — only for persistent transforms. GSAP sets and
+   clears will-change inline on tweened targets itself, so a static hint list
+   would hold layers alive needlessly; the hero panel is the one always-on scrub. */
+html.js .hero-panel {
   will-change: transform;
 }
 
@@ -211,6 +225,24 @@ html.js .js-faq-row {
   }
   .js-cap-ledger .js-cap-entry:hover .js-cap-dot {
     transform: scale(1.4);
+  }
+}
+
+/* Comparison ledger rows — hover: chip scales, Veracity cell tints */
+@media (hover: hover) and (pointer: fine) {
+  .js-ledger-row .js-ledger-chip {
+    transition: transform 0.3s var(--ease-out-quint);
+  }
+  .js-ledger-row:hover .js-ledger-chip {
+    transform: scale(1.15);
+  }
+}
+
+/* Difference persona toggle — reduced-motion fallback for the sliding thumb */
+@media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
+  .js-diff-btn[aria-checked="true"] {
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary);
   }
 }
 
@@ -246,17 +278,5 @@ html.js .js-faq-row {
 .cta-spotlight {
   background: radial-gradient(closest-side, rgba(255, 255, 255, 0.16), transparent 70%);
   will-change: transform;
-}
-
-/* No-JS fallback: everything is visible and static by default */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 
