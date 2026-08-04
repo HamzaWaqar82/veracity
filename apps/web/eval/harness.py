@@ -116,7 +116,7 @@ async def score_question_llm(
         content = result["choices"][0]["message"]["content"].strip().upper()
         passed = "PASS" in content
         return passed, content
-    except Exception as e:
+    except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError) as e:
         return False, f"judge_error: {e}"
 
 
