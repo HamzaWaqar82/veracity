@@ -64,8 +64,8 @@ export function Testimonials() {
           Built with Early Design Partners
         </h2>
         <p className="js-testi-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Veracity is in early access. The operators and compliance leads we are building with are
-          not looking for another tool to hide from. They want visibility that earns trust.
+          The operators and compliance leads we are building with are not looking for another tool
+          to hide from. They want visibility that earns trust.
         </p>
         <div className="mt-14 grid gap-14 lg:grid-cols-2 lg:gap-0 lg:divide-x lg:divide-line">
           {partners.map((p, i) => (

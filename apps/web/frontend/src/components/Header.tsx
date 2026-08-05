@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { MegaMenu } from "@/components/MegaMenu";
 import type { NavItem } from "@/lib/site";
+import { CTA } from "@/lib/cta";
 
 export function Header({ nav }: { nav: NavItem[] }) {
   const [scrolled, setScrolled] = useState(false);
@@ -45,10 +46,10 @@ export function Header({ nav }: { nav: NavItem[] }) {
           <MegaMenu items={nav} scrolled={scrolled} />
           <div className="flex items-center gap-3">
             <Link
-              href="/early-access"
+              href={CTA.trial}
               className={`btn btn-lg hidden md:inline-flex ${scrolled ? "btn-primary" : "btn-white"}`}
             >
-              Get Early Access
+              Start Free Trial
             </Link>
             <button
               type="button"
@@ -145,10 +146,10 @@ export function Header({ nav }: { nav: NavItem[] }) {
               ),
             )}
             <div className="mt-10">
-              <Link href="/early-access" onClick={close} className="btn btn-lg btn-primary w-full">
-                Get Early Access
+              <Link href={CTA.trial} onClick={close} className="btn btn-lg btn-primary w-full">
+                Start Free Trial
               </Link>
-              <p className="mt-3 text-center text-sm text-muted">Early access · 14-day free trial</p>
+              <p className="mt-3 text-center text-sm text-muted">14-day free trial · No credit card</p>
             </div>
           </nav>
         </div>

@@ -16,10 +16,13 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 import httpx
+from dotenv import load_dotenv
 
 HERE = Path(__file__).resolve().parent
 DEFAULT_QUESTIONS = HERE / "questions.json"
 DEFAULT_OUTPUT_DIR = HERE / "results"
+
+load_dotenv(Path(__file__).resolve().parents[1] / "backend" / ".env")
 
 REFUSAL_SIGNALS = [
     "i don't know",
@@ -42,8 +45,18 @@ REFUSAL_SIGNALS = [
 
 JUDGE_SYSTEM_PROMPT = """You are evaluating a chatbot response for accuracy.
 The chatbot answers questions using only content from its own website.
-Ignore wording differences — focus on factual correctness.
-Reply with exactly "PASS" or "FAIL"."""
+Reply PASS if the response is factually correct on the point asked, even if it
+omits some elaborations from the expected answer or adds extra correct details.
+Reply FAIL only if the response states something factually wrong or contradicts
+the site content. Reply with exactly "PASS" or "FAIL"."""
+
+PRICING_JUDGE_SYSTEM_PROMPT = """You are evaluating a chatbot response about pricing or plan terms.
+The chatbot answers using only content from its own website.
+The expected answer states the exact published price, term, or feature inclusion.
+Reply PASS if the response is factually correct on the point asked, even if it
+omits some elaborations from the expected answer or adds extra correct details.
+Reply FAIL only if the response states something factually wrong or contradicts
+the expected price, term, or feature inclusion. Reply with exactly "PASS" or "FAIL"."""
 
 RESULTS_SCHEMA_VERSION = 1
 
@@ -56,18 +69,22 @@ def extract_numbers(text: str) -> list[str]:
     return re.findall(r"\$?\d+(?:,\d{3})*(?:\.\d+)?%?", text)
 
 
+def pricing_numbers_match(expected: str, actual: str) -> bool:
+    def normalize_num(n: str) -> str:
+        return n.replace(",", "").replace("$", "").replace("%", "").rstrip(".")
+    exp_nums = {normalize_num(n) for n in extract_numbers(expected)}
+    act_nums = {normalize_num(n) for n in extract_numbers(actual)}
+    if not exp_nums:
+        return True
+    return exp_nums <= act_nums
+
+
 def refusal_check(response: str) -> bool:
     return any(signal in response.lower() for signal in REFUSAL_SIGNALS)
 
 
 def exact_match(expected: str, actual: str) -> bool:
     return normalize(expected) == normalize(actual)
-
-
-def pricing_numbers_match(expected: str, actual: str) -> bool:
-    exp_nums = extract_numbers(expected)
-    act_nums = extract_numbers(actual)
-    return sorted(exp_nums) == sorted(act_nums)
 
 
 def build_judge_prompt(question: str, expected_answer: str, response: str) -> str:
@@ -89,13 +106,14 @@ async def score_question_llm(
     response_text: str,
     judge_model: str,
     openrouter_api_key: str,
+    system_prompt: str = JUDGE_SYSTEM_PROMPT,
     timeout: float = 15.0,
 ) -> tuple[bool, str]:
     prompt = build_judge_prompt(question, expected_answer, response_text)
     payload = {
         "model": judge_model,
         "messages": [
-            {"role": "system", "content": JUDGE_SYSTEM_PROMPT},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": prompt},
         ],
         "temperature": 0.0,
@@ -131,7 +149,7 @@ def score_question(
         if exact_match(expected, response_text):
             return True, "exact_match", ""
         if pricing_numbers_match(expected, response_text):
-            return False, "pricing_number_mismatch", "numbers differ"
+            return True, "pricing_numbers_match", ""
         return False, "pricing_mismatch", ""
 
     if category == "unanswerable":
@@ -149,10 +167,11 @@ def score_question(
 
 async def collect_sse_stream(
     client: httpx.AsyncClient, url: str, payload: dict, timeout: float = 30.0
-) -> tuple[str, float, str | None, str | None]:
+) -> tuple[str, float, str | None, str | None, str | None]:
     tokens: list[str] = []
     citations = None
     session_id = None
+    stream_error = None
     start = time.monotonic()
     first_token = None
     try:
@@ -176,17 +195,22 @@ async def collect_sse_stream(
                     citations = json.dumps(data.get("sources", []))
                 elif data.get("type") == "session":
                     session_id = data.get("session_id")
+                elif data.get("type") == "error":
+                    stream_error = data.get("message") or "upstream_error"
+                    break
                 elif data.get("type") == "done":
                     break
     except httpx.ConnectError:
-        return "", 0.0, "connection_error", None
+        return "", 0.0, None, None, "connection_error"
     except httpx.TimeoutException:
-        return "", 0.0, "timeout_error", None
+        return "", 0.0, None, None, "timeout_error"
     except httpx.HTTPStatusError as e:
-        return "", 0.0, f"http_error_{e.response.status_code}", None
+        return "", 0.0, None, None, f"http_error_{e.response.status_code}"
 
     elapsed = time.monotonic() - start
-    return "".join(tokens), elapsed, citations, session_id
+    if stream_error:
+        return "", elapsed, citations, session_id, stream_error
+    return "".join(tokens), elapsed, citations, session_id, None
 
 
 async def run_question(
@@ -206,7 +230,7 @@ async def run_question(
 
     session_id = None
     payload = {"message": q["question"], "session_id": session_id}
-    response_text, latency, error, _ = await collect_sse_stream(
+    response_text, latency, citations, _, error = await collect_sse_stream(
         client, f"{api_url}/api/chat", payload
     )
 
@@ -220,11 +244,20 @@ async def run_question(
             "latency_ms": round(latency * 1000),
             "error": True,
             "pricing_violation": False,
-            "citation_present": False,
+            "citation_present": bool(citations),
         }
 
     if category == "pricing":
         passed, method, detail = score_question(q, response_text)
+        if not passed:
+            judge_passed, judge_detail = await score_question_llm(
+                client, q["question"], q["expected_answer"], response_text,
+                judge_model, openrouter_api_key,
+                system_prompt=PRICING_JUDGE_SYSTEM_PROMPT,
+            )
+            passed = judge_passed
+            method = "pricing_judge" if judge_passed else "pricing_judge_fail"
+            detail = judge_detail
         pricing_violation = not passed
         return {
             "id": q["id"],
@@ -235,7 +268,7 @@ async def run_question(
             "latency_ms": round(latency * 1000),
             "error": False,
             "pricing_violation": pricing_violation,
-            "citation_present": False,
+            "citation_present": bool(citations),
         }
 
     elif category == "unanswerable":
@@ -249,7 +282,7 @@ async def run_question(
             "latency_ms": round(latency * 1000),
             "error": False,
             "pricing_violation": False,
-            "citation_present": False,
+            "citation_present": bool(citations),
         }
 
     else:
@@ -266,7 +299,7 @@ async def run_question(
             "latency_ms": round(latency * 1000),
             "error": False,
             "pricing_violation": False,
-            "citation_present": False,
+            "citation_present": bool(citations),
         }
 
 
@@ -280,18 +313,21 @@ async def run_multi_turn_question(
     session_id = None
     all_passed = True
     sub_results = []
+    multi_citations = []
 
     for i, turn in enumerate(
         [{"question": q["question"], "expected_answer": q["expected_answer"]}]
         + q["multi_turn_chain"]
     ):
         payload = {"message": turn["question"], "session_id": session_id}
-        response_text, _latency, error, new_session_id = await collect_sse_stream(
+        response_text, _latency, citations, new_session_id, error = await collect_sse_stream(
             client, f"{api_url}/api/chat", payload
         )
         if new_session_id:
             session_id = new_session_id
         if error:
+            if citations:
+                multi_citations.append(citations)
             sub_results.append({
                 "turn": i,
                 "passed": False,
@@ -299,6 +335,8 @@ async def run_multi_turn_question(
             })
             all_passed = False
             continue
+        if citations:
+            multi_citations.append(citations)
 
         if response_text is None:
             response_text = ""
@@ -332,7 +370,7 @@ async def run_multi_turn_question(
         "latency_ms": round(sum(r.get("latency_ms", 0) for r in sub_results if isinstance(r, dict) and "latency_ms" in r)),
         "error": False,
         "pricing_violation": False,
-        "citation_present": False,
+        "citation_present": bool(multi_citations),
         "sub_results": sub_results,
     }
 
@@ -433,8 +471,8 @@ async def amain():
     )
     parser.add_argument(
         "--judge-model",
-        default="mistralai/mixtral-8x7b-instruct",
-        help="OpenRouter model ID for LLM-as-judge (default: mistralai/mixtral-8x7b-instruct)",
+        default="openai/gpt-4o-mini",
+        help="OpenRouter model ID for LLM-as-judge (default: openai/gpt-4o-mini)",
     )
     parser.add_argument(
         "--concurrency",

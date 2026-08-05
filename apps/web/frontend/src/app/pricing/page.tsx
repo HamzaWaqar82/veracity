@@ -8,7 +8,7 @@ import { PricingFaq } from "@/components/pricing/PricingFaq";
 import { FinalCta } from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
-  title: "Pricing — Published Terms, No Hidden Fees",
+  title: "Pricing | Published Terms, No Hidden Fees",
   description:
     "Veracity pricing, stated in exact numbers: Starter $6, Growth $12, Enterprise $24 per user per month. Two months free on annual billing, a 14-day no-credit-card trial, and the full feature matrix published by plan.",
   alternates: { canonical: "/pricing" },

@@ -59,7 +59,7 @@ export function ReadingList({ essays }: { essays: Essay[] }) {
           {essays.map((essay, index) => (
             <Link
               key={essay.slug}
-              href={`/blog/${essay.slug}`}
+              href={`/resources/${essay.slug}`}
               className="js-rl-card group flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.22)] transition-colors duration-300 hover:border-primary/40"
             >
               <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">

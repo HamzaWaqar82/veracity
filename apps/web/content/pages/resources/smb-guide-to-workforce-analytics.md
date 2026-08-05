@@ -1,6 +1,6 @@
 ---
 title: The SMB Guide to Workforce Analytics
-slug: blog/smb-guide-to-workforce-analytics
+slug: resources/smb-guide-to-workforce-analytics
 order: 3
 ---
 
@@ -159,4 +159,4 @@ More data is not better data. If you find yourself checking individual activity 
 
 Veracity was purpose-built for SMBs implementing workforce analytics for the first time. The guided setup wizard configures your organization in under 30 minutes. The employee dashboard gives every team member immediate visibility into their data. And the jurisdiction-aware compliance controls help you meet your regulatory obligations from day one.
 
-[Start your free trial →](/pricing) · [Read our case studies →](/case-studies) · [Back to blog](/blog)
+[Start your free trial →](/pricing) · [Read our case studies →](/case-studies) · [Back to resources](/resources)

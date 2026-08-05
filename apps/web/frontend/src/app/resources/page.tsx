@@ -5,13 +5,13 @@ import { SubscribeSection } from "@/components/blog/SubscribeSection";
 import { essays } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog — Veracity",
+  title: "Resources",
   description:
-    "Veracity blog: the published productivity scoring methodology, why transparent monitoring works, and a practical SMB guide to workforce analytics.",
-  alternates: { canonical: "/blog" },
+    "Veracity resources: the published productivity scoring methodology, why transparent monitoring works, and a practical SMB guide to workforce analytics.",
+  alternates: { canonical: "/resources" },
 };
 
-export default function BlogPage() {
+export default function ResourcesPage() {
   return (
     <>
       <BlogHero />

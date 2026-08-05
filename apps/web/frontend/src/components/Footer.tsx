@@ -19,7 +19,7 @@ export function Footer() {
           <FooterCol title="Product" links={footer.product} />
           <FooterCol title="Company" links={footer.company} />
           <FooterCol
-            title="From the blog"
+            title="From the resources"
             links={essays.map((e) => ({ label: e.label, href: e.href }))}
           />
         </div>

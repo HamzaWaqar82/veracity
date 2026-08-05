@@ -6,6 +6,7 @@ import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
 import { attachMagnetic } from "@/lib/cursor";
 import { CheckIcon } from "@/components/icons";
 import { tiers, type Tier } from "./pricing-data";
+import { CTA } from "@/lib/cta";
 
 function PriceBlock({ tier, annual }: { tier: Tier; annual: boolean }) {
   const display = annual ? tier.annual : tier.monthly;
@@ -238,8 +239,8 @@ export function PlanSummary() {
                   {tier.highlight}
                 </p>
 
-                <Link href="/early-access" className="btn btn-outline js-plan-cta mt-8 w-full">
-                  Get Early Access
+                <Link href={CTA.trial} className="btn btn-outline js-plan-cta mt-8 w-full">
+                  Start Free Trial
                 </Link>
               </div>
             ))}

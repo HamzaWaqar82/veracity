@@ -223,7 +223,7 @@ export function Methodology() {
           </p>
           <p className="js-method-link mt-8 text-[0.9375rem] leading-relaxed text-muted">
             <Link
-              href="/blog/how-productivity-scoring-works"
+              href="/resources/how-productivity-scoring-works"
               className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary"
             >
               How productivity scoring works

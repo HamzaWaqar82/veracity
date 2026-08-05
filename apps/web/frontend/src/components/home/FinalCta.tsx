@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
 import { attachMagnetic, attachSpotlight } from "@/lib/cursor";
+import { CTA } from "@/lib/cta";
 
 export function FinalCta() {
   const root = useRef<HTMLElement>(null);
@@ -91,12 +92,12 @@ export function FinalCta() {
             You don&apos;t have to choose between visibility and trust.
           </h2>
           <p className="js-cta-lead mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-on-dark-muted">
-            Join early access now and you will get a 14-day free trial with full access to every
-            feature of your plan when Veracity launches. No credit card, no seat minimum.
+            Start a free 14-day trial with full access to every feature of your plan when you
+            sign up. No credit card, no seat minimum.
           </p>
           <div className="js-cta-links mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/early-access" className="js-cta-magnet btn btn-lg btn-inverse w-full sm:w-auto">
-              Get Early Access
+            <Link href={CTA.trial} className="js-cta-magnet btn btn-lg btn-inverse w-full sm:w-auto">
+              Start Free Trial
             </Link>
           </div>
           <p className="js-cta-links mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[0.9375rem]">

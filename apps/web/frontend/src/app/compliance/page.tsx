@@ -8,7 +8,7 @@ import { DisclosureSection } from "@/components/compliance/DisclosureSection";
 import { FinalCta } from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
-  title: "Compliance and Trust — Veracity",
+  title: "Compliance and Trust",
   description:
     "The Veracity Compliance and Trust Center: what we collect and never collect, GDPR and EU AI Act controls, US state monitoring statutes, security architecture, retention, and disclosure.",
   alternates: { canonical: "/compliance" },

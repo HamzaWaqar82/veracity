@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { gsap, ScrollTrigger, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
 import { attachMagnetic } from "@/lib/cursor";
+import { CTA } from "@/lib/cta";
 
 const ledgerPreview = [
   {
@@ -161,18 +162,14 @@ export function Hero() {
             keystroke logging, or stealth mode.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link href="/early-access" className="btn btn-lg btn-primary js-hero-cta">
-              Get Early Access
+            <Link href={CTA.trial} className="btn btn-lg btn-primary js-hero-cta">
+              Start Free Trial
             </Link>
             <Link href="/pricing" className="btn btn-lg btn-outline-hero js-hero-cta">
               See Pricing
             </Link>
           </div>
           <p ref={note} className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium text-hero-muted">
-            <span>Early access</span>
-            <span className="text-hero-line" aria-hidden="true">
-              ·
-            </span>
             <span>14-day free trial</span>
             <span className="text-hero-line" aria-hidden="true">
               ·

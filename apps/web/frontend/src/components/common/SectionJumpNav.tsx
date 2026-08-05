@@ -45,7 +45,7 @@ export function SectionJumpNav({
     <nav
       ref={root}
       aria-label={ariaLabel}
-      className="mx-auto inline-flex max-w-full items-center overflow-hidden rounded-full border border-hero-line/70 bg-white/30 backdrop-blur-sm"
+      className="mx-auto flex w-fit max-w-full items-center overflow-hidden rounded-full border border-hero-line/70 bg-white/30 backdrop-blur-sm"
     >
       <span className="hidden py-2.5 pl-5 pr-3 text-[0.8125rem] font-semibold text-hero-muted sm:block">
         Jump to

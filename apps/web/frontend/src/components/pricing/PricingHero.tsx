@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
+import { SectionJumpNav } from "@/components/common/SectionJumpNav";
+import { CTA } from "@/lib/cta";
 
 const headlineWords = "Pricing that states its own terms.".split(" ");
 
@@ -25,7 +27,7 @@ export function PricingHero() {
   const badge = useRef<HTMLParagraphElement>(null);
   const lede = useRef<HTMLParagraphElement>(null);
   const note = useRef<HTMLParagraphElement>(null);
-  const jump = useRef<HTMLElement>(null);
+  const jump = useRef<HTMLDivElement>(null);
   const receipt = useRef<HTMLDivElement>(null);
   const receiptWrap = useRef<HTMLDivElement>(null);
   const ping = useRef<HTMLSpanElement>(null);
@@ -130,8 +132,8 @@ export function PricingHero() {
           here in exact numbers — and what no plan includes is stated just as plainly.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link href="/early-access" className="btn btn-lg btn-primary js-price-cta">
-            Get Early Access
+          <Link href={CTA.trial} className="btn btn-lg btn-primary js-price-cta">
+            Start Free Trial
           </Link>
           <a
             href="mailto:sales@veracity.dev?subject=Veracity%20pricing"
@@ -147,26 +149,9 @@ export function PricingHero() {
           <span className="text-hero-line" aria-hidden="true">·</span>
           <span>No seat minimum</span>
         </p>
-        <nav
-          ref={jump}
-          aria-label="Pricing sections"
-          className="mx-auto mt-14 inline-flex max-w-full items-center overflow-hidden rounded-full border border-hero-line/70 bg-white/30"
-        >
-          <span className="hidden py-2.5 pl-5 pr-3 text-[0.8125rem] font-semibold text-hero-muted sm:block">
-            Jump to
-          </span>
-          <div className="flex divide-x divide-hero-line/70">
-            {jumpLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="px-4 py-2.5 text-[0.8125rem] font-semibold text-hero-ink transition-colors hover:bg-white/50 sm:px-6"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </nav>
+        <div ref={jump} className="mt-14">
+          <SectionJumpNav ariaLabel="Pricing sections" links={jumpLinks} />
+        </div>
 
         <div ref={receiptWrap} className="mt-16 [perspective:1400px]">
           <div

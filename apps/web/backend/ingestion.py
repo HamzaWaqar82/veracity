@@ -283,7 +283,7 @@ def _ingest_file_impl(
 
     # Determine default slug from relative path
     rel_path = file_path.relative_to(content_root)
-    # e.g. pages/pricing.md -> pricing; faq/faq.md -> faq; pages/blog/post.md -> blog/post
+    # e.g. pages/pricing.md -> pricing; faq/faq.md -> faq; pages/resources/post.md -> resources/post
     rel_str = str(rel_path.with_suffix("")).replace("\\", "/")
     if rel_str.startswith("pages/"):
         default_slug = rel_str[len("pages/") :]

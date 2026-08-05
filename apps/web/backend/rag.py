@@ -169,6 +169,7 @@ async def stream_rag_response(
             "messages": messages,
             "stream": True,
             "temperature": 0.0,
+            "max_tokens": 1024,
         }
 
         full_content: list[str] = []

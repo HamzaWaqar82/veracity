@@ -2,9 +2,11 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { gsap, ScrollTrigger, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
+import { gsap, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
 import { attachMagnetic } from "@/lib/cursor";
+import { SectionJumpNav } from "@/components/common/SectionJumpNav";
 import { CheckIcon, MinusIcon } from "@/components/icons";
+import { CTA } from "@/lib/cta";
 
 const headlineWords = "The monitoring market offers a false choice.".split(" ");
 
@@ -37,34 +39,12 @@ export function WhyHero() {
   const badge = useRef<HTMLParagraphElement>(null);
   const lede = useRef<HTMLParagraphElement>(null);
   const note = useRef<HTMLParagraphElement>(null);
-  const jump = useRef<HTMLElement>(null);
+  const jump = useRef<HTMLDivElement>(null);
   const stub = useRef<HTMLDivElement>(null);
   const ping = useRef<HTMLSpanElement>(null);
 
   useGSAP(
     () => {
-      const linkEls = gsap.utils.toArray<HTMLElement>(".js-jump-link", root.current!);
-      jumpLinks.forEach(({ href }) => {
-        const anchor = document.getElementById(href.slice(1));
-        const linkEl = linkEls.find((l) => l.getAttribute("href") === href);
-        if (!anchor || !linkEl) return;
-        const trigger = anchor.closest("section") ?? anchor;
-        ScrollTrigger.create({
-          trigger,
-          start: "top 45%",
-          end: "bottom 45%",
-          onToggle: (self) => {
-            if (self.isActive) {
-              linkEl.classList.add("is-active");
-              linkEl.setAttribute("aria-current", "true");
-            } else {
-              linkEl.classList.remove("is-active");
-              linkEl.removeAttribute("aria-current");
-            }
-          },
-        });
-      });
-
       const mm = gsap.matchMedia();
       const q = gsap.utils.selector(root);
       mm.add({ motion: MOTION, desktop: DESKTOP }, (ctx) => {
@@ -175,8 +155,8 @@ export function WhyHero() {
           this page shows you exactly how.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link href="/early-access" className="btn btn-lg btn-primary js-why-cta">
-            Get Early Access
+          <Link href={CTA.trial} className="btn btn-lg btn-primary js-why-cta">
+            Start Free Trial
           </Link>
           <Link href="/pricing" className="btn btn-lg btn-outline-hero js-why-cta">
             Compare plans
@@ -256,26 +236,9 @@ export function WhyHero() {
       </div>
 
       <div className="container-x relative mt-12 pb-24 sm:pb-28 lg:pb-32">
-        <nav
-          ref={jump}
-          aria-label="Why Veracity sections"
-          className="mx-auto inline-flex max-w-full items-center overflow-hidden rounded-full border border-hero-line/70 bg-white/30"
-        >
-          <span className="hidden py-2.5 pl-5 pr-3 text-[0.8125rem] font-semibold text-hero-muted sm:block">
-            Jump to
-          </span>
-          <div className="flex divide-x divide-hero-line/70">
-            {jumpLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="js-jump-link px-4 py-2.5 text-[0.8125rem] font-semibold text-hero-ink transition-colors hover:bg-white/50 sm:px-6"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </nav>
+        <div ref={jump}>
+          <SectionJumpNav ariaLabel="Why Veracity sections" links={jumpLinks} />
+        </div>
       </div>
     </section>
   );

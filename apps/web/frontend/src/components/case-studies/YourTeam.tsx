@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { attachMagnetic } from "@/lib/cursor";
+import { CTA } from "@/lib/cta";
 
 export function YourTeam() {
   const root = useRef<HTMLElement>(null);
@@ -54,8 +55,8 @@ export function YourTeam() {
           credit card required, or talk to us about a live walkthrough.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link href="/early-access" className="btn btn-lg btn-primary js-yours-cta">
-            Get Early Access
+          <Link href={CTA.trial} className="btn btn-lg btn-primary js-yours-cta">
+            Start Free Trial
           </Link>
           <a href="mailto:sales@veracity.dev" className="btn btn-lg btn-outline js-yours-cta">
             Book a demo

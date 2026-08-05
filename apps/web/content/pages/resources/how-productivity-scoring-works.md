@@ -1,6 +1,6 @@
 ---
 title: How Veracity Calculates Your Productivity Score
-slug: blog/how-productivity-scoring-works
+slug: resources/how-productivity-scoring-works
 order: 1
 ---
 
@@ -151,4 +151,4 @@ The dispute workflow includes:
 
 For more details, see our [Features page](/features) and [Pricing page](/pricing).
 
-[Back to blog](/blog) · [View pricing](/pricing) · [Start free trial](/pricing)
+[Back to resources](/resources) · [View pricing](/pricing) · [Start free trial](/pricing)

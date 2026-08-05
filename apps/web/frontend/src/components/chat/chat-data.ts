@@ -15,7 +15,7 @@ export const CHAT_COPY = {
   sourcesLabel: "Sources",
   typing: "Veracity assistant is typing",
   footnote: "Answers are grounded in site content and link to their sources.",
-  contactLinkLabel: "Can't find an answer? Get early access and talk to the team.",
+  contactLinkLabel: "Can't find an answer? Talk to the team.",
   error:
     "I couldn't reach the answer service. Please try again in a moment.",
 };

@@ -21,8 +21,11 @@ LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY", "")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "nvidia/nemotron-3-embed-1b:free")
 EMBEDDING_DIM = int(os.getenv("EMBEDDING_DIM", "2048"))
 
-# Free LLM on OpenRouter
-LLM_MODEL = os.getenv("LLM_MODEL", "google/gemma-4-31b-it:free")
+# LLM on OpenRouter
+# nvidia/nemotron-3-ultra-550b-a55b:free (free tier, frequently 429-exhausted)
+# openai/gpt-4o-mini (reliable on the current key)
+LLM_MODEL = os.getenv("LLM_MODEL", "openai/gpt-4o-mini")
+
 
 # Paths
 BACKEND_DIR = Path(__file__).resolve().parent
@@ -35,5 +38,5 @@ CHUNK_OVERLAP_TOKENS = int(os.getenv("CHUNK_OVERLAP_TOKENS", "100"))
 SIMILARITY_THRESHOLD = float(os.getenv("SIMILARITY_THRESHOLD", "0.25"))
 
 # Refusal and Routing
-REFUSAL_CONTACT_URL = "/early-access"
+REFUSAL_CONTACT_URL = "/contact-us"
 REFUSAL_CONTACT_EMAIL = "sales@veracity.dev"

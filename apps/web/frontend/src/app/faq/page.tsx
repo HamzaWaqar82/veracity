@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 import { FinalCta } from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
-  title: "FAQ — Veracity",
+  title: "FAQ",
   description:
     "Frequently Asked Questions about Veracity's platform, pricing, compliance, and setup.",
   alternates: { canonical: "/faq" },

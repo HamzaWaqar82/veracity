@@ -9,7 +9,7 @@ import { CustomersSay } from "@/components/why/CustomersSay";
 import { FinalCta } from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
-  title: "Why Veracity — The Transparent Alternative to Employee Surveillance",
+  title: "Why Veracity",
   description:
     "Why Veracity rejects the false choice between visibility and trust: a side-by-side comparison with traditional monitoring tools, the ROI of transparent monitoring, and when Veracity is not the right fit.",
   alternates: { canonical: "/why-veracity" },

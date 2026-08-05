@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { CheckIcon, MinusIcon } from "@/components/icons";
+import { CTA } from "@/lib/cta";
 
 const planTiers = [
   { name: "Starter", price: "$6", foot: "/ user / month" },
@@ -141,10 +142,10 @@ export function Plans() {
             for complete pricing information.
           </p>
           <Link
-            href="/early-access"
+            href={CTA.trial}
             className="btn btn-primary btn-lg shrink-0"
           >
-            Get Early Access
+            Start Free Trial
           </Link>
         </div>
       </div>

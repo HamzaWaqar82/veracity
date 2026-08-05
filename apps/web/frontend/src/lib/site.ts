@@ -27,7 +27,7 @@ const BLOG_FILES = [
 
 function readFrontmatterTitle(file: string): string {
   try {
-    const raw = fs.readFileSync(path.join(contentRoot, "blog", `${file}.md`), "utf8");
+    const raw = fs.readFileSync(path.join(contentRoot, "resources", `${file}.md`), "utf8");
     return String(matter(raw).data.title ?? file);
   } catch {
     return file;
@@ -36,7 +36,7 @@ function readFrontmatterTitle(file: string): string {
 
 export const essays = BLOG_FILES.map((file) => ({
   label: readFrontmatterTitle(file),
-  href: `/blog/${file}`,
+  href: `/resources/${file}`,
 }));
 
 export const nav = {
@@ -90,7 +90,7 @@ export const nav = {
             ],
           },
         ],
-        cta: { label: "Get Early Access", href: "/early-access" },
+        cta: { label: "Start Free Trial", href: "/trial" },
       },
     },
     {
@@ -129,14 +129,18 @@ export const nav = {
       },
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: "Resources",
+      href: "/resources",
       mega: {
         columns: [
           { links: essays },
         ],
-        cta: { label: "All articles", href: "/blog" },
+        cta: { label: "All articles", href: "/resources" },
       },
+    },
+    {
+      label: "Contact",
+      href: "/contact-us",
     },
   ] as NavItem[],
 };
@@ -152,6 +156,7 @@ export const footer = {
   company: [
     { label: "About", href: "/about" },
     { label: "Why Veracity", href: "/why-veracity" },
-    { label: "Blog", href: "/blog" },
+    { label: "Resources", href: "/resources" },
+    { label: "Contact", href: "/contact-us" },
   ],
 } satisfies Record<string, { label: string; href: string }[]>;

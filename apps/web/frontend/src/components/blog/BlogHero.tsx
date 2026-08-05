@@ -51,7 +51,7 @@ export function BlogHero() {
           ref={badge}
           className="inline-flex items-center gap-2 rounded-full border border-hero-line px-3.5 py-1.5 text-[0.8125rem] font-semibold tracking-[0.02em]"
         >
-          Veracity Blog
+          Veracity Resources
         </p>
         <h1 className="mx-auto mt-7 max-w-4xl font-display text-[clamp(2.5rem,4vw+1.5rem,4rem)] font-semibold leading-[1.06] tracking-[-0.03em]">
           {headlineWords.map((word, i) => (
@@ -84,7 +84,7 @@ export function BlogHero() {
       </div>
 
       <div className="container-x pb-24 sm:pb-28 lg:pb-32">
-        <SectionJumpNav ariaLabel="Blog sections" links={jumpLinks} />
+        <SectionJumpNav ariaLabel="Resources sections" links={jumpLinks} />
       </div>
     </section>
   );

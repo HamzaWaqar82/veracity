@@ -6,7 +6,7 @@ import { Roadmap } from "@/components/integrations/Roadmap";
 import { FinalCta } from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
-  title: "Integrations — Veracity",
+  title: "Integrations",
   description:
     "Veracity integrations: Slack, Jira, Asana, Google Calendar, and the REST API with published rate limits. Connect the tools your team already uses — included in every plan.",
   alternates: { canonical: "/integrations" },

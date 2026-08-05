@@ -6,7 +6,7 @@ import { YourTeam } from "@/components/case-studies/YourTeam";
 import { FinalCta } from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
-  title: "Case Studies — Veracity",
+  title: "Case Studies",
   description:
     "Anonymized field reports from real teams using Veracity: reduced status-check meetings, independently verified audit evidence, and operational wins — without a surveillance culture.",
   alternates: { canonical: "/case-studies" },

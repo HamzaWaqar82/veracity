@@ -9,7 +9,7 @@ export type Essay = {
   readTime: string;
 };
 
-const blogRoot = path.join(process.cwd(), "..", "content", "pages", "blog");
+const blogRoot = path.join(process.cwd(), "..", "content", "pages", "resources");
 
 export const BLOG_FILES = [
   "how-productivity-scoring-works",

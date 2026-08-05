@@ -3,6 +3,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ArrowIcon, ChatIcon, CloseIcon } from "@/components/icons";
 import { CHAT_COPY, SUGGESTIONS } from "@/components/chat/chat-data";
+import { CTA } from "@/lib/cta";
 
 const Markdown = lazy(() => import("react-markdown"));
 
@@ -430,7 +431,7 @@ export function ChatWidget() {
             <p className="mt-2 text-[0.6875rem] text-muted">
               {CHAT_COPY.footnote}{" "}
               <a
-                href="/early-access"
+                href={CTA.contact}
                 className="text-primary underline decoration-primary/40 underline-offset-2 hover:text-primary-deep"
               >
                 {CHAT_COPY.contactLinkLabel}

@@ -102,8 +102,8 @@ export function Principles() {
         </p>
         <div className="mt-14">
           {principles.map((p) => (
-            <div key={p.n} className="js-principles-row grid gap-5 border-t border-line py-10 md:grid-cols-[5.5rem_1fr_auto] md:items-start md:gap-10">
-              <p className="js-principles-num mt-1 inline-block rounded-full border border-line bg-bg px-3.5 py-1.5 text-xs font-bold tracking-[0.16em] text-primary">
+            <div key={p.n} className="js-principles-row grid gap-5 border-t border-line py-10 md:grid-cols-[8.5rem_1fr] md:gap-x-10">
+              <p className="js-principles-num mt-1 inline-block w-fit max-w-full self-start rounded-full border border-line bg-bg px-3.5 py-1.5 text-xs font-bold tracking-[0.16em] text-primary">
                 PRINCIPLE {p.n}
               </p>
               <div>
@@ -112,7 +112,7 @@ export function Principles() {
                   {p.body}
                 </p>
               </div>
-              <p className="rounded-full bg-primary-soft px-4 py-2 text-[0.8125rem] font-semibold leading-snug text-primary md:mt-1 md:max-w-[15rem]">
+              <p className="w-fit max-w-full rounded-full bg-primary-soft px-4 py-2 text-[0.8125rem] font-semibold leading-snug text-primary md:col-start-2">
                 {p.chip}
               </p>
             </div>

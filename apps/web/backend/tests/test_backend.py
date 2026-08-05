@@ -29,7 +29,7 @@ class TestBackend(unittest.TestCase):
     def test_build_citation_url(self):
         self.assertEqual(build_citation_url("/faq", "what-is-veracity"), "/faq#what-is-veracity")
         self.assertEqual(build_citation_url("pricing", None), "/pricing")
-        self.assertEqual(build_citation_url("/blog/scoring", "the-formula"), "/blog/scoring#the-formula")
+        self.assertEqual(build_citation_url("/resources/scoring", "the-formula"), "/resources/scoring#the-formula")
 
     def test_parse_frontmatter(self):
         raw_md = """---

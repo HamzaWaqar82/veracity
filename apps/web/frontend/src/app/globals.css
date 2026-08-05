@@ -45,6 +45,10 @@
      so it must not read as PRIVATE_TIME amber (excluded entirely). */
   --color-unproductive: oklch(0.56 0.145 42); /* rust/terracotta — distinct from private gold */
 
+  /* Form error states — rust, in the brand's warm accent family */
+  --color-danger: oklch(0.55 0.145 25);
+  --color-danger-soft: oklch(0.955 0.025 25);
+
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Skip link sits above the sticky header (z-50) and cursor ring (z-80) */
@@ -126,11 +130,11 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full text-[0.9375rem] font-semibold transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[0.9375rem] font-semibold transition-colors duration-200;
   }
 
   .btn-lg {
-    @apply px-6 py-3;
+    @apply px-7 py-3.5;
   }
 
   .btn-primary {
@@ -151,6 +155,22 @@
 
   .btn-outline-hero {
     @apply border border-hero-line text-hero-ink hover:border-hero-ink hover:bg-white/40;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-ink shadow-none transition-colors placeholder:text-muted/70;
+  }
+
+  .field:focus {
+    @apply border-primary outline-none ring-2 ring-primary/25;
+  }
+
+  .field[aria-invalid="true"] {
+    @apply border-danger;
+  }
+
+  .field[aria-invalid="true"]:focus {
+    @apply border-danger ring-danger/25;
   }
 }
 
