@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CursorRing } from "@/components/CursorRing";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import { nav } from "@/lib/site";
 
 const figtree = Figtree({
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Veracity",
   },
   description:
-    "Workforce analytics for small-to-medium businesses with remote and hybrid teams. Verifiable productivity data your employees can see — no keystroke logging, no stealth mode, no surveillance.",
+    "Workforce analytics for small-to-medium businesses with remote and hybrid teams. Verifiable productivity data your employees can see, with no keystroke logging, no stealth mode, and no surveillance.",
   openGraph: {
     siteName: "Veracity",
     type: "website",
@@ -39,20 +40,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${figtree.variable} ${spectral.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${figtree.variable} ${spectral.variable}`}>
       <body className="bg-bg text-ink antialiased">
         <Script id="js-detection" strategy="beforeInteractive">
           {`document.documentElement.classList.add("js")`}
         </Script>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-skip focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
         >
           Skip to content
         </a>
         <Header nav={nav.main} />
         <main id="main">{children}</main>
         <Footer />
+        <ChatWidget />
         <CursorRing />
       </body>
     </html>

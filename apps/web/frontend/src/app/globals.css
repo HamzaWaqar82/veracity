@@ -9,7 +9,7 @@
   --color-surface: oklch(0.955 0.02 152);
   --color-surface-deep: oklch(0.93 0.03 152);
   --color-ink: oklch(0.207 0.03 168); /* Carbon Black #081C15 */
-  --color-muted: oklch(0.476 0.078 162); /* Hunter Green #2D6A4F */
+  --color-muted: oklch(0.45 0.018 165); /* neutral gray-green #4C5953 — secondary prose, not green */
   --color-line: oklch(0.875 0.03 157); /* celadon hairline */
 
   /* Fresh Greens ramp — pinned hue ~161 */
@@ -25,7 +25,7 @@
 
   /* Hero — fresh mint band, deep-pine ink */
   --color-hero-ink: oklch(0.348 0.055 163); /* Pine Teal — headline on band */
-  --color-hero-muted: oklch(0.476 0.078 162); /* Hunter Green — lede on band */
+  --color-hero-muted: oklch(0.45 0.018 165); /* neutral gray-green #4C5953 — lede on band */
   --color-hero-line: oklch(0.763 0.101 161); /* Mint Leaf #74C69D */
   --color-hero-panel: oklch(0.995 0.004 155); /* ledger card */
 
@@ -40,7 +40,22 @@
   --color-state-idle: oklch(0.49 0.03 160);
   --color-state-private: oklch(0.62 0.12 82);
 
+  /* Scoring category — the one warm tone outside the 4-state closed set.
+     Deliberate: "unproductive" is a scored negative category (full weight),
+     so it must not read as PRIVATE_TIME amber (excluded entirely). */
+  --color-unproductive: oklch(0.56 0.145 42); /* rust/terracotta — distinct from private gold */
+
+  /* Form error states — rust, in the brand's warm accent family */
+  --color-danger: oklch(0.55 0.145 25);
+  --color-danger-soft: oklch(0.955 0.025 25);
+
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Skip link sits above the sticky header (z-50) and cursor ring (z-80) */
+  --z-index-skip: 100;
+
+  /* Chat launcher + panel — above content and cursor, below the skip link */
+  --z-index-chat: 90;
 
   --spacing-section: clamp(4.5rem, 11vw, 8rem);
   --spacing-section-sm: clamp(3rem, 7vw, 5rem);
@@ -115,11 +130,11 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full text-[0.9375rem] font-semibold transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[0.9375rem] font-semibold transition-colors duration-200;
   }
 
   .btn-lg {
-    @apply px-6 py-3;
+    @apply px-7 py-3.5;
   }
 
   .btn-primary {
@@ -141,6 +156,22 @@
   .btn-outline-hero {
     @apply border border-hero-line text-hero-ink hover:border-hero-ink hover:bg-white/40;
   }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-base text-ink shadow-none transition-colors placeholder:text-muted/70;
+  }
+
+  .field:focus {
+    @apply border-primary outline-none ring-2 ring-primary/25;
+  }
+
+  .field[aria-invalid="true"] {
+    @apply border-danger;
+  }
+
+  .field[aria-invalid="true"]:focus {
+    @apply border-danger ring-danger/25;
+  }
 }
 
 /* ————— Motion ————— */
@@ -159,21 +190,80 @@
   animation: v-pulse 2.4s var(--ease-out-quint) infinite;
 }
 
-/* Movement optimizations for GSAP-driven animation */
-html.js .hero-layer,
-html.js .hero-panel,
-html.js .hero-chip {
+@keyframes v-chat-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.v-chat-in {
+  animation: v-chat-in 0.25s var(--ease-out-quint);
+}
+
+@keyframes v-chat-dot {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.v-chat-dot {
+  animation: v-chat-dot 1s var(--ease-out-quint) infinite;
+}
+
+/* Movement optimizations — only for persistent transforms. GSAP sets and
+   clears will-change inline on tweened targets itself, so a static hint list
+   would hold layers alive needlessly; the hero panel is the one always-on scrub. */
+html.js .hero-panel {
   will-change: transform;
 }
 
-html.js .js-states-cell,
-html.js .js-principles-num,
-html.js .js-how-num,
-html.js .js-tilt-inner,
-html.js .js-capture-card,
-html.js .js-capture-inner,
-html.js .js-approach-divider-line {
-  will-change: transform;
+/* Feature page jump-nav — active section pill */
+.js-jump-link.is-active {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+/* Capability ledger rows — desktop hover: bg shift + pine dot scale */
+@media (hover: hover) and (pointer: fine) {
+  .js-cap-ledger .js-cap-entry {
+    transition: background-color 0.3s var(--ease-out-quint);
+  }
+  .js-cap-ledger .js-cap-entry:hover {
+    background-color: var(--color-surface);
+  }
+  .js-cap-ledger .js-cap-dot {
+    transition: transform 0.3s var(--ease-out-quint);
+  }
+  .js-cap-ledger .js-cap-entry:hover .js-cap-dot {
+    transform: scale(1.4);
+  }
+}
+
+/* Comparison ledger rows — hover: chip scales, Veracity cell tints */
+@media (hover: hover) and (pointer: fine) {
+  .js-ledger-row .js-ledger-chip {
+    transition: transform 0.3s var(--ease-out-quint);
+  }
+  .js-ledger-row:hover .js-ledger-chip {
+    transform: scale(1.15);
+  }
+}
+
+/* Difference persona toggle — reduced-motion fallback for the sliding thumb */
+@media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
+  .js-diff-btn[aria-checked="true"] {
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary);
+  }
 }
 
 /* Approach capture-card spotlight — faint pine tint, reads on white */
@@ -208,17 +298,5 @@ html.js .js-approach-divider-line {
 .cta-spotlight {
   background: radial-gradient(closest-side, rgba(255, 255, 255, 0.16), transparent 70%);
   will-change: transform;
-}
-
-/* No-JS fallback: everything is visible and static by default */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 

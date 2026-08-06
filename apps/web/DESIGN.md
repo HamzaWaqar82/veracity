@@ -13,10 +13,10 @@ colors:
   surface: "#E7F4EA"
   surface-deep: "#DAEEDE"
   ink: "#081C15"
-  muted: "#2D6A4F"
+  muted: "#4C5953"
   line: "#C7DCCE"
   hero-ink: "#1B4332"
-  hero-muted: "#2D6A4F"
+  hero-muted: "#4C5953"
   hero-line: "#74C69D"
   hero-panel: "#FBFEFC"
   on-dark: "#D8F3DC"
@@ -135,7 +135,7 @@ A two-strategy bookend on a pure-white ledger: **Celadon mint** opens the page, 
 - **Carbon Black** (#081C15 / `oklch(0.207 0.03 168)`): all text — body and headings. 17.7:1 on white.
 - **Frosted Surface** (#E7F4EA / `oklch(0.955 0.02 152)`): alternating light-mint section bands (Approach, How It Works, Plans, Testimonials).
 - **Celadon Hairline** (#C7DCCE / `oklch(0.875 0.03 157)`): all borders and dividers, plus table rules.
-- **Muted** (#2D6A4F / `oklch(0.476 0.078 162)`): secondary text — literally the primary green at 6.39:1, so secondary copy stays on-palette and readable.
+- **Muted** (#4C5953 / `oklch(0.45 0.018 165)`): secondary text. A true neutral gray-green (6.9:1 on white), so green is reserved for semantic moments — actions, prices, checks, state dots — and the Two-Voice system keeps its contrast power.
 
 ### Named Rules
 **The Committed Rule.** The Fresh Greens ramp owns the hero band, the final CTA, and the footer. On the page body, green is semantic — action, capture, verification, state — never decoration.
@@ -211,7 +211,7 @@ A 28px, 1.5px Verification Teal ring that trails the pointer using GSAP `quickTo
 
 ### Do:
 - **Do** lead with verifiable, specific claims — exact intervals, exact prices, exact thresholds. The page should read like evidence.
-- **Do** keep secondary text at Hunter Green #2D6A4F (≥4.5:1 on white) and primary text at Carbon Black #081C15.
+- **Do** keep secondary text at neutral gray-green #4C5953 (≥4.5:1 on white) and primary text at Carbon Black #081C15; reserve Hunter Green for semantic moments — actions, prices, checks, state dots.
 - **Do** use the two-voice color rule: green for what Veracity captures, Verification Teal #005A63 for what it never does.
 - **Do** keep surfaces flat with 1px Celadon hairlines; reserve the two shadows for floating surfaces only — `ledger-lift` on the ledger panel, `menu-float` on the mega-menu panel.
 - **Do** make every mega-menu panel the same width (`w-[min(46rem,calc(100vw-2.5rem))]`); single-column items spread their links across the three-cell grid.

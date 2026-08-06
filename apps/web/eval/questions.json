@@ -364,9 +364,9 @@
   {
     "id": "Q-041",
     "category": "unanswerable",
-    "question": "Does Veracity integrate with Salesforce?",
-    "expected_answer": "Veracity does not have information about a Salesforce integration. Please contact our sales team for integration inquiries.",
-    "expected_citation": "/contact",
+    "question": "Does Veracity offer phone support?",
+    "expected_answer": "Veracity does not provide information about a phone support line. Please contact our support team at support@veracity.dev for assistance.",
+    "expected_citation": "/contact-us",
     "multi_turn_chain": null
   },
   {

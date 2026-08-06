@@ -27,7 +27,7 @@ const BLOG_FILES = [
 
 function readFrontmatterTitle(file: string): string {
   try {
-    const raw = fs.readFileSync(path.join(contentRoot, "blog", `${file}.md`), "utf8");
+    const raw = fs.readFileSync(path.join(contentRoot, "resources", `${file}.md`), "utf8");
     return String(matter(raw).data.title ?? file);
   } catch {
     return file;
@@ -36,7 +36,7 @@ function readFrontmatterTitle(file: string): string {
 
 export const essays = BLOG_FILES.map((file) => ({
   label: readFrontmatterTitle(file),
-  href: `/blog/${file}`,
+  href: `/resources/${file}`,
 }));
 
 export const nav = {
@@ -84,13 +84,13 @@ export const nav = {
         columns: [
           {
             links: [
-              { label: "Starter — $6 per user / month", href: "/pricing#starter" },
-              { label: "Growth — $12 per user / month", href: "/pricing#growth" },
-              { label: "Enterprise — $24 per user / month", href: "/pricing#enterprise" },
+              { label: "Starter · $6 per user / month", href: "/pricing#starter" },
+              { label: "Growth · $12 per user / month", href: "/pricing#growth" },
+              { label: "Enterprise · $24 per user / month", href: "/pricing#enterprise" },
             ],
           },
         ],
-        cta: { label: "Start Free Trial", href: "/pricing" },
+        cta: { label: "Start Free Trial", href: "/trial" },
       },
     },
     {
@@ -111,7 +111,7 @@ export const nav = {
             heading: "Trust & Compliance",
             links: [
               { label: "Compliance & Trust Center", href: "/compliance" },
-              { label: "What We Collect — and Never Collect", href: "/compliance#data-collection-what-we-collect-and-what-we-do-not" },
+              { label: "What We Collect and Never Collect", href: "/compliance#data-collection-what-we-collect-and-what-we-do-not" },
               { label: "Security Architecture", href: "/compliance#security-architecture" },
               { label: "Retention & Portability", href: "/compliance#data-processing-and-retention" },
             ],
@@ -122,7 +122,6 @@ export const nav = {
               { label: "Case Studies", href: "/case-studies" },
               { label: "What Customers Say", href: "/why-veracity#what-customers-say" },
               { label: "The Fair Monitoring Manifesto", href: "/about" },
-              { label: "About Veracity", href: "/about" },
             ],
           },
         ],
@@ -130,14 +129,18 @@ export const nav = {
       },
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: "Resources",
+      href: "/resources",
       mega: {
         columns: [
           { links: essays },
         ],
-        cta: { label: "All articles", href: "/blog" },
+        cta: { label: "All articles", href: "/resources" },
       },
+    },
+    {
+      label: "Contact",
+      href: "/contact-us",
     },
   ] as NavItem[],
 };
@@ -153,28 +156,7 @@ export const footer = {
   company: [
     { label: "About", href: "/about" },
     { label: "Why Veracity", href: "/why-veracity" },
-    { label: "Blog", href: "/blog" },
+    { label: "Resources", href: "/resources" },
+    { label: "Contact", href: "/contact-us" },
   ],
 } satisfies Record<string, { label: string; href: string }[]>;
-
-export const contentPageSlugs = [
-  "features",
-  "pricing",
-  "why-veracity",
-  "blog",
-  "integrations",
-  "compliance",
-  "case-studies",
-  "about",
-];
-
-export function readContentTitle(pageSlug: string): string | null {
-  const file = pageSlug.startsWith("blog/")
-    ? path.join(contentRoot, "blog", `${pageSlug.slice("blog/".length)}.md`)
-    : path.join(contentRoot, `${pageSlug}.md`);
-  try {
-    return String(matter(fs.readFileSync(file, "utf8")).data.title ?? "");
-  } catch {
-    return null;
-  }
-}

@@ -1,10 +1,10 @@
 ---
-title: Blog
-slug: blog
+title: Resources
+slug: resources
 order: 6
 ---
 
-# Veracity Blog — Insights on Transparent Workforce Analytics
+# Veracity Resources — Insights on Transparent Workforce Analytics
 
 Thought leadership, product deep-dives, and practical guides for building trust-driven productivity cultures in small-to-medium businesses.
 
@@ -18,7 +18,7 @@ Thought leadership, product deep-dives, and practical guides for building trust-
 
 The productivity score is the metric every employee and manager sees first. Understanding how it is calculated — what counts, what does not, and why — is essential for using it effectively.
 
-[Read the full article →](/blog/how-productivity-scoring-works)
+  [Read the full article →](/resources/how-productivity-scoring-works)
 
 ---
 
@@ -28,7 +28,7 @@ The productivity score is the metric every employee and manager sees first. Unde
 
 The traditional monitoring playbook — capture everything, hide the agent, report data without context — is increasingly rejected by employees and regulators alike. This article explores the alternative.
 
-[Read the full article →](/blog/transparent-monitoring-for-modern-teams)
+  [Read the full article →](/resources/transparent-monitoring-for-modern-teams)
 
 ---
 
@@ -38,7 +38,7 @@ The traditional monitoring playbook — capture everything, hide the agent, repo
 
 Implementing workforce analytics in an SMB is different from deploying it in a large enterprise. Fewer resources, closer team relationships, and different regulatory obligations all change the approach.
 
-[Read the full article →](/blog/smb-guide-to-workforce-analytics)
+  [Read the full article →](/resources/smb-guide-to-workforce-analytics)
 
 ---
 

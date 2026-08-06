@@ -3,14 +3,13 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
-import { ArrowIcon } from "@/components/icons";
-import { attachMagnetic, attachNudge, attachSpotlight } from "@/lib/cursor";
+import { attachMagnetic, attachSpotlight } from "@/lib/cursor";
+import { CTA } from "@/lib/cta";
 
 export function FinalCta() {
   const root = useRef<HTMLElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   const spotlight = useRef<HTMLDivElement>(null);
-  const arrowWrap = useRef<HTMLSpanElement>(null);
 
   useGSAP(
     () => {
@@ -63,7 +62,6 @@ export function FinalCta() {
         const cleanups: (() => void)[] = [];
         if (spotlight.current) cleanups.push(attachSpotlight(spotlight.current));
         q(".js-cta-magnet").forEach((el) => cleanups.push(attachMagnetic(el as HTMLElement, 140, 0.4)));
-        if (arrowWrap.current) cleanups.push(attachNudge(arrowWrap.current));
         return () => cleanups.forEach((fn) => fn());
       });
     },
@@ -91,55 +89,24 @@ export function FinalCta() {
             }}
           />
           <h2 className="js-cta-h mx-auto max-w-2xl font-display text-3xl font-semibold leading-tight text-on-dark sm:text-4xl lg:text-5xl">
-            Ready to See the Difference?
+            You don&apos;t have to choose between visibility and trust.
           </h2>
           <p className="js-cta-lead mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-on-dark-muted">
-            You don&apos;t have to choose between visibility and trust. Start a 14-day free trial with
-            full access to every feature of your plan — no credit card, no seat minimum, cancel
-            anytime. Explore the features, compare plans, or talk to sales for a guided walkthrough.
+            Start a free 14-day trial with full access to every feature of your plan when you
+            sign up. No credit card, no seat minimum.
           </p>
           <div className="js-cta-links mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link href="/pricing" className="js-cta-magnet btn btn-lg btn-inverse w-full sm:w-auto">
+            <Link href={CTA.trial} className="js-cta-magnet btn btn-lg btn-inverse w-full sm:w-auto">
               Start Free Trial
             </Link>
           </div>
           <p className="js-cta-links mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[0.9375rem]">
-            <Link
-              href="/features"
-              className="inline-flex items-center gap-1.5 font-semibold text-on-dark underline decoration-on-dark-line underline-offset-4 hover:text-white"
-            >
-              Explore Features{" "}
-              <span ref={arrowWrap} className="inline-block">
-                <ArrowIcon className="size-4" />
-              </span>
-            </Link>
-            <span className="text-on-dark-line" aria-hidden="true">
-              ·
-            </span>
-            <Link
-              href="/pricing"
-              className="font-semibold text-on-dark underline decoration-on-dark-line underline-offset-4 hover:text-white"
-            >
-              View Pricing
-            </Link>
-            <span className="text-on-dark-line" aria-hidden="true">
-              ·
-            </span>
-            <Link
-              href="/case-studies"
-              className="font-semibold text-on-dark underline decoration-on-dark-line underline-offset-4 hover:text-white"
-            >
-              Read Case Studies
-            </Link>
-            <span className="text-on-dark-line" aria-hidden="true">
-              ·
-            </span>
-            <Link
-              href="/about"
+            <a
+              href="mailto:sales@veracity.dev?subject=Veracity%20walkthrough"
               className="font-semibold text-on-dark underline decoration-on-dark-line underline-offset-4 hover:text-white"
             >
               Contact Sales
-            </Link>
+            </a>
           </p>
         </div>
       </div>

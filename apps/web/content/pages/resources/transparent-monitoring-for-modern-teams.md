@@ -1,6 +1,6 @@
 ---
 title: Transparent Monitoring for Modern Teams
-slug: blog/transparent-monitoring-for-modern-teams
+slug: resources/transparent-monitoring-for-modern-teams
 order: 2
 ---
 
@@ -94,4 +94,4 @@ Transitioning from a surveillance mindset to a transparent monitoring approach r
 
 Veracity provides the tools for this transition. The guided setup wizard helps administrators configure the right policy template. The employee dashboard gives every team member immediate visibility into their data. And Private Time ensures that every employee maintains control over their privacy.
 
-[Back to blog](/blog) · [Explore features](/features) · [View pricing](/pricing) · [Start free trial](/pricing)
+[Back to resources](/resources) · [Explore features](/features) · [View pricing](/pricing) · [Start free trial](/pricing)

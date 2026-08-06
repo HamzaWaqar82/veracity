@@ -7,20 +7,20 @@ const principles = [
   {
     n: "01",
     title: "Data Minimization",
-    body: "Veracity never logs keystrokes, records audio or video, or captures webcam or microphone data. Activity tracking covers application names, window titles, and URL domains at sixty-second heartbeat intervals — enough to understand work patterns, not enough to invade privacy. Screenshot capture is optional on Growth and Enterprise plans, at fixed intervals with client-side redaction and encryption. A deliberate architectural constraint at every tier, now and in all future versions.",
-    chip: "A deliberate architectural constraint — every tier, now and always",
+    body: "Veracity never logs keystrokes, records audio or video, or captures webcam or microphone data. Activity tracking covers application names, window titles, and URL domains at sixty-second heartbeat intervals: enough to understand work patterns, not enough to invade privacy. Screenshot capture is optional on Growth and Enterprise plans, at fixed intervals with client-side redaction and encryption. A deliberate architectural constraint at every tier, now and in all future versions.",
+    chip: "A deliberate architectural constraint at every tier, now and always",
   },
   {
     n: "02",
     title: "Employee Visibility",
-    body: "Every employee sees exactly what Veracity has collected about them in real time through a personal dashboard — the same data their manager sees. The Agent stays visible in the system tray with a live status indicator. Private Time pauses all capture with one click; only session duration is recorded. A complete access log shows who viewed their data and when. No data is hidden from employees.",
-    chip: "The same data their manager sees — in real time",
+    body: "Every employee sees exactly what Veracity has collected about them in real time through a personal dashboard with the same data their manager sees. The Agent stays visible in the system tray with a live status indicator. Private Time pauses all capture with one click; only session duration is recorded. A complete access log shows who viewed their data and when. No data is hidden from employees.",
+    chip: "The same data their manager sees, in real time",
   },
   {
     n: "03",
     title: "Compliance-First Design",
-    body: "Veracity is built to comply with the General Data Protection Regulation (GDPR), the EU Artificial Intelligence Act, and US state electronic monitoring statutes including Connecticut General Statute §31-48d and New York Labor Law §52-c. Compliance tooling includes jurisdiction-aware notice engines, tamper-evident audit logging, configurable data retention with automated deletion, DSAR workflows, and DPIA support. We do not perform emotion recognition, biometric categorization, or any automated decision-making the AI Act restricts.",
-    chip: "GDPR · EU AI Act · CT §31-48d · NY LL §52-c",
+    body: "Veracity is built to comply with the General Data Protection Regulation (GDPR), the EU Artificial Intelligence Act, and US state electronic monitoring statutes including Connecticut General Statute §31-48d, New York Labor Law §52-c, Delaware Title 19 §705, and Colorado Revised Statute §8-2-127. Compliance tooling includes jurisdiction-aware notice engines, tamper-evident audit logging, configurable data retention with automated deletion, DSAR workflows, and DPIA support. We do not perform emotion recognition, biometric categorization, or any automated decision-making the AI Act restricts.",
+    chip: "GDPR · EU AI Act · CT · NY · DE · CO",
   },
 ];
 
@@ -102,9 +102,9 @@ export function Principles() {
         </p>
         <div className="mt-14">
           {principles.map((p) => (
-            <div key={p.n} className="js-principles-row grid gap-5 border-t border-line py-10 md:grid-cols-[5.5rem_1fr_auto] md:items-start md:gap-10">
-              <p className="js-principles-num font-display text-3xl font-medium leading-none text-primary">
-                {p.n}
+            <div key={p.n} className="js-principles-row grid gap-5 border-t border-line py-10 md:grid-cols-[8.5rem_1fr] md:gap-x-10">
+              <p className="js-principles-num mt-1 inline-block w-fit max-w-full self-start rounded-full border border-line bg-bg px-3.5 py-1.5 text-xs font-bold tracking-[0.16em] text-primary">
+                PRINCIPLE {p.n}
               </p>
               <div>
                 <h3 className="font-display text-2xl font-semibold">{p.title}</h3>
@@ -112,7 +112,7 @@ export function Principles() {
                   {p.body}
                 </p>
               </div>
-              <p className="rounded-full bg-primary-soft px-4 py-2 text-[0.8125rem] font-semibold leading-snug text-primary md:mt-1 md:max-w-[15rem]">
+              <p className="w-fit max-w-full rounded-full bg-primary-soft px-4 py-2 text-[0.8125rem] font-semibold leading-snug text-primary md:col-start-2">
                 {p.chip}
               </p>
             </div>

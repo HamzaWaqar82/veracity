@@ -49,13 +49,13 @@ export function Problem() {
     <section ref={root} className="py-section">
       <div className="container-x">
         <h2 className="js-problem-h max-w-3xl font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-          You Cannot Manage What You Cannot See.
+          Remote work created a visibility gap.
         </h2>
         <p className="js-problem-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
           Remote and hybrid work has made it harder for managers to see how their teams actually
-          spend their time. The usual response — surveillance software that captures everything,
-          hides itself from employees, and reports activity with no context — makes it worse. It
-          erodes trust, drives away talent, and hands managers data they cannot use.
+          spend their time. The usual response is surveillance software that captures everything,
+          hides itself from employees, and reports activity with no context. That response makes it
+          worse. It erodes trust, drives away talent, and hands managers data they cannot use.
         </p>
         <ul className="mt-12 grid gap-8 border-t border-line pt-8 sm:grid-cols-3">
           {fallout.map((item) => (
@@ -71,7 +71,7 @@ export function Problem() {
           >
             Why transparent employee monitoring works better
           </Link>{" "}
-          than surveillance — and where Veracity draws the line.
+          than surveillance, and where Veracity draws the line.
         </p>
       </div>
     </section>

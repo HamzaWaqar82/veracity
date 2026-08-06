@@ -1,6 +1,6 @@
 ---
 title: How Veracity Calculates Your Productivity Score
-slug: blog/how-productivity-scoring-works
+slug: resources/how-productivity-scoring-works
 order: 1
 ---
 
@@ -34,7 +34,7 @@ The score is designed to answer one specific question: *Of the time an employee 
 
 The score is calculated using Methodology v1.0 with the following formula:
 
-```
+```text
 productivity_score = round(
   (productive_ms + 0.5 * passive_ms) /
   (productive_ms + neutral_ms + unproductive_ms + 0.5 * passive_ms) * 100
@@ -151,4 +151,4 @@ The dispute workflow includes:
 
 For more details, see our [Features page](/features) and [Pricing page](/pricing).
 
-[Back to blog](/blog) · [View pricing](/pricing) · [Start free trial](/pricing)
+[Back to resources](/resources) · [View pricing](/pricing) · [Start free trial](/pricing)

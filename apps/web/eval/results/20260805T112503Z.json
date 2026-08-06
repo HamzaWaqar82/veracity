@@ -1,0 +1,671 @@
+{
+  "schema_version": 1,
+  "summary": {
+    "timestamp": "2026-08-05T11:25:03.475894+00:00",
+    "total": 50,
+    "passed": 0,
+    "answerable_accuracy": 0.0,
+    "refusal_accuracy": 0.0,
+    "pricing_violations": 0,
+    "p95_latency_ms": 0,
+    "by_category": {
+      "answerable_single": {
+        "total": 15,
+        "passed": 0
+      },
+      "pricing": {
+        "total": 10,
+        "passed": 0
+      },
+      "cross_product": {
+        "total": 8,
+        "passed": 0
+      },
+      "multi_turn": {
+        "total": 7,
+        "passed": 0
+      },
+      "unanswerable": {
+        "total": 10,
+        "passed": 0
+      }
+    },
+    "hard_fail": false
+  },
+  "results": [
+    {
+      "id": "Q-001",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice\", \"url\": \"/why-veracity#the-veracity-difference-in-practice\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#the-veracity-alternative\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Home \\u2014 Home\", \"url\": \"/\"}, {\"title\": \"About \\u2014 Contact Us > Office Location\", \"url\": \"/about#office-location\"}, {\"title\": \"About \\u2014 Contact Us\", \"url\": \"/about#contact-us\"}, {\"title\": \"Compliance and Trust \\u2014 Compliance and Trust\", \"url\": \"/compliance\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}]",
+      "latency_ms": 15080,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-002",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Why Veracity \\u2014 Why Veracity\", \"url\": \"/why-veracity\"}, {\"title\": \"About \\u2014 About\", \"url\": \"/about\"}, {\"title\": \"Home \\u2014 The Veracity Approach: Collect Less, Show More\", \"url\": \"/#the-veracity-approach-collect-less-show-more\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Home \\u2014 Home\", \"url\": \"/\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Who is Veracity for?\", \"url\": \"/faq#who-is-veracity-for\"}, {\"title\": \"About \\u2014 Our Story\", \"url\": \"/about#our-story\"}]",
+      "latency_ms": 22234,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-003",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > Can employees see their own data?\", \"url\": \"/faq#can-employees-see-their-own-data\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice > For Employees\", \"url\": \"/why-veracity#for-employees\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative > Collected Data Is Shared Data\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#collected-data-is-shared-data\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#the-veracity-alternative\"}, {\"title\": \"Home \\u2014 The Veracity Approach: Collect Less, Show More > Three Core Principles\", \"url\": \"/#three-core-principles\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"About \\u2014 Our Story\", \"url\": \"/about#our-story\"}]",
+      "latency_ms": 16379,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-004",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What is Private Time mode?\", \"url\": \"/faq#what-is-private-time-mode\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Private Time Mode (All Plans)\", \"url\": \"/features#private-time-mode-all-plans\"}, {\"title\": \"How Veracity Calculates Your Productivity Score \\u2014 Edge Cases > Only Private Time\", \"url\": \"/resources/how-productivity-scoring-works#only-private-time\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative > Employee-Controlled Privacy\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#employee-controlled-privacy\"}, {\"title\": \"Home \\u2014 Product Activity States\", \"url\": \"/#product-activity-states\"}, {\"title\": \"How Veracity Calculates Your Productivity Score \\u2014 Edge Cases > Full-Day Private Time\", \"url\": \"/resources/how-productivity-scoring-works#full-day-private-time\"}, {\"title\": \"Case Studies \\u2014 Luminate Digital \\u2014 Remote-First Software Agency > The Solution\", \"url\": \"/case-studies#the-solution\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I get started with Veracity?\", \"url\": \"/faq#how-do-i-get-started-with-veracity\"}]",
+      "latency_ms": 53849,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-005",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Technical > What integrations are available?\", \"url\": \"/faq#what-integrations-are-available\"}, {\"title\": \"Integrations \\u2014 Slack\", \"url\": \"/integrations#slack\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"Integrations \\u2014 Planned Integrations (Roadmap)\", \"url\": \"/integrations#planned-integrations-roadmap\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}]",
+      "latency_ms": 12339,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-006",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 General > Which operating systems does the Agent support?\", \"url\": \"/faq#which-operating-systems-does-the-agent-support\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > What are the minimum system requirements for the Agent?\", \"url\": \"/faq#what-are-the-minimum-system-requirements-for-the-agent\"}, {\"title\": \"Home \\u2014 How Veracity Works\", \"url\": \"/#how-veracity-works\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Can employees install the Agent themselves?\", \"url\": \"/faq#can-employees-install-the-agent-themselves\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Can the Agent run in stealth mode?\", \"url\": \"/faq#can-the-agent-run-in-stealth-mode\"}, {\"title\": \"About \\u2014 Contact Us > Book a Demo\", \"url\": \"/about#book-a-demo\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does the Veracity Agent collect?\", \"url\": \"/faq#what-data-does-the-veracity-agent-collect\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I get started with Veracity?\", \"url\": \"/faq#how-do-i-get-started-with-veracity\"}]",
+      "latency_ms": 10654,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-007",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What happens if the Agent loses connectivity?\", \"url\": \"/faq#what-happens-if-the-agent-loses-connectivity\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > What are the minimum system requirements for the Agent?\", \"url\": \"/faq#what-are-the-minimum-system-requirements-for-the-agent\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does the Veracity Agent collect?\", \"url\": \"/faq#what-data-does-the-veracity-agent-collect\"}, {\"title\": \"Home \\u2014 How Veracity Works\", \"url\": \"/#how-veracity-works\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Can the Agent run in stealth mode?\", \"url\": \"/faq#can-the-agent-run-in-stealth-mode\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative > Visible Always\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#visible-always\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Which operating systems does the Agent support?\", \"url\": \"/faq#which-operating-systems-does-the-agent-support\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Can employees install the Agent themselves?\", \"url\": \"/faq#can-employees-install-the-agent-themselves\"}]",
+      "latency_ms": 15877,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-008",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > Is training included?\", \"url\": \"/faq#is-training-included\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice\", \"url\": \"/why-veracity#the-veracity-difference-in-practice\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"About \\u2014 Contact Us\", \"url\": \"/about#contact-us\"}]",
+      "latency_ms": 10357,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-009",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 General > Does Veracity ever log keystrokes?\", \"url\": \"/faq#does-veracity-ever-log-keystrokes\"}, {\"title\": \"Compliance and Trust \\u2014 Data Collection: What We Collect and What We Do Not > What Veracity Explicitly Does Not Collect\", \"url\": \"/compliance#what-veracity-explicitly-does-not-collect\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does Veracity deliberately NOT collect?\", \"url\": \"/faq#what-data-does-veracity-deliberately-not-collect\"}, {\"title\": \"Pricing \\u2014 What Veracity Does Not Offer\", \"url\": \"/pricing#what-veracity-does-not-offer\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Step 4: Configure for Trust > Be Explicit About What You Are Not Collecting\", \"url\": \"/resources/smb-guide-to-workforce-analytics#be-explicit-about-what-you-are-not-collecting\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does the Veracity Agent collect?\", \"url\": \"/faq#what-data-does-the-veracity-agent-collect\"}, {\"title\": \"Home \\u2014 The Veracity Approach: Collect Less, Show More > Three Core Principles\", \"url\": \"/#three-core-principles\"}]",
+      "latency_ms": 425,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-010",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Technical > How long does deployment take?\", \"url\": \"/faq#how-long-does-deployment-take\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Step 3: Choose the Right Scope\", \"url\": \"/resources/smb-guide-to-workforce-analytics#step-3-choose-the-right-scope\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Getting Started with Veracity\", \"url\": \"/resources/smb-guide-to-workforce-analytics#getting-started-with-veracity\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice > For Administrators\", \"url\": \"/why-veracity#for-administrators\"}, {\"title\": \"Case Studies \\u2014 Helios Consulting \\u2014 Professional Services Firm > The Solution\", \"url\": \"/case-studies#the-solution\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I get started with Veracity?\", \"url\": \"/faq#how-do-i-get-started-with-veracity\"}, {\"title\": \"About \\u2014 Contact Us > Book a Demo\", \"url\": \"/about#book-a-demo\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}]",
+      "latency_ms": 6269,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-011",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Compliance and Trust \\u2014 Compliance and Trust\", \"url\": \"/compliance\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Is Veracity legal?\", \"url\": \"/faq#is-veracity-legal\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Which jurisdictions does Veracity support?\", \"url\": \"/faq#which-jurisdictions-does-veracity-support\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Getting Started with Veracity\", \"url\": \"/resources/smb-guide-to-workforce-analytics#getting-started-with-veracity\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"About \\u2014 Contact Us > Office Location\", \"url\": \"/about#office-location\"}, {\"title\": \"Home \\u2014 The Veracity Approach: Collect Less, Show More > Three Core Principles\", \"url\": \"/#three-core-principles\"}, {\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}]",
+      "latency_ms": 13463,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-012",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Integrations \\u2014 Google Calendar\", \"url\": \"/integrations#google-calendar\"}, {\"title\": \"Features \\u2014 Starter \\u2014 $6 per user per month > Meeting-Aware Idle Detection\", \"url\": \"/features#meeting-aware-idle-detection\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > How does meeting-aware idle detection work?\", \"url\": \"/faq#how-does-meeting-aware-idle-detection-work\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > What integrations are available?\", \"url\": \"/faq#what-integrations-are-available\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice\", \"url\": \"/why-veracity#the-veracity-difference-in-practice\"}]",
+      "latency_ms": 521,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-013",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does Veracity deliberately NOT collect?\", \"url\": \"/faq#what-data-does-veracity-deliberately-not-collect\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#the-veracity-alternative\"}, {\"title\": \"Compliance and Trust \\u2014 Compliance and Trust\", \"url\": \"/compliance\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Does Veracity ever log keystrokes?\", \"url\": \"/faq#does-veracity-ever-log-keystrokes\"}, {\"title\": \"Compliance and Trust \\u2014 Data Collection: What We Collect and What We Do Not > What Veracity Explicitly Does Not Collect\", \"url\": \"/compliance#what-veracity-explicitly-does-not-collect\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Home \\u2014 How Veracity Works\", \"url\": \"/#how-veracity-works\"}]",
+      "latency_ms": 880,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-014",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#the-veracity-alternative\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Who is Veracity for?\", \"url\": \"/faq#who-is-veracity-for\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Home \\u2014 Home\", \"url\": \"/\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice\", \"url\": \"/why-veracity#the-veracity-difference-in-practice\"}, {\"title\": \"Why Veracity \\u2014 When Veracity Is Not the Right Fit\", \"url\": \"/why-veracity#when-veracity-is-not-the-right-fit\"}, {\"title\": \"Compliance and Trust \\u2014 Compliance and Trust\", \"url\": \"/compliance\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}]",
+      "latency_ms": 520,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-015",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "timeout_error",
+      "latency_ms": 0,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-016",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Plan Details > Starter \\u2014 $6 per user per month ($60 per user per year with annual billing)\", \"url\": \"/pricing#starter-6-per-user-per-month-60-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Pricing \\u2014 Billing Details > Exceeding User Limits\", \"url\": \"/pricing#exceeding-user-limits\"}, {\"title\": \"Features \\u2014 Starter \\u2014 $6 per user per month\", \"url\": \"/features#starter-6-per-user-per-month\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Features \\u2014 Starter \\u2014 $6 per user per month > Compliance Basics (All Tiers)\", \"url\": \"/features#compliance-basics-all-tiers\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month\", \"url\": \"/features#growth-12-per-user-per-month\"}]",
+      "latency_ms": 15133,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-017",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Plan Details > Growth \\u2014 $12 per user per month ($120 per user per year with annual billing)\", \"url\": \"/pricing#growth-12-per-user-per-month-120-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month\", \"url\": \"/features#growth-12-per-user-per-month\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > REST API\", \"url\": \"/features#rest-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > In-App Chat Support\", \"url\": \"/features#in-app-chat-support\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > Team Benchmarking\", \"url\": \"/features#team-benchmarking\"}]",
+      "latency_ms": 548,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-018",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Plan Details > Enterprise \\u2014 $24 per user per month ($240 per user per year with annual billing)\", \"url\": \"/pricing#enterprise-24-per-user-per-month-240-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month\", \"url\": \"/features#enterprise-24-per-user-per-month\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Higher API Rate Limit\", \"url\": \"/features#higher-api-rate-limit\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Bulk User Provisioning\", \"url\": \"/features#bulk-user-provisioning\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Identifiable Team Benchmarking\", \"url\": \"/features#identifiable-team-benchmarking\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}]",
+      "latency_ms": 812,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-019",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Pricing \\u2014 Plan Details > Starter \\u2014 $6 per user per month ($60 per user per year with annual billing)\", \"url\": \"/pricing#starter-6-per-user-per-month-60-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Details > Growth \\u2014 $12 per user per month ($120 per user per year with annual billing)\", \"url\": \"/pricing#growth-12-per-user-per-month-120-per-user-per-year-with-annual-billing\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > Screenshot Monitoring (Starter does not include screenshots)\", \"url\": \"/features#screenshot-monitoring-starter-does-not-include-screenshots\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Configurable Screenshot Interval\", \"url\": \"/features#configurable-screenshot-interval\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > Is training included?\", \"url\": \"/faq#is-training-included\"}]",
+      "latency_ms": 780,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-020",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Plan Details > Growth \\u2014 $12 per user per month ($120 per user per year with annual billing)\", \"url\": \"/pricing#growth-12-per-user-per-month-120-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Billing Details > Exceeding User Limits\", \"url\": \"/pricing#exceeding-user-limits\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month\", \"url\": \"/features#growth-12-per-user-per-month\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > REST API\", \"url\": \"/features#rest-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What happens if I exceed my user limit?\", \"url\": \"/faq#what-happens-if-i-exceed-my-user-limit\"}, {\"title\": \"Integrations \\u2014 REST API > Rate Limits\", \"url\": \"/integrations#rate-limits\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}]",
+      "latency_ms": 906,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-021",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Plan Details > Enterprise \\u2014 $24 per user per month ($240 per user per year with annual billing)\", \"url\": \"/pricing#enterprise-24-per-user-per-month-240-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Higher API Rate Limit\", \"url\": \"/features#higher-api-rate-limit\"}, {\"title\": \"Integrations \\u2014 REST API > Rate Limits\", \"url\": \"/integrations#rate-limits\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}]",
+      "latency_ms": 536,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-022",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Pricing \\u2014 Plan Details > Growth \\u2014 $12 per user per month ($120 per user per year with annual billing)\", \"url\": \"/pricing#growth-12-per-user-per-month-120-per-user-per-year-with-annual-billing\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > REST API\", \"url\": \"/features#rest-api\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month\", \"url\": \"/features#growth-12-per-user-per-month\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > SSO and SAML 2.0 Integration\", \"url\": \"/features#sso-and-saml-2-0-integration\"}]",
+      "latency_ms": 456,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-023",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Pricing\", \"url\": \"/pricing\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"About \\u2014 Contact Us > Book a Demo\", \"url\": \"/about#book-a-demo\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I get started with Veracity?\", \"url\": \"/faq#how-do-i-get-started-with-veracity\"}, {\"title\": \"About \\u2014 Contact Us\", \"url\": \"/about#contact-us\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice\", \"url\": \"/why-veracity#the-veracity-difference-in-practice\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Getting Started with Veracity\", \"url\": \"/resources/smb-guide-to-workforce-analytics#getting-started-with-veracity\"}]",
+      "latency_ms": 393,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-024",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Plan Details > Starter \\u2014 $6 per user per month ($60 per user per year with annual billing)\", \"url\": \"/pricing#starter-6-per-user-per-month-60-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I contact support?\", \"url\": \"/faq#how-do-i-contact-support\"}, {\"title\": \"Features \\u2014 Starter \\u2014 $6 per user per month\", \"url\": \"/features#starter-6-per-user-per-month\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > Is training included?\", \"url\": \"/faq#is-training-included\"}, {\"title\": \"Features \\u2014 Starter \\u2014 $6 per user per month > Compliance Basics (All Tiers)\", \"url\": \"/features#compliance-basics-all-tiers\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}]",
+      "latency_ms": 1550,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-025",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Billing Details > Payment Methods\", \"url\": \"/pricing#payment-methods\"}, {\"title\": \"Pricing \\u2014 Billing Details > Non-Profit and Educational Discounts\", \"url\": \"/pricing#non-profit-and-educational-discounts\"}, {\"title\": \"Pricing \\u2014 Billing Details > How Billing Is Calculated\", \"url\": \"/pricing#how-billing-is-calculated\"}, {\"title\": \"Pricing \\u2014 Pricing\", \"url\": \"/pricing\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What payment methods do you accept?\", \"url\": \"/faq#what-payment-methods-do-you-accept\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > How is billing calculated per user?\", \"url\": \"/faq#how-is-billing-calculated-per-user\"}]",
+      "latency_ms": 824,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-026",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 What Veracity Does Not Offer\", \"url\": \"/pricing#what-veracity-does-not-offer\"}, {\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I get started with Veracity?\", \"url\": \"/faq#how-do-i-get-started-with-veracity\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does the Veracity Agent collect?\", \"url\": \"/faq#what-data-does-the-veracity-agent-collect\"}, {\"title\": \"Compliance and Trust \\u2014 Data Collection: What We Collect and What We Do Not > What Veracity Collects\", \"url\": \"/compliance#what-veracity-collects\"}]",
+      "latency_ms": 550,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-027",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"Integrations \\u2014 REST API > Documentation\", \"url\": \"/integrations#documentation\"}]",
+      "latency_ms": 572,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-028",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Plan Details > Growth \\u2014 $12 per user per month ($120 per user per year with annual billing)\", \"url\": \"/pricing#growth-12-per-user-per-month-120-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Identifiable Team Benchmarking\", \"url\": \"/features#identifiable-team-benchmarking\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > Team Benchmarking\", \"url\": \"/features#team-benchmarking\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month\", \"url\": \"/features#growth-12-per-user-per-month\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Integrations \\u2014 REST API > Rate Limits\", \"url\": \"/integrations#rate-limits\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}]",
+      "latency_ms": 547,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-029",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Pricing\", \"url\": \"/pricing\"}, {\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I contact support?\", \"url\": \"/faq#how-do-i-contact-support\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"Resources \\u2014 Subscribe\", \"url\": \"/resources#subscribe\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}]",
+      "latency_ms": 518,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-030",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > SSO and SAML 2.0 Integration\", \"url\": \"/features#sso-and-saml-2-0-integration\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What payment methods do you accept?\", \"url\": \"/faq#what-payment-methods-do-you-accept\"}]",
+      "latency_ms": 699,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-031",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Pricing\", \"url\": \"/pricing\"}, {\"title\": \"Pricing \\u2014 Billing Details > Exceeding User Limits\", \"url\": \"/pricing#exceeding-user-limits\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}]",
+      "latency_ms": 569,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-032",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Compliance and Trust \\u2014 Regulatory Frameworks > General Data Protection Regulation (GDPR)\", \"url\": \"/compliance#general-data-protection-regulation-gdpr\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}]",
+      "latency_ms": 32536,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-033",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Pricing \\u2014 Pricing\", \"url\": \"/pricing\"}, {\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}]",
+      "latency_ms": 399,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-034",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Pricing \\\\u2014 Plan Comparison Table\\\", \\\"url\\\": \\\"/pricing#plan-comparison-table\\\"}, {\\\"title\\\": \\\"Pricing \\\\u2014 Plan Details > Enterprise \\\\u2014 $24 per user per month ($240 per user per year with annual billing)\\\", \\\"url\\\": \\\"/pricing#enterprise-24-per-user-per-month-240-per-user-per-year-with-annual-billing\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Enterprise \\\\u2014 $24 per user per month > Higher API Rate Limit\\\", \\\"url\\\": \\\"/features#higher-api-rate-limit\\\"}, {\\\"title\\\": \\\"Integrations \\\\u2014 REST API\\\", \\\"url\\\": \\\"/integrations#rest-api\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Technical > Do you have a public API?\\\", \\\"url\\\": \\\"/faq#do-you-have-a-public-api\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Plans and Billing > What are the Veracity pricing plans?\\\", \\\"url\\\": \\\"/faq#what-are-the-veracity-pricing-plans\\\"}, {\\\"title\\\": \\\"Home \\\\u2014 Three Plans for Every Team Size\\\", \\\"url\\\": \\\"/#three-plans-for-every-team-size\\\"}, {\\\"title\\\": \\\"Integrations \\\\u2014 REST API > Rate Limits\\\", \\\"url\\\": \\\"/integrations#rate-limits\\\"}]\"}, {\"turn\": 1, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Pricing \\\\u2014 Plan Details > Growth \\\\u2014 $12 per user per month ($120 per user per year with annual billing)\\\", \\\"url\\\": \\\"/pricing#growth-12-per-user-per-month-120-per-user-per-year-with-annual-billing\\\"}, {\\\"title\\\": \\\"Pricing \\\\u2014 Plan Details\\\", \\\"url\\\": \\\"/pricing#plan-details\\\"}, {\\\"title\\\": \\\"Pricing \\\\u2014 Plan Comparison Table\\\", \\\"url\\\": \\\"/pricing#plan-comparison-table\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Growth \\\\u2014 $12 per user per month\\\", \\\"url\\\": \\\"/features#growth-12-per-user-per-month\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Growth \\\\u2014 $12 per user per month > REST API\\\", \\\"url\\\": \\\"/features#rest-api\\\"}, {\\\"title\\\": \\\"Integrations \\\\u2014 REST API > Rate Limits\\\", \\\"url\\\": \\\"/integrations#rate-limits\\\"}, {\\\"title\\\": \\\"Integrations \\\\u2014 REST API\\\", \\\"url\\\": \\\"/integrations#rest-api\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Growth \\\\u2014 $12 per user per month > In-App Chat Support\\\", \\\"url\\\": \\\"/features#in-app-chat-support\\\"}]\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "[{\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Pricing \\u2014 Plan Details > Enterprise \\u2014 $24 per user per month ($240 per user per year with annual billing)\", \"url\": \"/pricing#enterprise-24-per-user-per-month-240-per-user-per-year-with-annual-billing\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Higher API Rate Limit\", \"url\": \"/features#higher-api-rate-limit\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Integrations \\u2014 REST API > Rate Limits\", \"url\": \"/integrations#rate-limits\"}]"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "[{\"title\": \"Pricing \\u2014 Plan Details > Growth \\u2014 $12 per user per month ($120 per user per year with annual billing)\", \"url\": \"/pricing#growth-12-per-user-per-month-120-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Details\", \"url\": \"/pricing#plan-details\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month\", \"url\": \"/features#growth-12-per-user-per-month\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > REST API\", \"url\": \"/features#rest-api\"}, {\"title\": \"Integrations \\u2014 REST API > Rate Limits\", \"url\": \"/integrations#rate-limits\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > In-App Chat Support\", \"url\": \"/features#in-app-chat-support\"}]"
+        }
+      ]
+    },
+    {
+      "id": "Q-035",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Pricing \\\\u2014 Pricing\\\", \\\"url\\\": \\\"/pricing\\\"}, {\\\"title\\\": \\\"Pricing \\\\u2014 Billing Details > Payment Methods\\\", \\\"url\\\": \\\"/pricing#payment-methods\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Features\\\", \\\"url\\\": \\\"/features\\\"}, {\\\"title\\\": \\\"Home \\\\u2014 Ready to See the Difference?\\\", \\\"url\\\": \\\"/#ready-to-see-the-difference\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Plans and Billing > What are the Veracity pricing plans?\\\", \\\"url\\\": \\\"/faq#what-are-the-veracity-pricing-plans\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\\\", \\\"url\\\": \\\"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Plans and Billing > What payment methods do you accept?\\\", \\\"url\\\": \\\"/faq#what-payment-methods-do-you-accept\\\"}, {\\\"title\\\": \\\"Integrations \\\\u2014 Integrations\\\", \\\"url\\\": \\\"/integrations\\\"}]\"}, {\"turn\": 1, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Features \\\\u2014 Growth \\\\u2014 $12 per user per month > Screenshot Monitoring (Starter does not include screenshots)\\\", \\\"url\\\": \\\"/features#screenshot-monitoring-starter-does-not-include-screenshots\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Enterprise \\\\u2014 $24 per user per month > Configurable Screenshot Interval\\\", \\\"url\\\": \\\"/features#configurable-screenshot-interval\\\"}, {\\\"title\\\": \\\"Why Veracity \\\\u2014 Comparison with Traditional Monitoring Tools\\\", \\\"url\\\": \\\"/why-veracity#comparison-with-traditional-monitoring-tools\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 General > How is Veracity different from traditional employee monitoring?\\\", \\\"url\\\": \\\"/faq#how-is-veracity-different-from-traditional-employee-monitoring\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Enterprise \\\\u2014 $24 per user per month > State Reporting and Drift Alerting (All Plans)\\\", \\\"url\\\": \\\"/features#state-reporting-and-drift-alerting-all-plans\\\"}, {\\\"title\\\": \\\"Pricing \\\\u2014 Plan Details > Growth \\\\u2014 $12 per user per month ($120 per user per year with annual billing)\\\", \\\"url\\\": \\\"/pricing#growth-12-per-user-per-month-120-per-user-per-year-with-annual-billing\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Privacy and Data > How does screenshot redaction work?\\\", \\\"url\\\": \\\"/faq#how-does-screenshot-redaction-work\\\"}, {\\\"title\\\": \\\"Home \\\\u2014 Compliance and Security Highlights\\\", \\\"url\\\": \\\"/#compliance-and-security-highlights\\\"}]\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "[{\"title\": \"Pricing \\u2014 Pricing\", \"url\": \"/pricing\"}, {\"title\": \"Pricing \\u2014 Billing Details > Payment Methods\", \"url\": \"/pricing#payment-methods\"}, {\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What payment methods do you accept?\", \"url\": \"/faq#what-payment-methods-do-you-accept\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}]"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "[{\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month > Screenshot Monitoring (Starter does not include screenshots)\", \"url\": \"/features#screenshot-monitoring-starter-does-not-include-screenshots\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Configurable Screenshot Interval\", \"url\": \"/features#configurable-screenshot-interval\"}, {\"title\": \"Why Veracity \\u2014 Comparison with Traditional Monitoring Tools\", \"url\": \"/why-veracity#comparison-with-traditional-monitoring-tools\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > State Reporting and Drift Alerting (All Plans)\", \"url\": \"/features#state-reporting-and-drift-alerting-all-plans\"}, {\"title\": \"Pricing \\u2014 Plan Details > Growth \\u2014 $12 per user per month ($120 per user per year with annual billing)\", \"url\": \"/pricing#growth-12-per-user-per-month-120-per-user-per-year-with-annual-billing\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > How does screenshot redaction work?\", \"url\": \"/faq#how-does-screenshot-redaction-work\"}, {\"title\": \"Home \\u2014 Compliance and Security Highlights\", \"url\": \"/#compliance-and-security-highlights\"}]"
+        }
+      ]
+    },
+    {
+      "id": "Q-036",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Pricing \\\\u2014 Plan Details > Enterprise \\\\u2014 $24 per user per month ($240 per user per year with annual billing)\\\", \\\"url\\\": \\\"/pricing#enterprise-24-per-user-per-month-240-per-user-per-year-with-annual-billing\\\"}, {\\\"title\\\": \\\"Pricing \\\\u2014 Plan Comparison Table\\\", \\\"url\\\": \\\"/pricing#plan-comparison-table\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Enterprise \\\\u2014 $24 per user per month\\\", \\\"url\\\": \\\"/features#enterprise-24-per-user-per-month\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Plans and Billing > What are the Veracity pricing plans?\\\", \\\"url\\\": \\\"/faq#what-are-the-veracity-pricing-plans\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Enterprise \\\\u2014 $24 per user per month > Higher API Rate Limit\\\", \\\"url\\\": \\\"/features#higher-api-rate-limit\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Enterprise \\\\u2014 $24 per user per month > Identifiable Team Benchmarking\\\", \\\"url\\\": \\\"/features#identifiable-team-benchmarking\\\"}, {\\\"title\\\": \\\"Home \\\\u2014 Three Plans for Every Team Size\\\", \\\"url\\\": \\\"/#three-plans-for-every-team-size\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Enterprise \\\\u2014 $24 per user per month > Configurable Screenshot Interval\\\", \\\"url\\\": \\\"/features#configurable-screenshot-interval\\\"}]\"}, {\"turn\": 1, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Features \\\\u2014 Enterprise \\\\u2014 $24 per user per month > SSO and SAML 2.0 Integration\\\", \\\"url\\\": \\\"/features#sso-and-saml-2-0-integration\\\"}, {\\\"title\\\": \\\"Pricing \\\\u2014 Plan Details > Enterprise \\\\u2014 $24 per user per month ($240 per user per year with annual billing)\\\", \\\"url\\\": \\\"/pricing#enterprise-24-per-user-per-month-240-per-user-per-year-with-annual-billing\\\"}, {\\\"title\\\": \\\"Pricing \\\\u2014 Plan Comparison Table\\\", \\\"url\\\": \\\"/pricing#plan-comparison-table\\\"}]\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "[{\"title\": \"Pricing \\u2014 Plan Details > Enterprise \\u2014 $24 per user per month ($240 per user per year with annual billing)\", \"url\": \"/pricing#enterprise-24-per-user-per-month-240-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month\", \"url\": \"/features#enterprise-24-per-user-per-month\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Higher API Rate Limit\", \"url\": \"/features#higher-api-rate-limit\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Identifiable Team Benchmarking\", \"url\": \"/features#identifiable-team-benchmarking\"}, {\"title\": \"Home \\u2014 Three Plans for Every Team Size\", \"url\": \"/#three-plans-for-every-team-size\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Configurable Screenshot Interval\", \"url\": \"/features#configurable-screenshot-interval\"}]"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "[{\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > SSO and SAML 2.0 Integration\", \"url\": \"/features#sso-and-saml-2-0-integration\"}, {\"title\": \"Pricing \\u2014 Plan Details > Enterprise \\u2014 $24 per user per month ($240 per user per year with annual billing)\", \"url\": \"/pricing#enterprise-24-per-user-per-month-240-per-user-per-year-with-annual-billing\"}, {\"title\": \"Pricing \\u2014 Plan Comparison Table\", \"url\": \"/pricing#plan-comparison-table\"}]"
+        }
+      ]
+    },
+    {
+      "id": "Q-037",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Pricing \\\\u2014 Pricing\\\", \\\"url\\\": \\\"/pricing\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Plans and Billing > What are the Veracity pricing plans?\\\", \\\"url\\\": \\\"/faq#what-are-the-veracity-pricing-plans\\\"}, {\\\"title\\\": \\\"Home \\\\u2014 Ready to See the Difference?\\\", \\\"url\\\": \\\"/#ready-to-see-the-difference\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Features\\\", \\\"url\\\": \\\"/features\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Setup and Onboarding > How do I get started with Veracity?\\\", \\\"url\\\": \\\"/faq#how-do-i-get-started-with-veracity\\\"}, {\\\"title\\\": \\\"Why Veracity \\\\u2014 The Veracity Difference in Practice\\\", \\\"url\\\": \\\"/why-veracity#the-veracity-difference-in-practice\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Setup and Onboarding > How do I contact support?\\\", \\\"url\\\": \\\"/faq#how-do-i-contact-support\\\"}, {\\\"title\\\": \\\"Transparent Monitoring for Modern Teams \\\\u2014 The Veracity Alternative\\\", \\\"url\\\": \\\"/resources/transparent-monitoring-for-modern-teams#the-veracity-alternative\\\"}]\"}, {\"turn\": 1, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Pricing \\\\u2014 Billing Details > Exceeding User Limits\\\", \\\"url\\\": \\\"/pricing#exceeding-user-limits\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Plans and Billing > What happens if I exceed my user limit?\\\", \\\"url\\\": \\\"/faq#what-happens-if-i-exceed-my-user-limit\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Enterprise \\\\u2014 $24 per user per month > Bulk User Provisioning\\\", \\\"url\\\": \\\"/features#bulk-user-provisioning\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Growth \\\\u2014 $12 per user per month\\\", \\\"url\\\": \\\"/features#growth-12-per-user-per-month\\\"}]\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "[{\"title\": \"Pricing \\u2014 Pricing\", \"url\": \"/pricing\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What are the Veracity pricing plans?\", \"url\": \"/faq#what-are-the-veracity-pricing-plans\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I get started with Veracity?\", \"url\": \"/faq#how-do-i-get-started-with-veracity\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice\", \"url\": \"/why-veracity#the-veracity-difference-in-practice\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I contact support?\", \"url\": \"/faq#how-do-i-contact-support\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#the-veracity-alternative\"}]"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "[{\"title\": \"Pricing \\u2014 Billing Details > Exceeding User Limits\", \"url\": \"/pricing#exceeding-user-limits\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What happens if I exceed my user limit?\", \"url\": \"/faq#what-happens-if-i-exceed-my-user-limit\"}, {\"title\": \"Features \\u2014 Enterprise \\u2014 $24 per user per month > Bulk User Provisioning\", \"url\": \"/features#bulk-user-provisioning\"}, {\"title\": \"Features \\u2014 Growth \\u2014 $12 per user per month\", \"url\": \"/features#growth-12-per-user-per-month\"}]"
+        }
+      ]
+    },
+    {
+      "id": "Q-038",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Integrations \\\\u2014 Jira\\\", \\\"url\\\": \\\"/integrations#jira\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Technical > What integrations are available?\\\", \\\"url\\\": \\\"/faq#what-integrations-are-available\\\"}, {\\\"title\\\": \\\"Integrations \\\\u2014 Integrations\\\", \\\"url\\\": \\\"/integrations\\\"}, {\\\"title\\\": \\\"Integrations \\\\u2014 Planned Integrations (Roadmap)\\\", \\\"url\\\": \\\"/integrations#planned-integrations-roadmap\\\"}]\"}, {\"turn\": 1, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Integrations \\\\u2014 Asana\\\", \\\"url\\\": \\\"/integrations#asana\\\"}]\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "[{\"title\": \"Integrations \\u2014 Jira\", \"url\": \"/integrations#jira\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > What integrations are available?\", \"url\": \"/faq#what-integrations-are-available\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Integrations \\u2014 Planned Integrations (Roadmap)\", \"url\": \"/integrations#planned-integrations-roadmap\"}]"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "[{\"title\": \"Integrations \\u2014 Asana\", \"url\": \"/integrations#asana\"}]"
+        }
+      ]
+    },
+    {
+      "id": "Q-039",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Privacy and Data > What data does the Veracity Agent collect?\\\", \\\"url\\\": \\\"/faq#what-data-does-the-veracity-agent-collect\\\"}, {\\\"title\\\": \\\"Home \\\\u2014 The Veracity Approach: Collect Less, Show More\\\", \\\"url\\\": \\\"/#the-veracity-approach-collect-less-show-more\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Privacy and Data > What data does Veracity deliberately NOT collect?\\\", \\\"url\\\": \\\"/faq#what-data-does-veracity-deliberately-not-collect\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Technical > What are the minimum system requirements for the Agent?\\\", \\\"url\\\": \\\"/faq#what-are-the-minimum-system-requirements-for-the-agent\\\"}, {\\\"title\\\": \\\"Home \\\\u2014 How Veracity Works\\\", \\\"url\\\": \\\"/#how-veracity-works\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 General > How is Veracity different from traditional employee monitoring?\\\", \\\"url\\\": \\\"/faq#how-is-veracity-different-from-traditional-employee-monitoring\\\"}, {\\\"title\\\": \\\"Compliance and Trust \\\\u2014 Data Collection: What We Collect and What We Do Not > What Veracity Explicitly Does Not Collect\\\", \\\"url\\\": \\\"/compliance#what-veracity-explicitly-does-not-collect\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 General > Can the Agent run in stealth mode?\\\", \\\"url\\\": \\\"/faq#can-the-agent-run-in-stealth-mode\\\"}]\"}, {\"turn\": 1, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Privacy and Data > Can employees see their own data?\\\", \\\"url\\\": \\\"/faq#can-employees-see-their-own-data\\\"}, {\\\"title\\\": \\\"Transparent Monitoring for Modern Teams \\\\u2014 The Veracity Alternative > Collected Data Is Shared Data\\\", \\\"url\\\": \\\"/resources/transparent-monitoring-for-modern-teams#collected-data-is-shared-data\\\"}, {\\\"title\\\": \\\"Why Veracity \\\\u2014 The Veracity Difference in Practice > For Employees\\\", \\\"url\\\": \\\"/why-veracity#for-employees\\\"}, {\\\"title\\\": \\\"Compliance and Trust \\\\u2014 Data Processing and Retention > Data Portability\\\", \\\"url\\\": \\\"/compliance#data-portability\\\"}, {\\\"title\\\": \\\"The SMB Guide to Workforce Analytics \\\\u2014 Step 2: Understand the Regulatory Landscape > European Union (GDPR)\\\", \\\"url\\\": \\\"/resources/smb-guide-to-workforce-analytics#european-union-gdpr\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Privacy and Data\\\", \\\"url\\\": \\\"/faq#privacy-and-data\\\"}, {\\\"title\\\": \\\"Home \\\\u2014 The Veracity Approach: Collect Less, Show More > Three Core Principles\\\", \\\"url\\\": \\\"/#three-core-principles\\\"}, {\\\"title\\\": \\\"Features \\\\u2014 Starter \\\\u2014 $6 per user per month > Employee Dashboard\\\", \\\"url\\\": \\\"/features#employee-dashboard\\\"}]\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "[{\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does the Veracity Agent collect?\", \"url\": \"/faq#what-data-does-the-veracity-agent-collect\"}, {\"title\": \"Home \\u2014 The Veracity Approach: Collect Less, Show More\", \"url\": \"/#the-veracity-approach-collect-less-show-more\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does Veracity deliberately NOT collect?\", \"url\": \"/faq#what-data-does-veracity-deliberately-not-collect\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > What are the minimum system requirements for the Agent?\", \"url\": \"/faq#what-are-the-minimum-system-requirements-for-the-agent\"}, {\"title\": \"Home \\u2014 How Veracity Works\", \"url\": \"/#how-veracity-works\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Compliance and Trust \\u2014 Data Collection: What We Collect and What We Do Not > What Veracity Explicitly Does Not Collect\", \"url\": \"/compliance#what-veracity-explicitly-does-not-collect\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Can the Agent run in stealth mode?\", \"url\": \"/faq#can-the-agent-run-in-stealth-mode\"}]"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "[{\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > Can employees see their own data?\", \"url\": \"/faq#can-employees-see-their-own-data\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative > Collected Data Is Shared Data\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#collected-data-is-shared-data\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice > For Employees\", \"url\": \"/why-veracity#for-employees\"}, {\"title\": \"Compliance and Trust \\u2014 Data Processing and Retention > Data Portability\", \"url\": \"/compliance#data-portability\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Step 2: Understand the Regulatory Landscape > European Union (GDPR)\", \"url\": \"/resources/smb-guide-to-workforce-analytics#european-union-gdpr\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data\", \"url\": \"/faq#privacy-and-data\"}, {\"title\": \"Home \\u2014 The Veracity Approach: Collect Less, Show More > Three Core Principles\", \"url\": \"/#three-core-principles\"}, {\"title\": \"Features \\u2014 Starter \\u2014 $6 per user per month > Employee Dashboard\", \"url\": \"/features#employee-dashboard\"}]"
+        }
+      ]
+    },
+    {
+      "id": "Q-040",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 General > Is Veracity legal?\\\", \\\"url\\\": \\\"/faq#is-veracity-legal\\\"}, {\\\"title\\\": \\\"Why Veracity \\\\u2014 The Veracity Difference in Practice\\\", \\\"url\\\": \\\"/why-veracity#the-veracity-difference-in-practice\\\"}, {\\\"title\\\": \\\"About \\\\u2014 Contact Us\\\", \\\"url\\\": \\\"/about#contact-us\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 General > What is Veracity?\\\", \\\"url\\\": \\\"/faq#what-is-veracity\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\\\", \\\"url\\\": \\\"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\\\"}, {\\\"title\\\": \\\"The SMB Guide to Workforce Analytics \\\\u2014 Getting Started with Veracity\\\", \\\"url\\\": \\\"/resources/smb-guide-to-workforce-analytics#getting-started-with-veracity\\\"}, {\\\"title\\\": \\\"Compliance and Trust \\\\u2014 Compliance and Trust\\\", \\\"url\\\": \\\"/compliance\\\"}, {\\\"title\\\": \\\"About \\\\u2014 Contact Us > Office Location\\\", \\\"url\\\": \\\"/about#office-location\\\"}]\"}, {\"turn\": 1, \"passed\": false, \"error\": \"[{\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 General > Which jurisdictions does Veracity support?\\\", \\\"url\\\": \\\"/faq#which-jurisdictions-does-veracity-support\\\"}, {\\\"title\\\": \\\"Frequently Asked Questions \\\\u2014 General > Is Veracity legal?\\\", \\\"url\\\": \\\"/faq#is-veracity-legal\\\"}, {\\\"title\\\": \\\"Compliance and Trust \\\\u2014 Regulatory Frameworks > US State Electronic Monitoring Laws\\\", \\\"url\\\": \\\"/compliance#us-state-electronic-monitoring-laws\\\"}, {\\\"title\\\": \\\"The SMB Guide to Workforce Analytics \\\\u2014 Step 2: Understand the Regulatory Landscape > United States\\\", \\\"url\\\": \\\"/resources/smb-guide-to-workforce-analytics#united-states\\\"}]\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "[{\"title\": \"Frequently Asked Questions \\u2014 General > Is Veracity legal?\", \"url\": \"/faq#is-veracity-legal\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice\", \"url\": \"/why-veracity#the-veracity-difference-in-practice\"}, {\"title\": \"About \\u2014 Contact Us\", \"url\": \"/about#contact-us\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Getting Started with Veracity\", \"url\": \"/resources/smb-guide-to-workforce-analytics#getting-started-with-veracity\"}, {\"title\": \"Compliance and Trust \\u2014 Compliance and Trust\", \"url\": \"/compliance\"}, {\"title\": \"About \\u2014 Contact Us > Office Location\", \"url\": \"/about#office-location\"}]"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "[{\"title\": \"Frequently Asked Questions \\u2014 General > Which jurisdictions does Veracity support?\", \"url\": \"/faq#which-jurisdictions-does-veracity-support\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Is Veracity legal?\", \"url\": \"/faq#is-veracity-legal\"}, {\"title\": \"Compliance and Trust \\u2014 Regulatory Frameworks > US State Electronic Monitoring Laws\", \"url\": \"/compliance#us-state-electronic-monitoring-laws\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Step 2: Understand the Regulatory Landscape > United States\", \"url\": \"/resources/smb-guide-to-workforce-analytics#united-states\"}]"
+        }
+      ]
+    },
+    {
+      "id": "Q-041",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > What integrations are available?\", \"url\": \"/faq#what-integrations-are-available\"}, {\"title\": \"Integrations \\u2014 Planned Integrations (Roadmap)\", \"url\": \"/integrations#planned-integrations-roadmap\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"About \\u2014 Contact Us > Sales Inquiries\", \"url\": \"/about#sales-inquiries\"}]",
+      "latency_ms": 457,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-042",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"Integrations \\u2014 REST API\", \"url\": \"/integrations#rest-api\"}, {\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Getting Started with Veracity\", \"url\": \"/resources/smb-guide-to-workforce-analytics#getting-started-with-veracity\"}, {\"title\": \"About \\u2014 Contact Us\", \"url\": \"/about#contact-us\"}, {\"title\": \"About \\u2014 Our Story\", \"url\": \"/about#our-story\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}]",
+      "latency_ms": 396,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-043",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > Can employees see their own data?\", \"url\": \"/faq#can-employees-see-their-own-data\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice > For Employees\", \"url\": \"/why-veracity#for-employees\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#the-veracity-alternative\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"About \\u2014 Our Story\", \"url\": \"/about#our-story\"}, {\"title\": \"Home \\u2014 The Veracity Approach: Collect Less, Show More > Three Core Principles\", \"url\": \"/#three-core-principles\"}, {\"title\": \"About \\u2014 About\", \"url\": \"/about\"}]",
+      "latency_ms": 610,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-044",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Why Veracity \\u2014 Why Veracity\", \"url\": \"/why-veracity\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > Who is Veracity for?\", \"url\": \"/faq#who-is-veracity-for\"}, {\"title\": \"About \\u2014 About\", \"url\": \"/about\"}, {\"title\": \"Home \\u2014 The Veracity Approach: Collect Less, Show More\", \"url\": \"/#the-veracity-approach-collect-less-show-more\"}, {\"title\": \"Home \\u2014 The Veracity Approach: Collect Less, Show More > Three Core Principles\", \"url\": \"/#three-core-principles\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does Veracity deliberately NOT collect?\", \"url\": \"/faq#what-data-does-veracity-deliberately-not-collect\"}]",
+      "latency_ms": 395,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-045",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Features \\u2014 Features\", \"url\": \"/features\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Home \\u2014 Home\", \"url\": \"/\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice > For Managers\", \"url\": \"/why-veracity#for-managers\"}, {\"title\": \"Compliance and Trust \\u2014 Regulatory Frameworks > General Data Protection Regulation (GDPR)\", \"url\": \"/compliance#general-data-protection-regulation-gdpr\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I get started with Veracity?\", \"url\": \"/faq#how-do-i-get-started-with-veracity\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice > For Employees\", \"url\": \"/why-veracity#for-employees\"}]",
+      "latency_ms": 534,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-046",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice > For Employees\", \"url\": \"/why-veracity#for-employees\"}, {\"title\": \"About \\u2014 About\", \"url\": \"/about\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > What data does Veracity deliberately NOT collect?\", \"url\": \"/faq#what-data-does-veracity-deliberately-not-collect\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative > Employee-Controlled Privacy\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#employee-controlled-privacy\"}, {\"title\": \"The SMB Guide to Workforce Analytics \\u2014 Step 4: Configure for Trust > Be Explicit About What You Are Not Collecting\", \"url\": \"/resources/smb-guide-to-workforce-analytics#be-explicit-about-what-you-are-not-collecting\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Why Veracity \\u2014 Why Veracity\", \"url\": \"/why-veracity\"}]",
+      "latency_ms": 443,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-047",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Integrations \\u2014 Integrations\", \"url\": \"/integrations\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > What integrations are available?\", \"url\": \"/faq#what-integrations-are-available\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Integrations \\u2014 Planned Integrations (Roadmap)\", \"url\": \"/integrations#planned-integrations-roadmap\"}, {\"title\": \"Home \\u2014 Home\", \"url\": \"/\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#the-veracity-alternative\"}]",
+      "latency_ms": 504,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-048",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice\", \"url\": \"/why-veracity#the-veracity-difference-in-practice\"}, {\"title\": \"About \\u2014 Contact Us\", \"url\": \"/about#contact-us\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"About \\u2014 Contact Us > Office Location\", \"url\": \"/about#office-location\"}, {\"title\": \"Transparent Monitoring for Modern Teams \\u2014 The Veracity Alternative\", \"url\": \"/resources/transparent-monitoring-for-modern-teams#the-veracity-alternative\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Pricing \\u2014 Billing Details > Non-Profit and Educational Discounts\", \"url\": \"/pricing#non-profit-and-educational-discounts\"}]",
+      "latency_ms": 582,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-049",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > Do you offer discounts for non-profits or educational institutions?\", \"url\": \"/faq#do-you-offer-discounts-for-non-profits-or-educational-institutions\"}, {\"title\": \"About \\u2014 Contact Us\", \"url\": \"/about#contact-us\"}, {\"title\": \"About \\u2014 Contact Us > Office Location\", \"url\": \"/about#office-location\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Home \\u2014 Ready to See the Difference?\", \"url\": \"/#ready-to-see-the-difference\"}, {\"title\": \"Frequently Asked Questions \\u2014 Technical > Do you have a public API?\", \"url\": \"/faq#do-you-have-a-public-api\"}, {\"title\": \"Pricing \\u2014 Billing Details > Payment Methods\", \"url\": \"/pricing#payment-methods\"}, {\"title\": \"Frequently Asked Questions \\u2014 Plans and Billing > What payment methods do you accept?\", \"url\": \"/faq#what-payment-methods-do-you-accept\"}]",
+      "latency_ms": 862,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-050",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "[{\"title\": \"Frequently Asked Questions \\u2014 Technical > Can employees install the Agent themselves?\", \"url\": \"/faq#can-employees-install-the-agent-themselves\"}, {\"title\": \"Frequently Asked Questions \\u2014 Setup and Onboarding > How do I get started with Veracity?\", \"url\": \"/faq#how-do-i-get-started-with-veracity\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > What is Veracity?\", \"url\": \"/faq#what-is-veracity\"}, {\"title\": \"Why Veracity \\u2014 The Veracity Difference in Practice > For Employees\", \"url\": \"/why-veracity#for-employees\"}, {\"title\": \"Frequently Asked Questions \\u2014 Privacy and Data > Can employees see their own data?\", \"url\": \"/faq#can-employees-see-their-own-data\"}, {\"title\": \"About \\u2014 About\", \"url\": \"/about\"}, {\"title\": \"Frequently Asked Questions \\u2014 General > How is Veracity different from traditional employee monitoring?\", \"url\": \"/faq#how-is-veracity-different-from-traditional-employee-monitoring\"}, {\"title\": \"About \\u2014 Contact Us > Book a Demo\", \"url\": \"/about#book-a-demo\"}]",
+      "latency_ms": 583,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    }
+  ]
+}

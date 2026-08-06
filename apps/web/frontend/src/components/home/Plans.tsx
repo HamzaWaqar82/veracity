@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { CheckIcon, MinusIcon } from "@/components/icons";
+import { CTA } from "@/lib/cta";
 
 const planTiers = [
   { name: "Starter", price: "$6", foot: "/ user / month" },
@@ -82,7 +83,7 @@ export function Plans() {
         <div className="js-plans-wrap relative mt-12 overflow-x-auto rounded-2xl border border-line bg-bg">
           <table className="w-full min-w-[42rem] border-collapse text-left text-sm tabular-nums">
             <caption className="sr-only">
-              Veracity pricing — Starter, Growth, and Enterprise plan features
+              Veracity pricing: Starter, Growth, and Enterprise plan features
             </caption>
             <thead>
               <tr className="border-b border-line">
@@ -128,17 +129,25 @@ export function Plans() {
             </tbody>
           </table>
         </div>
-        <p className="js-plans-foot mt-8 max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
-          See the{" "}
-          <Link href="/features" className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary">
-            Features page
-          </Link>{" "}
-          for a detailed breakdown and the{" "}
-          <Link href="/pricing" className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary">
-            Pricing page
-          </Link>{" "}
-          for complete pricing information.
-        </p>
+        <div className="js-plans-foot mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
+            See the{" "}
+            <Link href="/features" className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary">
+              Features page
+            </Link>{" "}
+            for a detailed breakdown and the{" "}
+            <Link href="/pricing" className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary">
+              Pricing page
+            </Link>{" "}
+            for complete pricing information.
+          </p>
+          <Link
+            href={CTA.trial}
+            className="btn btn-primary btn-lg shrink-0"
+          >
+            Start Free Trial
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -4,24 +4,25 @@ import { useRef } from "react";
 import Link from "next/link";
 import { gsap, ScrollTrigger, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
 import { attachMagnetic } from "@/lib/cursor";
+import { CTA } from "@/lib/cta";
 
 const ledgerPreview = [
   {
     name: "ACTIVE",
     color: "oklch(0.706 0.118 161)",
-    desc: "Using the workstation — keyboard or mouse input detected.",
+    desc: "Using the workstation: keyboard or mouse input detected.",
     tag: "app · url",
   },
   {
     name: "PASSIVE",
     color: "oklch(0.55 0.11 225)",
-    desc: "Engaged but not inputting — reading, training, meetings.",
+    desc: "Engaged but not inputting: reading, training, meetings.",
     tag: "meeting",
   },
   {
     name: "IDLE",
     color: "oklch(0.49 0.03 160)",
-    desc: "Away — no input beyond the 180-second threshold.",
+    desc: "Away: no input beyond the 180-second threshold.",
     tag: "not scored",
   },
   {
@@ -34,18 +35,9 @@ const ledgerPreview = [
 
 const headlineWords = "Workforce Analytics Built on Trust, Not Surveillance.".split(" ");
 
-const chips = [
-  { label: "60s HEARTBEAT", pos: "top-5 -right-4", dot: "oklch(0.706 0.118 161)" },
-  { label: "PRIVATE TIME", pos: "top-1/2 -left-5", dot: "oklch(0.62 0.12 82)" },
-  { label: "TLS 1.3 IN TRANSIT", pos: "-bottom-4 right-10", dot: "oklch(0.55 0.11 225)" },
-];
-
 export function Hero() {
   const root = useRef<HTMLElement>(null);
   const content = useRef<HTMLDivElement>(null);
-  const texture = useRef<HTMLDivElement>(null);
-  const glow = useRef<HTMLDivElement>(null);
-  const bgNum = useRef<HTMLDivElement>(null);
   const badge = useRef<HTMLParagraphElement>(null);
   const lede = useRef<HTMLParagraphElement>(null);
   const note = useRef<HTMLParagraphElement>(null);
@@ -96,41 +88,13 @@ export function Hero() {
 
         if (desktop) {
           // Depth stack, slowest → fastest:
-          // 1) deepest: watermark numeral barely drifts
-          // 2) rule-lines grid · 3) radial glow · 4) copy recedes up
-          // 5) front layer: ledger panel pulls up fastest · 6) chips outrun everything
+          // 1) copy recedes up · 2) front layer: ledger panel pulls up fastest
           const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: scroll });
-          tl.to(bgNum.current, { yPercent: 12, autoAlpha: 0 }, 0)
-            .to(texture.current, { yPercent: 32 }, 0)
-            .to(glow.current, { yPercent: 52 }, 0)
-            .to(content.current, { y: -72, scale: 0.93, autoAlpha: 0.22 }, 0)
-            .to(panel.current, { y: -96 }, 0)
-            .to(q(".js-hero-chip"), { y: -170 }, 0);
-
-          // Idle float on chips — subtle life; rides alongside scroll y + cursor x
-          gsap.to(q(".js-hero-chip"), {
-            yPercent: 20,
-            duration: 3.2,
-            ease: "sine.inOut",
-            yoyo: true,
-            repeat: -1,
-            stagger: 0.45,
-          });
+          tl.to(content.current, { y: -72, scale: 0.93, autoAlpha: 0 }, 0).to(panel.current, { y: -96 }, 0);
 
           // Pointer tilt on the ledger panel (front-layer depth)
           const xTo = gsap.quickTo(panel.current, "rotationY", { duration: 0.7, ease: "power3.out" });
           const yTo = gsap.quickTo(panel.current, "rotationX", { duration: 0.7, ease: "power3.out" });
-
-          // Cursor layer parallax — deep layers drift least, glow/texture mid, chips fastest
-          const layers = [
-            { el: bgNum.current!, range: 10 },
-            { el: texture.current!, range: 16 },
-            { el: glow.current!, range: 22 },
-          ];
-          const layerX = layers.map((t) => gsap.quickTo(t.el, "x", { duration: 0.9, ease: "power3.out" }));
-          const layerY = layers.map((t) => gsap.quickTo(t.el, "y", { duration: 0.9, ease: "power3.out" }));
-          const chips = gsap.utils.toArray<HTMLElement>(".js-hero-chip", root.current!);
-          const chipX = chips.map((c) => gsap.quickTo(c, "x", { duration: 0.7, ease: "power3.out" }));
 
           const onMove = (e: PointerEvent) => {
             const r = root.current!.getBoundingClientRect();
@@ -138,18 +102,10 @@ export function Hero() {
             const ny = (e.clientY - r.top) / r.height - 0.5;
             xTo(nx * 7);
             yTo(-ny * 7);
-            layers.forEach((t, i) => {
-              layerX[i](-nx * t.range * 2);
-              layerY[i](-ny * t.range * 2);
-            });
-            chips.forEach((c, i) => chipX[i](-nx * 60));
           };
           const onLeave = () => {
             xTo(0);
             yTo(0);
-            layerX.forEach((fn) => fn(0));
-            layerY.forEach((fn) => fn(0));
-            chipX.forEach((fn) => fn(0));
           };
           root.current?.addEventListener("pointermove", onMove);
           root.current?.addEventListener("pointerleave", onLeave);
@@ -168,7 +124,7 @@ export function Hero() {
         // Non-desktop: a gentler single-layer recede only.
         gsap.to(content.current, {
           y: -56,
-          autoAlpha: 0.3,
+          autoAlpha: 0,
           ease: "none",
           scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: 0.8 },
         });
@@ -179,25 +135,6 @@ export function Hero() {
 
   return (
     <section ref={root} className="relative overflow-hidden bg-mint text-hero-ink">
-      <div
-        ref={bgNum}
-        aria-hidden="true"
-        className="hero-layer pointer-events-none absolute -right-8 bottom-[-7rem] hidden select-none lg:block"
-      >
-        <p className="font-display text-[clamp(9rem,18vw,20rem)] font-semibold leading-none tracking-tighter text-hero-line/40">
-          01
-        </p>
-      </div>
-      <div
-        ref={texture}
-        aria-hidden="true"
-        className="hero-layer pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,var(--color-hero-line)_1px,transparent_1px)] bg-[size:100%_3rem] opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent_85%)]"
-      />
-      <div
-        ref={glow}
-        aria-hidden="true"
-        className="hero-layer pointer-events-none absolute inset-0 bg-[radial-gradient(55%_45%_at_72%_0%,rgba(255,255,255,0.55),transparent_62%)]"
-      />
       <div
         ref={content}
         className="container-x relative grid items-center gap-16 pb-20 pt-32 sm:pt-40 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:pb-28 lg:pt-44"
@@ -221,15 +158,15 @@ export function Hero() {
           </h1>
           <p ref={lede} className="mt-7 max-w-xl text-lg leading-relaxed text-hero-muted">
             Workforce analytics for small-to-medium businesses with remote and hybrid teams. Get
-            verifiable productivity data your employees can see in real time — without surveillance,
+            verifiable productivity data your employees can see in real time, without surveillance,
             keystroke logging, or stealth mode.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link href="/pricing" className="btn btn-lg btn-primary js-hero-cta">
+            <Link href={CTA.trial} className="btn btn-lg btn-primary js-hero-cta">
               Start Free Trial
             </Link>
             <Link href="/pricing" className="btn btn-lg btn-outline-hero js-hero-cta">
-              View Pricing
+              See Pricing
             </Link>
           </div>
           <p ref={note} className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium text-hero-muted">
@@ -242,10 +179,6 @@ export function Hero() {
               ·
             </span>
             <span>No seat minimum</span>
-            <span className="text-hero-line" aria-hidden="true">
-              ·
-            </span>
-            <span>All features included</span>
           </p>
         </div>
         <div className="lg:justify-self-end">
@@ -306,19 +239,6 @@ export function Hero() {
                 </div>
               </div>
             </div>
-            {chips.map((c) => (
-              <span
-                key={c.label}
-                className={`js-hero-chip hero-chip absolute hidden items-center gap-2 rounded-full border border-hero-line bg-white px-3 py-1.5 text-[0.6875rem] font-bold tracking-[0.08em] text-hero-ink shadow-[0_14px_30px_-16px_rgba(27,67,50,0.5)] lg:inline-flex ${c.pos}`}
-              >
-                <span
-                  aria-hidden="true"
-                  className="size-1.5 rounded-full"
-                  style={{ backgroundColor: c.dot }}
-                />
-                {c.label}
-              </span>
-            ))}
           </div>
         </div>
       </div>

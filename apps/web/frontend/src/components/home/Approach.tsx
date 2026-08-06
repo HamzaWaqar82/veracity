@@ -2,8 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { gsap, useGSAP, EASE, MOTION, DESKTOP, HOVER } from "@/lib/motion";
-import { attachSpotlight, attachTilt } from "@/lib/cursor";
+import { gsap, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
 import { CheckIcon, MinusIcon } from "@/components/icons";
 
 const collects = ["Application names", "Window titles", "URL domains"];
@@ -15,7 +14,7 @@ const never = [
   "Emotion or biometric inference",
 ];
 const visible = [
-  "The Agent sits visibly in every system tray with a live capture indicator — nothing runs in secret.",
+  "The Agent sits visibly in every system tray with a live capture indicator. Nothing runs in secret.",
   "Employees see the same real-time data their manager sees, so trust replaces resentment.",
   "A complete access log tells each employee who viewed their data, and when.",
 ];
@@ -23,7 +22,6 @@ const visible = [
 export function Approach() {
   const root = useRef<HTMLElement>(null);
   const card = useRef<HTMLDivElement>(null);
-  const spotlight = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -98,15 +96,6 @@ export function Approach() {
           );
         }
       });
-
-      mm.add({ motion: MOTION, hover: HOVER }, (ctx) => {
-        if (!ctx.conditions?.motion || !ctx.conditions?.hover) return;
-        const cleanups: (() => void)[] = [];
-        const inner = card.current?.querySelector<HTMLElement>(".js-capture-inner");
-        if (card.current) cleanups.push(attachTilt(card.current, 3, inner ?? undefined));
-        if (spotlight.current) cleanups.push(attachSpotlight(spotlight.current));
-        return () => cleanups.forEach((fn) => fn());
-      });
     },
     { scope: root },
   );
@@ -142,29 +131,15 @@ export function Approach() {
             , including data retention and the jurisdiction-aware notice engine.
           </p>
         </div>
-        <div className="[perspective:1200px]">
+        <div>
           <div
             ref={card}
             className="js-capture-card relative overflow-hidden rounded-3xl border border-line bg-bg p-7 sm:p-9"
           >
-            <div
-              ref={spotlight}
-              aria-hidden="true"
-              className="approach-spotlight pointer-events-none absolute"
-              style={{
-                left: "50%",
-                top: "50%",
-                width: "42rem",
-                height: "42rem",
-                marginLeft: "-21rem",
-                marginTop: "-21rem",
-              }}
-            />
-            <div className="js-capture-inner">
-              <div className="js-capture-group">
+            <div className="js-capture-group">
                 <h3 className="font-display text-xl font-semibold">What Veracity captures</h3>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
-                  Activity data at sixty-second heartbeat intervals — enough to understand work
+                  Activity data at sixty-second heartbeat intervals: enough to understand work
                   patterns, not enough to invade privacy.
                 </p>
                 <ul className="mt-5 space-y-3">
@@ -186,7 +161,7 @@ export function Approach() {
               <div className="js-capture-group">
                 <h3 className="font-display text-xl font-semibold">What Veracity never captures</h3>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
-                  By deliberate architectural constraint — at every tier, now and in all future
+                  A deliberate architectural constraint at every tier, now and in all future
                   versions.
                 </p>
                 <ul className="mt-5 space-y-3">
@@ -203,7 +178,6 @@ export function Approach() {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 }

@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     absolute: "Workforce Analytics for Remote Teams | Veracity",
   },
   description:
-    "Workforce analytics for SMBs with remote and hybrid teams. Get verifiable productivity data your employees can see in real time — no surveillance, no stealth mode.",
+    "Workforce analytics for SMBs with remote and hybrid teams. Get verifiable productivity data your employees can see in real time, without surveillance or stealth mode.",
   openGraph: {
     title: "Workforce Analytics for Remote Teams | Veracity",
     description:
-      "Workforce analytics for SMBs with remote and hybrid teams. Verifiable productivity data your employees can see — no keystroke logging, no stealth mode.",
+      "Workforce analytics for SMBs with remote and hybrid teams. Verifiable productivity data your employees can see, with no keystroke logging and no stealth mode.",
     type: "website",
   },
   alternates: { canonical: "/" },
