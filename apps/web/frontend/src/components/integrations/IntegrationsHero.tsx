@@ -66,7 +66,7 @@ export function IntegrationsHero() {
           ))}
         </h1>
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
-          Veracity connects with the tools your team already uses — enriching productivity data
+          Veracity connects with the tools your team already uses - enriching productivity data
           with context from your existing workflow for more accurate activity classification and
           richer analytics.
         </p>

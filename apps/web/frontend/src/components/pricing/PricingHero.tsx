@@ -9,9 +9,9 @@ import { CTA } from "@/lib/cta";
 const headlineWords = "Pricing that states its own terms.".split(" ");
 
 const jumpLinks = [
-  { label: "Plans", href: "#plans" },
-  { label: "Billing", href: "#billing" },
-  { label: "What we never do", href: "#never" },
+  { label: "Plans", href: "#plan-details" },
+  { label: "Billing", href: "#billing-details" },
+  { label: "What we never do", href: "#what-veracity-does-not-offer" },
 ];
 
 const receiptRows = [
@@ -129,7 +129,7 @@ export function PricingHero() {
         </h1>
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
           Three plans, one published matrix. Every price, limit, and support commitment is stated
-          here in exact numbers — and what no plan includes is stated just as plainly.
+          here in exact numbers - and what no plan includes is stated just as plainly.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link href={CTA.trial} className="btn btn-lg btn-primary js-price-cta">

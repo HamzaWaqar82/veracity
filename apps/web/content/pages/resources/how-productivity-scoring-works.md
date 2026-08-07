@@ -80,7 +80,7 @@ denominator = 14,400,000 + 7,200,000 + 3,600,000 + (0.5 × 3,600,000) = 14,400,0
 
 score = round((16,200,000 / 27,000,000) × 100) = round(60.0) = **60**
 
-This matches the acceptance criterion specified in the Veracity Software Requirements Specification (PA-FR-001, AC-001-1).
+This validates the published methodology: given the same inputs, the score is always reproducible from the stated formula.
 
 ---
 
@@ -124,7 +124,7 @@ Confidence indicators are displayed next to the score with color-coded icons: gr
 Scores are calculated:
 - **Daily (midnight local time):** The system processes all activity events for the previous day and produces the daily score.
 - **On session end:** When an employee ends their work session (shuts down or logs off), a real-time score is calculated for the partial day.
-- **On dispute resolution:** If a dispute is upheld and events are recategorized, the score for the affected date range is recalculated (PA-FR-007).
+- **On dispute resolution:** If a dispute is upheld and events are recategorized, the score for the affected date range is recalculated.
 
 ---
 

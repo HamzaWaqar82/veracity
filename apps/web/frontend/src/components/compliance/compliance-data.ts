@@ -5,7 +5,7 @@ export const collectRows: CollectRow[] = [
   { type: "Window titles", description: "Active window title text", plans: "All", retention: "12 months" },
   { type: "URL visits", description: "Browser domain (default) or full path (opt-in)", plans: "All", retention: "12 months" },
   { type: "Activity state", description: "ACTIVE, PASSIVE, IDLE, PRIVATE_TIME transitions", plans: "All", retention: "12 months" },
-  { type: "Productivity scores", description: "Daily score (0–100 or null), confidence indicator, breakdown", plans: "All", retention: "12 months" },
+  { type: "Productivity scores", description: "Daily score (0-100 or null), confidence indicator, breakdown", plans: "All", retention: "12 months" },
   { type: "Private Time sessions", description: "Start time, end time, duration, reason", plans: "All", retention: "12 months" },
   { type: "Screenshots", description: "Periodic JPEG captures (compressed, redacted, encrypted)", plans: "Growth + Enterprise", retention: "90 days" },
   { type: "USB events", description: "Device connection/disconnection events (identifiers only)", plans: "All", retention: "12 months" },
@@ -18,8 +18,8 @@ export type NeverRow = { name: string; description: string };
 
 export const neverRows: NeverRow[] = [
   { name: "Keystrokes", description: "Never logs keystrokes, key counts, or any keyboard input content" },
-  { name: "Audio", description: "No microphone access — no audio recorded or transmitted" },
-  { name: "Video", description: "No webcam access — no video recorded or transmitted" },
+  { name: "Audio", description: "No microphone access - no audio recorded or transmitted" },
+  { name: "Video", description: "No webcam access - no video recorded or transmitted" },
   { name: "Continuous screen recording", description: "Periodic screenshots only, never continuous recording" },
   { name: "Network traffic", description: "Does not inspect, capture, or log network traffic content" },
   { name: "Email content", description: "Does not access, capture, or analyze email content" },
@@ -59,7 +59,7 @@ export const frameworks: Framework[] = [
     name: "Connecticut",
     region: "US State",
     points: [
-      "CGS § 31-48d — policy acknowledgment workflow supports prior written notice of electronic monitoring",
+      "CGS § 31-48d - policy acknowledgment workflow supports prior written notice of electronic monitoring",
       "Jurisdiction-aware notice engine presents the Connecticut-specific template",
     ],
   },
@@ -67,7 +67,7 @@ export const frameworks: Framework[] = [
     name: "New York",
     region: "US State",
     points: [
-      "NY Lab. Law § 52-c — written notice at time of hire and annually thereafter",
+      "NY Lab. Law § 52-c - written notice at time of hire and annually thereafter",
       "Acknowledgment tracking and compliance reports per employee",
     ],
   },
@@ -75,14 +75,14 @@ export const frameworks: Framework[] = [
     name: "Delaware",
     region: "US State",
     points: [
-      "DE Title 19 § 705 — notice of electronic monitoring policies",
+      "DE Title 19 § 705 - notice of electronic monitoring policies",
     ],
   },
   {
     name: "Colorado",
     region: "US State",
     points: [
-      "CO Rev. Stat. § 8-2-127 — notice and consent for electronic monitoring",
+      "CO Rev. Stat. § 8-2-127 - notice and consent for electronic monitoring",
     ],
   },
 ];
@@ -136,9 +136,9 @@ export const portability: string[] = [
 ];
 
 export const disclosureDocs: string[] = [
-  "Data Processing Agreement (DPA) — EU Standard Contractual Clauses (2021)",
+  "Data Processing Agreement (DPA) - EU Standard Contractual Clauses (2021)",
   "Records of Processing Activities (ROPA)",
   "Data Protection Impact Assessment (DPIA) framework",
   "Subprocessor list",
-  "SOC 2 Type II report (when available — currently in audit)",
+  "SOC 2 Type II report (when available - currently in audit)",
 ];

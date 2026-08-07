@@ -9,6 +9,11 @@ export type Essay = {
   readTime: string;
 };
 
+export type ArticleHeading = {
+  id: string;
+  text: string;
+};
+
 const blogRoot = path.join(process.cwd(), "..", "content", "pages", "resources");
 
 export const BLOG_FILES = [
@@ -43,12 +48,32 @@ export function getEssay(slug: string): Essay | null {
   return essays.find((e) => e.slug === slug) ?? null;
 }
 
+export function headingId(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+}
+
+export function extractHeadings(markdown: string): ArticleHeading[] {
+  const headings: ArticleHeading[] = [];
+  const re = /^##\s+(.+)$/gm;
+  let match: RegExpExecArray | null;
+  while ((match = re.exec(markdown)) !== null) {
+    const text = match[1].trim();
+    if (text) headings.push({ id: headingId(text), text });
+  }
+  return headings;
+}
+
 export function readEssayMarkdown(slug: string): string | null {
   if (!BLOG_FILES.includes(slug)) return null;
   try {
     const { content } = matter(fs.readFileSync(path.join(blogRoot, `${slug}.md`), "utf8"));
     return content
-      .replace(/^# [^\n]+\n\n\*[^*\n]+\*\n\n---\n\n/, "")
+      .replace(/^# [^\n]+\n+/, "")
+      .replace(/^\*[^*\n]+\*\n+/, "")
+      .replace(/^---\s*\n+/, "")
       .trim();
   } catch {
     return null;

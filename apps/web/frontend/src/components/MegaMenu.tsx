@@ -124,7 +124,7 @@ export function MegaMenu({ items, scrolled }: { items: NavItem[]; scrolled: bool
                 }`}
               >
                 <div
-                  className={`overflow-hidden rounded-2xl border border-line bg-bg p-6 shadow-xl shadow-primary-deep/10 transition-[opacity,transform] duration-200 ease-out sm:p-8 ${
+                  className={`overflow-hidden rounded-2xl border border-line bg-bg p-6 shadow-[0_20px_25px_-5px_rgb(27_67_50_/_0.10),0_8px_10px_-6px_rgb(27_67_50_/_0.10)] transition-[opacity,transform] duration-200 ease-out sm:p-8 ${
                     isOpen ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
                   }`}
                 >

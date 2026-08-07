@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
+import { gsap, useGSAP, REVEAL, MOTION } from "@/lib/motion";
+import { TiltCard } from "@/components/common/TiltCard";
+import { ChevronIcon } from "@/components/icons";
 import { fieldReports } from "./case-studies-data";
 
 export function FieldReports() {
@@ -14,7 +16,7 @@ export function FieldReports() {
       mm.add({ motion: MOTION }, (ctx) => {
         if (!ctx.conditions?.motion) return;
         const enter = gsap.timeline({
-          defaults: { ease: EASE },
+          defaults: { ease: REVEAL.to.ease },
           scrollTrigger: { trigger: root.current, start: "top 68%" },
         });
         enter
@@ -23,12 +25,7 @@ export function FieldReports() {
             { autoAlpha: 0, y: 26, clipPath: "inset(0 0 100% 0)" },
             { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
           )
-          .fromTo(
-            q(".js-reports-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
-            "-=0.4",
-          )
+          .fromTo(q(".js-reports-lead"), REVEAL.from, REVEAL.to, "-=0.4")
           .fromTo(
             q(".js-report-card"),
             { autoAlpha: 0, y: 36 },
@@ -65,8 +62,10 @@ export function FieldReports() {
           {fieldReports.map((report, index) => (
             <article
               key={report.id}
-              className="js-report-card overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.3)]"
+              id={report.id}
+              className="js-report-card scroll-mt-28 [perspective:1400px]"
             >
+              <TiltCard maxAngle={1.5} className="overflow-hidden rounded-2xl border border-line bg-white">
               <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 bg-primary-deep px-5 py-3.5 sm:px-8">
                 <p className="text-xs font-bold tracking-[0.16em] text-on-dark">
                   FIELD REPORT {String(index + 1).padStart(2, "0")} · {report.descriptor}
@@ -94,12 +93,15 @@ export function FieldReports() {
 
               <div className="grid gap-x-10 gap-y-8 px-5 py-8 sm:px-8 lg:grid-cols-2">
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
-                    The challenge
-                  </h3>
-                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
-                    {report.challenge}
-                  </p>
+                  <details className="group" open={index === 0}>
+                    <summary className="flex cursor-pointer list-none items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-primary [&::-webkit-details-marker]:hidden">
+                      The challenge
+                      <ChevronIcon className="size-4 shrink-0 text-primary/70 transition-transform duration-200 group-open:rotate-180" />
+                    </summary>
+                    <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
+                      {report.challenge}
+                    </p>
+                  </details>
                   {report.challengeQuote && (
                     <blockquote className="mt-4 border-l-2 border-primary/40 pl-4 text-[0.9375rem] font-medium italic leading-relaxed text-ink">
                       {report.challengeQuote}
@@ -107,12 +109,15 @@ export function FieldReports() {
                   )}
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
-                    The solution
-                  </h3>
-                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
-                    {report.solution}
-                  </p>
+                  <details className="group" open={index === 0}>
+                    <summary className="flex cursor-pointer list-none items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-primary [&::-webkit-details-marker]:hidden">
+                      The solution
+                      <ChevronIcon className="size-4 shrink-0 text-primary/70 transition-transform duration-200 group-open:rotate-180" />
+                    </summary>
+                    <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
+                      {report.solution}
+                    </p>
+                  </details>
                   {report.solutionQuote && (
                     <blockquote className="mt-4 border-l-2 border-primary/40 pl-4 text-[0.9375rem] font-medium italic leading-relaxed text-ink">
                       {report.solutionQuote}
@@ -154,11 +159,11 @@ export function FieldReports() {
                   <p className="text-[0.9375rem] font-medium italic leading-relaxed text-primary">
                     &ldquo;{report.quote}&rdquo;
                   </p>
-                  <footer className="mt-3 text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-primary/80">
-                    — {report.persona}
+                  <footer className="mt-3 text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-primary/80"> - {report.persona}
                   </footer>
                 </blockquote>
               </div>
+              </TiltCard>
             </article>
           ))}
         </div>

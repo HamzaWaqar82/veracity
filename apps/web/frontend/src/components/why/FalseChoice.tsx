@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
 import { attachNudge } from "@/lib/cursor";
 import { CheckIcon } from "@/components/icons";
+import { TiltCard } from "@/components/common/TiltCard";
 import { falseChoiceBeliefs } from "./why-data";
 
 export function FalseChoice() {
@@ -66,12 +67,12 @@ export function FalseChoice() {
           The false choice: visibility or trust.
         </h2>
         <p className="js-false-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          The tools in this category — including Hubstaff, Time Doctor, Teramind, and ActivTrak —
-          were built for a world where more data is always better, employee notice is optional, and
+          The tools in this category (including Hubstaff, Time Doctor, Teramind, and ActivTrak) were built for a world where more data is always better, employee notice is optional, and
           productivity scores are black boxes. Veracity rejects this framing.
         </p>
 
-        <ul className="mt-12 overflow-hidden rounded-2xl border border-line bg-bg">
+        <TiltCard maxAngle={1.5} className="mt-12 rounded-2xl border border-line bg-bg">
+          <ul>
           {falseChoiceBeliefs.map((belief) => (
             <li
               key={belief.title}
@@ -93,7 +94,8 @@ export function FalseChoice() {
               </div>
             </li>
           ))}
-        </ul>
+          </ul>
+        </TiltCard>
       </div>
     </section>
   );

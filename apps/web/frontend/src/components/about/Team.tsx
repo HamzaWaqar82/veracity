@@ -43,11 +43,11 @@ export function Team() {
           The people behind the promise.
         </h2>
         <p className="js-team-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          A small, fully remote team across North America and Europe — the same people who answer
+          A small, fully remote team across North America and Europe - the same people who answer
           your emails, run your audits, and build the Agent.
         </p>
 
-        <div className="js-team-card mt-12 overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.25)]">
+        <div className="js-team-card mt-12 overflow-hidden rounded-2xl border border-line bg-white">
           <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
             <p className="text-xs font-bold tracking-[0.16em] text-on-dark">TEAM ROSTER</p>
             <p className="text-xs font-semibold text-on-dark-muted">FOUNDING TEAM</p>

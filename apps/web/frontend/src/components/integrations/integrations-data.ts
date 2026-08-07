@@ -1,3 +1,5 @@
+export type IntegrationIcon = "slack" | "jira" | "asana" | "calendar" | "api";
+
 export type Integration = {
   id: string;
   handle: string;
@@ -7,6 +9,7 @@ export type Integration = {
   summary: string;
   points: string[];
   setup?: string;
+  icon: IntegrationIcon;
 };
 
 export const integrations: Integration[] = [
@@ -16,13 +19,14 @@ export const integrations: Integration[] = [
     name: "Slack",
     tag: "Insights where you already work",
     plans: "All plans",
+    icon: "slack",
     summary:
       "Productivity insights delivered directly into your communication workflow, for managers and employees.",
     points: [
       "Managers receive daily productivity summaries, anomaly alerts, and team benchmarking reports",
       "Employees can check their score, view their activity timeline, and start or stop Private Time",
       "Notifications when a manager views a screenshot, and dispute resolution updates",
-      "Configure metrics and frequency — daily, weekly, or real-time for critical alerts",
+      "Configure metrics and frequency - daily, weekly, or real-time for critical alerts",
     ],
     setup: "Setup takes less than five minutes · supports multiple workspaces",
   },
@@ -32,6 +36,7 @@ export const integrations: Integration[] = [
     name: "Jira",
     tag: "Activity correlated to the ticket",
     plans: "All plans",
+    icon: "jira",
     summary:
       "Correlates activity data with project tickets to give productivity metrics real context.",
     points: [
@@ -47,6 +52,7 @@ export const integrations: Integration[] = [
     name: "Asana",
     tag: "Project-level productivity",
     plans: "All plans",
+    icon: "asana",
     summary:
       "Tracks project-level productivity trends and helps identify workload imbalances.",
     points: [
@@ -54,7 +60,7 @@ export const integrations: Integration[] = [
       "Project leads see which projects consume the most focus time",
       "Identifies tasks that may need redistribution across team members",
     ],
-    setup: "Respects Asana's privacy settings — never accesses tasks marked as private",
+    setup: "Respects Asana's privacy settings - never accesses tasks marked as private",
   },
   {
     id: "google-calendar",
@@ -62,6 +68,7 @@ export const integrations: Integration[] = [
     name: "Google Calendar",
     tag: "Meeting-aware, not meeting-penalized",
     plans: "All plans",
+    icon: "calendar",
     summary:
       "Enables meeting-aware idle detection and automatic Private Time scheduling.",
     points: [
@@ -69,7 +76,7 @@ export const integrations: Integration[] = [
       "Time marked as \"Focusing\" in the calendar activates Private Time automatically",
       "Works with Google Workspace and Microsoft 365 (Outlook) calendars",
     ],
-    setup: "Read-only OAuth 2.0 — never creates, modifies, or deletes events",
+    setup: "Read-only OAuth 2.0 - never creates, modifies, or deletes events",
   },
   {
     id: "rest-api",
@@ -77,6 +84,7 @@ export const integrations: Integration[] = [
     name: "REST API",
     tag: "Custom integrations and data export",
     plans: "Growth + Enterprise",
+    icon: "api",
     summary:
       "Access to the Veracity REST API for custom integrations, data export, and workflow automation.",
     points: [
@@ -103,14 +111,61 @@ export const roadmap = [
   },
 ];
 
-export const endpoints = [
-  "Employee activity data — applications, URLs, time allocation",
-  "Productivity scores — individual and team aggregate",
-  "Screenshot metadata (screenshot files require manager request through the web portal)",
-  "Team benchmarking data",
-  "Dispute submission and status",
-  "Private Time session records",
-  "Organization policy configuration and user management (admin only)",
-  "Audit log queries (admin only)",
-  "Compliance report generation (Enterprise only)",
+export type ApiEndpoint = {
+  method: "GET";
+  resource: string;
+  label: string;
+};
+
+export const endpoints: ApiEndpoint[] = [
+  {
+    method: "GET",
+    resource: "/activity",
+    label: "Employee activity data - applications, URLs, time allocation",
+  },
+  {
+    method: "GET",
+    resource: "/scores",
+    label: "Productivity scores - individual and team aggregate",
+  },
+  {
+    method: "GET",
+    resource: "/screenshots",
+    label: "Screenshot metadata - screenshot files require manager request through the web portal",
+  },
+  {
+    method: "GET",
+    resource: "/benchmarking",
+    label: "Team benchmarking data",
+  },
+  {
+    method: "GET",
+    resource: "/disputes",
+    label: "Dispute submission and status",
+  },
+  {
+    method: "GET",
+    resource: "/private-time",
+    label: "Private Time session records",
+  },
+  {
+    method: "GET",
+    resource: "/org/policies",
+    label: "Organization policy configuration and user management (admin only)",
+  },
+  {
+    method: "GET",
+    resource: "/org/users",
+    label: "User management (admin only)",
+  },
+  {
+    method: "GET",
+    resource: "/org/audit-log",
+    label: "Audit log queries (admin only)",
+  },
+  {
+    method: "GET",
+    resource: "/compliance-reports",
+    label: "Compliance report generation (Enterprise only)",
+  },
 ];

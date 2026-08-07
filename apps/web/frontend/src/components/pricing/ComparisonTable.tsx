@@ -3,20 +3,23 @@
 import { useRef, useState } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { CheckIcon, MinusIcon } from "@/components/icons";
+import { TableScroll } from "@/components/common/TableScroll";
 import { tiers, featureGroups, type TierCellValue, type TierCells } from "./pricing-data";
 
 function CellValue({ value, iconClass = "" }: { value: TierCellValue; iconClass?: string }) {
   if (value === "yes") {
     return (
-      <span className="inline-flex items-center justify-center" aria-label="Included">
+      <span className="inline-flex items-center justify-center">
         <CheckIcon pathClassName={iconClass} className="size-5 text-primary" />
+        <span className="sr-only">Included</span>
       </span>
     );
   }
   if (value === "no" || value === "not-available") {
     return (
-      <span className="inline-flex items-center justify-center" aria-label="Not included">
+      <span className="inline-flex items-center justify-center">
         <MinusIcon pathClassName={iconClass} className="size-5 text-accent" />
+        <span className="sr-only">Not included</span>
       </span>
     );
   }
@@ -139,71 +142,70 @@ export function ComparisonTable() {
   };
 
   return (
-    <section ref={root} className="py-section">
+    <section ref={root} id="plan-comparison-table" className="scroll-mt-28 py-section">
       <div className="container-x">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="js-table-h max-w-xl font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             Every feature, every plan, in one table.
           </h2>
           <p className="js-table-h max-w-sm text-[0.9375rem] leading-relaxed text-muted">
-            All seven categories on one page. Cells are the published terms — nothing is settled
+            All seven categories on one page. Cells are the published terms - nothing is settled
             after signup.
           </p>
         </div>
 
-        <div
-          ref={matrixRef}
-          className="js-table-matrix mt-10 hidden overflow-x-auto rounded-2xl border border-line bg-bg shadow-xl shadow-primary-deep/10 lg:block"
-        >
-          <table
-            className="w-full min-w-[960px] border-collapse text-left"
-            onMouseOver={handleHover}
-            onMouseLeave={() => setHovered(null)}
-          >
-            <thead>
-              <tr className="sticky top-0 z-10 bg-surface/95 backdrop-blur">
-                <th
-                  scope="col"
-                  className="sticky left-0 z-20 min-w-[280px] border-b border-r border-line bg-surface/95 px-6 py-5 align-bottom backdrop-blur"
-                >
-                  <span className="text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-muted">
-                    Feature
-                  </span>
-                </th>
-                {tiers.map((tier, i) => (
+        <div ref={matrixRef} className="js-table-matrix mt-10 hidden lg:block">
+          <TableScroll className="rounded-2xl border border-line bg-bg">
+            <table
+              className="w-full min-w-[960px] table-fixed border-separate border-spacing-0 text-left"
+              onMouseOver={handleHover}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <thead>
+                <tr className="sticky top-0 z-10 bg-surface/95 backdrop-blur">
                   <th
-                    key={tier.id}
                     scope="col"
-                    data-col={i}
-                    className={`min-w-[210px] border-b border-line px-6 py-5 align-bottom transition-colors duration-200 ${
-                      hovered === i ? "bg-primary-soft/40" : ""
-                    }`}
+                    className="sticky left-0 z-20 w-72 border-b border-r border-line bg-surface/95 px-6 py-5 align-bottom backdrop-blur"
                   >
-                    <span className="block font-display text-lg font-semibold text-ink">
-                      {tier.name}
-                    </span>
-                    <span className="mt-1 block text-sm font-medium tabular-nums text-primary">
-                      {tier.monthly}
-                      <span className="text-muted"> / user / mo</span>
-                    </span>
-                    <span className="mt-0.5 block text-[0.8125rem] text-muted">
-                      {tier.users} · {tier.supportShort}
+                    <span className="text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-muted">
+                      Feature
                     </span>
                   </th>
+                  {tiers.map((tier, i) => (
+                    <th
+                      key={tier.id}
+                      scope="col"
+                      data-col={i}
+                      className={`border-b border-line px-6 py-5 align-bottom transition-colors duration-200 ${
+                        hovered === i ? "bg-primary-soft/40" : ""
+                      }`}
+                    >
+                      <span className="block font-display text-lg font-semibold text-ink">
+                        {tier.name}
+                      </span>
+                      <span className="mt-1 block text-sm font-medium tabular-nums text-primary">
+                        {tier.monthly}
+                        <span className="text-muted"> / user / mo</span>
+                      </span>
+                      <span className="mt-0.5 block text-[0.8125rem] text-muted">
+                        {tier.users} · {tier.supportShort}
+                      </span>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {featureGroups.map((group) => (
+                  <GroupRows
+                    key={group.id}
+                    name={group.name}
+                    groupRows={group.rows}
+                    hovered={hovered}
+                  />
                 ))}
-              </tr>
-            </thead>
-            <tbody>
-              {featureGroups.map((group) => (
-                <GroupRows
-                  key={group.id}
-                  name={group.name}
-                  groupRows={group.rows}
-                  hovered={hovered}
-                />
-              ))}
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </TableScroll>
         </div>
 
         <div className="js-table-mobile mt-10 lg:hidden">
@@ -211,7 +213,7 @@ export function ComparisonTable() {
         </div>
 
         <p className="js-table-note mt-6 max-w-2xl text-[0.8125rem] leading-relaxed text-muted">
-          The minus mark signals a capability a plan does not include — and no add-on can add it;
+          The minus mark signals a capability a plan does not include - and no add-on can add it;
           upgrade tiers only. Every fact in this matrix is pulled from the published pricing terms on
           our site.
         </p>
@@ -230,12 +232,12 @@ function GroupRows({
   hovered: number | null;
 }) {
   return (
-    <tbody className="js-table-group">
-      <tr className="js-table-group-row bg-surface/60">
+    <>
+      <tr className="js-table-group-row bg-bg">
         <th
           scope="rowgroup"
           colSpan={4}
-          className="sticky left-0 z-10 bg-surface/60 px-6 py-3.5 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-muted"
+          className="border-b border-line bg-bg px-6 py-3.5 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-muted"
         >
           {name}
         </th>
@@ -244,7 +246,7 @@ function GroupRows({
         <tr key={row.feature} className="js-table-row group transition-colors hover:bg-surface/40">
           <th
             scope="row"
-            className="sticky left-0 z-10 max-w-[280px] border-y border-line bg-bg px-6 py-4 font-medium text-[0.9375rem] leading-snug text-ink group-hover:bg-surface/60"
+            className="sticky left-0 z-10 w-72 border-b border-r border-line bg-bg px-6 py-4 font-medium text-[0.9375rem] leading-snug text-ink group-hover:bg-surface/60"
           >
             {row.feature}
           </th>
@@ -252,7 +254,7 @@ function GroupRows({
             <td
               key={i}
               data-col={i}
-              className={`border-y border-line px-6 py-4 transition-colors duration-200 ${
+              className={`border-b border-line px-6 py-4 transition-colors duration-200 ${
                 hovered === i ? "bg-primary-soft/40" : ""
               }`}
             >
@@ -261,6 +263,6 @@ function GroupRows({
           ))}
         </tr>
       ))}
-    </tbody>
+    </>
   );
 }

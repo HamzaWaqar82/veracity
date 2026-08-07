@@ -99,7 +99,7 @@ export function ContactForm() {
       return;
     }
 
-    const subject = `Website inquiry — ${values.topic}`;
+    const subject = `Website inquiry - ${values.topic}`;
     const inbox = inboxForTopic(values.topic);
     const body = buildBody([
       `Name: ${values.name.trim()}`,
@@ -117,7 +117,7 @@ export function ContactForm() {
       <FormSuccessCard
         eyebrow="SEND A MESSAGE"
         note="REPLIES WITHIN ONE BUSINESS DAY"
-        heading="Thanks — we&apos;re on it."
+        heading="Thanks - we&apos;re on it."
         fallbackEmail={inboxForTopic(values.topic)}
       >
         We&apos;ll reply to{" "}
@@ -197,7 +197,7 @@ export function ContactForm() {
             Send message
           </button>
           <p className="text-sm font-medium text-muted">
-            We reply to every message — usually within one business day.
+            We reply to every message - usually within one business day.
           </p>
         </div>
       </form>

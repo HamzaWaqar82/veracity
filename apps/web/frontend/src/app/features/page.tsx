@@ -8,7 +8,7 @@ import { capabilities } from "@/components/features/features-data";
 export const metadata: Metadata = {
   title: "Features | Down to the Exact Interval",
   description:
-    "The complete Veracity feature specification: activity tracking, published productivity scoring, employee dashboards, optional screenshot monitoring, compliance reports, and deployment — with the exact numbers, by plan tier.",
+    "The complete Veracity feature specification: activity tracking, published productivity scoring, employee dashboards, optional screenshot monitoring, compliance reports, and deployment - with the exact numbers, by plan tier.",
   alternates: { canonical: "/features" },
 };
 

@@ -128,7 +128,7 @@ export function TrialForm() {
             Start my free trial
           </button>
           <p className="text-sm font-medium text-muted">
-            We reply to every request — usually within one business day.
+            We reply to every request - usually within one business day.
           </p>
         </div>
       </form>

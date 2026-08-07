@@ -49,7 +49,11 @@ export function ComplianceHero() {
   );
 
   return (
-    <section ref={root} className="relative overflow-hidden bg-mint text-hero-ink">
+    <section
+      ref={root}
+      id="our-compliance-philosophy"
+      className="relative overflow-hidden bg-mint text-hero-ink"
+    >
       <div className="container-x pb-14 pt-32 text-center sm:pt-40 lg:pt-44">
         <p
           ref={badge}
@@ -70,7 +74,7 @@ export function ComplianceHero() {
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
           Every data collection decision is auditable against a published retention policy. Every
           access to monitoring data is logged in a tamper-evident audit trail. Every product claim
-          is limited to what we can demonstrate — not what we aspire to.
+          is limited to what we can demonstrate - not what we aspire to.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link href="#data-collection-what-we-collect-and-what-we-do-not" className="btn btn-lg btn-primary js-comp-cta">

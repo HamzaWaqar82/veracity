@@ -9,17 +9,17 @@ export const manifesto: Principle[] = [
   {
     n: "02",
     title: "Privacy as a feature",
-    body: "We collect only what is necessary for productivity analytics — application usage, window titles, and periodic screenshots on plans that include it. We do not log keystrokes, record continuously, or capture audio or video. Screenshots are encrypted at the point of capture and redacted by default.",
+    body: "We collect only what is necessary for productivity analytics - application usage, window titles, and periodic screenshots on plans that include it. We do not log keystrokes, record continuously, or capture audio or video. Screenshots are encrypted at the point of capture and redacted by default.",
   },
   {
     n: "03",
     title: "Data minimization",
-    body: "Activity tracking runs on a sixty-second heartbeat cycle, not a continuous stream. We capture state, not recordings. Retention is configurable with automated deletion, and Private Time pauses all capture at any time — only the duration is recorded, and the Agent enforces it locally so suppression works even when the server is unreachable.",
+    body: "Activity tracking runs on a sixty-second heartbeat cycle, not a continuous stream. We capture state, not recordings. Retention is configurable with automated deletion, and Private Time pauses all capture at any time - only the duration is recorded, and the Agent enforces it locally so suppression works even when the server is unreachable.",
   },
   {
     n: "04",
     title: "Human-in-the-loop accountability",
-    body: "No automated decisions affect employment outcomes. Productivity scores are advisory tools for coaching conversations, not performance evaluations. Screenshots require an explicit manager request to view — no automatic flagging or alerts based on screen content — and every access is logged in a tamper-evident audit trail.",
+    body: "No automated decisions affect employment outcomes. Productivity scores are advisory tools for coaching conversations, not performance evaluations. Screenshots require an explicit manager request to view (no automatic flagging or alerts based on screen content), and every access is logged in a tamper-evident audit trail.",
   },
   {
     n: "05",

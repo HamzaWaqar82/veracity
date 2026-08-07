@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
-import { attachSpotlight } from "@/lib/cursor";
+import { attachSpotlight, attachTilt } from "@/lib/cursor";
 import { MinusIcon } from "@/components/icons";
 import { neverOffers, deferredOffers } from "./pricing-data";
 
@@ -52,10 +52,10 @@ export function NeverOffers() {
 
       mm.add({ motion: MOTION, hover: HOVER }, (ctx) => {
         if (!ctx.conditions?.motion || !ctx.conditions?.hover) return;
-        if (spotlight.current && panel.current) {
-          const cleanup = attachSpotlight(spotlight.current);
-          return () => cleanup();
-        }
+        const cleanups: (() => void)[] = [];
+        if (spotlight.current) cleanups.push(attachSpotlight(spotlight.current));
+        if (panel.current) cleanups.push(attachTilt(panel.current, 1.5));
+        return () => cleanups.forEach((fn) => fn());
       });
     },
     { scope: root },
@@ -64,7 +64,7 @@ export function NeverOffers() {
   return (
     <section
       ref={root}
-      id="never"
+      id="what-veracity-does-not-offer"
       className="scroll-mt-28 py-section"
       aria-labelledby="never-heading"
     >

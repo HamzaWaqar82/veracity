@@ -29,6 +29,8 @@ from schemas import RetrievedChunk, SourceItem
 
 logger = logging.getLogger(__name__)
 
+MAX_CITATIONS = 3
+
 PRICING_PHRASE_KEYWORDS = {
     "how much",
     "free trial",
@@ -101,16 +103,19 @@ async def retrieve_context(query: str) -> list[RetrievedChunk]:
 
 
 def extract_sources(chunks: list[RetrievedChunk]) -> list[SourceItem]:
-    """Deduplicate and extract citation sources from retrieved chunks."""
+    """Deduplicate, rank by similarity, and cap citation sources."""
     seen_urls: set[str] = set()
     sources: list[SourceItem] = []
 
-    for c in chunks:
+    for c in sorted(chunks, key=lambda c: c.similarity, reverse=True):
         url = build_citation_url(c.page_url, c.anchor_id)
-        if url not in seen_urls:
-            seen_urls.add(url)
-            title = f"{c.page_title} — {c.heading_path}" if c.heading_path else c.page_title
-            sources.append(SourceItem(title=title, url=url))
+        if url in seen_urls:
+            continue
+        seen_urls.add(url)
+        title = f"{c.page_title} — {c.heading_path}" if c.heading_path else c.page_title
+        sources.append(SourceItem(title=title, url=url, similarity=c.similarity))
+        if len(sources) >= MAX_CITATIONS:
+            break
 
     return sources
 
@@ -152,12 +157,7 @@ async def stream_rag_response(
             is_pricing=is_pricing,
         )
 
-        # 5. Send citations event early so the client can display them
-        if sources:
-            sources_dict = [{"title": s.title, "url": s.url} for s in sources]
-            yield f"data: {json.dumps({'type': 'citations', 'sources': sources_dict})}\n\n"
-
-        # 6. Stream completion from OpenRouter
+        # 5. Stream completion from OpenRouter
         headers = {
             "Authorization": f"Bearer {OPENROUTER_API_KEY}",
             "Content-Type": "application/json",
@@ -212,7 +212,12 @@ async def stream_rag_response(
                 except json.JSONDecodeError:
                     continue
 
-        # 7. Persist interaction to session in database
+        # 7. Send citations event after the answer so the client shows them under text
+        if sources:
+            sources_dict = [{"title": s.title, "url": s.url} for s in sources]
+            yield f"data: {json.dumps({'type': 'citations', 'sources': sources_dict})}\n\n"
+
+        # 8. Persist interaction to session in database
         assistant_text = "".join(full_content)
         if assistant_text.strip():
             saved_session_id = await asyncio.to_thread(
@@ -222,10 +227,10 @@ async def stream_rag_response(
                 assistant_message=assistant_text,
             )
 
-            # 8. Send session event
+            # 9. Send session event
             yield f"data: {json.dumps({'type': 'session', 'session_id': saved_session_id})}\n\n"
 
-        # 9. Send done event
+        # 10. Send done event
         yield f"data: {json.dumps({'type': 'done'})}\n\n"
 
     except Exception as e:

@@ -75,7 +75,7 @@ export function Principles() {
             );
           });
 
-          // Barely-there idle float — rides alongside the scroll scrub (y px vs yPercent)
+          // Barely-there idle float - rides alongside the scroll scrub (y px vs yPercent)
           gsap.to(q(".js-principles-num"), {
             y: 4,
             duration: 2.6,

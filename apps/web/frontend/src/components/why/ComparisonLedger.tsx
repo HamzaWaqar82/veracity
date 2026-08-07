@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP, EASE, MOTION, DESKTOP, HOVER } from "@/lib/motion";
 import { attachSpotlight, attachTilt } from "@/lib/cursor";
 import { CheckIcon, MinusIcon } from "@/components/icons";
+import { TableScroll } from "@/components/common/TableScroll";
 import { comparisonRows } from "./why-data";
 
 export function ComparisonLedger() {
@@ -122,13 +123,13 @@ export function ComparisonLedger() {
         </h2>
         <p className="js-ledger-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
           Twelve dimensions, stated as facts. Green marks what Veracity does and captures; teal
-          marks what it never does — architectural refusals that apply at every tier.
+          marks what it never does - architectural refusals that apply at every tier.
         </p>
 
         <div className="relative mt-12 [perspective:1400px]">
           <div
             ref={card}
-            className="js-ledger-card relative overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.35)]"
+            className="js-ledger-card relative overflow-hidden rounded-2xl border border-line bg-white"
           >
             <div
               ref={spotlight}
@@ -157,7 +158,7 @@ export function ComparisonLedger() {
               <p className="text-xs font-semibold text-on-dark-muted">TRADITIONAL TOOLS → VERACITY</p>
             </div>
 
-            <div className="overflow-x-auto">
+            <TableScroll hint={false}>
               <table
                 className="w-full min-w-[46rem] border-collapse text-left"
                 onMouseOver={handleHover}
@@ -238,7 +239,7 @@ export function ComparisonLedger() {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
 
             <div className="js-ledger-stamp flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-line bg-primary-soft px-5 py-3">
               <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
@@ -252,7 +253,7 @@ export function ComparisonLedger() {
                   <span aria-hidden="true" className="flex size-4 items-center justify-center rounded-full bg-accent text-white">
                     <MinusIcon className="size-2.5" />
                   </span>
-                  Never — architectural constraint
+                  Never - architectural constraint
                 </p>
               </div>
               <p className="text-[0.8125rem] font-semibold text-primary">No accuracy % claims, anywhere</p>

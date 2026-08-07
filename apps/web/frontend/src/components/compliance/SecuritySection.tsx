@@ -2,13 +2,15 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
+import { TableScroll } from "@/components/common/TableScroll";
+import { TiltCard } from "@/components/common/TiltCard";
 import { encRows, keyMgmt, accessControls } from "./compliance-data";
 
 const auditTrail = [
-  "Who accessed the data — user ID, role, IP address",
-  "What data was accessed — data type, scope, record IDs",
-  "When the access occurred — UTC timestamp",
-  "Whether the access was successful, and the action taken — view, export, modify, delete",
+  "Who accessed the data - user ID, role, IP address",
+  "What data was accessed - data type, scope, record IDs",
+  "When the access occurred - UTC timestamp",
+  "Whether the access was successful, and the action taken - view, export, modify, delete",
 ];
 
 export function SecuritySection() {
@@ -58,13 +60,14 @@ export function SecuritySection() {
           monitoring data recorded in an immutable, tamper-evident audit trail.
         </p>
 
-        <div className="js-sec-card mt-12 overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.25)]">
-          <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
-            <p className="text-xs font-bold tracking-[0.16em] text-on-dark">ENCRYPTION STANDARDS</p>
-            <p className="text-xs font-semibold text-on-dark-muted">TLS 1.3 · AES-256</p>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[40rem] border-collapse text-left">
+          <div className="js-sec-card mt-12 [perspective:1400px]">
+            <TiltCard maxAngle={1.5} className="overflow-hidden rounded-2xl border border-line bg-white">
+            <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
+              <p className="text-xs font-bold tracking-[0.16em] text-on-dark">ENCRYPTION STANDARDS</p>
+              <p className="text-xs font-semibold text-on-dark-muted">TLS 1.3 · AES-256</p>
+            </div>
+            <TableScroll>
+              <table className="w-full min-w-[40rem] border-collapse text-left">
               <thead>
                 <tr className="border-b border-line">
                   <th scope="col" className="px-5 py-3 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-muted sm:px-6">
@@ -94,11 +97,13 @@ export function SecuritySection() {
                 ))}
               </tbody>
             </table>
+            </TableScroll>
+            </TiltCard>
           </div>
-        </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-3">
-          <div className="js-sec-card overflow-hidden rounded-2xl border border-line bg-white">
+          <div className="js-sec-card [perspective:1400px]">
+            <TiltCard maxAngle={1.5} className="h-full overflow-hidden rounded-2xl border border-line bg-white">
             <div className="flex items-center justify-between bg-ink px-5 py-3.5">
               <p className="text-xs font-bold tracking-[0.16em] text-on-dark">KEY MANAGEMENT</p>
             </div>
@@ -110,9 +115,11 @@ export function SecuritySection() {
                 </li>
               ))}
             </ul>
+            </TiltCard>
           </div>
 
-          <div className="js-sec-card overflow-hidden rounded-2xl border border-line bg-white">
+          <div className="js-sec-card [perspective:1400px]">
+            <TiltCard maxAngle={1.5} className="h-full overflow-hidden rounded-2xl border border-line bg-white">
             <div className="flex items-center justify-between bg-ink px-5 py-3.5">
               <p className="text-xs font-bold tracking-[0.16em] text-on-dark">ACCESS CONTROLS</p>
             </div>
@@ -124,9 +131,11 @@ export function SecuritySection() {
                 </li>
               ))}
             </ul>
+            </TiltCard>
           </div>
 
-          <div className="js-sec-card overflow-hidden rounded-2xl border border-line bg-white">
+          <div className="js-sec-card [perspective:1400px]">
+            <TiltCard maxAngle={1.5} className="h-full overflow-hidden rounded-2xl border border-line bg-white">
             <div className="flex items-center justify-between bg-ink px-5 py-3.5">
               <p className="text-xs font-bold tracking-[0.16em] text-on-dark">AUDIT TRAIL</p>
             </div>
@@ -144,10 +153,11 @@ export function SecuritySection() {
                 ))}
               </ul>
               <p className="mt-4 border-t border-line pt-4 text-[0.875rem] font-semibold text-ink">
-                The audit trail is immutable — no record can be modified or deleted after creation,
+                The audit trail is immutable - no record can be modified or deleted after creation,
                 and logs are retained for 24 months minimum.
               </p>
             </div>
+            </TiltCard>
           </div>
         </div>
       </div>

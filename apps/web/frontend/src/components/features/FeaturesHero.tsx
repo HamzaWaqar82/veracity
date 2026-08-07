@@ -90,7 +90,7 @@ export function FeaturesHero() {
           ))}
         </h1>
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
-          The complete Veracity specification — every tier on one page, with the real numbers:
+          The complete Veracity specification - every tier on one page, with the real numbers:
           heartbeat intervals, idle thresholds, screenshot intervals, and the published scoring
           formula. Cloud-native SaaS only; no on-premise deployment.
         </p>

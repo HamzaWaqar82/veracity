@@ -45,15 +45,15 @@ export function ContactSection() {
           Talk to us.
         </h2>
         <p className="js-contact-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          A question about Veracity, a demo request, or help with your account — the team is here
+          A question about Veracity, a demo request, or help with your account - the team is here
           to help. {availability}
         </p>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <div className="js-contact-col">
+          <div className="js-contact-col min-w-0">
             <SupportChannelsCard />
           </div>
-          <div className="js-contact-col">
+          <div className="js-contact-col min-w-0">
             <DemoCard />
           </div>
         </div>

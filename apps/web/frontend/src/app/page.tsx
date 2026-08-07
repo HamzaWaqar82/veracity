@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 import { Hero } from "@/components/home/Hero";
 import { Problem } from "@/components/home/Problem";
 import { Approach } from "@/components/home/Approach";
@@ -31,14 +32,14 @@ const schema = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Veracity",
-    url: "/",
+    url: `${SITE_URL}/`,
     description: "Workforce analytics built on trust, not surveillance.",
   },
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Veracity",
-    url: "/",
+    url: `${SITE_URL}/`,
     slogan: "Workforce Analytics Built on Trust, Not Surveillance",
     description:
       "Workforce analytics for small-to-medium businesses with remote and hybrid teams, built on employee-visible monitoring and structural privacy guarantees.",

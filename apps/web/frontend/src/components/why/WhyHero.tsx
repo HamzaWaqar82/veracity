@@ -86,7 +86,7 @@ export function WhyHero() {
         const scroll = { trigger: root.current, start: "top top", end: "bottom top", scrub: 0.8 };
 
         if (desktop) {
-          // Depth stack — copy recedes up, front layer (ledger stub) pulls up fastest.
+          // Depth stack - copy recedes up, front layer (ledger stub) pulls up fastest.
           const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: scroll });
           tl.to(content.current, { y: -72, scale: 0.93, autoAlpha: 0 }, 0).to(stub.current, { y: -96 }, 0);
 
@@ -151,7 +151,7 @@ export function WhyHero() {
         </h1>
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
           Traditional monitoring tools offer a false choice: accept zero visibility into how your
-          team works, or deploy surveillance that destroys trust. Veracity rejects the framing — and
+          team works, or deploy surveillance that destroys trust. Veracity rejects the framing - and
           this page shows you exactly how.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

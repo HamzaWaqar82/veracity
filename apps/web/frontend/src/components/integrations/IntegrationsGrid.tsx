@@ -2,6 +2,8 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
+import { TiltCard } from "@/components/common/TiltCard";
+import { IntegrationMark } from "./IntegrationMark";
 import { integrations } from "./integrations-data";
 
 export function IntegrationsGrid() {
@@ -47,15 +49,16 @@ export function IntegrationsGrid() {
           Five integrations, live today.
         </h2>
         <p className="js-int-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Every integration described here is included in your plan — setup in minutes, read-only
+          Every integration described here is included in your plan - setup in minutes, read-only
           where it matters, and never writing to your other systems.
         </p>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {integrations.map((integration) => (
-            <article
+            <TiltCard
               key={integration.id}
-              className="js-int-card flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.22)]"
+              maxAngle={1.5}
+              className="js-int-card flex h-full flex-col rounded-2xl border border-line bg-white"
             >
               <div
                 className={
@@ -72,9 +75,12 @@ export function IntegrationsGrid() {
               </div>
 
               <div className="flex flex-1 flex-col px-5 py-6 sm:px-6">
-                <h3 className="font-display text-2xl font-semibold tracking-tight text-ink">
-                  {integration.name}
-                </h3>
+                <div className="flex items-center justify-between gap-4">
+                  <h3 className="font-display text-2xl font-semibold tracking-tight text-ink">
+                    {integration.name}
+                  </h3>
+                  <IntegrationMark icon={integration.icon} className="size-7 shrink-0" />
+                </div>
                 <p className="mt-1 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-primary">
                   {integration.tag}
                 </p>
@@ -95,10 +101,13 @@ export function IntegrationsGrid() {
                   </p>
                 )}
               </div>
-            </article>
+            </TiltCard>
           ))}
 
-          <div className="js-int-card flex flex-col justify-center overflow-hidden rounded-2xl border border-dashed border-primary/50 bg-primary-soft/50 px-6 py-8 sm:px-7">
+          <TiltCard
+            maxAngle={1.5}
+            className="js-int-card flex h-full flex-col justify-center rounded-2xl border border-dashed border-primary/50 bg-primary-soft/50 px-6 py-8 sm:px-7"
+          >
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
               Building something custom?
             </p>
@@ -106,10 +115,15 @@ export function IntegrationsGrid() {
               Every Growth and Enterprise plan includes the REST API for custom integrations, data
               export, and workflow automation. Integration priorities are driven by customer demand.
             </p>
-            <p className="mt-5 text-[0.875rem] font-semibold text-primary">
-              Request an integration at sales@veracity.dev
+            <p className="mt-5">
+              <a
+                href="mailto:sales@veracity.dev?subject=Integration%20request"
+                className="text-[0.875rem] font-semibold text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:decoration-primary"
+              >
+                Request an integration at sales@veracity.dev
+              </a>
             </p>
-          </div>
+          </TiltCard>
         </div>
       </div>
     </section>

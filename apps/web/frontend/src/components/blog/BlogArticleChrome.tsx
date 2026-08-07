@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { essays, getEssay, type Essay } from "@/lib/blog";
+import { essays, type Essay } from "@/lib/blog";
 
-export function BlogArticleHeader({ essay, index }: { essay: Essay; index: number }) {
+export function BlogArticleHeader({ essay }: { essay: Essay }) {
   return (
     <section className="border-b border-line bg-mint text-hero-ink">
       <div className="container-x pb-16 pt-32 text-center sm:pt-40 lg:pt-44">
         <p className="inline-flex items-center gap-2 rounded-full border border-hero-line px-3.5 py-1.5 text-[0.8125rem] font-semibold tracking-[0.02em]">
-          Veracity Resources · Article {String(index + 1).padStart(2, "0")}
+          Veracity Resources
         </p>
         <h1 className="mx-auto mt-7 max-w-3xl font-display text-[clamp(2.25rem,3.4vw+1.2rem,3.5rem)] font-semibold leading-[1.08] tracking-[-0.03em]">
           {essay.title}
@@ -15,6 +15,10 @@ export function BlogArticleHeader({ essay, index }: { essay: Essay; index: numbe
           {essay.deck}
         </p>
         <p className="mt-6 text-sm font-semibold text-hero-muted">{essay.readTime}</p>
+        <p className="mx-auto mt-4 max-w-xl text-[0.8125rem] leading-relaxed text-hero-muted/80">
+          Illustrative walkthrough - frameworks and worked examples, not a guarantee of specific
+          results.
+        </p>
       </div>
     </section>
   );

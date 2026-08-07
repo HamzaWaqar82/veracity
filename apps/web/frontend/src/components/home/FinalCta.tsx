@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
-import { attachMagnetic, attachSpotlight } from "@/lib/cursor";
+import { attachMagnetic, attachSpotlight, attachTilt } from "@/lib/cursor";
 import { CTA } from "@/lib/cta";
 
 export function FinalCta() {
@@ -61,6 +61,7 @@ export function FinalCta() {
         if (!ctx.conditions?.motion || !ctx.conditions?.hover) return;
         const cleanups: (() => void)[] = [];
         if (spotlight.current) cleanups.push(attachSpotlight(spotlight.current));
+        if (panel.current) cleanups.push(attachTilt(panel.current, 1.5));
         q(".js-cta-magnet").forEach((el) => cleanups.push(attachMagnetic(el as HTMLElement, 140, 0.4)));
         return () => cleanups.forEach((fn) => fn());
       });

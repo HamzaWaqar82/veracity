@@ -5,9 +5,9 @@ import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { CheckIcon } from "@/components/icons";
 
 const complianceItems = [
-  { label: "No keystroke logging", rest: " — ever, at any tier" },
-  { label: "No audio or video recording", rest: " — continuous recording is out of scope by design" },
-  { label: "No stealth mode", rest: " — Agent is always visible and identifiable" },
+  { label: "No keystroke logging", rest: " - ever, at any tier" },
+  { label: "No audio or video recording", rest: " - continuous recording is out of scope by design" },
+  { label: "No stealth mode", rest: " - Agent is always visible and identifiable" },
   { label: "Encryption in transit", rest: ": TLS 1.3" },
   { label: "Encryption at rest", rest: ": AES-256 with per-file keys for screenshots" },
   { label: "Client-side redaction", rest: ": Sensitive fields redacted before upload" },

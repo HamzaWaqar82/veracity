@@ -7,9 +7,9 @@ import { FormSuccessCard } from "@/components/form/FormSuccessCard";
 import { buildBody, mailtoHref } from "@/components/form/mailto";
 import { demoItems } from "@/components/about/about-data";
 
-const COMPANY_SIZES = ["10–50", "51–200", "201–500", "500+"];
+const COMPANY_SIZES = ["10-50", "51-200", "201-500", "500+"];
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-const TIME_WINDOWS = ["Morning (9 AM – 12 PM)", "Afternoon (12 – 3 PM)", "Late afternoon (3 – 6 PM)"];
+const TIME_WINDOWS = ["Morning (9 AM - 12 PM)", "Afternoon (12-3 PM)", "Late afternoon (3-6 PM)"];
 const TIMEZONES = ["UTC", "GMT", "Eastern Time (ET)", "Central Time (CT)", "Mountain Time (MT)", "Pacific Time (PT)", "Central European Time (CET)", "India Standard Time (IST)", "Australian Eastern Time (AET)"];
 
 type Values = {
@@ -94,7 +94,7 @@ export function DemoRequestForm() {
 
     const who = values.company.trim() || values.name.trim();
     const when = [values.day, values.window, values.timezone].filter(Boolean).join(", ");
-    const subject = `Demo request: ${who}${when ? ` — ${when}` : ""}`;
+    const subject = `Demo request: ${who}${when ? ` - ${when}` : ""}`;
     const body = buildBody([
       `Name: ${values.name.trim()}`,
       `Email: ${values.email.trim()}`,
@@ -232,7 +232,7 @@ export function DemoRequestForm() {
             Request a demo
           </button>
           <p className="text-sm font-medium text-muted">
-            We reply to every request — usually within one business day.
+            We reply to every request - usually within one business day.
           </p>
         </div>
       </form>

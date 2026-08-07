@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
+export const SITE_URL = "https://veracity.dev";
+
 export type NavLink = { label: string; href: string };
 
 export type MegaColumn = { heading?: string; links: NavLink[] };
@@ -16,6 +18,18 @@ export type NavItem = {
   href: string;
   mega?: MegaPanel;
 };
+
+export type SocialLink = {
+  label: string;
+  href: string;
+  network: "github" | "x" | "linkedin";
+};
+
+export const SOCIAL: SocialLink[] = [
+  { label: "GitHub", href: "https://github.com/veracity", network: "github" },
+  { label: "X", href: "https://x.com/veracity", network: "x" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/veracity", network: "linkedin" },
+];
 
 const contentRoot = path.join(process.cwd(), "..", "content", "pages");
 
@@ -157,6 +171,11 @@ export const footer = {
     { label: "About", href: "/about" },
     { label: "Why Veracity", href: "/why-veracity" },
     { label: "Resources", href: "/resources" },
+    { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact-us" },
+  ],
+  legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
   ],
 } satisfies Record<string, { label: string; href: string }[]>;

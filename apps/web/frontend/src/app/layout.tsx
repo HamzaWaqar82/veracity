@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CursorRing } from "@/components/CursorRing";
 import { ChatWidget } from "@/components/chat/ChatWidget";
-import { nav } from "@/lib/site";
+import { nav, SITE_URL } from "@/lib/site";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -23,6 +23,7 @@ const spectral = Spectral({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Workforce Analytics for Remote Teams | Veracity",
     template: "%s | Veracity",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
   },
 };
 
