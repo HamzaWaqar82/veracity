@@ -5,6 +5,7 @@ import { Select, TextArea, TextInput } from "@/components/form/fields";
 import { FormCard } from "@/components/form/FormCard";
 import { FormSuccessCard } from "@/components/form/FormSuccessCard";
 import { buildBody, mailtoHref } from "@/components/form/mailto";
+import { submitLead } from "@/lib/lead";
 import { demoItems } from "@/components/about/about-data";
 
 const COMPANY_SIZES = ["10-50", "51-200", "201-500", "500+"];
@@ -104,7 +105,22 @@ export function DemoRequestForm() {
       when ? `Preferred time: ${when}` : null,
       values.notes.trim() ? `Notes: ${values.notes.trim()}` : null,
     ]);
+
+    // Primary delivery: open the visitor's mail client with a pre-filled
+    // draft. They hit send in their client - no blocking network call.
     window.location.href = mailtoHref({ to: "sales@veracity.dev", subject, body });
+    // Best-effort background capture for our own records. Never awaited, so
+    // a slow/failed capture never delays the visitor's mail draft.
+    void submitLead({
+      kind: "demo",
+      name: values.name.trim(),
+      email: values.email.trim(),
+      company: values.company.trim(),
+      companySize: values.companySize,
+      coverage: values.coverage,
+      preferredTime: when,
+      notes: values.notes.trim(),
+    });
     setSubmitted(true);
   }
 
@@ -118,8 +134,11 @@ export function DemoRequestForm() {
       >
         We&apos;ll reply to{" "}
         <span className="font-semibold text-ink">{values.email}</span> with a few available slots
-        within one business day. If your email client opened a draft, just hit send and we&apos;ll
-        take it from there.
+        within one business day.
+        <p className="mt-4">
+          If your email client opened a draft, just hit send - either way, your request is on its
+          way.
+        </p>
       </FormSuccessCard>
     );
   }
