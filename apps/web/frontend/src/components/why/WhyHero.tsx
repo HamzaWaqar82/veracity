@@ -217,8 +217,8 @@ export function WhyHero() {
                     <span
                       className={
                         row.voice === "refuses"
-                          ? "shrink-0 rounded-full border border-line px-2.5 py-1 text-[0.6875rem] font-semibold text-accent"
-                          : "shrink-0 rounded-full border border-line px-2.5 py-1 text-[0.6875rem] font-semibold text-primary"
+                          ? "shrink-0 rounded-full border border-line px-2.5 py-1 text-[0.8125rem] font-semibold text-accent"
+                          : "shrink-0 rounded-full border border-line px-2.5 py-1 text-[0.8125rem] font-semibold text-primary"
                       }
                     >
                       {row.tag}
@@ -227,8 +227,8 @@ export function WhyHero() {
                 ))}
               </ul>
               <div className="flex items-center justify-between bg-primary-soft px-5 py-3">
-                <p className="text-[0.6875rem] font-semibold text-primary">Two voices, one ledger</p>
-                <p className="text-[0.6875rem] font-semibold text-primary">Signed terms, not policy</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">Two voices, one ledger</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">Signed terms, not policy</p>
               </div>
             </div>
           </div>

@@ -41,7 +41,7 @@ export function ArticleToc({ headings }: { headings: ArticleHeading[] }) {
       aria-label="On this page"
       className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto"
     >
-      <p className="text-[0.6875rem] font-bold uppercase tracking-[0.16em] text-muted">
+      <p className="text-[0.8125rem] font-bold uppercase tracking-[0.16em] text-muted">
         On this page
       </p>
       <ul className="mt-4 space-y-2.5 border-l border-line">

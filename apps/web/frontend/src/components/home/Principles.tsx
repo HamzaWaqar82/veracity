@@ -6,18 +6,30 @@ import { gsap, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
 const principles = [
   {
     n: "01",
-    title: "Data Minimization",
-    body: "Veracity never logs keystrokes, records audio or video, or captures webcam or microphone data. Activity tracking covers application names, window titles, and URL domains at sixty-second heartbeat intervals: enough to understand work patterns, not enough to invade privacy. Screenshot capture is optional on Growth and Enterprise plans, at fixed intervals with client-side redaction and encryption. A deliberate architectural constraint at every tier, now and in all future versions.",
-    chip: "A deliberate architectural constraint at every tier, now and always",
-  },
-  {
-    n: "02",
-    title: "Employee Visibility",
-    body: "Every employee sees exactly what Veracity has collected about them in real time through a personal dashboard with the same data their manager sees. The Agent stays visible in the system tray with a live status indicator. Private Time pauses all capture with one click; only session duration is recorded. A complete access log shows who viewed their data and when. No data is hidden from employees.",
+    title: "Transparency by default",
+    body: "Every employee sees exactly what Veracity has collected about them in real time through a personal dashboard with the same data their manager sees. The Agent stays visible in the system tray with a live status indicator. There is no stealth mode, no hidden capture, and no data collected without the employee's knowledge. A complete access log shows who viewed their data and when.",
     chip: "The same data their manager sees, in real time",
   },
   {
+    n: "02",
+    title: "Privacy as a feature",
+    body: "We collect only what is necessary for productivity analytics: application usage, window titles, and URL domains, with periodic screenshots only on the plans that include them. We do not log keystrokes, record continuously, or capture audio or video. Screenshots are encrypted at the point of capture and redacted by default.",
+    chip: "Keystrokes, audio, and video are never collected",
+  },
+  {
     n: "03",
+    title: "Data minimization",
+    body: "Activity tracking runs on a sixty-second heartbeat cycle, not a continuous stream. We capture state, not recordings. Screenshot capture is optional on Growth and Enterprise plans, at fixed intervals with client-side redaction and encryption. Retention is configurable with automated deletion, and Private Time pauses all capture with one click - only session duration is recorded.",
+    chip: "A deliberate architectural constraint at every tier, now and always",
+  },
+  {
+    n: "04",
+    title: "Human-in-the-loop accountability",
+    body: "No automated decisions affect employment outcomes. Productivity scores are advisory tools for coaching conversations, not performance evaluations. Screenshots require an explicit manager request to view - no automatic flagging or alerts based on screen content - and every access to monitoring data is logged in a tamper-evident audit trail.",
+    chip: "Scores advise; managers decide",
+  },
+  {
+    n: "05",
     title: "Compliance-First Design",
     body: "Veracity is built to comply with the General Data Protection Regulation (GDPR), the EU Artificial Intelligence Act, and US state electronic monitoring statutes including Connecticut General Statute §31-48d, New York Labor Law §52-c, Delaware Title 19 §705, and Colorado Revised Statute §8-2-127. Compliance tooling includes jurisdiction-aware notice engines, tamper-evident audit logging, configurable data retention with automated deletion, DSAR workflows, and DPIA support. We do not perform emotion recognition, biometric categorization, or any automated decision-making the AI Act restricts.",
     chip: "GDPR · EU AI Act · CT · NY · DE · CO",
@@ -94,7 +106,7 @@ export function Principles() {
     <section ref={root} className="py-section">
       <div className="container-x">
         <h2 className="js-principles-h font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-          Three Principles of Trustworthy Workforce Analytics
+          Five Principles of Trustworthy Workforce Analytics
         </h2>
         <p className="js-principles-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
           The same constraints that protect employees are what make the analytics defensible, for

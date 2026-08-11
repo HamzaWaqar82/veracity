@@ -68,7 +68,7 @@ export function Roadmap() {
                   </h3>
                   <p className="mt-1 text-[0.875rem] leading-relaxed text-muted">{item.tag}</p>
                 </div>
-                <span className="shrink-0 rounded-full border border-line px-3 py-1 text-[0.6875rem] font-bold uppercase tracking-[0.12em] text-muted">
+                <span className="shrink-0 rounded-full border border-line px-3 py-1 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-muted">
                   On the roadmap
                 </span>
               </div>

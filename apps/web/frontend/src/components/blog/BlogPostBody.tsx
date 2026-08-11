@@ -23,6 +23,11 @@ function headingText(children: ReactNode): string {
 }
 
 const components: Components = {
+  h1: ({ children }) => (
+    <h2 className="mb-6 mt-2 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+      {children}
+    </h2>
+  ),
   h2: ({ children }) => (
     <h2
       id={headingId(headingText(children))}
@@ -129,7 +134,7 @@ export function BlogPostBody({ markdown }: { markdown: string }) {
         <aside className="hidden lg:block">
           <ArticleToc headings={headings} />
         </aside>
-        <div className="mx-auto w-full max-w-3xl">
+        <div className="mx-auto w-full min-w-0 max-w-3xl">
           <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
             {markdown}
           </ReactMarkdown>

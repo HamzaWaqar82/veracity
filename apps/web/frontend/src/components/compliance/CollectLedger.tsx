@@ -83,7 +83,7 @@ export function CollectLedger() {
                     </span>
                   </div>
                   <p className="mt-1 text-[0.8125rem] leading-relaxed text-muted">{row.description}</p>
-                  <p className="mt-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.12em] text-muted">
+                  <p className="mt-1.5 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-muted">
                     {row.plans} plans
                   </p>
                 </li>

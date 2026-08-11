@@ -115,7 +115,7 @@ export function PricingHero() {
           ref={badge}
           className="inline-flex items-center gap-2 rounded-full border border-hero-line px-3.5 py-1.5 text-[0.8125rem] font-semibold tracking-[0.02em]"
         >
-          Published pricing · No hidden fees
+          Published pricing · Exact at every tier
         </p>
         <h1 className="mx-auto mt-7 max-w-4xl font-display text-[clamp(2.5rem,4vw+1.5rem,4rem)] font-semibold leading-[1.06] tracking-[-0.03em]">
           {headlineWords.map((word, i) => (
@@ -192,8 +192,8 @@ export function PricingHero() {
                 ))}
               </ul>
               <div className="js-price-receipt-foot flex items-center justify-between bg-primary-soft px-5 py-3">
-                <p className="text-[0.6875rem] font-semibold text-primary">Signed · published terms</p>
-                <p className="text-[0.6875rem] font-semibold text-primary">No hidden fees</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">Signed · published terms</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">No hidden fees</p>
               </div>
             </div>
           </div>

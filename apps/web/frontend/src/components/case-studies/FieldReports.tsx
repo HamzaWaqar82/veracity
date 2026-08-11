@@ -81,7 +81,7 @@ export function FieldReports() {
                   { label: "Time with Veracity", value: report.time },
                 ].map((item) => (
                   <div key={item.label} className="bg-white px-5 py-4 sm:px-6">
-                    <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-muted">
+                    <p className="text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-muted">
                       {item.label}
                     </p>
                     <p className="mt-1 text-[0.875rem] font-semibold leading-snug text-ink">

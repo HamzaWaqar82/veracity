@@ -359,7 +359,7 @@ export function ChatWidget() {
             >
               {CHAT_COPY.title}
             </h2>
-            <p className="mt-0.5 text-[0.6875rem] text-on-dark-muted">
+            <p className="mt-0.5 text-[0.8125rem] text-on-dark-muted">
               {CHAT_COPY.subtitle}
             </p>
           </div>
@@ -368,7 +368,7 @@ export function ChatWidget() {
               type="button"
               onClick={clearConversation}
               aria-label={CHAT_COPY.clearLabel}
-              className="rounded-full px-2 py-1 text-[0.6875rem] font-semibold text-on-dark-muted transition-colors hover:bg-white/10 hover:text-on-dark"
+              className="rounded-full px-2 py-1 text-[0.8125rem] font-semibold text-on-dark-muted transition-colors hover:bg-white/10 hover:text-on-dark"
             >
               Clear
             </button>
@@ -483,7 +483,7 @@ export function ChatWidget() {
 
                     {!message.pending && message.sources.length > 0 && (
                       <div className="mt-2 border-t border-line pt-2">
-                        <p className="text-[0.6875rem] font-semibold uppercase tracking-wider text-muted">
+                        <p className="text-[0.8125rem] font-semibold uppercase tracking-wider text-muted">
                           {CHAT_COPY.sourcesLabel}
                         </p>
                         <ul className="mt-1 space-y-0.5">
@@ -568,7 +568,7 @@ export function ChatWidget() {
               <ArrowIcon className="h-4 w-4 -rotate-45" />
             </button>
           </form>
-          <p className="mt-2 text-[0.6875rem] text-muted">
+          <p className="mt-2 text-[0.8125rem] text-muted">
             {CHAT_COPY.footnote}{" "}
             <a
               href={CTA.contact}

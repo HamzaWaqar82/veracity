@@ -3,9 +3,9 @@ import { NextRequest } from "next/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const BACKEND_URL = (
-  process.env.VERACITY_BACKEND_URL ?? "http://localhost:8000"
-).replace(/\/+$/, "");
+const BACKEND_URL = (process.env.VERACITY_BACKEND_URL ?? "").replace(/\/+$/, "");
+const LOCAL_DEV_URL = process.env.NODE_ENV !== "production" ? "http://localhost:8000" : "";
+const upstreamBase = BACKEND_URL || LOCAL_DEV_URL;
 
 export async function POST(request: NextRequest) {
   let message = "";
@@ -23,9 +23,19 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "message is required" }, { status: 400 });
   }
 
+  if (!upstreamBase) {
+    return Response.json(
+      {
+        error:
+          "Chat service is not configured. Set VERACITY_BACKEND_URL to the backend origin and try again.",
+      },
+      { status: 503 }
+    );
+  }
+
   let upstream: Response;
   try {
-    upstream = await fetch(`${BACKEND_URL}/api/chat`, {
+    upstream = await fetch(`${upstreamBase}/api/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message, session_id: sessionId }),

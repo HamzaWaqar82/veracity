@@ -162,7 +162,7 @@ export function ComparisonTable() {
               onMouseLeave={() => setHovered(null)}
             >
               <thead>
-                <tr className="sticky top-0 z-10 bg-surface/95 backdrop-blur">
+                <tr className="sticky top-[4.5rem] z-10 bg-surface/95 backdrop-blur">
                   <th
                     scope="col"
                     className="sticky left-0 z-20 w-72 border-b border-r border-line bg-surface/95 px-6 py-5 align-bottom backdrop-blur"

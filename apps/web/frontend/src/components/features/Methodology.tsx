@@ -231,7 +231,7 @@ export function Methodology() {
   return (
     <section ref={root} className="py-section">
       <div className="container-x grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
-        <div>
+        <div className="min-w-0">
           <h2 className="js-method-h font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             The score is published, not guessed.
           </h2>
@@ -251,7 +251,7 @@ export function Methodology() {
           </p>
         </div>
 
-        <div className="relative [perspective:1400px]">
+        <div className="relative min-w-0 [perspective:1400px]">
           <div
             ref={card}
             className="js-method-card relative mx-auto w-full max-w-[34rem] [transform-style:preserve-3d]"
@@ -323,8 +323,8 @@ export function Methodology() {
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 bg-primary-soft px-5 py-3">
-                <p className="text-[0.6875rem] font-semibold text-primary">Methodology v1.0 · stored with every score</p>
-                <p className="text-[0.6875rem] font-semibold text-primary">Auditable end to end</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">Methodology v1.0 · stored with every score</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">Auditable end to end</p>
               </div>
             </div>
           </div>
@@ -394,7 +394,7 @@ export function Methodology() {
                           {row.label}
                         </span>
                         {row.excluded ? (
-                          <span className="rounded-full border border-line px-2 py-0.5 text-[0.6875rem] font-semibold text-muted">
+                          <span className="rounded-full border border-line px-2 py-0.5 text-[0.8125rem] font-semibold text-muted">
                             EXCLUDED
                           </span>
                         ) : (
@@ -451,7 +451,7 @@ export function Methodology() {
               </dl>
               <div className="js-ledger-row mt-5 flex items-center justify-between gap-4 rounded-xl bg-primary-soft px-5 py-4">
                 <div>
-                  <p className="text-[0.6875rem] font-bold tracking-[0.16em] text-primary">
+                  <p className="text-[0.8125rem] font-bold tracking-[0.16em] text-primary">
                     DAILY SCORE · 0-100
                   </p>
                   <p className="mt-1 text-xs font-medium text-primary">Recomputed from the rows you see</p>
@@ -467,7 +467,7 @@ export function Methodology() {
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 bg-primary-soft px-5 py-3">
-            <p className="text-[0.6875rem] font-semibold text-primary">
+            <p className="text-[0.8125rem] font-semibold text-primary">
               Every score recomputes from the displayed minutes via the published formula above.
             </p>
           </div>

@@ -152,8 +152,8 @@ function FeatureEntryBody({ entry }: { entry: Capability["entries"][number] }) {
         <span
           className={
             entry.tier === "enterprise"
-              ? "ml-auto shrink-0 rounded-full bg-primary-deep px-3 py-1 text-[0.6875rem] font-semibold text-on-dark"
-              : "ml-auto shrink-0 rounded-full bg-primary-soft px-3 py-1 text-[0.6875rem] font-semibold text-primary"
+              ? "ml-auto shrink-0 rounded-full bg-primary-deep px-3 py-1 text-[0.8125rem] font-semibold text-on-dark"
+              : "ml-auto shrink-0 rounded-full bg-primary-soft px-3 py-1 text-[0.8125rem] font-semibold text-primary"
           }
         >
           {tierLabel[entry.tier]}
@@ -172,7 +172,7 @@ function FeatureEntryBody({ entry }: { entry: Capability["entries"][number] }) {
         {entry.specs.map((spec) => (
           <li
             key={spec}
-            className="rounded-full border border-line bg-surface px-3 py-1 text-[0.6875rem] font-semibold tracking-[0.08em] text-ink"
+            className="rounded-full border border-line bg-surface px-3 py-1 text-[0.8125rem] font-semibold tracking-[0.08em] text-ink"
           >
             {spec}
           </li>

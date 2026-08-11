@@ -201,7 +201,7 @@ export function PlanSummary() {
                 Annual
                 <span
                   ref={chipRef}
-                  className="ml-1.5 inline-block rounded-full bg-primary-soft px-2 py-0.5 text-[0.6875rem] font-semibold text-primary"
+                  className="ml-1.5 inline-block rounded-full bg-primary-soft px-2 py-0.5 text-[0.8125rem] font-semibold text-primary"
                 >
                   2 months free
                 </span>

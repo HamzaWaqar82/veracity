@@ -105,7 +105,7 @@ export function NeverOffers() {
                 className="js-never-stamp mt-10 inline-flex size-28 flex-col items-center justify-center rounded-full border-2 border-accent-soft/70 text-center text-accent-soft"
                 aria-hidden="true"
               >
-                <span className="text-[0.6875rem] font-bold uppercase tracking-[0.22em]">
+                <span className="text-[0.8125rem] font-bold uppercase tracking-[0.22em]">
                   Sealed
                 </span>
                 <span className="mt-1 text-[0.9375rem] font-bold uppercase tracking-[0.14em]">

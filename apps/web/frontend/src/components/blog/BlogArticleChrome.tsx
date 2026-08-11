@@ -15,7 +15,7 @@ export function BlogArticleHeader({ essay }: { essay: Essay }) {
           {essay.deck}
         </p>
         <p className="mt-6 text-sm font-semibold text-hero-muted">{essay.readTime}</p>
-        <p className="mx-auto mt-4 max-w-xl text-[0.8125rem] leading-relaxed text-hero-muted/80">
+        <p className="mx-auto mt-4 max-w-xl text-[0.8125rem] leading-relaxed text-hero-muted">
           Illustrative walkthrough - frameworks and worked examples, not a guarantee of specific
           results.
         </p>

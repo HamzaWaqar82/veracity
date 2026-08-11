@@ -62,7 +62,7 @@ export function RestApi() {
             <div className="grid grid-cols-2 gap-px bg-line">
               {rateLimits.map((row) => (
                 <div key={row.plan} className="bg-white px-6 py-6">
-                  <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-muted">
+                  <p className="text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-muted">
                     {row.plan}
                   </p>
                   <p className="mt-2 font-display text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
@@ -90,7 +90,7 @@ export function RestApi() {
                   key={endpoint.resource}
                   className="flex flex-col gap-1.5 px-5 py-3.5 sm:flex-row sm:items-start sm:gap-4 sm:px-6"
                 >
-                  <span className="shrink-0 self-start rounded-md bg-primary-soft px-2 py-0.5 font-mono text-[0.6875rem] font-bold leading-5 text-primary">
+                  <span className="shrink-0 self-start rounded-md bg-primary-soft px-2 py-0.5 font-mono text-[0.8125rem] font-bold leading-5 text-primary">
                     {endpoint.method}
                   </span>
                   <div>
