@@ -52,13 +52,13 @@ export function States() {
         });
         tl.fromTo(
           q(".js-states-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-states-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           );
 
@@ -67,9 +67,9 @@ export function States() {
           if (cells.length) {
             gsap.fromTo(
               cells,
-              { autoAlpha: 0, y: 46 },
+              { opacity: 0, y: 46 },
               {
-                autoAlpha: 1,
+                opacity: 1,
                 y: 0,
                 ease: "none",
                 stagger: 0.12,

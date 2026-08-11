@@ -20,15 +20,15 @@ export function Roi() {
         });
         tl.fromTo(
           q(".js-roi-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(q(".js-roi-lead"), REVEAL.from, REVEAL.to, "-=0.4")
           .fromTo(q(".js-roi-evidence"), REVEAL.from, REVEAL.to, "-=0.3")
           .fromTo(
             q(".js-roi-block"),
-            { autoAlpha: 0, y: 26 },
-            { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.12 },
+            { opacity: 0, y: 26 },
+            { opacity: 1, y: 0, duration: 0.65, stagger: 0.12 },
             "-=0.35",
           );
 

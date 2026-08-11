@@ -91,31 +91,31 @@ export function Methodology() {
         });
         tl.fromTo(
           q(".js-method-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-method-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-method-link"),
-            { autoAlpha: 0, y: 14 },
-            { autoAlpha: 1, y: 0, duration: 0.5 },
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.5 },
             "-=0.35",
           )
           .fromTo(
             card.current,
-            { autoAlpha: 0, y: 34, scale: 0.96 },
-            { autoAlpha: 1, y: 0, scale: 1, duration: 0.95 },
+            { opacity: 0, y: 34, scale: 0.96 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.95 },
             "-=0.5",
           )
           .fromTo(
             q(".js-method-row"),
-            { autoAlpha: 0, y: 10 },
-            { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.06 },
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.4, stagger: 0.06 },
             "-=0.55",
           )
           .to(
@@ -127,8 +127,8 @@ export function Methodology() {
         if (ping.current) {
           gsap.fromTo(
             ping.current,
-            { scale: 1, autoAlpha: 0.7 },
-            { scale: 3.4, autoAlpha: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 1.9 },
+            { scale: 1, opacity: 0.7 },
+            { scale: 3.4, opacity: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 1.9 },
           );
         }
 
@@ -139,11 +139,11 @@ export function Methodology() {
             scrollTrigger: { trigger: band.current, start: "top 85%" },
           });
           ledgerTl
-            .fromTo(band.current, { autoAlpha: 0, y: 34 }, { autoAlpha: 1, y: 0, duration: 0.85 })
+            .fromTo(band.current, { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.85 })
             .fromTo(
               rows,
-              { autoAlpha: 0, y: 10 },
-              { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.045 },
+              { opacity: 0, y: 10 },
+              { opacity: 1, y: 0, duration: 0.4, stagger: 0.045 },
               "-=0.5",
             );
         }
@@ -219,8 +219,8 @@ export function Methodology() {
     if (rows.length) {
       gsap.fromTo(
         rows,
-        { autoAlpha: 0, y: 8 },
-        { autoAlpha: 1, y: 0, duration: 0.4, ease: EASE, stagger: 0.045, overwrite: "auto" },
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.4, ease: EASE, stagger: 0.045, overwrite: "auto" },
       );
     }
     if (spinRef.current) {

@@ -20,13 +20,13 @@ export function PricingFaq() {
         });
         tl.fromTo(
           q(".js-faq-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-faq-row"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.06 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.06 },
             "-=0.4",
           );
       });

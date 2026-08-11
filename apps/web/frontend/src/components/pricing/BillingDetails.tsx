@@ -20,13 +20,13 @@ export function BillingDetails() {
         });
         tl.fromTo(
           q(".js-bill-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-bill-row"),
-            { autoAlpha: 0, y: 20 },
-            { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.06 },
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.06 },
             "-=0.4",
           )
           .fromTo(
@@ -58,24 +58,24 @@ export function BillingDetails() {
             <p className="text-xs font-bold tracking-[0.16em] text-on-dark">BILLING RULES</p>
             <p className="text-xs font-semibold text-on-dark-muted">EXACT TERMS</p>
           </div>
-          <dl>
+          <div>
             {billingEntries.map((entry, i) => (
               <div key={entry.title} className="js-bill-row group transition-colors hover:bg-surface">
                 {i > 0 && <div className="js-bill-rule h-px origin-left bg-line" aria-hidden="true" />}
                 <div className="grid gap-2 px-6 py-6 sm:px-8 md:grid-cols-[minmax(0,220px)_1fr] md:gap-8">
-                  <dt className="font-display text-lg font-semibold text-ink">{entry.title}</dt>
+                  <p className="font-display text-lg font-semibold text-ink">{entry.title}</p>
                   <div>
-                    <dd className="text-[0.9375rem] leading-relaxed text-muted">{entry.body}</dd>
+                    <p className="text-[0.9375rem] leading-relaxed text-muted">{entry.body}</p>
                     {entry.flags?.map((flag) => (
-                      <dd key={flag} className="mt-3 text-[0.8125rem] font-medium text-primary">
+                      <p key={flag} className="mt-3 text-[0.8125rem] font-medium text-primary">
                         {flag}
-                      </dd>
+                      </p>
                     ))}
                   </div>
                 </div>
-            </div>
-          ))}
-          </dl>
+              </div>
+            ))}
+          </div>
         </TiltCard>
       </div>
     </section>

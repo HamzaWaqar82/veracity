@@ -46,25 +46,25 @@ export function Plans() {
         });
         tl.fromTo(
           q(".js-plans-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-plans-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-plans-wrap"),
-            { autoAlpha: 0, y: 30 },
-            { autoAlpha: 1, y: 0, duration: 0.7 },
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.7 },
             "-=0.2",
           )
           .fromTo(
             q(".js-plans-foot"),
-            { autoAlpha: 0, y: 14 },
-            { autoAlpha: 1, y: 0, duration: 0.5 },
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.5 },
             "-=0.35",
           );
       });

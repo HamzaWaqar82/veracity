@@ -32,20 +32,20 @@ export function NeverOffers() {
         });
         tl.fromTo(
           q(".js-never-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-never-card"),
-            { autoAlpha: 0, y: 24 },
-            { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.08 },
+            { opacity: 0, y: 24 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.08 },
             "-=0.4",
           )
           .to(q(".js-draw"), { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut", stagger: 0.04 }, "-=0.5")
           .fromTo(
             q(".js-never-stamp"),
-            { autoAlpha: 0, scale: 0.6, rotation: -18 },
-            { autoAlpha: 1, scale: 1, rotation: -8, duration: 0.6 },
+            { opacity: 0, scale: 0.6, rotation: -18 },
+            { opacity: 1, scale: 1, rotation: -8, duration: 0.6 },
             "-=0.3",
           );
       });

@@ -22,25 +22,25 @@ export function CollectLedger() {
         enter
           .fromTo(
             q(".js-ledger-h"),
-            { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-            { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+            { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+            { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
           )
           .fromTo(
             q(".js-ledger-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-ledger-col"),
-            { autoAlpha: 0, y: 30 },
-            { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.12 },
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8, stagger: 0.12 },
             "-=0.45",
           )
           .fromTo(
             q(".js-ledger-row"),
-            { autoAlpha: 0, y: 8 },
-            { autoAlpha: 1, y: 0, duration: 0.3, stagger: 0.03 },
+            { opacity: 0, y: 8 },
+            { opacity: 1, y: 0, duration: 0.3, stagger: 0.03 },
             "-=0.6",
           );
       });

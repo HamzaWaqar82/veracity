@@ -14,8 +14,8 @@ export const HOVER = "(hover: hover) and (pointer: fine)";
 // Standard scroll-triggered section reveal (y: 24 -> 0, 700ms). Pass straight
 // to gsap.fromTo(el, REVEAL.from, REVEAL.to) for generic heading/lead entrances.
 export const REVEAL = {
-  from: { autoAlpha: 0, y: 24 } as gsap.TweenVars,
-  to: { autoAlpha: 1, y: 0, duration: 0.7, ease: EASE } as gsap.TweenVars,
+  from: { opacity: 0, y: 24 } as gsap.TweenVars,
+  to: { opacity: 1, y: 0, duration: 0.7, ease: EASE } as gsap.TweenVars,
 };
 
 export { gsap, ScrollTrigger, useGSAP };

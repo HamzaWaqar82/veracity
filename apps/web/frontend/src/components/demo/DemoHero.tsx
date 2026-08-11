@@ -23,25 +23,25 @@ export function DemoHero() {
         if (!ctx.conditions?.motion) return;
 
         const tl = gsap.timeline({ defaults: { ease: EASE } });
-        tl.fromTo(badge.current, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 0.08)
+        tl.fromTo(badge.current, { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.55 }, 0.08)
           .fromTo(
             q(".js-demo-word"),
             { yPercent: 118 },
             { yPercent: 0, duration: 1.0, stagger: 0.05, ease: "power3.inOut" },
             0.28,
           )
-          .fromTo(lede.current, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.85)
+          .fromTo(lede.current, { y: 22 }, { y: 0, duration: 0.7 }, 0.85)
           .fromTo(
             q(".js-demo-cta"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.09 },
             1.0,
           )
-          .fromTo(note.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.16);
+          .fromTo(note.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.16);
 
         gsap.to(content.current, {
           y: -56,
-          autoAlpha: 0,
+          opacity: 0,
           ease: "none",
           scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: 0.8 },
         });

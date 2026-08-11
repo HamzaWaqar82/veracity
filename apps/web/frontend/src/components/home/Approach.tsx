@@ -44,31 +44,31 @@ export function Approach() {
         });
         tl.fromTo(
           q(".js-approach-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-approach-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-approach-item"),
-            { autoAlpha: 0, y: 16 },
-            { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.09 },
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.09 },
             "-=0.25",
           )
           .fromTo(
             q(".js-capture-card"),
-            { autoAlpha: 0, y: 28 },
-            { autoAlpha: 1, y: 0, duration: 0.8 },
+            { opacity: 0, y: 28 },
+            { opacity: 1, y: 0, duration: 0.8 },
             "-=0.5",
           )
           .fromTo(
             q(".js-capture-group"),
-            { autoAlpha: 0, y: 14 },
-            { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.1 },
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
             "-=0.45",
           )
           .to(q(".js-draw"), { strokeDashoffset: 0, duration: 0.55, ease: "power1.inOut", stagger: 0.06 }, "-=0.3")

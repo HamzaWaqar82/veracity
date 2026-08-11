@@ -30,19 +30,19 @@ export function FalseChoice() {
         });
         tl.fromTo(
           q(".js-false-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-false-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-false-row"),
-            { autoAlpha: 0, y: 22 },
-            { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.1 },
+            { opacity: 0, y: 22 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.1 },
             "-=0.35",
           )
           .to(q(".js-draw"), { strokeDashoffset: 0, duration: 0.45, ease: "power1.inOut", stagger: 0.06 }, "-=0.4");

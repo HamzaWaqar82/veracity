@@ -21,31 +21,31 @@ export function Manifesto() {
         enter
           .fromTo(
             q(".js-manifesto-h"),
-            { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-            { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+            { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+            { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
           )
           .fromTo(
             q(".js-manifesto-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-manifesto-card"),
-            { autoAlpha: 0, y: 34, scale: 0.98 },
-            { autoAlpha: 1, y: 0, scale: 1, duration: 0.95 },
+            { opacity: 0, y: 34, scale: 0.98 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.95 },
             "-=0.45",
           )
           .fromTo(
             q(".js-manifesto-row"),
-            { autoAlpha: 0, y: 10 },
-            { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.06 },
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.4, stagger: 0.06 },
             "-=0.6",
           )
           .fromTo(
             q(".js-manifesto-stamp"),
-            { autoAlpha: 0, scale: 0.7 },
-            { autoAlpha: 1, scale: 1, duration: 0.5 },
+            { opacity: 0, scale: 0.7 },
+            { opacity: 1, scale: 1, duration: 0.5 },
             "-=0.5",
           );
       });

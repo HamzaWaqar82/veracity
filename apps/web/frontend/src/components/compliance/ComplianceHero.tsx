@@ -66,34 +66,34 @@ export function ComplianceHero() {
       mm.add({ motion: MOTION }, (ctx) => {
         if (!ctx.conditions?.motion) return;
         const tl = gsap.timeline({ defaults: { ease: EASE } });
-        tl.fromTo(badge.current, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 0.08)
+        tl.fromTo(badge.current, { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.55 }, 0.08)
           .fromTo(
             q(".js-comp-word"),
             { yPercent: 118 },
             { yPercent: 0, duration: 1.0, stagger: 0.05, ease: "power3.inOut" },
             0.28,
           )
-          .fromTo(lede.current, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.85)
+          .fromTo(lede.current, { y: 22 }, { y: 0, duration: 0.7 }, 0.85)
           .fromTo(
             q(".js-comp-cta"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.09 },
             1.0,
           )
-          .fromTo(note.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.16)
+          .fromTo(note.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.16)
           .fromTo(
             ledger.current,
-            { autoAlpha: 0, x: 64, scale: 0.95 },
-            { autoAlpha: 1, x: 0, scale: 1, duration: 1.0 },
+            { opacity: 0, x: 64, scale: 0.95 },
+            { opacity: 1, x: 0, scale: 1, duration: 1.0 },
             0.6,
           )
-          .fromTo(jump.current, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 1.3);
+          .fromTo(jump.current, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55 }, 1.3);
 
         if (ping.current) {
           gsap.fromTo(
             ping.current,
-            { scale: 1, autoAlpha: 0.7 },
-            { scale: 3.4, autoAlpha: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 1.9 },
+            { scale: 1, opacity: 0.7 },
+            { scale: 3.4, opacity: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 1.9 },
           );
         }
       });
