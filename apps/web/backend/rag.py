@@ -6,30 +6,32 @@ import asyncio
 import json
 import logging
 import re
+import time
 from collections.abc import AsyncGenerator
 
-import httpx
-
 from citation import build_citation_url
-from config import (
-    LLM_MODEL,
-    OPENROUTER_API_KEY,
-    OPENROUTER_BASE_URL,
-    RETRIEVAL_TOP_K,
-    SIMILARITY_THRESHOLD,
-)
+from config import RETRIEVAL_TOP_K, SIMILARITY_THRESHOLD
 from database import (
     append_to_session,
     get_session_history,
     search_similar_chunks,
 )
 from embeddings import embed_text
+from llm import ModelUnavailable, ProviderError, build_provider_chain, current_usage
+from metrics import metrics
+from observability import current_metrics
 from prompts import build_messages_payload
 from schemas import RetrievedChunk, SourceItem
 
 logger = logging.getLogger(__name__)
 
 MAX_CITATIONS = 3
+
+metrics.register("retrieval_count_total", "counter", "Total context chunks retrieved across all requests.")
+metrics.register("retrieval_ms", "histogram", "Time spent embedding the query and fetching chunks, ms.")
+metrics.register("provider_requests_total", "counter", "LLM provider stream_chat calls by provider/model/status.")
+metrics.register("provider_rotations_total", "counter", "Times the pipeline fell through to the next model after a 429/5xx.")
+metrics.register("provider_call_ms", "histogram", "Latency of one provider stream_chat call (full stream), ms.")
 
 PRICING_PHRASE_KEYWORDS = {
     "how much",
@@ -69,7 +71,7 @@ def is_pricing_query(query: str) -> bool:
 
 async def retrieve_context(query: str) -> list[RetrievedChunk]:
     """Retrieve relevant context chunks for a query using pgvector."""
-    # Generate embedding for the query
+    start = time.monotonic()
     try:
         query_vector = await asyncio.to_thread(embed_text, query)
     except Exception as e:
@@ -99,6 +101,14 @@ async def retrieve_context(query: str) -> list[RetrievedChunk]:
             non_pricing = [c for c in filtered if "/pricing" not in c.page_url]
             filtered = (pricing_chunks + non_pricing)[:RETRIEVAL_TOP_K]
 
+    # Record how long retrieval took and how many chunks we landed on. This is
+    # the "how fast is the context step?" number that shows up in /metrics as
+    # `retrieval_ms_bucket{le="..."}`, and on the request summary log line.
+    elapsed_ms = (time.monotonic() - start) * 1000
+    current_metrics().retrieval_ms = elapsed_ms
+    current_metrics().retrieval_count = len(filtered)
+    metrics.inc("retrieval_count_total", value=len(filtered))
+    metrics.observe("retrieval_ms", elapsed_ms)
     return filtered
 
 
@@ -157,60 +167,103 @@ async def stream_rag_response(
             is_pricing=is_pricing,
         )
 
-        # 5. Stream completion from OpenRouter
-        headers = {
-            "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-            "Content-Type": "application/json",
-            "HTTP-Referer": "https://veracity.dev",
-            "X-Title": "Veracity Assistant",
-        }
-        payload = {
-            "model": LLM_MODEL,
-            "messages": messages,
-            "stream": True,
-            "temperature": 0.0,
-            "max_tokens": 1024,
-        }
-
+        # 5. Stream completion from the provider chain, rotating through
+        #    providers/models when one is unavailable (402/429/5xx).
         full_content: list[str] = []
+        last_unavailable_status: int | None = None
+        completed = False
+        stream_start = time.monotonic()
 
-        async with (
-            httpx.AsyncClient(timeout=60.0) as client,
-            client.stream(
-                "POST",
-                f"{OPENROUTER_BASE_URL}/chat/completions",
-                json=payload,
-                headers=headers,
-            ) as resp,
-        ):
-            if resp.status_code != 200:
-                err_body = await resp.aread()
-                logger.error("OpenRouter API error [%d]: %s", resp.status_code, err_body.decode())
-                yield f"data: {json.dumps({'type': 'error', 'message': f'Upstream error: {resp.status_code}'})}\n\n"
+        for provider, model in build_provider_chain():
+            provider_start = time.monotonic()
+            first_token = True
+            try:
+                async for token in provider.stream_chat(messages, model=model):
+                    # Record the time-to-first-token on the very first yielded
+                    # token — the NFR that gates eval runs (p95 < 5s). The
+                    # request summary log + /metrics capture it via ContextVar.
+                    if first_token:
+                        first_token = False
+                        current_metrics().first_token_ms = (time.monotonic() - stream_start) * 1000
+                        current_metrics().provider_used = provider.name
+                        current_metrics().model_used = model
+                    full_content.append(token)
+                    yield f"data: {json.dumps({'type': 'token', 'content': token})}\n\n"
+                completed = True
+                metrics.inc(
+                    "provider_requests_total",
+                    {"provider": provider.name, "model": model, "status": "200"},
+                )
+                metrics.observe(
+                    "provider_call_ms",
+                    (time.monotonic() - provider_start) * 1000,
+                    {"provider": provider.name, "model": model},
+                )
+                # Tokens consumed by this provider call (captured from the
+                # streamed usage metadata by llm.py) ride along on the request.
+                usage = current_usage()
+                logger.info(
+                    "provider_call_completed",
+                    extra={
+                        "provider": provider.name,
+                        "model": model,
+                        "stream_ms": round((time.monotonic() - provider_start) * 1000, 1),
+                        "prompt_tokens": usage.prompt_tokens,
+                        "completion_tokens": usage.completion_tokens,
+                    },
+                )
+                break
+            except ModelUnavailable as e:
+                metrics.inc(
+                    "provider_requests_total",
+                    {"provider": provider.name, "model": model, "status": str(e.status)},
+                )
+                metrics.inc("provider_rotations_total")
+                current_metrics().rotation_count += 1
+                logger.warning(
+                    "provider_unavailable",
+                    extra={
+                        "provider": provider.name,
+                        "model": model,
+                        "status": e.status,
+                        "detail": getattr(e, "detail", None),
+                    },
+                )
+                last_unavailable_status = e.status
+                continue
+            except ProviderError as e:
+                # Terminal (non-retryable) provider failure.
+                metrics.inc(
+                    "provider_requests_total",
+                    {"provider": provider.name, "model": model, "status": "error"},
+                )
+                logger.error(
+                    "provider_error_terminal",
+                    extra={"provider": provider.name, "model": model, "error": repr(e)},
+                )
+                yield (
+                    "data: "
+                    + json.dumps({"type": "error", "message": f"Upstream error: {e}"})
+                    + "\n\n"
+                )
                 return
 
-            async for line in resp.aiter_lines():
-                line = line.strip()
-                if not line:
-                    continue
-                if line == "data: [DONE]":
-                    break
-                if not line.startswith("data: "):
-                    continue
-
-                raw_json = line[6:]
-                try:
-                    chunk_json = json.loads(raw_json)
-                    choices = chunk_json.get("choices", [])
-                    if not choices:
-                        continue
-                    delta = choices[0].get("delta", {})
-                    content = delta.get("content")
-                    if content:
-                        full_content.append(content)
-                        yield f"data: {json.dumps({'type': 'token', 'content': content})}\n\n"
-                except json.JSONDecodeError:
-                    continue
+        if not completed:
+            logger.error(
+                "providers_exhausted",
+                extra={"last_status": last_unavailable_status, "query": query},
+            )
+            yield (
+                "data: "
+                + json.dumps(
+                    {
+                        "type": "error",
+                        "message": f"Upstream error: {last_unavailable_status or 429}",
+                    }
+                )
+                + "\n\n"
+            )
+            return
 
         # 7. Send citations event after the answer so the client shows them under text
         if sources:
@@ -219,6 +272,7 @@ async def stream_rag_response(
 
         # 8. Persist interaction to session in database
         assistant_text = "".join(full_content)
+        current_metrics().char_count = len(assistant_text)
         if assistant_text.strip():
             saved_session_id = await asyncio.to_thread(
                 append_to_session,
