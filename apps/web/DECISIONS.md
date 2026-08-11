@@ -87,7 +87,7 @@ Full 36-audit verification sweep (`apps/web/lighthouse/summary-verify.*`):
   real-device (unthrottled) LCP is ~270ms. Pushing past 90 requires deferring
   below-fold animation setup until after idle, which risks a hero flash and has
   uncertain payoff (hydration alone may keep TBT up). **Accepted as the perf
-  outcome for this phase**; tracked as follow-up issue (mobile-perf overhaul).
+  outcome for this phase**; tracked as follow-up issue #101 (mobile-perf overhaul).
 
 ### How to work with this
 
