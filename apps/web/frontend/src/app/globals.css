@@ -4,48 +4,48 @@
   --font-display: var(--font-spectral), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 
-  /* Fresh Greens light surface — pure white body, mint only where it earns it */
+  /* Fresh Greens light surface - pure white body, mint only where it earns it */
   --color-bg: oklch(1 0 0);
   --color-surface: oklch(0.955 0.02 152);
   --color-surface-deep: oklch(0.93 0.03 152);
   --color-ink: oklch(0.207 0.03 168); /* Carbon Black #081C15 */
-  --color-muted: oklch(0.45 0.018 165); /* neutral gray-green #4C5953 — secondary prose, not green */
+  --color-muted: oklch(0.45 0.018 165); /* neutral gray-green #4C5953 - secondary prose, not green */
   --color-line: oklch(0.875 0.03 157); /* celadon hairline */
 
-  /* Fresh Greens ramp — pinned hue ~161 */
+  /* Fresh Greens ramp - pinned hue ~161 */
   --color-primary: oklch(0.476 0.078 162); /* Hunter Green #2D6A4F */
   --color-primary-deep: oklch(0.348 0.055 163); /* Pine Teal #1B4332 */
   --color-primary-soft: oklch(0.938 0.042 150); /* Frosted Mint #D8F3DC */
-  --color-pine: oklch(0.596 0.098 161); /* Sea Green #40916C — icon green */
-  --color-mint: oklch(0.879 0.061 157); /* Celadon #B7E4C7 — hero band */
+  --color-pine: oklch(0.596 0.098 161); /* Sea Green #40916C - icon green */
+  --color-mint: oklch(0.879 0.061 157); /* Celadon #B7E4C7 - hero band */
 
-  /* Accent — cool teal, the verification voice (semantic contrast to green) */
+  /* Accent - cool teal, the verification voice (semantic contrast to green) */
   --color-accent: oklch(0.42 0.085 205);
   --color-accent-soft: oklch(0.935 0.028 205);
 
-  /* Hero — fresh mint band, deep-pine ink */
-  --color-hero-ink: oklch(0.348 0.055 163); /* Pine Teal — headline on band */
-  --color-hero-muted: oklch(0.45 0.018 165); /* neutral gray-green #4C5953 — lede on band */
+  /* Hero - fresh mint band, deep-pine ink */
+  --color-hero-ink: oklch(0.348 0.055 163); /* Pine Teal - headline on band */
+  --color-hero-muted: oklch(0.45 0.018 165); /* neutral gray-green #4C5953 - lede on band */
   --color-hero-line: oklch(0.763 0.101 161); /* Mint Leaf #74C69D */
   --color-hero-panel: oklch(0.995 0.004 155); /* ledger card */
 
-  /* On-dark — pine surfaces (footer, final CTA) */
+  /* On-dark - pine surfaces (footer, final CTA) */
   --color-on-dark: oklch(0.938 0.042 150); /* Frosted Mint text */
   --color-on-dark-muted: oklch(0.82 0.061 157); /* Celadon text */
   --color-on-dark-line: oklch(0.45 0.055 163); /* hairline on pine */
 
-  /* Product activity states — the full-palette moment */
+  /* Product activity states - the full-palette moment */
   --color-state-active: oklch(0.706 0.118 161); /* Mint Leaf #52B788 */
   --color-state-passive: oklch(0.55 0.11 225);
   --color-state-idle: oklch(0.49 0.03 160);
   --color-state-private: oklch(0.62 0.12 82);
 
-  /* Scoring category — the one warm tone outside the 4-state closed set.
+  /* Scoring category - the one warm tone outside the 4-state closed set.
      Deliberate: "unproductive" is a scored negative category (full weight),
      so it must not read as PRIVATE_TIME amber (excluded entirely). */
-  --color-unproductive: oklch(0.56 0.145 42); /* rust/terracotta — distinct from private gold */
+  --color-unproductive: oklch(0.56 0.145 42); /* rust/terracotta - distinct from private gold */
 
-  /* Form error states — rust, in the brand's warm accent family */
+  /* Form error states - rust, in the brand's warm accent family */
   --color-danger: oklch(0.55 0.145 25);
   --color-danger-soft: oklch(0.955 0.025 25);
 
@@ -54,7 +54,7 @@
   /* Skip link sits above the sticky header (z-50) and cursor ring (z-80) */
   --z-index-skip: 100;
 
-  /* Chat launcher + panel — above content and cursor, below the skip link */
+  /* Chat launcher + panel - above content and cursor, below the skip link */
   --z-index-chat: 90;
 
   --spacing-section: clamp(4.5rem, 11vw, 8rem);
@@ -106,6 +106,13 @@
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
     border-radius: 4px;
+  }
+
+  /* Pill-shaped interactives (nav CTAs, toggle chips, cards) get a full-round
+     focus ring so the outline matches the shape instead of clipping at 4px. */
+  a[class*="rounded-full"]:focus-visible,
+  button[class*="rounded-full"]:focus-visible {
+    border-radius: 9999px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -174,7 +181,7 @@
   }
 }
 
-/* ————— Motion ————— */
+/* ----- Motion ----- */
 
 @keyframes v-pulse {
   0%,
@@ -219,20 +226,26 @@
   animation: v-chat-dot 1s var(--ease-out-quint) infinite;
 }
 
-/* Movement optimizations — only for persistent transforms. GSAP sets and
+/* Movement optimizations - only for persistent transforms. GSAP sets and
    clears will-change inline on tweened targets itself, so a static hint list
    would hold layers alive needlessly; the hero panel is the one always-on scrub. */
 html.js .hero-panel {
   will-change: transform;
 }
 
-/* Feature page jump-nav — active section pill */
+/* Feature page jump-nav - active section pill */
 .js-jump-link.is-active {
   background-color: var(--color-primary-soft);
   color: var(--color-primary);
 }
 
-/* Capability ledger rows — desktop hover: bg shift + pine dot scale */
+/* Article TOC - active heading marker */
+.js-toc-link.is-active {
+  border-color: var(--color-primary);
+  color: var(--color-ink);
+}
+
+/* Capability ledger rows - desktop hover: bg shift + pine dot scale */
 @media (hover: hover) and (pointer: fine) {
   .js-cap-ledger .js-cap-entry {
     transition: background-color 0.3s var(--ease-out-quint);
@@ -248,7 +261,7 @@ html.js .hero-panel {
   }
 }
 
-/* Comparison ledger rows — hover: chip scales, Veracity cell tints */
+/* Comparison ledger rows - hover: chip scales, Veracity cell tints */
 @media (hover: hover) and (pointer: fine) {
   .js-ledger-row .js-ledger-chip {
     transition: transform 0.3s var(--ease-out-quint);
@@ -258,7 +271,7 @@ html.js .hero-panel {
   }
 }
 
-/* Difference persona toggle — reduced-motion fallback for the sliding thumb */
+/* Difference persona toggle - reduced-motion fallback for the sliding thumb */
 @media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
   .js-diff-btn[aria-checked="true"] {
     background-color: var(--color-primary-soft);
@@ -266,13 +279,13 @@ html.js .hero-panel {
   }
 }
 
-/* Approach capture-card spotlight — faint pine tint, reads on white */
+/* Approach capture-card spotlight - faint pine tint, reads on white */
 .approach-spotlight {
   background: radial-gradient(closest-side, oklch(0.476 0.078 162 / 0.07), transparent 70%);
   will-change: transform;
 }
 
-/* Cursor ring — trailing teal accent (desktop, fine pointer, motion OK only) */
+/* Cursor ring - trailing teal accent (desktop, fine pointer, motion OK only) */
 .cursor-ring {
   display: none;
   position: fixed;
@@ -294,9 +307,28 @@ html.js .hero-panel {
   }
 }
 
-/* CTA spotlight — soft radial light that follows the cursor over the final panel */
+/* CTA spotlight - soft radial light that follows the cursor over the final panel */
 .cta-spotlight {
   background: radial-gradient(closest-side, rgba(255, 255, 255, 0.16), transparent 70%);
   will-change: transform;
+}
+
+/* Scrollable-table edge fade - applied only while the content overflows.
+   Fades the left/right edges so a sideways-scrolling table reads as scrollable. */
+.scroll-fade-x {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 1.5rem,
+    black calc(100% - 1.5rem),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 1.5rem,
+    black calc(100% - 1.5rem),
+    transparent 100%
+  );
 }
 

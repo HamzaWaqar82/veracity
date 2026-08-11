@@ -23,11 +23,11 @@ export default function ContactUsPage() {
             Contact channels and inquiry form
           </h2>
           <ContactLedger>
-            <div className="js-ledger-col flex flex-col gap-6">
+            <div className="js-ledger-col flex min-w-0 flex-col gap-6">
               <DemoCard />
               <SupportChannelsCard />
             </div>
-            <div className="js-ledger-col">
+            <div className="js-ledger-col min-w-0">
               <ContactForm />
             </div>
           </ContactLedger>

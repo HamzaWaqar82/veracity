@@ -5,6 +5,7 @@ import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
 import { attachMagnetic } from "@/lib/cursor";
 import { CheckIcon } from "@/components/icons";
+import { TiltCard } from "@/components/common/TiltCard";
 import { tiers, type Tier } from "./pricing-data";
 import { CTA } from "@/lib/cta";
 
@@ -107,7 +108,7 @@ export function PlanSummary() {
         if (!ctx.conditions?.motion || !ctx.conditions?.hover) return;
         const cleanups = gsap.utils
           .toArray<HTMLElement>(".js-plan-cta", root.current!)
-          .map((el) => attachMagnetic(el, 140, 0.35));
+          .map((el) => attachMagnetic(el, 140, 0.4));
         return () => cleanups.forEach((fn) => fn());
       });
     },
@@ -150,13 +151,13 @@ export function PlanSummary() {
   }, [annual]);
 
   return (
-    <section ref={root} id="plans" className="scroll-mt-28 py-section">
+    <section ref={root} id="plan-details" className="scroll-mt-28 py-section">
       <div className="container-x">
         <h2 className="js-plan-h font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
           Three plans, one published matrix.
         </h2>
         <p className="js-plan-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          The same trust-preserving defaults ship at every tier — no stealth mode, no keystroke
+          The same trust-preserving defaults ship at every tier - no stealth mode, no keystroke
           logging, ever. Choose by team size, support, and how deep the visibility needs to go.
         </p>
 
@@ -200,7 +201,7 @@ export function PlanSummary() {
                 Annual
                 <span
                   ref={chipRef}
-                  className="ml-1.5 inline-block rounded-full bg-primary-soft px-2 py-0.5 text-[0.6875rem] font-semibold text-primary"
+                  className="ml-1.5 inline-block rounded-full bg-primary-soft px-2 py-0.5 text-[0.8125rem] font-semibold text-primary"
                 >
                   2 months free
                 </span>
@@ -213,8 +214,9 @@ export function PlanSummary() {
               <div
                 key={tier.id}
                 id={tier.id}
-                className="scroll-mt-28 px-6 py-8 transition-transform duration-200 ease-out hover:-translate-y-1 sm:px-8"
+                className="scroll-mt-28 [perspective:1400px]"
               >
+                <TiltCard maxAngle={1.5} className="h-full px-6 py-8 sm:px-8">
                 <h3 className="font-display text-2xl font-semibold">{tier.name}</h3>
                 <PriceBlock tier={tier} annual={annual} />
                 <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted">{tier.pitch}</p>
@@ -242,6 +244,7 @@ export function PlanSummary() {
                 <Link href={CTA.trial} className="btn btn-outline js-plan-cta mt-8 w-full">
                   Start Free Trial
                 </Link>
+                </TiltCard>
               </div>
             ))}
           </div>
@@ -250,7 +253,7 @@ export function PlanSummary() {
         <p className="js-plan-panel mt-6 max-w-2xl text-[0.9375rem] leading-relaxed text-muted">
           Every tier includes the same trust stack: the 60s heartbeat, published productivity
           scoring, the employee dashboard, Private Time, and the AES-256 offline cache. Visual
-          monitoring is optional — Starter has none.
+          monitoring is optional - Starter has none.
         </p>
       </div>
     </section>

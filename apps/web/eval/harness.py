@@ -8,8 +8,8 @@ Usage:
 import argparse
 import asyncio
 import json
-import os
 import re
+import secrets
 import sys
 import time
 from datetime import UTC, datetime
@@ -19,10 +19,20 @@ import httpx
 from dotenv import load_dotenv
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_QUESTIONS = HERE / "questions.json"
-DEFAULT_OUTPUT_DIR = HERE / "results"
+DEFAULT_QUESTIONS = HERE / "questions.json" #golden dataset
+DEFAULT_OUTPUT_DIR = HERE / "results" #eval results
 
 load_dotenv(Path(__file__).resolve().parents[1] / "backend" / ".env")
+
+BACKEND_DIR = Path(__file__).resolve().parents[1] / "backend"
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
+from config import LLM_PROVIDERS
+from llm import ChatProvider, ModelUnavailable, ProviderError, get_provider
+
+# Judge provider: default to the first configured chat provider so the eval
+# harness follows the same LLM_PROVIDERS chain as the backend chat endpoint.
+DEFAULT_JUDGE_PROVIDER = (LLM_PROVIDERS[0] if LLM_PROVIDERS else "openrouter").strip()
 
 REFUSAL_SIGNALS = [
     "i don't know",
@@ -99,43 +109,51 @@ def build_judge_prompt(question: str, expected_answer: str, response: str) -> st
     )
 
 
+JUDGE_MAX_ATTEMPTS = 3
+JUDGE_BACKOFF_SECONDS = 1.5
+
+
 async def score_question_llm(
-    client: httpx.AsyncClient,
+    judge_provider: ChatProvider,
     question: str,
     expected_answer: str,
     response_text: str,
     judge_model: str,
-    openrouter_api_key: str,
     system_prompt: str = JUDGE_SYSTEM_PROMPT,
-    timeout: float = 15.0,
-) -> tuple[bool, str]:
+) -> tuple[bool, str, float]:
+    """Score one response with the LLM judge.
+
+    Returns ``(passed, verdict, judge_ms)`` where ``judge_ms`` is how long the
+    judge call(s) took — recorded so the eval report can separate *backend*
+    latency (measured client-side against /api/chat) from *judge* latency.
+    """
     prompt = build_judge_prompt(question, expected_answer, response_text)
-    payload = {
-        "model": judge_model,
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": prompt},
-        ],
-        "temperature": 0.0,
-        "max_tokens": 10,
-    }
-    try:
-        resp = await client.post(
-            "https://openrouter.ai/api/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {openrouter_api_key}",
-                "Content-Type": "application/json",
-            },
-            json=payload,
-            timeout=timeout,
-        )
-        resp.raise_for_status()
-        result = resp.json()
-        content = result["choices"][0]["message"]["content"].strip().upper()
-        passed = "PASS" in content
-        return passed, content
-    except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError) as e:
-        return False, f"judge_error: {e}"
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": prompt},
+    ]
+    last_error: str | None = None
+    judge_start = time.monotonic()
+    for attempt in range(JUDGE_MAX_ATTEMPTS):
+        try:
+            content = await judge_provider.complete(
+                messages,
+                model=judge_model,
+                temperature=0.0,
+                max_tokens=128,
+            )
+            verdict = content.strip().upper()
+            judge_ms = (time.monotonic() - judge_start) * 1000
+            return "PASS" in verdict, verdict, judge_ms
+        except ModelUnavailable as e:
+            # Upstream quota/rate-limit: back off and retry the same judge model.
+            last_error = f"judge_error: http_{e.status}"
+            await asyncio.sleep(JUDGE_BACKOFF_SECONDS * (attempt + 1))
+            continue
+        except ProviderError as e:
+            # Terminal provider failure: record it; do not retry.
+            return False, f"judge_error: {e}", (time.monotonic() - judge_start) * 1000
+    return False, last_error or "judge_error: exhausted", (time.monotonic() - judge_start) * 1000
 
 
 def score_question(
@@ -217,15 +235,15 @@ async def run_question(
     client: httpx.AsyncClient,
     q: dict,
     api_url: str,
+    judge_provider: ChatProvider,
     judge_model: str,
-    openrouter_api_key: str,
 ) -> dict:
     category = q["category"]
     is_multi_turn = category == "multi_turn" and q["multi_turn_chain"] is not None
 
     if is_multi_turn:
         return await run_multi_turn_question(
-            client, q, api_url, judge_model, openrouter_api_key
+            client, q, api_url, judge_provider, judge_model
         )
 
     session_id = None
@@ -249,10 +267,12 @@ async def run_question(
 
     if category == "pricing":
         passed, method, detail = score_question(q, response_text)
+        judge_ms = 0.0
         if not passed:
-            judge_passed, judge_detail = await score_question_llm(
-                client, q["question"], q["expected_answer"], response_text,
-                judge_model, openrouter_api_key,
+            judge_passed, judge_detail, judge_ms = await score_question_llm(
+                judge_provider,
+                q["question"], q["expected_answer"], response_text,
+                judge_model,
                 system_prompt=PRICING_JUDGE_SYSTEM_PROMPT,
             )
             passed = judge_passed
@@ -269,6 +289,7 @@ async def run_question(
             "error": False,
             "pricing_violation": pricing_violation,
             "citation_present": bool(citations),
+            "judge_ms": round(judge_ms, 1),
         }
 
     elif category == "unanswerable":
@@ -283,12 +304,14 @@ async def run_question(
             "error": False,
             "pricing_violation": False,
             "citation_present": bool(citations),
+            "judge_ms": 0.0,
         }
 
     else:
-        llm_passed, llm_detail = await score_question_llm(
-            client, q["question"], q["expected_answer"], response_text,
-            judge_model, openrouter_api_key,
+        llm_passed, llm_detail, judge_ms = await score_question_llm(
+            judge_provider,
+            q["question"], q["expected_answer"], response_text,
+            judge_model,
         )
         return {
             "id": q["id"],
@@ -300,6 +323,7 @@ async def run_question(
             "error": False,
             "pricing_violation": False,
             "citation_present": bool(citations),
+            "judge_ms": round(judge_ms, 1),
         }
 
 
@@ -307,8 +331,8 @@ async def run_multi_turn_question(
     client: httpx.AsyncClient,
     q: dict,
     api_url: str,
+    judge_provider: ChatProvider,
     judge_model: str,
-    openrouter_api_key: str,
 ) -> dict:
     session_id = None
     all_passed = True
@@ -344,11 +368,13 @@ async def run_multi_turn_question(
         norm_exp = normalize(turn["expected_answer"])
         norm_resp = normalize(response_text)
         turn_passed = norm_exp in norm_resp or norm_resp in norm_exp
+        judge_ms = 0.0
 
         if not turn_passed:
-            llm_passed, _ = await score_question_llm(
-                client, turn["question"], turn["expected_answer"],
-                response_text, judge_model, openrouter_api_key,
+            llm_passed, _, judge_ms = await score_question_llm(
+                judge_provider,
+                turn["question"], turn["expected_answer"],
+                response_text, judge_model,
             )
             turn_passed = llm_passed
 
@@ -359,6 +385,7 @@ async def run_multi_turn_question(
             "turn": i,
             "passed": turn_passed,
             "question": turn["question"],
+            "judge_ms": round(judge_ms, 1),
         })
 
     return {
@@ -372,10 +399,11 @@ async def run_multi_turn_question(
         "pricing_violation": False,
         "citation_present": bool(multi_citations),
         "sub_results": sub_results,
+        "judge_ms": round(sum(r.get("judge_ms", 0) for r in sub_results), 1),
     }
 
 
-def compute_summary(results: list[dict]) -> dict:
+def compute_summary(results: list[dict], judge_model: str, run_id: str = "") -> dict:
     total = len(results)
     passed = sum(1 for r in results if r.get("passed"))
     latencies = [r["latency_ms"] for r in results if not r.get("error")]
@@ -408,7 +436,9 @@ def compute_summary(results: list[dict]) -> dict:
     p95 = sorted_lat[int(len(sorted_lat) * 0.95)] if sorted_lat else 0
 
     return {
+        "run_id": run_id,
         "timestamp": datetime.now(UTC).isoformat(),
+        "judge_model": judge_model,
         "total": total,
         "passed": passed,
         "answerable_accuracy": round(answerable_passed / answerable_total, 4) if answerable_total else 0,
@@ -420,9 +450,8 @@ def compute_summary(results: list[dict]) -> dict:
     }
 
 
-def write_results(results: list[dict], summary: dict, output_dir: Path):
+def write_results(results: list[dict], summary: dict, output_dir: Path, ts: str):
     output_dir.mkdir(parents=True, exist_ok=True)
-    ts = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     path = output_dir / f"{ts}.json"
 
     report = {
@@ -434,6 +463,30 @@ def write_results(results: list[dict], summary: dict, output_dir: Path):
     return path
 
 
+class JsonlEventWriter:
+    """Append JSON events to a .jsonl file, safely from concurrent tasks.
+
+    Each line is one machine-readable event (run_started / question_scored /
+    run_completed). This is the "per-question structured log" of an eval run:
+    a single `jq` filter over the file answers e.g. "which questions were
+    judged by LLM, and how slow were those judge calls?"
+    """
+
+    def __init__(self, path: Path):
+        self._path = path
+        self._lock = asyncio.Lock()
+        self._fh = path.open("a", encoding="utf-8")
+
+    async def write(self, event: dict):
+        """Serialize one event to one JSON line (atomic under the lock)."""
+        async with self._lock:
+            self._fh.write(json.dumps(event, default=str) + "\n")
+            self._fh.flush()
+
+    def close(self):
+        self._fh.close()
+
+
 def print_summary(summary: dict):
     s = summary
     print()
@@ -441,6 +494,7 @@ def print_summary(summary: dict):
     print("EVAL RESULTS")
     print("=" * 60)
     print(f"  Timestamp:          {s['timestamp']}")
+    print(f"  Judge model:        {s.get('judge_model', 'n/a')}")
     print(f"  Total questions:    {s['total']}")
     print(f"  Overall passed:     {s['passed']}/{s['total']}")
     print(f"  Answerable acc:     {s['answerable_accuracy']:.1%}")
@@ -455,13 +509,14 @@ def print_summary(summary: dict):
 
 
 async def amain():
+    #create a parser instance to parse the cli arguments
     parser = argparse.ArgumentParser(
         description="Veracity RAG chatbot eval harness"
     )
     parser.add_argument("--api-url", required=True, help="Base URL of the FastAPI backend")
     parser.add_argument(
         "--questions",
-        default=str(DEFAULT_QUESTIONS),
+        default=str(DEFAULT_QUESTIONS), 
         help=f"Path to questions JSON (default: {DEFAULT_QUESTIONS})",
     )
     parser.add_argument(
@@ -470,15 +525,28 @@ async def amain():
         help=f"Output directory for results (default: {DEFAULT_OUTPUT_DIR})",
     )
     parser.add_argument(
+        "--judge-provider",
+        default=DEFAULT_JUDGE_PROVIDER,
+        help=f"Provider for LLM-as-judge (default: {DEFAULT_JUDGE_PROVIDER})",
+    )
+    parser.add_argument(
         "--judge-model",
-        default="openai/gpt-4o-mini",
-        help="OpenRouter model ID for LLM-as-judge (default: openai/gpt-4o-mini)",
+        default="",
+        help="Model ID for LLM-as-judge (default: first model of the judge provider)",
     )
     parser.add_argument(
         "--concurrency",
         type=int,
         default=5,
         help="Max concurrent questions (default: 5)",
+    )
+    parser.add_argument(
+        "--question-delay",
+        type=float,
+        default=0.0,
+        help="Seconds to wait between starting each question. Use to pace a run "
+        "under a provider's per-minute rate limit (e.g. Gemini free tier is "
+        "15 requests/min/model; ~2.0s keeps a single-threaded run under it)",
     )
     args = parser.parse_args()
 
@@ -494,38 +562,82 @@ async def amain():
         print("ERROR: Questions file must contain a non-empty array", file=sys.stderr)
         sys.exit(2)
 
-    api_key = os.getenv("OPENROUTER_API_KEY", "")
-    judge_model = args.judge_model
+    # Build the judge from the configured provider (reads backend/.env keys).
+    judge_provider = get_provider(args.judge_provider)
+    judge_model = args.judge_model or judge_provider.default_model
 
     output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    # One timestamp prefixes BOTH the results JSON and the per-question event
+    # stream, so the two files for a single run are always findable together.
+    ts = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
+    run_id = f"{ts}-{secrets.token_hex(4)}"
+    events_path = output_dir / f"{ts}.events.jsonl"
 
     api_url = args.api_url.rstrip("/")
 
     print(f"Eval harness targeting {api_url}")
+    print(f"  Run id: {run_id}")
     print(f"  Questions: {len(questions)}")
+    print(f"  Judge provider: {args.judge_provider}")
     print(f"  Judge model: {judge_model}")
     print(f"  Output dir: {output_dir}")
     print(f"  Concurrency: {args.concurrency}")
     print()
 
+    event_writer = JsonlEventWriter(events_path)
+    await event_writer.write({
+        "event": "run_started",
+        "run_id": run_id,
+        "timestamp": datetime.now(UTC).isoformat(),
+        "api_url": api_url,
+        "judge_provider": args.judge_provider,
+        "judge_model": judge_model,
+        "concurrency": args.concurrency,
+        "question_delay": args.question_delay,
+        "total_questions": len(questions),
+    })
+
     semaphore = asyncio.Semaphore(args.concurrency)
+    delay_between_questions = max(0.0, args.question_delay)
 
     async def run_question_with_semaphore(
         client: httpx.AsyncClient, q: dict
     ) -> dict:
         async with semaphore:
-            return await run_question(
-                client, q, api_url, judge_model, api_key
+            result = await run_question(
+                client, q, api_url, judge_provider, judge_model
             )
+            # Emit the per-question event as soon as it completes, so a long
+            # run can be tailed (`tail -f *.events.jsonl`) while still running.
+            await event_writer.write({
+                "event": "question_scored",
+                "run_id": run_id,
+                "judge_model": judge_model,
+                **result,
+            })
+            if delay_between_questions:
+                # Pace the start of the next question (best-effort rate limit).
+                await asyncio.sleep(delay_between_questions)
+            return result
 
     async with httpx.AsyncClient(timeout=30.0) as client:
         tasks = [run_question_with_semaphore(client, q) for q in questions]
         results = await asyncio.gather(*tasks)
 
-    summary = compute_summary(results)
-    out_path = write_results(results, summary, output_dir)
+    summary = compute_summary(results, judge_model, run_id=run_id)
+    await event_writer.write({
+        "event": "run_completed",
+        "run_id": run_id,
+        "timestamp": summary["timestamp"],
+        "summary": summary,
+    })
+    event_writer.close()
+
+    out_path = write_results(results, summary, output_dir, ts)
     print_summary(summary)
     print(f"\nResults written to: {out_path}")
+    print(f"Event stream written to: {events_path}")
 
     if summary["hard_fail"]:
         sys.exit(1)

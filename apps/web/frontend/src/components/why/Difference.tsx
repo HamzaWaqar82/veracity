@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { CheckIcon } from "@/components/icons";
+import { TiltCard } from "@/components/common/TiltCard";
 import { personas, type PersonaId } from "./why-data";
 
 const options: { id: PersonaId; label: string }[] = [
@@ -136,8 +137,7 @@ export function Difference() {
           The Veracity difference in practice.
         </h2>
         <p className="js-diff-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          One transparent platform, three perspectives. Every promise below stays on the page —
-          the selector just focuses your attention on who you are.
+          One transparent platform, three perspectives. Every promise below stays on the page - the selector just focuses your attention on who you are.
         </p>
 
         <div
@@ -184,10 +184,11 @@ export function Difference() {
                   colRefs.current[persona.id] = el;
                 }}
                 className={
-                  "js-diff-col scroll-mt-24 rounded-2xl border border-line bg-bg p-7 transition-opacity duration-500 sm:p-8 " +
+                  "js-diff-col scroll-mt-24 [perspective:1400px] transition-opacity duration-500 " +
                   (emphasized ? "opacity-100" : "opacity-40")
                 }
               >
+                <TiltCard maxAngle={1.5} className="h-full rounded-2xl border border-line bg-bg p-7 sm:p-8">
                 <header className="flex items-center gap-3">
                   <span aria-hidden="true" className="size-2.5 shrink-0 rounded-full bg-pine" />
                   <h3 className="font-display text-xl font-semibold">{persona.label}</h3>
@@ -216,11 +217,11 @@ export function Difference() {
                     <p className="font-display text-[0.9375rem] italic leading-relaxed text-ink">
                       &ldquo;{persona.quote.text}&rdquo;
                     </p>
-                    <footer className="mt-2 text-[0.8125rem] font-semibold text-muted">
-                      — {persona.quote.attribution}
+                    <footer className="mt-2 text-[0.8125rem] font-semibold text-muted"> - {persona.quote.attribution}
                     </footer>
                   </blockquote>
                 )}
+                </TiltCard>
               </article>
             );
           })}

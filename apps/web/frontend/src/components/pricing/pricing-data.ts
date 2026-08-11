@@ -30,7 +30,7 @@ export const tiers: Tier[] = [
     annual: "$5",
     year: "$60",
     pitch:
-      "Essential productivity tracking for small teams of up to 10 users — the complete trust stack from day one.",
+      "Essential productivity tracking for small teams of up to 10 users - the complete trust stack from day one.",
     users: "Up to 10 users",
     support: "Email · response within 1 business day",
     supportShort: "Email support",
@@ -44,7 +44,7 @@ export const tiers: Tier[] = [
     annual: "$10",
     year: "$120",
     pitch:
-      "For growing teams of up to 50 users that need deeper visibility — redacted screenshots, benchmarking, and API access.",
+      "For growing teams of up to 50 users that need deeper visibility - redacted screenshots, benchmarking, and API access.",
     users: "Up to 50 users",
     support: "In-app chat · response within 4 hours",
     supportShort: "In-app chat",
@@ -58,12 +58,12 @@ export const tiers: Tier[] = [
     annual: "$20",
     year: "$240",
     pitch:
-      "Unlimited users and full control — SSO, configurable monitoring, compliance exports, and a dedicated account manager.",
+      "Unlimited users and full control - SSO, configurable monitoring, compliance exports, and a dedicated account manager.",
     users: "Unlimited users",
     support: "Dedicated + 24/7 for critical issues",
     supportShort: "Dedicated + 24/7",
     highlight:
-      "Configurable 1–60 min screenshots, SSO / SAML 2.0, compliance reports, and MDM deployment.",
+      "Configurable 1-60 min screenshots, SSO / SAML 2.0, compliance reports, and MDM deployment.",
   },
 ];
 
@@ -98,7 +98,7 @@ export const featureGroups: FeatureGroup[] = [
     rows: [
       {
         feature: "Screenshot monitoring",
-        cells: ["no", "10-minute interval", "Configurable 1–60 min"],
+        cells: ["no", "10-minute interval", "Configurable 1-60 min"],
       },
       { feature: "Client-side redaction (OCR, default)", cells: ["no", "yes", "yes"] },
       { feature: "Sensitive-app exclusion list (configurable)", cells: ["no", "yes", "yes"] },
@@ -110,7 +110,7 @@ export const featureGroups: FeatureGroup[] = [
     name: "Understand",
     rows: [
       {
-        feature: "Daily productivity score (0–100, published methodology)",
+        feature: "Daily productivity score (0-100, published methodology)",
         cells: ["yes", "yes", "yes"],
       },
       { feature: "Confidence indicators (High/Uncertain)", cells: ["yes", "yes", "yes"] },
@@ -184,11 +184,11 @@ export const billingEntries: BillingEntry[] = [
   {
     title: "How billing is calculated",
     body: "Per active user per month. An active user is any employee with the Agent installed who sent at least one heartbeat in the billing period; employees with no heartbeat for 30 consecutive days are not billed. Billing is calculated at the end of each period on the average active-user count.",
-    flags: ["No seat minimum and no setup fee — start with a single user."],
+    flags: ["No seat minimum and no setup fee - start with a single user."],
   },
   {
     title: "Annual billing discount",
-    body: "Two months free per year: you pay for ten months and receive two months free. Annual Starter is $60, Growth $120, and Enterprise $240 per user per year — equivalent to $5, $10, and $20 per user per month. Annual plans are billed once per year.",
+    body: "Two months free per year: you pay for ten months and receive two months free. Annual Starter is $60, Growth $120, and Enterprise $240 per user per year - equivalent to $5, $10, and $20 per user per month. Annual plans are billed once per year.",
     flags: ["No partial refunds are given for mid-cycle downgrades under annual billing."],
   },
   {
@@ -201,8 +201,8 @@ export const billingEntries: BillingEntry[] = [
   },
   {
     title: "Exceeding your user limit",
-    body: "At 90% of your plan's limit, all organization administrators receive a notification. Past the limit, new Agent installations are blocked — existing Agents continue to function — until you upgrade to the next tier.",
-    flags: ["Additional seats beyond a plan's limit are not available — you must move up a tier."],
+    body: "At 90% of your plan's limit, all organization administrators receive a notification. Past the limit, new Agent installations are blocked (existing Agents continue to function) until you upgrade to the next tier.",
+    flags: ["Additional seats beyond a plan's limit are not available - you must move up a tier."],
   },
   {
     title: "Non-profit & education discounts",
@@ -222,7 +222,7 @@ export const billingEntries: BillingEntry[] = [
 export const neverOffers: { title: string; body: string }[] = [
   {
     title: "Keystroke logging",
-    body: "Never logs keystrokes, key counts, or any form of keyboard input content — at any tier, now or in any future version.",
+    body: "Never logs keystrokes, key counts, or any form of keyboard input content - at any tier, now or in any future version.",
   },
   {
     title: "Continuous video or screen recording",
@@ -246,14 +246,14 @@ export const neverOffers: { title: string; body: string }[] = [
   },
   {
     title: "DLP policy enforcement",
-    body: "USB and file events are logging-only — no allow/deny enforcement.",
+    body: "USB and file events are logging-only - no allow/deny enforcement.",
   },
 ];
 
 export const deferredOffers: { title: string; body: string }[] = [
   {
     title: "HRIS or SCIM integration",
-    body: "Deferred post-MVP — on the roadmap, not part of the signed refusal list above.",
+    body: "Deferred post-MVP - on the roadmap, not part of the signed refusal list above.",
   },
 ];
 
@@ -268,7 +268,7 @@ export const billingFaqs: { q: string; a: string }[] = [
   },
   {
     q: "Is there an annual billing discount?",
-    a: "Yes — two months free per year. You pay for ten months and receive two months free: annual Starter is $60 per user per year ($5/mo), Growth $120 ($10/mo), and Enterprise $240 ($20/mo). Annual plans are billed once per year, with no partial refunds for mid-cycle downgrades.",
+    a: "Yes - two months free per year. You pay for ten months and receive two months free: annual Starter is $60 per user per year ($5/mo), Growth $120 ($10/mo), and Enterprise $240 ($20/mo). Annual plans are billed once per year, with no partial refunds for mid-cycle downgrades.",
   },
   {
     q: "Can I switch plans mid-cycle?",
@@ -276,11 +276,11 @@ export const billingFaqs: { q: string; a: string }[] = [
   },
   {
     q: "What happens if I exceed my user limit?",
-    a: "At 90% of your plan's limit, all administrators are notified. Past the limit, new Agent installations are blocked and existing Agents continue to function until you upgrade. Additional seats beyond a plan's limit are not available — you must move to a higher tier.",
+    a: "At 90% of your plan's limit, all administrators are notified. Past the limit, new Agent installations are blocked and existing Agents continue to function until you upgrade. Additional seats beyond a plan's limit are not available - you must move to a higher tier.",
   },
   {
     q: "Do you offer discounts for non-profits or educational institutions?",
-    a: "Yes — a 20% discount for verified non-profit organizations and accredited educational institutions, applied to monthly and annual billing on all plans. Email sales@veracity.dev with your verification documents.",
+    a: "Yes - a 20% discount for verified non-profit organizations and accredited educational institutions, applied to monthly and annual billing on all plans. Email sales@veracity.dev with your verification documents.",
   },
   {
     q: "What payment methods do you accept?",

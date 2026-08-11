@@ -6,6 +6,9 @@ __pycache__/
 venv/
 env/
 
+# Runtime logs (rotating files written by backend/observability.py)
+logs/
+
 # Node
 node_modules/
 .next/

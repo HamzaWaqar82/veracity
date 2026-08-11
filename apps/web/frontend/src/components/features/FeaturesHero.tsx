@@ -15,6 +15,39 @@ const jumpLinks = [
   { label: "Control", href: "#control" },
 ];
 
+const specRows = [
+  {
+    label: "Activity heartbeat",
+    value: "60 s",
+    note: "Application, window title, URL domain",
+  },
+  {
+    label: "Idle threshold",
+    value: "180 s",
+    note: "Configurable default",
+  },
+  {
+    label: "Screenshot interval",
+    value: "10 min",
+    note: "Growth · Enterprise: 1-60 min",
+  },
+  {
+    label: "Data retention",
+    value: "12 mo",
+    note: "Screenshots 90 days · custom on Enterprise",
+  },
+  {
+    label: "Keystroke logging",
+    value: "Never",
+    note: "All plans",
+  },
+  {
+    label: "Audio · video · webcam",
+    value: "Never",
+    note: "All plans",
+  },
+];
+
 export function FeaturesHero() {
   const root = useRef<HTMLElement>(null);
   const content = useRef<HTMLDivElement>(null);
@@ -22,6 +55,7 @@ export function FeaturesHero() {
   const lede = useRef<HTMLParagraphElement>(null);
   const note = useRef<HTMLParagraphElement>(null);
   const jump = useRef<HTMLDivElement>(null);
+  const sheet = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -46,7 +80,13 @@ export function FeaturesHero() {
             1.0,
           )
           .fromTo(note.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.16)
-          .fromTo(jump.current, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 1.26);
+          .fromTo(
+            sheet.current,
+            { autoAlpha: 0, x: 64, scale: 0.96 },
+            { autoAlpha: 1, x: 0, scale: 1, duration: 1.0 },
+            0.6,
+          )
+          .fromTo(jump.current, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 1.3);
 
         gsap.to(content.current, {
           y: -56,
@@ -71,15 +111,15 @@ export function FeaturesHero() {
     <section ref={root} className="relative overflow-hidden bg-mint text-hero-ink">
       <div
         ref={content}
-        className="container-x relative pt-32 text-center sm:pt-40 lg:pt-44"
+        className="container-x relative pt-32 sm:pt-40 lg:pt-44"
       >
         <p
           ref={badge}
           className="inline-flex items-center gap-2 rounded-full border border-hero-line px-3.5 py-1.5 text-[0.8125rem] font-semibold tracking-[0.02em]"
         >
-          Specification-grade · No marketing gloss
+          Specification-grade · All figures published
         </p>
-        <h1 className="mx-auto mt-7 max-w-4xl font-display text-[clamp(2.5rem,4vw+1.5rem,4rem)] font-semibold leading-[1.06] tracking-[-0.03em]">
+        <h1 className="mt-7 max-w-4xl font-display text-[clamp(2.5rem,4vw+1.5rem,4rem)] font-semibold leading-[1.06] tracking-[-0.03em]">
           {headlineWords.map((word, i) => (
             <span key={i}>
               <span className="inline-block overflow-hidden align-top pb-[0.08em] -mb-[0.08em]">
@@ -89,12 +129,12 @@ export function FeaturesHero() {
             </span>
           ))}
         </h1>
-        <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
-          The complete Veracity specification — every tier on one page, with the real numbers:
+        <p ref={lede} className="mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
+          The complete Veracity specification - every tier on one page, with the real numbers:
           heartbeat intervals, idle thresholds, screenshot intervals, and the published scoring
           formula. Cloud-native SaaS only; no on-premise deployment.
         </p>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-10 flex flex-wrap items-center gap-4">
           <Link href={CTA.trial} className="btn btn-lg btn-primary js-feature-cta">
             Start Free Trial
           </Link>
@@ -102,7 +142,7 @@ export function FeaturesHero() {
             Compare plans
           </Link>
         </div>
-        <p ref={note} className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm font-medium text-hero-muted">
+        <p ref={note} className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium text-hero-muted">
           <span>14-day free trial</span>
           <span className="text-hero-line" aria-hidden="true">·</span>
           <span>No credit card</span>
@@ -111,7 +151,38 @@ export function FeaturesHero() {
         </p>
       </div>
 
-      <div className="container-x relative mt-14 pb-24 sm:pb-28 lg:pb-32">
+      <div className="container-x relative mt-14">
+        <div
+          ref={sheet}
+          className="overflow-hidden rounded-2xl border border-hero-line/70 bg-hero-panel shadow-[0_28px_60px_-28px_rgba(27,67,50,0.45)]"
+        >
+          <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
+            <p className="text-[0.8125rem] font-bold tracking-[0.16em] text-on-dark">
+              SPECIFICATION SHEET
+            </p>
+            <p className="text-xs font-semibold text-on-dark-muted">ALL FIGURES PUBLISHED</p>
+          </div>
+          <div className="grid grid-cols-1 gap-px bg-hero-line/60 sm:grid-cols-2 lg:grid-cols-3">
+            {specRows.map((row) => (
+              <div key={row.label} className="bg-white px-5 py-5 sm:px-6">
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-muted">
+                  {row.label}
+                </p>
+                <p className="mt-2 font-display text-2xl font-semibold tabular-nums text-ink">
+                  {row.value}
+                </p>
+                <p className="mt-1 text-sm leading-snug text-muted">{row.note}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 bg-primary-soft px-5 py-3">
+            <p className="text-xs font-semibold text-primary">Signed · published terms</p>
+            <p className="text-xs font-semibold text-primary">Every limit published</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="container-x relative mt-12 pb-24 sm:pb-28 lg:pb-32">
         <div ref={jump}>
           <SectionJumpNav ariaLabel="Feature sections" links={jumpLinks} />
         </div>

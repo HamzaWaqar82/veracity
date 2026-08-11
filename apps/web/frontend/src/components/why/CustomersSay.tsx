@@ -59,7 +59,7 @@ export function CustomersSay() {
           What customers say.
         </h2>
         <p className="js-customers-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Transparent monitoring, in the words of the people who run it — from the CEO who chose it
+          Transparent monitoring, in the words of the people who run it - from the CEO who chose it
           to the compliance officer who audits it.
         </p>
 

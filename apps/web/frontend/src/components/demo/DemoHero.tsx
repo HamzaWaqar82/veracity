@@ -78,8 +78,7 @@ export function DemoHero() {
           ))}
         </h1>
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
-          A walkthrough of the Agent, the manager dashboard, and the employee self-service portal —
-          shown against the way your team actually works. No slideware, no pressure.
+          A walkthrough of the Agent, the manager dashboard, and the employee self-service portal - shown against the way your team actually works. No slideware, no pressure.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link href="#demo-form" className="btn btn-lg btn-primary js-demo-cta">
@@ -92,7 +91,7 @@ export function DemoHero() {
         <p ref={note} className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm font-medium text-hero-muted">
           <span>Response within one business day</span>
           <span className="text-hero-line" aria-hidden="true">·</span>
-          <span>Available Mon–Fri, 9 AM–6 PM UTC</span>
+          <span>Available Mon - Fri, 9 AM - 6 PM UTC</span>
         </p>
       </div>
     </section>

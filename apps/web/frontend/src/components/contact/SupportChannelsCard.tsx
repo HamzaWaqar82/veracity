@@ -1,13 +1,15 @@
 import { supportRows, emails } from "@/components/about/about-data";
+import { TableScroll } from "@/components/common/TableScroll";
+import { TiltCard } from "@/components/common/TiltCard";
 
 export function SupportChannelsCard() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-surface">
+    <TiltCard maxAngle={1.5} className="rounded-2xl border border-line bg-surface">
       <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
         <p className="text-xs font-bold tracking-[0.16em] text-on-dark">SUPPORT CHANNELS</p>
         <p className="text-xs font-semibold text-on-dark-muted">SLA TABLE</p>
       </div>
-      <div className="overflow-x-auto">
+      <TableScroll>
         <table className="w-full min-w-[30rem] border-collapse text-left">
           <thead>
             <tr className="border-b border-line">
@@ -50,7 +52,7 @@ export function SupportChannelsCard() {
             ))}
           </tbody>
         </table>
-      </div>
+      </TableScroll>
 
       <div className="border-t border-line bg-white/60 px-5 py-5 sm:px-6">
         <p className="text-sm font-bold uppercase tracking-[0.14em] text-muted">
@@ -70,6 +72,6 @@ export function SupportChannelsCard() {
           ))}
         </ul>
       </div>
-    </div>
+    </TiltCard>
   );
 }

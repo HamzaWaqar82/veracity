@@ -1,0 +1,736 @@
+{
+  "schema_version": 1,
+  "summary": {
+    "run_id": "20260811T000437Z-a28d4ffc",
+    "timestamp": "2026-08-11T00:12:03.924641+00:00",
+    "judge_model": "gemini-3.1-flash-lite",
+    "total": 50,
+    "passed": 49,
+    "answerable_accuracy": 0.9667,
+    "refusal_accuracy": 1.0,
+    "pricing_violations": 0,
+    "p95_latency_ms": 19014,
+    "by_category": {
+      "answerable_single": {
+        "total": 15,
+        "passed": 14
+      },
+      "pricing": {
+        "total": 10,
+        "passed": 10
+      },
+      "cross_product": {
+        "total": 8,
+        "passed": 8
+      },
+      "multi_turn": {
+        "total": 7,
+        "passed": 7
+      },
+      "unanswerable": {
+        "total": 10,
+        "passed": 10
+      }
+    },
+    "hard_fail": false
+  },
+  "results": [
+    {
+      "id": "Q-001",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 25102,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1788.7
+    },
+    {
+      "id": "Q-002",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "timeout_error",
+      "latency_ms": 0,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-003",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3669,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1695.6
+    },
+    {
+      "id": "Q-004",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 25468,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1723.5
+    },
+    {
+      "id": "Q-005",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 2837,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1300.6
+    },
+    {
+      "id": "Q-006",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 18264,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1644.0
+    },
+    {
+      "id": "Q-007",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 19014,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1712.8
+    },
+    {
+      "id": "Q-008",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3662,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1818.4
+    },
+    {
+      "id": "Q-009",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3650,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1828.2
+    },
+    {
+      "id": "Q-010",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3293,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1762.6
+    },
+    {
+      "id": "Q-011",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3807,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1773.3
+    },
+    {
+      "id": "Q-012",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 4459,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1826.1
+    },
+    {
+      "id": "Q-013",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3443,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 2026.6
+    },
+    {
+      "id": "Q-014",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3245,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1717.7
+    },
+    {
+      "id": "Q-015",
+      "category": "answerable_single",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3016,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1648.3
+    },
+    {
+      "id": "Q-016",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "The Starter plan costs $6 per user/month ($60/year or $5/mo billed annually) [Plan Comparison Table](/pricing#plan-comparison-table). All plans include a 14-day free trial, no credit card required.",
+      "latency_ms": 3105,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-017",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "The Growth plan costs $12 per user per month, or $120 per user per year ($10/mo billed annually) [Plan Comparison Table](/pricing#plan-comparison-table).",
+      "latency_ms": 3121,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-018",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "The Enterprise plan costs **$24 per user per month** or **$240 per user per year** ($20/mo) with annual billing [Plan Details > Enterprise \u2014 $24 per user per month ($240 per user per year with annual ",
+      "latency_ms": 3286,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-019",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "No, the Starter plan does not include screenshot monitoring [Plan Comparison Table](/pricing#plan-comparison-table), [Screenshot Monitoring](/features#screenshot-screenshot-monitoring-starter-does-not",
+      "latency_ms": 2829,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-020",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "The Growth plan supports up to 50 users [/pricing#exceeding-user-limits].",
+      "latency_ms": 2797,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-021",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "The Enterprise plan includes a REST API rate limit of 10,000 requests per hour [Enterprise \u2014 $24 per user per month ($240 per user per year with annual billing)](/pricing#enterprise-24-per-user-per-mo",
+      "latency_ms": 2922,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-022",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "No, the Growth plan does not include SSO and SAML integration [Plan Comparison Table](/pricing#plan-comparison-table). \n\nSSO / SAML 2.0 (Okta, Azure AD, Google Workspace) is exclusively included in th",
+      "latency_ms": 3305,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-023",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "Yes, Veracity offers a fourteen-day free trial on all plans with full access to all features of the chosen plan, and no credit card is required [Veracity Pricing \u2014 Plans, Features, and Billing](/prici",
+      "latency_ms": 3165,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-024",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "The Starter plan includes email support with a target response time of within one business day during business hours [Plan Comparison Table](/pricing#plan-comparison-table), and you can reach them at ",
+      "latency_ms": 3459,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-025",
+      "category": "pricing",
+      "passed": true,
+      "score_method": "pricing_numbers_match",
+      "details": "Annual billing is available at a discount of two months per year across all plans [What are the Veracity pricing plans?](/faq#what-are-the-veracity-pricing-plans):\n\n- **Starter:** $60 per user per yea",
+      "latency_ms": 3274,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-026",
+      "category": "cross_product",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3510,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1657.1
+    },
+    {
+      "id": "Q-027",
+      "category": "cross_product",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3044,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1814.1
+    },
+    {
+      "id": "Q-028",
+      "category": "cross_product",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3377,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1681.8
+    },
+    {
+      "id": "Q-029",
+      "category": "cross_product",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 4038,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1747.2
+    },
+    {
+      "id": "Q-030",
+      "category": "cross_product",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3244,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1713.5
+    },
+    {
+      "id": "Q-031",
+      "category": "cross_product",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 3322,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1636.2
+    },
+    {
+      "id": "Q-032",
+      "category": "cross_product",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 2840,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 1718.0
+    },
+    {
+      "id": "Q-033",
+      "category": "cross_product",
+      "passed": true,
+      "score_method": "llm_as_judge",
+      "details": "PASS",
+      "latency_ms": 2758,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 2537.8
+    },
+    {
+      "id": "Q-034",
+      "category": "multi_turn",
+      "passed": true,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": true, \"question\": \"Does the Enterprise plan include API access?\", \"judge_ms\": 2031.5}, {\"turn\": 1, \"passed\": true, \"question\": \"What about the Growth plan?\", \"judge_ms\": 1656.0}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": true,
+          "question": "Does the Enterprise plan include API access?",
+          "judge_ms": 2031.5
+        },
+        {
+          "turn": 1,
+          "passed": true,
+          "question": "What about the Growth plan?",
+          "judge_ms": 1656.0
+        }
+      ],
+      "judge_ms": 3687.5
+    },
+    {
+      "id": "Q-035",
+      "category": "multi_turn",
+      "passed": true,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": true, \"question\": \"What plans does Veracity offer?\", \"judge_ms\": 1175.2}, {\"turn\": 1, \"passed\": true, \"question\": \"Which one includes screenshot monitoring?\", \"judge_ms\": 1720.2}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": true,
+          "question": "What plans does Veracity offer?",
+          "judge_ms": 1175.2
+        },
+        {
+          "turn": 1,
+          "passed": true,
+          "question": "Which one includes screenshot monitoring?",
+          "judge_ms": 1720.2
+        }
+      ],
+      "judge_ms": 2895.4
+    },
+    {
+      "id": "Q-036",
+      "category": "multi_turn",
+      "passed": true,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": true, \"question\": \"How much does the Enterprise plan cost?\", \"judge_ms\": 1753.7}, {\"turn\": 1, \"passed\": true, \"question\": \"Does it include SSO?\", \"judge_ms\": 1698.9}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": true,
+          "question": "How much does the Enterprise plan cost?",
+          "judge_ms": 1753.7
+        },
+        {
+          "turn": 1,
+          "passed": true,
+          "question": "Does it include SSO?",
+          "judge_ms": 1698.9
+        }
+      ],
+      "judge_ms": 3452.6
+    },
+    {
+      "id": "Q-037",
+      "category": "multi_turn",
+      "passed": true,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": true, \"question\": \"Tell me about the Veracity Starter plan.\", \"judge_ms\": 1830.2}, {\"turn\": 1, \"passed\": true, \"question\": \"Can I add more than 10 users?\", \"judge_ms\": 1745.8}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": true,
+          "question": "Tell me about the Veracity Starter plan.",
+          "judge_ms": 1830.2
+        },
+        {
+          "turn": 1,
+          "passed": true,
+          "question": "Can I add more than 10 users?",
+          "judge_ms": 1745.8
+        }
+      ],
+      "judge_ms": 3576.0
+    },
+    {
+      "id": "Q-038",
+      "category": "multi_turn",
+      "passed": true,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": true, \"question\": \"Do you integrate with Jira?\", \"judge_ms\": 1835.1}, {\"turn\": 1, \"passed\": true, \"question\": \"What about Asana?\", \"judge_ms\": 1904.2}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": true,
+          "question": "Do you integrate with Jira?",
+          "judge_ms": 1835.1
+        },
+        {
+          "turn": 1,
+          "passed": true,
+          "question": "What about Asana?",
+          "judge_ms": 1904.2
+        }
+      ],
+      "judge_ms": 3739.3
+    },
+    {
+      "id": "Q-039",
+      "category": "multi_turn",
+      "passed": true,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": true, \"question\": \"What data does the Veracity Agent collect?\", \"judge_ms\": 1715.4}, {\"turn\": 1, \"passed\": true, \"question\": \"Can employees see their own data?\", \"judge_ms\": 1900.6}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": true,
+          "question": "What data does the Veracity Agent collect?",
+          "judge_ms": 1715.4
+        },
+        {
+          "turn": 1,
+          "passed": true,
+          "question": "Can employees see their own data?",
+          "judge_ms": 1900.6
+        }
+      ],
+      "judge_ms": 3616.0
+    },
+    {
+      "id": "Q-040",
+      "category": "multi_turn",
+      "passed": true,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": true, \"question\": \"Is Veracity legal to use?\", \"judge_ms\": 1641.5}, {\"turn\": 1, \"passed\": true, \"question\": \"Which specific US states does it comply with?\", \"judge_ms\": 1734.5}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": true,
+          "question": "Is Veracity legal to use?",
+          "judge_ms": 1641.5
+        },
+        {
+          "turn": 1,
+          "passed": true,
+          "question": "Which specific US states does it comply with?",
+          "judge_ms": 1734.5
+        }
+      ],
+      "judge_ms": 3376.0
+    },
+    {
+      "id": "Q-041",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2341,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-042",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2811,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-043",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2792,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-044",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2733,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-045",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2923,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-046",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2697,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-047",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2806,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-048",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2805,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-049",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2815,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    },
+    {
+      "id": "Q-050",
+      "category": "unanswerable",
+      "passed": true,
+      "score_method": "refusal",
+      "details": "",
+      "latency_ms": 2901,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": true,
+      "judge_ms": 0.0
+    }
+  ]
+}

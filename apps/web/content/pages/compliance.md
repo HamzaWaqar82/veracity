@@ -50,7 +50,7 @@ Veracity is designed with the EU AI Act requirements in mind:
 
 These are architectural constraints, not configuration options — they apply at all tiers and in all jurisdictions.
 
-**Transparent AI Systems.** Veracity's productivity scoring methodology is published and visible to every employee (PA-FR-001). The formula, inputs, and edge cases are documented. The system never claims a single "accuracy percentage" anywhere in the product.
+**Transparent AI Systems.** Veracity's productivity scoring methodology is published and visible to every employee. The formula, inputs, and edge cases are documented. The system never claims a single "accuracy percentage" anywhere in the product.
 
 **Human Oversight.** All productivity scores are advisory tools, not automated employment decisions. Screenshot viewing requires explicit manager request with no automated flagging or content analysis. Dispute workflows provide human review with a tracked SLA.
 

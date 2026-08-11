@@ -2,7 +2,8 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { gsap, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
+import { gsap, useGSAP, EASE, MOTION, DESKTOP, HOVER } from "@/lib/motion";
+import { attachSpotlight, attachTilt } from "@/lib/cursor";
 import { MinusIcon } from "@/components/icons";
 import { computeScore, exampleDays } from "./features-data";
 
@@ -54,13 +55,17 @@ function RefreshIcon({ className = "" }: { className?: string }) {
 export function Methodology() {
   const root = useRef<HTMLElement>(null);
   const card = useRef<HTMLDivElement>(null);
+  const inner = useRef<HTMLDivElement>(null);
+  const cardSpot = useRef<HTMLDivElement>(null);
   const ping = useRef<HTMLSpanElement>(null);
   const band = useRef<HTMLDivElement>(null);
+  const bandSpot = useRef<HTMLDivElement>(null);
   const scoreRef = useRef<HTMLSpanElement>(null);
   const spinRef = useRef<HTMLSpanElement>(null);
 
   const [index, setIndex] = useState(0);
   const prevScore = useRef<number | null>(null);
+  const [announce, setAnnounce] = useState("");
 
   const day = exampleDays[index];
   const { numerator, denominator, score } = computeScore(day);
@@ -162,6 +167,16 @@ export function Methodology() {
           },
         );
       });
+
+      mm.add({ motion: MOTION, hover: HOVER }, (ctx) => {
+        if (!ctx.conditions?.motion || !ctx.conditions?.hover) return;
+        const cleanups: (() => void)[] = [];
+        if (inner.current) cleanups.push(attachTilt(inner.current, 1.5));
+        if (cardSpot.current) cleanups.push(attachSpotlight(cardSpot.current));
+        if (bandSpot.current) cleanups.push(attachSpotlight(bandSpot.current));
+        if (band.current) cleanups.push(attachTilt(band.current, 1.5));
+        return () => cleanups.forEach((fn) => fn());
+      });
     },
     { scope: root },
   );
@@ -193,6 +208,11 @@ export function Methodology() {
 
   const reroll = () => {
     setIndex((i) => (i + 1) % exampleDays.length);
+    const nextDay = exampleDays[(index + 1) % exampleDays.length];
+    const next = computeScore(nextDay);
+    setAnnounce(
+      `${nextDay.label}, daily score ${next.score ?? "not computed"}.`,
+    );
     const motionOK = window.matchMedia(MOTION).matches;
     if (!band.current || !motionOK) return;
     const rows = gsap.utils.toArray<HTMLElement>(".js-ledger-row", band.current);
@@ -211,12 +231,12 @@ export function Methodology() {
   return (
     <section ref={root} className="py-section">
       <div className="container-x grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
-        <div>
+        <div className="min-w-0">
           <h2 className="js-method-h font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             The score is published, not guessed.
           </h2>
           <p className="js-method-lead mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Veracity&apos;s daily 0–100 productivity score comes from one published formula,
+            Veracity&apos;s daily 0-100 productivity score comes from one published formula,
             calculated at midnight local time and visible to every employee. The inputs are the same
             activity data the employee can see; the methodology version is stored with every score
             for audit traceability.
@@ -227,12 +247,11 @@ export function Methodology() {
               className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-primary"
             >
               How productivity scoring works
-            </Link>{" "}
-            — the full write-up of why the formula looks like this.
+            </Link>{" "} - the full write-up of why the formula looks like this.
           </p>
         </div>
 
-        <div className="relative [perspective:1400px]">
+        <div className="relative min-w-0 [perspective:1400px]">
           <div
             ref={card}
             className="js-method-card relative mx-auto w-full max-w-[34rem] [transform-style:preserve-3d]"
@@ -241,14 +260,30 @@ export function Methodology() {
               aria-hidden="true"
               className="absolute -inset-3 rounded-3xl border border-hero-line/60 [transform:translateZ(-24px)]"
             />
-            <div className="js-method-inner relative overflow-hidden rounded-2xl bg-hero-panel shadow-[0_28px_60px_-28px_rgba(27,67,50,0.45)] [transform:translateZ(14px)]">
+            <div
+              ref={inner}
+              className="js-method-inner relative overflow-hidden rounded-2xl bg-hero-panel shadow-[0_28px_60px_-28px_rgba(27,67,50,0.45)] [transform:translateZ(14px)]"
+            >
+              <div
+                ref={cardSpot}
+                aria-hidden="true"
+                className="approach-spotlight pointer-events-none absolute"
+                style={{
+                  left: "50%",
+                  top: "50%",
+                  width: "42rem",
+                  height: "42rem",
+                  marginLeft: "-21rem",
+                  marginTop: "-21rem",
+                }}
+              />
               <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
                 <p className="text-xs font-bold tracking-[0.16em] text-on-dark">PUBLISHED METHODOLOGY</p>
                 <p className="text-xs font-semibold text-on-dark-muted">VER 1.0</p>
               </div>
 
               <div className="bg-white px-5 py-6 sm:px-7">
-                <div className="rounded-xl bg-surface px-5 py-5 font-sans text-[0.9375rem] font-semibold leading-relaxed text-ink tabular-nums sm:text-base">
+                <div className="overflow-x-auto whitespace-nowrap rounded-xl bg-surface px-5 py-5 font-sans text-[0.9375rem] font-semibold leading-relaxed text-ink tabular-nums sm:text-base">
                   {formulaLines.map((line, i) => (
                     <div key={i} className="js-method-row">
                       {i === 0 ? (
@@ -288,8 +323,8 @@ export function Methodology() {
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 bg-primary-soft px-5 py-3">
-                <p className="text-[0.6875rem] font-semibold text-primary">Methodology v1.0 · stored with every score</p>
-                <p className="text-[0.6875rem] font-semibold text-primary">Auditable end to end</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">Methodology v1.0 · stored with every score</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">Auditable end to end</p>
               </div>
             </div>
           </div>
@@ -299,8 +334,21 @@ export function Methodology() {
       <div className="container-x mt-14 lg:mt-20">
         <div
           ref={band}
-          className="js-ledger-wrap relative overflow-hidden rounded-2xl border border-line bg-bg shadow-[0_28px_60px_-28px_rgba(27,67,50,0.35)]"
+          className="js-ledger-wrap relative overflow-hidden rounded-2xl border border-line bg-bg"
         >
+          <div
+            ref={bandSpot}
+            aria-hidden="true"
+            className="approach-spotlight pointer-events-none absolute"
+            style={{
+              left: "50%",
+              top: "50%",
+              width: "42rem",
+              height: "42rem",
+              marginLeft: "-21rem",
+              marginTop: "-21rem",
+            }}
+          />
           <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 bg-primary-deep px-5 py-3.5">
             <p className="flex items-center gap-2 text-xs font-bold tracking-[0.16em] text-on-dark">
               <span className="relative inline-flex size-1.5">
@@ -346,7 +394,7 @@ export function Methodology() {
                           {row.label}
                         </span>
                         {row.excluded ? (
-                          <span className="rounded-full border border-line px-2 py-0.5 text-[0.6875rem] font-semibold text-muted">
+                          <span className="rounded-full border border-line px-2 py-0.5 text-[0.8125rem] font-semibold text-muted">
                             EXCLUDED
                           </span>
                         ) : (
@@ -397,26 +445,29 @@ export function Methodology() {
                   <dt className="shrink-0 font-semibold text-ink">score</dt>
                   <dd className="text-right tabular-nums text-muted">
                     round({numerator} ÷ {denominator} × 100) ={" "}
-                    <span className="font-semibold text-ink">{score ?? "—"}</span>
+                    <span className="font-semibold text-ink">{score ?? " - "}</span>
                   </dd>
                 </div>
               </dl>
               <div className="js-ledger-row mt-5 flex items-center justify-between gap-4 rounded-xl bg-primary-soft px-5 py-4">
                 <div>
-                  <p className="text-[0.6875rem] font-bold tracking-[0.16em] text-primary">
-                    DAILY SCORE · 0–100
+                  <p className="text-[0.8125rem] font-bold tracking-[0.16em] text-primary">
+                    DAILY SCORE · 0-100
                   </p>
                   <p className="mt-1 text-xs font-medium text-primary">Recomputed from the rows you see</p>
                 </div>
-                <p className="font-display text-5xl font-semibold leading-none text-primary" aria-live="polite">
-                  <span ref={scoreRef}>{score ?? "—"}</span>
+                <p className="font-display text-5xl font-semibold leading-none text-primary">
+                  <span ref={scoreRef}>{score ?? " - "}</span>
+                </p>
+                <p className="sr-only" aria-live="polite">
+                  {announce}
                 </p>
               </div>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 bg-primary-soft px-5 py-3">
-            <p className="text-[0.6875rem] font-semibold text-primary">
+            <p className="text-[0.8125rem] font-semibold text-primary">
               Every score recomputes from the displayed minutes via the published formula above.
             </p>
           </div>

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
+import { TiltCard } from "@/components/common/TiltCard";
 
 const states = [
   {
@@ -97,9 +98,10 @@ export function States() {
           Every minute of captured activity is labeled honestly. No hidden categories, no
           guesswork about what counts as work.
         </p>
-        <div
+        <TiltCard
           ref={grid}
-          className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2"
+          maxAngle={1.5}
+          className="mt-12 grid gap-px rounded-2xl border border-line bg-line sm:grid-cols-2"
         >
           {states.map((s) => (
             <div key={s.name} className="js-states-cell bg-bg p-7 sm:p-9">
@@ -117,7 +119,7 @@ export function States() {
               </p>
             </div>
           ))}
-        </div>
+        </TiltCard>
       </div>
     </section>
   );

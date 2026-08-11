@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
+import { TiltCard } from "@/components/common/TiltCard";
 import { manifesto } from "./about-data";
 
 export function Manifesto() {
@@ -64,10 +65,14 @@ export function Manifesto() {
         </h2>
         <p className="js-manifesto-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
           These are the rules Veracity was built on. Each one is an architectural commitment, not a
-          policy statement — enforced in the Agent, the encryption, and the audit trail.
+          policy statement - enforced in the Agent, the encryption, and the audit trail.
         </p>
 
-        <div className="js-manifesto-card mt-12 overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.35)]">
+        <div className="js-manifesto-card mt-12 [perspective:1400px]">
+          <TiltCard
+            maxAngle={2}
+            className="overflow-hidden rounded-2xl border border-line bg-white"
+          >
           <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
             <p className="text-xs font-bold tracking-[0.16em] text-on-dark">
               THE FAIR MONITORING MANIFESTO
@@ -104,6 +109,7 @@ export function Manifesto() {
               Commitments, not policy
             </p>
           </div>
+          </TiltCard>
         </div>
       </div>
     </section>

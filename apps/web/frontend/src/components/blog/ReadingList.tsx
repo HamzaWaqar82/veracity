@@ -52,19 +52,19 @@ export function ReadingList({ essays }: { essays: Essay[] }) {
           The reading list.
         </h2>
         <p className="js-rl-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Three articles, published and indexed. Each one stands alone — start anywhere.
+          Three articles, published and indexed. Each one stands alone - start anywhere.
         </p>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {essays.map((essay, index) => (
+          {essays.map((essay) => (
             <Link
               key={essay.slug}
               href={`/resources/${essay.slug}`}
-              className="js-rl-card group flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.22)] transition-colors duration-300 hover:border-primary/40"
+              className="js-rl-card group flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-colors duration-300 hover:border-primary/40"
             >
               <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
                 <p className="text-xs font-bold tracking-[0.16em] text-on-dark">
-                  ARTICLE {String(index + 1).padStart(2, "0")}
+                  FROM THE RESOURCES
                 </p>
                 <p className="text-xs font-semibold text-on-dark-muted">{essay.readTime}</p>
               </div>

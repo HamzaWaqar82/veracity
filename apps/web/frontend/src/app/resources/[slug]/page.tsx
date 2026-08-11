@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { BLOG_FILES, getEssay, readEssayMarkdown, essays } from "@/lib/blog";
+import { BLOG_FILES, getEssay, readEssayMarkdown } from "@/lib/blog";
+import { SITE_URL } from "@/lib/site";
 import { BlogArticleHeader, KeepReading } from "@/components/blog/BlogArticleChrome";
 import { BlogPostBody } from "@/components/blog/BlogPostBody";
+import { ReadingProgress } from "@/components/blog/ReadingProgress";
 
 export const dynamicParams = false;
 
@@ -28,11 +30,30 @@ export default async function BlogPostPage({ params }: Props) {
   const essay = getEssay(slug);
   const markdown = readEssayMarkdown(slug);
   if (!essay || !markdown) notFound();
-  const index = essays.findIndex((e) => e.slug === slug);
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Resources", item: `${SITE_URL}/resources` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: essay.title,
+        item: `${SITE_URL}/resources/${slug}`,
+      },
+    ],
+  };
 
   return (
     <>
-      <BlogArticleHeader essay={essay} index={index === -1 ? 0 : index} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <BlogArticleHeader essay={essay} />
+      <ReadingProgress />
       <BlogPostBody markdown={markdown} />
       <KeepReading current={slug} />
     </>

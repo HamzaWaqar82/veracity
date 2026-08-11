@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION, DESKTOP } from "@/lib/motion";
 import { CheckIcon, MinusIcon } from "@/components/icons";
+import { TiltCard } from "@/components/common/TiltCard";
 
 const collects = ["Application names", "Window titles", "URL domains"];
 const never = [
@@ -31,7 +32,7 @@ export function Approach() {
         if (!ctx.conditions?.motion) return;
         const desktop = ctx.conditions?.desktop;
 
-        // Ledger stroke-draw prep — icons start as an invisible "trace" that writes itself in.
+        // Ledger stroke-draw prep - icons start as an invisible "trace" that writes itself in.
         q(".js-draw").forEach((path) => {
           const len = (path as unknown as SVGPathElement).getTotalLength();
           gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
@@ -79,7 +80,7 @@ export function Approach() {
           );
 
         if (desktop) {
-          // Subtle scroll-scrub drift — ties the card into the page's depth, not bolted on top.
+          // Subtle scroll-scrub drift - ties the card into the page's depth, not bolted on top.
           gsap.fromTo(
             card.current,
             { yPercent: 6 },
@@ -134,8 +135,12 @@ export function Approach() {
         <div>
           <div
             ref={card}
-            className="js-capture-card relative overflow-hidden rounded-3xl border border-line bg-bg p-7 sm:p-9"
+            className="js-capture-card [perspective:1400px]"
           >
+            <TiltCard
+              maxAngle={1.5}
+              className="rounded-3xl border border-line bg-bg p-7 sm:p-9"
+            >
             <div className="js-capture-group">
                 <h3 className="font-display text-xl font-semibold">What Veracity captures</h3>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
@@ -175,9 +180,10 @@ export function Approach() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </TiltCard>
           </div>
         </div>
+      </div>
     </section>
   );
 }

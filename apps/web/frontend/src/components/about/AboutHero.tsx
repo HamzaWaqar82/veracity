@@ -60,7 +60,7 @@ export function AboutHero() {
         </h1>
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
           We built Veracity because we believe that employee monitoring and employee trust are not
-          mutually exclusive. The market has offered a false choice for too long — either no
+          mutually exclusive. The market has offered a false choice for too long - either no
           visibility into how your team works, or surveillance tools that erode culture. We built
           the third option.
         </p>

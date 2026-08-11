@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
+import { TiltCard } from "@/components/common/TiltCard";
 import { billingEntries } from "./pricing-data";
 
 export function BillingDetails() {
@@ -40,36 +41,42 @@ export function BillingDetails() {
   );
 
   return (
-    <section ref={root} id="billing" className="scroll-mt-28 py-section">
+    <section ref={root} id="billing-details" className="scroll-mt-28 py-section">
       <div className="container-x">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="js-bill-h max-w-xl font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
             The billing ledger.
           </h2>
           <p className="js-bill-h max-w-sm text-[0.9375rem] leading-relaxed text-muted">
-            Every rule that touches your invoice, in exact numbers — written down the way it is
+            Every rule that touches your invoice, in exact numbers - written down the way it is
             enforced.
           </p>
         </div>
 
-        <dl className="mt-10 rounded-2xl border border-line bg-bg">
-          {billingEntries.map((entry, i) => (
-            <div key={entry.title} className="js-bill-row">
-              {i > 0 && <div className="js-bill-rule h-px origin-left bg-line" aria-hidden="true" />}
-              <div className="grid gap-2 px-6 py-6 sm:px-8 md:grid-cols-[minmax(0,220px)_1fr] md:gap-8">
-                <dt className="font-display text-lg font-semibold text-ink">{entry.title}</dt>
-                <div>
-                  <dd className="text-[0.9375rem] leading-relaxed text-muted">{entry.body}</dd>
-                  {entry.flags?.map((flag) => (
-                    <dd key={flag} className="mt-3 text-[0.8125rem] font-medium text-ink">
-                      {flag}
-                    </dd>
-                  ))}
+        <TiltCard maxAngle={1.5} className="mt-10 rounded-2xl border border-line bg-bg">
+          <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
+            <p className="text-xs font-bold tracking-[0.16em] text-on-dark">BILLING RULES</p>
+            <p className="text-xs font-semibold text-on-dark-muted">EXACT TERMS</p>
+          </div>
+          <dl>
+            {billingEntries.map((entry, i) => (
+              <div key={entry.title} className="js-bill-row group transition-colors hover:bg-surface">
+                {i > 0 && <div className="js-bill-rule h-px origin-left bg-line" aria-hidden="true" />}
+                <div className="grid gap-2 px-6 py-6 sm:px-8 md:grid-cols-[minmax(0,220px)_1fr] md:gap-8">
+                  <dt className="font-display text-lg font-semibold text-ink">{entry.title}</dt>
+                  <div>
+                    <dd className="text-[0.9375rem] leading-relaxed text-muted">{entry.body}</dd>
+                    {entry.flags?.map((flag) => (
+                      <dd key={flag} className="mt-3 text-[0.8125rem] font-medium text-primary">
+                        {flag}
+                      </dd>
+                    ))}
+                  </div>
                 </div>
-              </div>
             </div>
           ))}
-        </dl>
+          </dl>
+        </TiltCard>
       </div>
     </section>
   );

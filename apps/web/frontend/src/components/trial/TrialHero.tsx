@@ -79,7 +79,7 @@ export function TrialHero() {
         </h1>
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
           Full access to every feature of your plan, plus the guided setup wizard, employee
-          dashboards, and compliance tooling — from the first day. Your workspace is configured in
+          dashboards, and compliance tooling - from the first day. Your workspace is configured in
           minutes on Windows, macOS, or Linux.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { BLOG_FILES } from "@/lib/blog";
-
-const SITE_URL = "https://veracity.dev";
+import { SITE_URL } from "@/lib/site";
 
 const STATIC_ROUTES: Array<[string, number]> = [
   ["/", 1],
@@ -15,6 +14,8 @@ const STATIC_ROUTES: Array<[string, number]> = [
   ["/integrations", 0.7],
   ["/compliance", 0.7],
   ["/contact-us", 0.6],
+  ["/privacy", 0.3],
+  ["/terms", 0.3],
   ["/trial", 0.8],
   ["/request-demo", 0.8],
 ];

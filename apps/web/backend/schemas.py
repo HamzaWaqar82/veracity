@@ -28,6 +28,7 @@ class SourceItem(BaseModel):
 
     title: str
     url: str
+    similarity: float | None = None
 
 
 # ---------------------------------------------------------------------------

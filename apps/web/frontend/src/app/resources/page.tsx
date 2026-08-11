@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BlogHero } from "@/components/blog/BlogHero";
 import { ReadingList } from "@/components/blog/ReadingList";
 import { SubscribeSection } from "@/components/blog/SubscribeSection";
+import { FinalCta } from "@/components/home/FinalCta";
 import { essays } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -14,9 +15,10 @@ export const metadata: Metadata = {
 export default function ResourcesPage() {
   return (
     <>
-      <BlogHero />
+      <BlogHero featured={essays[0]} />
       <ReadingList essays={essays} />
       <SubscribeSection />
+      <FinalCta />
     </>
   );
 }

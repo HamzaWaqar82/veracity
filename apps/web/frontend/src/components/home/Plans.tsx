@@ -4,6 +4,8 @@ import { useRef } from "react";
 import Link from "next/link";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { CheckIcon, MinusIcon } from "@/components/icons";
+import { TableScroll } from "@/components/common/TableScroll";
+import { TiltCard } from "@/components/common/TiltCard";
 import { CTA } from "@/lib/cta";
 
 const planTiers = [
@@ -15,11 +17,11 @@ const planTiers = [
 const planRows = [
   { feature: "Activity tracking (60s heartbeat)", cells: ["yes", "yes", "yes"] },
   { feature: "App and URL categorization", cells: ["yes", "yes", "yes"] },
-  { feature: "Daily productivity score (0–100)", cells: ["yes", "yes", "yes"] },
+  { feature: "Daily productivity score (0-100)", cells: ["yes", "yes", "yes"] },
   { feature: "Employee dashboard with SSE", cells: ["yes", "yes", "yes"] },
   { feature: "Meeting-aware idle detection", cells: ["yes", "yes", "yes"] },
   { feature: "Offline encrypted cache", cells: ["yes", "yes", "yes"] },
-  { feature: "Screenshot monitoring", cells: ["no", "10-min interval", "Configurable 1–60 min"] },
+  { feature: "Screenshot monitoring", cells: ["no", "10-min interval", "Configurable 1-60 min"] },
   { feature: "Team benchmarking", cells: ["no", "Aggregate only", "Aggregate or identifiable"] },
   { feature: "REST API", cells: ["no", "1,000 req/hour", "10,000 req/hour"] },
   { feature: "SSO / SAML 2.0", cells: ["no", "no", "yes"] },
@@ -80,8 +82,10 @@ export function Plans() {
           Simple, predictable pricing with no seat minimum and no add-on creep. Every tier ships
           with the same trust-preserving defaults: no stealth mode, no keystroke logging, ever.
         </p>
-        <div className="js-plans-wrap relative mt-12 overflow-x-auto rounded-2xl border border-line bg-bg">
-          <table className="w-full min-w-[42rem] border-collapse text-left text-sm tabular-nums">
+        <div className="js-plans-wrap relative mt-12 [perspective:1400px]">
+          <TiltCard maxAngle={1.5} className="rounded-2xl border border-line bg-bg">
+          <TableScroll>
+            <table className="w-full min-w-[42rem] border-collapse text-left text-sm tabular-nums">
             <caption className="sr-only">
               Veracity pricing: Starter, Growth, and Enterprise plan features
             </caption>
@@ -127,7 +131,9 @@ export function Plans() {
                 </tr>
               ))}
             </tbody>
-          </table>
+            </table>
+          </TableScroll>
+          </TiltCard>
         </div>
         <div className="js-plans-foot mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-[0.9375rem] leading-relaxed text-muted">

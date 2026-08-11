@@ -35,3 +35,8 @@ Ignore `docs/saas/` entirely.
 ## Stack
 
 Next.js 15 (App Router, `frontend/`) → Vercel; Python FastAPI + LangChain (`backend/`, uv) → PostgreSQL + pgvector → OpenRouter (Mistral/Mixtral). No secrets in `.env.example`; real `.env` is gitignored.
+
+## Gotchas
+
+- **Never run `npm run build` while `next dev` is running** — both write into the same `.next` directory, and the build's vendor-chunk set wipes the dev chunks (e.g. `vendor-chunks/gsap.js` disappears). The next recompile of a route then 500s with `Cannot find module './vendor-chunks/gsap.js'`. If a build is needed: stop the dev server → build → restart dev. If the site 500s with a missing `vendor-chunks/*.js`, `rm -rf frontend/.next` and restart `npm run dev` — the cache regenerates from source (`.next` is gitignored).
+- Dev server logs: `npm run dev` from `apps/web/frontend`; backend: `uv run uvicorn main:app --port 8000` from `apps/web/backend` (uses `apps/web/backend/.env`); Postgres is the `veracity-postgres` Docker container (pgvector, port 5432).

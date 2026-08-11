@@ -10,6 +10,9 @@ node_modules/
 out/
 *.tsbuildinfo
 
+# Lead capture (server-side form storage)
+apps/web/frontend/data/
+
 # Python
 __pycache__/
 *.py[cod]

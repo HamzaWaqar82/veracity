@@ -9,9 +9,9 @@ import { CTA } from "@/lib/cta";
 const headlineWords = "Pricing that states its own terms.".split(" ");
 
 const jumpLinks = [
-  { label: "Plans", href: "#plans" },
-  { label: "Billing", href: "#billing" },
-  { label: "What we never do", href: "#never" },
+  { label: "Plans", href: "#plan-details" },
+  { label: "Billing", href: "#billing-details" },
+  { label: "What we never do", href: "#what-veracity-does-not-offer" },
 ];
 
 const receiptRows = [
@@ -115,7 +115,7 @@ export function PricingHero() {
           ref={badge}
           className="inline-flex items-center gap-2 rounded-full border border-hero-line px-3.5 py-1.5 text-[0.8125rem] font-semibold tracking-[0.02em]"
         >
-          Published pricing · No hidden fees
+          Published pricing · Exact at every tier
         </p>
         <h1 className="mx-auto mt-7 max-w-4xl font-display text-[clamp(2.5rem,4vw+1.5rem,4rem)] font-semibold leading-[1.06] tracking-[-0.03em]">
           {headlineWords.map((word, i) => (
@@ -129,7 +129,7 @@ export function PricingHero() {
         </h1>
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
           Three plans, one published matrix. Every price, limit, and support commitment is stated
-          here in exact numbers — and what no plan includes is stated just as plainly.
+          here in exact numbers - and what no plan includes is stated just as plainly.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link href={CTA.trial} className="btn btn-lg btn-primary js-price-cta">
@@ -192,8 +192,8 @@ export function PricingHero() {
                 ))}
               </ul>
               <div className="js-price-receipt-foot flex items-center justify-between bg-primary-soft px-5 py-3">
-                <p className="text-[0.6875rem] font-semibold text-primary">Signed · published terms</p>
-                <p className="text-[0.6875rem] font-semibold text-primary">No hidden fees</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">Signed · published terms</p>
+                <p className="text-[0.8125rem] font-semibold text-primary">No hidden fees</p>
               </div>
             </div>
           </div>

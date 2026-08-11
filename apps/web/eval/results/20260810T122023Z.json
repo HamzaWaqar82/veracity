@@ -1,0 +1,672 @@
+{
+  "schema_version": 1,
+  "summary": {
+    "timestamp": "2026-08-10T12:20:23.621251+00:00",
+    "judge_model": "google/gemma-4-26b-a4b-it:free",
+    "total": 50,
+    "passed": 0,
+    "answerable_accuracy": 0.0,
+    "refusal_accuracy": 0.0,
+    "pricing_violations": 0,
+    "p95_latency_ms": 0,
+    "by_category": {
+      "answerable_single": {
+        "total": 15,
+        "passed": 0
+      },
+      "pricing": {
+        "total": 10,
+        "passed": 0
+      },
+      "cross_product": {
+        "total": 8,
+        "passed": 0
+      },
+      "multi_turn": {
+        "total": 7,
+        "passed": 0
+      },
+      "unanswerable": {
+        "total": 10,
+        "passed": 0
+      }
+    },
+    "hard_fail": false
+  },
+  "results": [
+    {
+      "id": "Q-001",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 5683,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-002",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 5635,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-003",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 5631,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-004",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 5664,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-005",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 5635,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-006",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 2146,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-007",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 2568,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-008",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 2227,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-009",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 2294,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-010",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 2510,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-011",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1678,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-012",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1765,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-013",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1469,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-014",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1616,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-015",
+      "category": "answerable_single",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1592,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-016",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1875,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-017",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1712,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-018",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 2618,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-019",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1536,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-020",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1534,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-021",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1564,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-022",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1502,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-023",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1419,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-024",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1403,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-025",
+      "category": "pricing",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 2235,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-026",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1917,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-027",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1894,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-028",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1729,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-029",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1845,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-030",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1781,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-031",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 2206,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-032",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1970,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-033",
+      "category": "cross_product",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1998,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-034",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"Upstream error: 429\"}, {\"turn\": 1, \"passed\": false, \"error\": \"Upstream error: 429\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "Upstream error: 429"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "Upstream error: 429"
+        }
+      ]
+    },
+    {
+      "id": "Q-035",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"Upstream error: 429\"}, {\"turn\": 1, \"passed\": false, \"error\": \"Upstream error: 429\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "Upstream error: 429"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "Upstream error: 429"
+        }
+      ]
+    },
+    {
+      "id": "Q-036",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"Upstream error: 429\"}, {\"turn\": 1, \"passed\": false, \"error\": \"Upstream error: 429\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "Upstream error: 429"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "Upstream error: 429"
+        }
+      ]
+    },
+    {
+      "id": "Q-037",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"Upstream error: 429\"}, {\"turn\": 1, \"passed\": false, \"error\": \"Upstream error: 429\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "Upstream error: 429"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "Upstream error: 429"
+        }
+      ]
+    },
+    {
+      "id": "Q-038",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"Upstream error: 429\"}, {\"turn\": 1, \"passed\": false, \"error\": \"Upstream error: 429\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "Upstream error: 429"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "Upstream error: 429"
+        }
+      ]
+    },
+    {
+      "id": "Q-039",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"Upstream error: 429\"}, {\"turn\": 1, \"passed\": false, \"error\": \"Upstream error: 429\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "Upstream error: 429"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "Upstream error: 429"
+        }
+      ]
+    },
+    {
+      "id": "Q-040",
+      "category": "multi_turn",
+      "passed": false,
+      "score_method": "multi_turn",
+      "details": "[{\"turn\": 0, \"passed\": false, \"error\": \"Upstream error: 429\"}, {\"turn\": 1, \"passed\": false, \"error\": \"Upstream error: 429\"}]",
+      "latency_ms": 0,
+      "error": false,
+      "pricing_violation": false,
+      "citation_present": false,
+      "sub_results": [
+        {
+          "turn": 0,
+          "passed": false,
+          "error": "Upstream error: 429"
+        },
+        {
+          "turn": 1,
+          "passed": false,
+          "error": "Upstream error: 429"
+        }
+      ]
+    },
+    {
+      "id": "Q-041",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1775,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-042",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1692,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-043",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1820,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-044",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1698,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-045",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1639,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-046",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1583,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-047",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1110,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-048",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1164,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-049",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1036,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    },
+    {
+      "id": "Q-050",
+      "category": "unanswerable",
+      "passed": false,
+      "score_method": "error",
+      "details": "Upstream error: 429",
+      "latency_ms": 1108,
+      "error": true,
+      "pricing_violation": false,
+      "citation_present": false
+    }
+  ]
+}

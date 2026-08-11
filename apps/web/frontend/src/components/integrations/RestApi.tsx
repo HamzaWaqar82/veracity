@@ -62,7 +62,7 @@ export function RestApi() {
             <div className="grid grid-cols-2 gap-px bg-line">
               {rateLimits.map((row) => (
                 <div key={row.plan} className="bg-white px-6 py-6">
-                  <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-muted">
+                  <p className="text-[0.8125rem] font-bold uppercase tracking-[0.14em] text-muted">
                     {row.plan}
                   </p>
                   <p className="mt-2 font-display text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
@@ -84,14 +84,26 @@ export function RestApi() {
               <p className="text-xs font-bold tracking-[0.16em] text-on-dark">AVAILABLE ENDPOINTS</p>
               <p className="text-xs font-semibold text-on-dark-muted">REST · BEARER AUTH</p>
             </div>
-            <ul className="grid gap-x-8 gap-y-2.5 px-5 py-6 sm:grid-cols-2 sm:px-6">
-              {endpoints.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-[0.875rem] leading-relaxed text-muted">
-                  <span aria-hidden="true" className="mt-[0.5em] size-1.5 shrink-0 rounded-full bg-accent" />
-                  {item}
-                </li>
+            <div className="divide-y divide-line">
+              {endpoints.map((endpoint) => (
+                <div
+                  key={endpoint.resource}
+                  className="flex flex-col gap-1.5 px-5 py-3.5 sm:flex-row sm:items-start sm:gap-4 sm:px-6"
+                >
+                  <span className="shrink-0 self-start rounded-md bg-primary-soft px-2 py-0.5 font-mono text-[0.8125rem] font-bold leading-5 text-primary">
+                    {endpoint.method}
+                  </span>
+                  <div>
+                    <p className="font-mono text-[0.8125rem] font-semibold leading-6 text-ink">
+                      {endpoint.resource}
+                    </p>
+                    <p className="mt-0.5 text-[0.8125rem] leading-relaxed text-muted">
+                      {endpoint.label}
+                    </p>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
             <div className="border-t border-line bg-white px-5 py-4 sm:px-6">
               <p className="text-[0.875rem] font-medium text-ink">
                 Full API documentation with request and response schemas, example requests, and

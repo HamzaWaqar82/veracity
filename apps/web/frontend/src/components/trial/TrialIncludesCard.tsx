@@ -1,7 +1,7 @@
 import { CheckIcon } from "@/components/icons";
 
 const includes = [
-  "Full platform access for 14 days — every feature of your plan",
+  "Full platform access for 14 days - every feature of your plan",
   "Agent for Windows, macOS, and Linux, installed in minutes",
   "Guided setup wizard to configure your first workspace",
   "Employee dashboards, Private Time, and compliance tooling from day one",
@@ -17,7 +17,7 @@ export function TrialIncludesCard() {
       </div>
       <div className="flex flex-1 flex-col px-5 py-6 sm:px-6">
         <p className="text-[0.9375rem] leading-relaxed text-muted">
-          Everything you need to evaluate Veracity with a real team — no sales call required, and no
+          Everything you need to evaluate Veracity with a real team - no sales call required, and no
           data collected before your employees have seen the transparency controls.
         </p>
         <ul className="mt-4 space-y-2.5">

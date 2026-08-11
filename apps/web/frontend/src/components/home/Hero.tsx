@@ -144,7 +144,7 @@ export function Hero() {
             ref={badge}
             className="inline-flex items-center gap-2 rounded-full border border-hero-line px-3.5 py-1.5 text-[0.8125rem] font-semibold tracking-[0.02em]"
           >
-            Employee-visible monitoring · No stealth mode
+            Employee-visible monitoring
           </p>
           <h1 className="mt-7 font-display text-[clamp(2.75rem,4vw+2rem,4.5rem)] font-semibold leading-[1.04] tracking-[-0.03em]">
             {headlineWords.map((word, i) => (
@@ -222,8 +222,8 @@ export function Hero() {
                       <span
                         className={
                           s.name === "PRIVATE_TIME"
-                            ? "shrink-0 rounded-full border border-line bg-primary-soft px-2.5 py-1 text-[0.6875rem] font-semibold text-primary"
-                            : "shrink-0 rounded-full border border-line px-2.5 py-1 text-[0.6875rem] font-semibold text-muted"
+                            ? "shrink-0 rounded-full border border-line bg-primary-soft px-2.5 py-1 text-[0.8125rem] font-semibold text-primary"
+                            : "shrink-0 rounded-full border border-line px-2.5 py-1 text-[0.8125rem] font-semibold text-muted"
                         }
                       >
                         {s.tag}
@@ -232,8 +232,8 @@ export function Hero() {
                   ))}
                 </ul>
                 <div className="flex items-center justify-between bg-primary-soft px-5 py-3">
-                  <p className="text-[0.6875rem] font-semibold text-primary">Signed · server-verified</p>
-                  <p className="text-[0.6875rem] font-semibold text-primary">
+                  <p className="text-[0.8125rem] font-semibold text-primary">Signed · server-verified</p>
+                  <p className="text-[0.8125rem] font-semibold text-primary">
                     No data hidden from employees
                   </p>
                 </div>

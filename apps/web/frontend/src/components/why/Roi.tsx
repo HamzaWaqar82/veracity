@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
-import { roiSections } from "./why-data";
+import { gsap, useGSAP, REVEAL, MOTION } from "@/lib/motion";
+import { roiSections, fieldEvidence } from "./why-data";
 
 export function Roi() {
   const root = useRef<HTMLElement>(null);
@@ -15,7 +15,7 @@ export function Roi() {
         if (!ctx.conditions?.motion) return;
 
         const tl = gsap.timeline({
-          defaults: { ease: EASE },
+          defaults: { ease: REVEAL.to.ease },
           scrollTrigger: { trigger: root.current, start: "top 72%" },
         });
         tl.fromTo(
@@ -23,12 +23,8 @@ export function Roi() {
           { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
           { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
-          .fromTo(
-            q(".js-roi-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
-            "-=0.4",
-          )
+          .fromTo(q(".js-roi-lead"), REVEAL.from, REVEAL.to, "-=0.4")
+          .fromTo(q(".js-roi-evidence"), REVEAL.from, REVEAL.to, "-=0.3")
           .fromTo(
             q(".js-roi-block"),
             { autoAlpha: 0, y: 26 },
@@ -62,9 +58,25 @@ export function Roi() {
           The ROI of transparent monitoring.
         </h2>
         <p className="js-roi-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Transparency is not a trade-off you make for better analytics — it is what makes the
+          Transparency is not a trade-off you make for better analytics - it is what makes the
           analytics worth having. Three returns, stated plainly.
         </p>
+
+        <div className="js-roi-evidence mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 rounded-2xl border border-primary/20 bg-primary-soft px-6 py-5">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
+            Field evidence
+          </p>
+          <ul className="flex flex-wrap items-center gap-x-10 gap-y-3">
+            {fieldEvidence.map((item) => (
+              <li key={item.label} className="flex items-baseline gap-2.5">
+                <span className="font-display text-2xl font-semibold tracking-tight text-primary">
+                  {item.value}
+                </span>
+                <span className="text-[0.875rem] leading-snug text-muted">{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div className="mt-12 border-t border-line">
           {roiSections.map((section) => (

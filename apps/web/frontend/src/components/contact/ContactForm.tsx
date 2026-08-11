@@ -5,6 +5,7 @@ import { Select, TextArea, TextInput } from "@/components/form/fields";
 import { FormCard } from "@/components/form/FormCard";
 import { FormSuccessCard } from "@/components/form/FormSuccessCard";
 import { buildBody, mailtoHref } from "@/components/form/mailto";
+import { submitLead } from "@/lib/lead";
 
 const TOPICS: ReadonlyArray<{ value: string; inbox: string; team: string }> = [
   { value: "Sales", inbox: "sales@veracity.dev", team: "sales" },
@@ -99,7 +100,7 @@ export function ContactForm() {
       return;
     }
 
-    const subject = `Website inquiry — ${values.topic}`;
+    const subject = `Website inquiry - ${values.topic}`;
     const inbox = inboxForTopic(values.topic);
     const body = buildBody([
       `Name: ${values.name.trim()}`,
@@ -108,7 +109,20 @@ export function ContactForm() {
       "",
       values.message.trim(),
     ]);
+
+    // Primary delivery: open the visitor's mail client with a pre-filled
+    // draft. They hit send in their client - no blocking network call.
     window.location.href = mailtoHref({ to: inbox, subject, body });
+    // Best-effort background capture for our own records. Never awaited, so
+    // a slow/failed capture never delays the visitor's mail draft.
+    void submitLead({
+      kind: "contact",
+      name: values.name.trim(),
+      email: values.email.trim(),
+      company: values.company.trim(),
+      topic: values.topic,
+      message: values.message.trim(),
+    });
     setSubmitted(true);
   }
 
@@ -117,14 +131,17 @@ export function ContactForm() {
       <FormSuccessCard
         eyebrow="SEND A MESSAGE"
         note="REPLIES WITHIN ONE BUSINESS DAY"
-        heading="Thanks — we&apos;re on it."
+        heading="Thanks - we&apos;re on it."
         fallbackEmail={inboxForTopic(values.topic)}
       >
         We&apos;ll reply to{" "}
         <span className="font-semibold text-ink">{values.email}</span> within one business day. Your
         message goes straight to our{" "}
-        <span className="font-semibold text-ink">{teamForTopic(values.topic)}</span> team. If your
-        email client opened a draft, just hit send and we&apos;ll take it from there.
+        <span className="font-semibold text-ink">{teamForTopic(values.topic)}</span> team.
+        <p className="mt-4">
+          If your email client opened a draft, just hit send - either way, we&apos;ve got your
+          message.
+        </p>
       </FormSuccessCard>
     );
   }
@@ -197,7 +214,7 @@ export function ContactForm() {
             Send message
           </button>
           <p className="text-sm font-medium text-muted">
-            We reply to every message — usually within one business day.
+            We reply to every message - usually within one business day.
           </p>
         </div>
       </form>

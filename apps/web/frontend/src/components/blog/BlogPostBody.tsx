@@ -1,17 +1,58 @@
+import type { ReactNode } from "react";
 import type { Components } from "react-markdown";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { ArticleToc } from "./ArticleToc";
+import { TableScroll } from "@/components/common/TableScroll";
+import { TiltCard } from "@/components/common/TiltCard";
+import { extractHeadings, headingId } from "@/lib/blog";
+
+function headingText(children: ReactNode): string {
+  const parts: string[] = [];
+  const walk = (node: ReactNode) => {
+    if (typeof node === "string" || typeof node === "number") {
+      parts.push(String(node));
+    } else if (Array.isArray(node)) {
+      node.forEach(walk);
+    } else if (node && typeof node === "object" && "props" in node) {
+      walk((node as { props?: { children?: ReactNode } }).props?.children);
+    }
+  };
+  walk(children);
+  return parts.join("").trim();
+}
 
 const components: Components = {
+  h1: ({ children }) => (
+    <h2 className="mb-6 mt-2 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+      {children}
+    </h2>
+  ),
   h2: ({ children }) => (
-    <h2 className="mb-5 mt-14 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+    <h2
+      id={headingId(headingText(children))}
+      className="mb-5 mt-14 scroll-mt-24 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
+    >
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="mb-4 mt-12 font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+    <h3
+      id={headingId(headingText(children))}
+      className="mb-4 mt-12 scroll-mt-24 font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl"
+    >
       {children}
     </h3>
+  ),
+  h4: ({ children }) => (
+    <h4 className="mb-3 mt-10 font-display text-lg font-semibold tracking-tight text-ink">
+      {children}
+    </h4>
+  ),
+  h5: ({ children }) => (
+    <h5 className="mb-2 mt-8 text-[0.9375rem] font-bold uppercase tracking-[0.12em] text-ink">
+      {children}
+    </h5>
   ),
   p: ({ children }) => (
     <p className="mb-6 text-[1.0625rem] leading-relaxed text-ink/90">{children}</p>
@@ -58,8 +99,12 @@ const components: Components = {
     );
   },
   table: ({ children }) => (
-    <div className="my-8 overflow-x-auto">
-      <table className="w-full border-collapse text-left">{children}</table>
+    <div className="my-8 [perspective:1400px]">
+      <TiltCard maxAngle={1.5} className="rounded-2xl border border-line bg-surface">
+        <TableScroll hint={false}>
+          <table className="w-full border-collapse text-left">{children}</table>
+        </TableScroll>
+      </TiltCard>
     </div>
   ),
   thead: ({ children }) => (
@@ -82,12 +127,18 @@ const components: Components = {
 };
 
 export function BlogPostBody({ markdown }: { markdown: string }) {
+  const headings = extractHeadings(markdown);
   return (
     <div className="container-x py-section">
-      <div className="mx-auto max-w-3xl">
-        <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
-          {markdown}
-        </ReactMarkdown>
+      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[15rem_minmax(0,46rem)] lg:justify-center">
+        <aside className="hidden lg:block">
+          <ArticleToc headings={headings} />
+        </aside>
+        <div className="mx-auto w-full min-w-0 max-w-3xl">
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+            {markdown}
+          </ReactMarkdown>
+        </div>
       </div>
     </div>
   );

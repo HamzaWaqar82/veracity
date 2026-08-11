@@ -45,7 +45,7 @@ export function Roadmap() {
           </h2>
           <p className="js-rm-lead mt-6 max-w-xl text-lg leading-relaxed text-muted">
             These integrations are on the roadmap but not yet available. We build what customers
-            ask for — tell us what you need.
+            ask for - tell us what you need.
           </p>
           <div className="mt-8">
             <a href="mailto:sales@veracity.dev" className="btn btn-primary js-rm-cta">
@@ -54,7 +54,7 @@ export function Roadmap() {
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.22)]">
+        <div className="overflow-hidden rounded-2xl border border-line bg-white">
           <div className="flex items-center justify-between bg-ink px-5 py-3.5">
             <p className="text-xs font-bold tracking-[0.16em] text-on-dark">ROADMAP</p>
             <p className="text-xs font-semibold text-on-dark-muted">NOT YET AVAILABLE</p>
@@ -68,7 +68,7 @@ export function Roadmap() {
                   </h3>
                   <p className="mt-1 text-[0.875rem] leading-relaxed text-muted">{item.tag}</p>
                 </div>
-                <span className="shrink-0 rounded-full border border-line px-3 py-1 text-[0.6875rem] font-bold uppercase tracking-[0.12em] text-muted">
+                <span className="shrink-0 rounded-full border border-line px-3 py-1 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-muted">
                   On the roadmap
                 </span>
               </div>

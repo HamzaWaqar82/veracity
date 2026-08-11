@@ -35,19 +35,19 @@ export const fieldReports: FieldReport[] = [
     solution:
       "Deployed on the Growth plan with a company-wide rollout meeting explaining exactly what would be tracked and why. Every employee installed the Agent, linked their Google Calendar, and was given access to their personal dashboard. Two promises: everyone sees the same data, and Private Time is unlimited for the first month.",
     solutionQuote:
-      "Private Time usage actually dropped to near zero after week two — once people saw the data was genuinely transparent, they stopped worrying about it.",
+      "Private Time usage actually dropped to near zero after week two - once people saw the data was genuinely transparent, they stopped worrying about it.",
     stats: [
       { value: "60%", label: "reduction in status-check meetings" },
       { value: "78", label: "average productivity score, High Confidence on 85% of daily scores" },
       { value: "42 of 45", label: "employees rated the rollout positive or neutral" },
     ],
     results: [
-      "Managers spent an average of 4 hours per week on status-check meetings before — now they use Veracity trend data in one-on-one coaching conversations instead.",
-      "Three team members who regularly showed \"Uncertain — Mixed Context\" flags were discovered to be context-switching across too many projects, leading to a reallocation of work.",
+      "Managers spent an average of 4 hours per week on status-check meetings before - now they use Veracity trend data in one-on-one coaching conversations instead.",
+      "Three team members who regularly showed \"Uncertain - Mixed Context\" flags were discovered to be context-switching across too many projects, leading to a reallocation of work.",
       "The three employees who rated the rollout \"negative\" were given additional Private Time allowance and opted in after a trial period.",
     ],
     quote:
-      "For agencies, your people are your product. If you treat them like assets to be monitored, you get asset-level output. The productivity data is a bonus — the real win is the trust it builds.",
+      "For agencies, your people are your product. If you treat them like assets to be monitored, you get asset-level output. The productivity data is a bonus - the real win is the trust it builds.",
   },
   {
     id: "consulting-firm",
@@ -65,7 +65,7 @@ export const fieldReports: FieldReport[] = [
     solution:
       "Deployed on the Enterprise plan with identifiable team benchmarking enabled with employee consent and configurable screenshot intervals set to 30 minutes. The rollout was phased: compliance and legal first, then a pilot group of 20 consultants, then the full team.",
     solutionQuote:
-      "The jurisdiction-aware notice engine was a lifesaver — we operate in three different states and the EU, and having the right policy template automatically selected for each employee's jurisdiction saved us weeks of legal review.",
+      "The jurisdiction-aware notice engine was a lifesaver - we operate in three different states and the EU, and having the right policy template automatically selected for each employee's jurisdiction saved us weeks of legal review.",
     stats: [
       { value: "95%", label: "of the disputed period correlated with billable entries during a client audit" },
       { value: "100%", label: "of employees with current, documented policy acknowledgment on file" },
@@ -77,7 +77,7 @@ export const fieldReports: FieldReport[] = [
       "Team leads now use benchmarking data to identify overloaded teams before they burn out.",
     ],
     quote:
-      "Veracity gave us the audit trail we needed without the surveillance culture we feared. The key was the phased rollout and the transparency features — our employees could see exactly what we could see.",
+      "Veracity gave us the audit trail we needed without the surveillance culture we feared. The key was the phased rollout and the transparency features - our employees could see exactly what we could see.",
   },
   {
     id: "retail-operations",
@@ -89,25 +89,25 @@ export const fieldReports: FieldReport[] = [
     time: "6 months with Veracity",
     persona: "Director of Operations",
     challenge:
-      "The operations director needed visibility into how the corporate team's time was being spent across operational projects — which efforts were producing results and which were not.",
+      "The operations director needed visibility into how the corporate team's time was being spent across operational projects - which efforts were producing results and which were not.",
     challengeQuote:
       "We knew which stores were performing, but we had no idea whether the corporate support time was going to the highest-impact activities.",
     solution:
-      "Deployed on the Enterprise plan with aggregate team benchmarking, covering only the corporate team of 45 users — not store-level staff, whose productivity is measured by sales rather than screen time.",
+      "Deployed on the Enterprise plan with aggregate team benchmarking, covering only the corporate team of 45 users - not store-level staff, whose productivity is measured by sales rather than screen time.",
     solutionQuote:
       "This targeted approach made the rollout much simpler and avoided the surveillance concerns that a company-wide deployment would have raised.",
     stats: [
       { value: "35%", label: "of the supply chain team's time was in meetings rather than procurement tasks" },
-      { value: "6–9 AM", label: "identified as the marketing team's peak productivity window" },
+      { value: "6-9 AM", label: "identified as the marketing team's peak productivity window" },
       { value: "28,000 USD", label: "saved annually after consolidating 47 SaaS tools down to 31" },
     ],
     results: [
       "Benchmarking revealed the supply chain team was spending 35% of their time in meetings rather than on procurement tasks, leading to a restructuring of meeting schedules.",
-      "Marketing was most productive between 6 AM and 9 AM while most meetings were scheduled at 10 AM — meeting schedules were adjusted.",
+      "Marketing was most productive between 6 AM and 9 AM while most meetings were scheduled at 10 AM - meeting schedules were adjusted.",
       "Activity tracking revealed 47 overlapping SaaS applications; the organization consolidated to 31 tools, saving 28,000 USD annually in license costs.",
     ],
     quote:
-      "Veracity is not a surveillance tool — it is an operations tool. We used the data to improve processes and remove friction, not to punish people.",
+      "Veracity is not a surveillance tool - it is an operations tool. We used the data to improve processes and remove friction, not to punish people.",
   },
 ];
 

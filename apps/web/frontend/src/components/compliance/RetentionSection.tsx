@@ -2,6 +2,8 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
+import { TableScroll } from "@/components/common/TableScroll";
+import { TiltCard } from "@/components/common/TiltCard";
 import { retRows, deletion, portability } from "./compliance-data";
 
 export function RetentionSection() {
@@ -48,17 +50,18 @@ export function RetentionSection() {
         </h2>
         <p className="js-ret-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
           Automated deletion at the end of the configured retention period, no grace period. On
-          cancellation, a 30-day window for reactivation — then permanent deletion. And every
+          cancellation, a 30-day window for reactivation - then permanent deletion. And every
           employee can export their own data at any time.
         </p>
 
-        <div className="js-ret-card mt-12 overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_28px_60px_-28px_rgba(27,67,50,0.25)]">
-          <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
-            <p className="text-xs font-bold tracking-[0.16em] text-on-dark">RETENTION PERIODS</p>
-            <p className="text-xs font-semibold text-on-dark-muted">CONFIGURABLE ON ENTERPRISE</p>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[36rem] border-collapse text-left">
+          <div className="js-ret-card mt-12 [perspective:1400px]">
+            <TiltCard maxAngle={1.5} className="overflow-hidden rounded-2xl border border-line bg-surface">
+            <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
+              <p className="text-xs font-bold tracking-[0.16em] text-on-dark">RETENTION PERIODS</p>
+              <p className="text-xs font-semibold text-on-dark-muted">CONFIGURABLE ON ENTERPRISE</p>
+            </div>
+            <TableScroll>
+              <table className="w-full min-w-[36rem] border-collapse text-left">
               <thead>
                 <tr className="border-b border-line">
                   <th scope="col" className="px-5 py-3 text-[0.8125rem] font-semibold uppercase tracking-[0.16em] text-muted sm:px-6">
@@ -88,11 +91,13 @@ export function RetentionSection() {
                 ))}
               </tbody>
             </table>
+            </TableScroll>
+            </TiltCard>
           </div>
-        </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <div className="js-ret-card overflow-hidden rounded-2xl border border-line bg-surface">
+          <div className="js-ret-card [perspective:1400px]">
+            <TiltCard maxAngle={1.5} className="h-full overflow-hidden rounded-2xl border border-line bg-surface">
             <div className="flex items-center justify-between bg-ink px-5 py-3.5">
               <p className="text-xs font-bold tracking-[0.16em] text-on-dark">DELETION</p>
             </div>
@@ -104,9 +109,11 @@ export function RetentionSection() {
                 </li>
               ))}
             </ul>
+            </TiltCard>
           </div>
 
-          <div className="js-ret-card overflow-hidden rounded-2xl border border-line bg-surface">
+          <div className="js-ret-card [perspective:1400px]">
+            <TiltCard maxAngle={1.5} className="h-full overflow-hidden rounded-2xl border border-line bg-surface">
             <div className="flex items-center justify-between bg-ink px-5 py-3.5">
               <p className="text-xs font-bold tracking-[0.16em] text-on-dark">DATA PORTABILITY</p>
             </div>
@@ -118,6 +125,7 @@ export function RetentionSection() {
                 </li>
               ))}
             </ul>
+            </TiltCard>
           </div>
         </div>
       </div>

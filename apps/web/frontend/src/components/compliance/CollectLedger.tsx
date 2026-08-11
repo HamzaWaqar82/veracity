@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { MinusIcon } from "@/components/icons";
+import { TiltCard } from "@/components/common/TiltCard";
 import { collectRows, neverRows } from "./compliance-data";
 
 export function CollectLedger() {
@@ -55,7 +56,7 @@ export function CollectLedger() {
     >
       <div className="container-x">
         <h2 className="js-ledger-h max-w-3xl font-display text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
-          What we collect — and what we never will.
+          What we collect - and what we never will.
         </h2>
         <p className="js-ledger-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
           Eleven data types, ten architectural refusals. Everything we capture is published with its
@@ -63,7 +64,11 @@ export function CollectLedger() {
         </p>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <div className="js-ledger-col overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.3)]">
+          <div className="js-ledger-col [perspective:1400px]">
+            <TiltCard
+              maxAngle={2}
+              className="overflow-hidden rounded-2xl border border-line bg-white"
+            >
             <div className="flex items-center justify-between bg-primary-deep px-5 py-3.5">
               <p className="text-xs font-bold tracking-[0.16em] text-on-dark">WE COLLECT</p>
               <p className="text-xs font-semibold text-on-dark-muted">11 DATA TYPES</p>
@@ -78,7 +83,7 @@ export function CollectLedger() {
                     </span>
                   </div>
                   <p className="mt-1 text-[0.8125rem] leading-relaxed text-muted">{row.description}</p>
-                  <p className="mt-1.5 text-[0.6875rem] font-bold uppercase tracking-[0.12em] text-muted">
+                  <p className="mt-1.5 text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-muted">
                     {row.plans} plans
                   </p>
                 </li>
@@ -89,9 +94,14 @@ export function CollectLedger() {
                 Retention capped at 24 months, automated deletion
               </p>
             </div>
+            </TiltCard>
           </div>
 
-          <div className="js-ledger-col overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_60px_-28px_rgba(27,67,50,0.3)]">
+          <div className="js-ledger-col [perspective:1400px]">
+            <TiltCard
+              maxAngle={2}
+              className="overflow-hidden rounded-2xl border border-line bg-white"
+            >
             <div className="flex items-center justify-between bg-accent px-5 py-3.5">
               <p className="text-xs font-bold tracking-[0.16em] text-white">WE NEVER COLLECT</p>
               <p className="text-xs font-semibold text-white/80">10 ARCHITECTURAL REFUSALS</p>
@@ -114,9 +124,10 @@ export function CollectLedger() {
             </ul>
             <div className="border-t border-line bg-accent-soft px-5 py-3 sm:px-6">
               <p className="text-[0.8125rem] font-semibold text-accent">
-                Not configuration options — constraints at every tier, now and in all future versions
+                Not configuration options - constraints at every tier, now and in all future versions
               </p>
             </div>
+            </TiltCard>
           </div>
         </div>
       </div>

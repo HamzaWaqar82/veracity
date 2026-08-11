@@ -5,6 +5,7 @@ import { TextInput } from "@/components/form/fields";
 import { FormCard } from "@/components/form/FormCard";
 import { FormSuccessCard } from "@/components/form/FormSuccessCard";
 import { buildBody, mailtoHref } from "@/components/form/mailto";
+import { submitLead } from "@/lib/lead";
 
 type Values = {
   name: string;
@@ -74,7 +75,17 @@ export function TrialForm() {
       `Name: ${values.name.trim()}`,
       `Email: ${values.email.trim()}`,
     ]);
+
+    // Primary delivery: open the visitor's mail client with a pre-filled
+    // draft. They hit send in their client - no blocking network call.
     window.location.href = mailtoHref({ to: "sales@veracity.dev", subject, body });
+    // Best-effort background capture for our own records. Never awaited, so
+    // a slow/failed capture never delays the visitor's mail draft.
+    void submitLead({
+      kind: "trial",
+      name: values.name.trim(),
+      email: values.email.trim(),
+    });
     setSubmitted(true);
   }
 
@@ -88,8 +99,11 @@ export function TrialForm() {
       >
         We&apos;ll send your 14-day trial credentials to{" "}
         <span className="font-semibold text-ink">{values.email}</span>. Each trial is set up by
-        hand, so expect credentials within one business day. If your email client opened a draft,
-        just hit send and we&apos;ll take it from there.
+        hand, so expect credentials within one business day.
+        <p className="mt-4">
+          If your email client opened a draft, just hit send - either way, your trial request is on
+          its way.
+        </p>
       </FormSuccessCard>
     );
   }
@@ -128,7 +142,7 @@ export function TrialForm() {
             Start my free trial
           </button>
           <p className="text-sm font-medium text-muted">
-            We reply to every request — usually within one business day.
+            We reply to every request - usually within one business day.
           </p>
         </div>
       </form>

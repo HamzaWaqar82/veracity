@@ -24,6 +24,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && vars.EVAL_ENABLED == 'true'
     env:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3

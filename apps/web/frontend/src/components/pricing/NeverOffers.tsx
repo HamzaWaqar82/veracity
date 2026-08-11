@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
-import { attachSpotlight } from "@/lib/cursor";
+import { attachSpotlight, attachTilt } from "@/lib/cursor";
 import { MinusIcon } from "@/components/icons";
 import { neverOffers, deferredOffers } from "./pricing-data";
 
@@ -52,10 +52,10 @@ export function NeverOffers() {
 
       mm.add({ motion: MOTION, hover: HOVER }, (ctx) => {
         if (!ctx.conditions?.motion || !ctx.conditions?.hover) return;
-        if (spotlight.current && panel.current) {
-          const cleanup = attachSpotlight(spotlight.current);
-          return () => cleanup();
-        }
+        const cleanups: (() => void)[] = [];
+        if (spotlight.current) cleanups.push(attachSpotlight(spotlight.current));
+        if (panel.current) cleanups.push(attachTilt(panel.current, 1.5));
+        return () => cleanups.forEach((fn) => fn());
       });
     },
     { scope: root },
@@ -64,7 +64,7 @@ export function NeverOffers() {
   return (
     <section
       ref={root}
-      id="never"
+      id="what-veracity-does-not-offer"
       className="scroll-mt-28 py-section"
       aria-labelledby="never-heading"
     >
@@ -105,7 +105,7 @@ export function NeverOffers() {
                 className="js-never-stamp mt-10 inline-flex size-28 flex-col items-center justify-center rounded-full border-2 border-accent-soft/70 text-center text-accent-soft"
                 aria-hidden="true"
               >
-                <span className="text-[0.6875rem] font-bold uppercase tracking-[0.22em]">
+                <span className="text-[0.8125rem] font-bold uppercase tracking-[0.22em]">
                   Sealed
                 </span>
                 <span className="mt-1 text-[0.9375rem] font-bold uppercase tracking-[0.14em]">

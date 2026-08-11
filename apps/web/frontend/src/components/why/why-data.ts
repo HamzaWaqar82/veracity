@@ -38,13 +38,13 @@ export const comparisonRows: LedgerRow[] = [
   {
     dimension: "Keystroke logging",
     traditional: "Common feature",
-    veracity: "Never — architectural constraint at all tiers",
+    veracity: "Never - architectural constraint at all tiers",
     voice: "refuses",
   },
   {
     dimension: "Stealth mode",
     traditional: "Often available",
-    veracity: "Not available — design requirement",
+    veracity: "Not available - design requirement",
     voice: "refuses",
   },
   {
@@ -67,7 +67,7 @@ export const comparisonRows: LedgerRow[] = [
   },
   {
     dimension: "Sensitive-app exclusions",
-    traditional: "Rarely offered — every app is captured",
+    traditional: "Rarely offered - every app is captured",
     veracity: "Banking, password managers, and other private apps can be excluded from capture",
     voice: "affirms",
   },
@@ -80,7 +80,7 @@ export const comparisonRows: LedgerRow[] = [
   {
     dimension: "Score usage",
     traditional: "Often feeds reviews, bonuses, and termination decisions",
-    veracity: "Coaching and resource allocation only — not punishment",
+    veracity: "Coaching and resource allocation only - not punishment",
     voice: "refuses",
   },
   {
@@ -98,7 +98,7 @@ export const comparisonRows: LedgerRow[] = [
   {
     dimension: "Audio/Video capture",
     traditional: "Common (always-on video, microphone)",
-    veracity: "Never — architectural constraint",
+    veracity: "Never - architectural constraint",
     voice: "refuses",
   },
   {
@@ -125,7 +125,7 @@ export const personas: Persona[] = [
   {
     id: "employees",
     label: "Employees",
-    intro: "With Veracity, employees get the same dashboard their manager sees — with the same data, updated in real time.",
+    intro: "With Veracity, employees get the same dashboard their manager sees - with the same data, updated in real time.",
     points: [
       {
         title: "Full transparency",
@@ -156,11 +156,11 @@ export const personas: Persona[] = [
   {
     id: "managers",
     label: "Managers",
-    intro: "With Veracity, managers get granular insight without drowning in meaningless data — and context, not punishment.",
+    intro: "With Veracity, managers get granular insight without drowning in meaningless data - and context, not punishment.",
     points: [
       {
         title: "Actionable data",
-        body: "Activity tracking at sixty-second heartbeat intervals provides granular insight into application usage, time allocation, and productivity trends — without drowning managers in meaningless data.",
+        body: "Activity tracking at sixty-second heartbeat intervals provides granular insight into application usage, time allocation, and productivity trends - without drowning managers in meaningless data.",
       },
       {
         title: "Context, not punishment",
@@ -183,7 +183,7 @@ export const personas: Persona[] = [
   {
     id: "admins",
     label: "Administrators",
-    intro: "With Veracity, administrators get guided setup, drift alerting, and every control — with no infrastructure to manage.",
+    intro: "With Veracity, administrators get guided setup, drift alerting, and every control - with no infrastructure to manage.",
     points: [
       {
         title: "Guided setup",
@@ -199,7 +199,7 @@ export const personas: Persona[] = [
       },
       {
         title: "No infrastructure management",
-        body: "Veracity is cloud-native SaaS — no servers to provision, no databases to maintain, no updates to deploy.",
+        body: "Veracity is cloud-native SaaS - no servers to provision, no databases to maintain, no updates to deploy.",
       },
     ],
   },
@@ -207,18 +207,26 @@ export const personas: Persona[] = [
 
 export type RoiSection = { id: string; title: string; lead: string; pull: string };
 
+export type FieldEvidence = { value: string; label: string };
+
+export const fieldEvidence: FieldEvidence[] = [
+  { value: "60%", label: "fewer status-check meetings" },
+  { value: "18%", label: "less overtime" },
+  { value: "28,000 USD", label: "saved annually" },
+];
+
 export const roiSections: RoiSection[] = [
   {
     id: "reduced-turnover",
     title: "Reduced Turnover",
     lead: "The strongest predictor of employee resistance to monitoring is lack of transparency.",
-    pull: "A tool that hides itself, collects data without employee knowledge, and withholds their own data creates resentment — and drives away the high-performing knowledge workers an SMB can least afford to lose.",
+    pull: "A tool that hides itself, collects data without employee knowledge, and withholds their own data creates resentment - and drives away the high-performing knowledge workers an SMB can least afford to lose.",
   },
   {
     id: "better-data-quality",
     title: "Better Data Quality",
     lead: "When employees understand and trust the monitoring system, they cooperate with it.",
-    pull: "They classify their own time accurately and use Private Time appropriately — so data reflects actual work patterns, not resistance behaviors like app-switching and idle avoidance.",
+    pull: "They classify their own time accurately and use Private Time appropriately - so data reflects actual work patterns, not resistance behaviors like app-switching and idle avoidance.",
   },
   {
     id: "compliance-cost-reduction",
@@ -237,18 +245,18 @@ export const fitFor = [
 ];
 
 export const notFitFor = [
-  "Large enterprises (200+ employees) — the platform is optimized for SMB scale",
-  "Organizations requiring DLP (data loss prevention) enforcement — Veracity logs USB and file events only, with no allow/deny capability",
-  "Organizations requiring on-premise deployment — Veracity is cloud-native SaaS only",
-  "Organizations that want covert or stealth monitoring — Veracity is designed to be transparent",
-  "Organizations that need keystroke logging or continuous video recording — Veracity never collects these",
+  "Large enterprises (200+ employees) - the platform is optimized for SMB scale",
+  "Organizations requiring DLP (data loss prevention) enforcement - Veracity logs USB and file events only, with no allow/deny capability",
+  "Organizations requiring on-premise deployment - Veracity is cloud-native SaaS only",
+  "Organizations that want covert or stealth monitoring - Veracity is designed to be transparent",
+  "Organizations that need keystroke logging or continuous video recording - Veracity never collects these",
 ];
 
 export type CustomerQuote = { text: string; attribution: string; role: string };
 
 export const customerQuotes: CustomerQuote[] = [
   {
-    text: "We needed visibility into our remote team's workflow without making people feel like they were being spied on. Veracity gave us exactly that — actionable productivity data with zero creep factor.",
+    text: "We needed visibility into our remote team's workflow without making people feel like they were being spied on. Veracity gave us exactly that - actionable productivity data with zero creep factor.",
     attribution: "Operations lead",
     role: "remote software team · early design partner",
   },
@@ -258,7 +266,7 @@ export const customerQuotes: CustomerQuote[] = [
     role: "professional services firm · early design partner",
   },
   {
-    text: "Veracity is not a surveillance tool — it is an operations tool. We used the data to improve processes and remove friction, not to punish people.",
+    text: "Veracity is not a surveillance tool - it is an operations tool. We used the data to improve processes and remove friction, not to punish people.",
     attribution: "Director of Operations",
     role: "retail operations team · early design partner",
   },

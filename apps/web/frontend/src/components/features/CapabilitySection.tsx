@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useRef } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
 import { MinusIcon } from "@/components/icons";
+import { TiltCard } from "@/components/common/TiltCard";
 import { tierLabel, type Capability } from "./features-data";
 
 export function CapabilitySection({ capability }: { capability: Capability }) {
@@ -111,14 +112,17 @@ export function CapabilitySection({ capability }: { capability: Capability }) {
               <article
                 key={entry.id}
                 id={entry.id}
-                className="js-cap-entry scroll-mt-24 bg-bg p-7 sm:p-9"
+                className="js-cap-entry scroll-mt-24 [perspective:1400px]"
               >
-                <FeatureEntryBody entry={entry} />
+                <TiltCard maxAngle={1.5} className="h-full bg-bg p-7 sm:p-9">
+                  <FeatureEntryBody entry={entry} />
+                </TiltCard>
               </article>
             ))}
           </div>
         ) : (
-          <div className="js-cap-wrap js-cap-ledger mt-12 overflow-hidden rounded-2xl border border-line bg-bg">
+          <div className="js-cap-wrap js-cap-ledger mt-12 [perspective:1400px]">
+            <TiltCard maxAngle={1.5} className="overflow-hidden rounded-2xl border border-line bg-bg">
             {capability.entries.map((entry, i) => (
               <Fragment key={entry.id}>
                 {i > 0 && (
@@ -131,6 +135,7 @@ export function CapabilitySection({ capability }: { capability: Capability }) {
                 </article>
               </Fragment>
             ))}
+            </TiltCard>
           </div>
         )}
       </div>
@@ -147,8 +152,8 @@ function FeatureEntryBody({ entry }: { entry: Capability["entries"][number] }) {
         <span
           className={
             entry.tier === "enterprise"
-              ? "ml-auto shrink-0 rounded-full bg-primary-deep px-3 py-1 text-[0.6875rem] font-semibold text-on-dark"
-              : "ml-auto shrink-0 rounded-full bg-primary-soft px-3 py-1 text-[0.6875rem] font-semibold text-primary"
+              ? "ml-auto shrink-0 rounded-full bg-primary-deep px-3 py-1 text-[0.8125rem] font-semibold text-on-dark"
+              : "ml-auto shrink-0 rounded-full bg-primary-soft px-3 py-1 text-[0.8125rem] font-semibold text-primary"
           }
         >
           {tierLabel[entry.tier]}
@@ -167,7 +172,7 @@ function FeatureEntryBody({ entry }: { entry: Capability["entries"][number] }) {
         {entry.specs.map((spec) => (
           <li
             key={spec}
-            className="rounded-full border border-line bg-surface px-3 py-1 text-[0.6875rem] font-semibold tracking-[0.08em] text-ink"
+            className="rounded-full border border-line bg-surface px-3 py-1 text-[0.8125rem] font-semibold tracking-[0.08em] text-ink"
           >
             {spec}
           </li>

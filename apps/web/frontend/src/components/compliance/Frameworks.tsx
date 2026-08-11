@@ -53,7 +53,7 @@ export function Frameworks() {
           The regulatory frameworks we operate in.
         </h2>
         <p className="js-fw-lead mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          GDPR, the EU AI Act, and US state electronic monitoring statutes — with the specific
+          GDPR, the EU AI Act, and US state electronic monitoring statutes - with the specific
           controls Veracity ships for each, current for the live product.
         </p>
 
@@ -119,8 +119,7 @@ export function Frameworks() {
               </p>
               <p className="mt-2 max-w-xl text-[0.9375rem] leading-relaxed text-on-dark">
                 For all US state jurisdictions, Veracity provides the notice templates,
-                acknowledgment tracking, and audit logging necessary to demonstrate compliance —
-                applied automatically based on the organization&apos;s registered location.
+                acknowledgment tracking, and audit logging necessary to demonstrate compliance - applied automatically based on the organization&apos;s registered location.
               </p>
             </div>
             <span className="shrink-0 rounded-full border border-on-dark-line px-4 py-2 text-[0.8125rem] font-semibold text-on-dark">

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
+import { gsap, useGSAP, EASE, MOTION, HOVER } from "@/lib/motion";
 import { attachMagnetic } from "@/lib/cursor";
 import { CTA } from "@/lib/cta";
 
@@ -33,7 +33,10 @@ export function YourTeam() {
             { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09 },
             "-=0.3",
           );
+      });
 
+      mm.add({ motion: MOTION, hover: HOVER }, (ctx) => {
+        if (!ctx.conditions?.motion || !ctx.conditions?.hover) return;
         const magneticCleanups = gsap.utils
           .toArray<HTMLElement>(".js-yours-cta", root.current!)
           .map((el) => attachMagnetic(el, 140, 0.4));
@@ -50,8 +53,7 @@ export function YourTeam() {
           Your team, next.
         </h2>
         <p className="js-yours-lead mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          Veracity is purpose-built for small-to-medium businesses with 10 to 200 employees —
-          remote-first, hybrid, or in the office. Start with a 14-day free trial, no
+          Veracity is purpose-built for small-to-medium businesses with 10 to 200 employees - remote-first, hybrid, or in the office. Start with a 14-day free trial, no
           credit card required, or talk to us about a live walkthrough.
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">

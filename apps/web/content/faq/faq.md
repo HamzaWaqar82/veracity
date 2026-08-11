@@ -28,11 +28,11 @@ All plans include a 14-day free trial with full access to all features of the ch
 
 ### Does Veracity ever log keystrokes?
 
-No. Veracity never logs keystrokes, key counts, or any form of keyboard input content. This is a deliberate architectural constraint that applies at every tier, now and in all future versions. Keystroke logging is incompatible with Veracity's data minimization principle and its compliance positioning under the EU AI Act. This is an explicit product exclusion (see SRS §1.2.3).
+No. Veracity never logs keystrokes, key counts, or any form of keyboard input content. This is a deliberate architectural constraint that applies at every tier, now and in all future versions. Keystroke logging is incompatible with Veracity's data minimization principle and its compliance positioning under the EU AI Act. This is an explicit product exclusion.
 
 ### Can the Agent run in stealth mode?
 
-No. The Veracity Agent is always visible and identifiable on the employee's workstation. The Agent icon appears in the system tray or menu bar on Windows, macOS, and Linux with a clear indicator showing whether it is actively capturing data or in Private Time. There is no stealth mode, hidden capture, or covert monitoring capability in any Veracity plan. This is a design requirement, not a configuration option (see SRS §1.2.3).
+No. The Veracity Agent is always visible and identifiable on the employee's workstation. The Agent icon appears in the system tray or menu bar on Windows, macOS, and Linux with a clear indicator showing whether it is actively capturing data or in Private Time. There is no stealth mode, hidden capture, or covert monitoring capability in any Veracity plan. This is a design requirement, not a configuration option.
 
 ### Which operating systems does the Agent support?
 

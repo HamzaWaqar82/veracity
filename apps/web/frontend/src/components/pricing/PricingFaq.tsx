@@ -42,7 +42,7 @@ export function PricingFaq() {
             Billing questions, answered straight.
           </h2>
           <p className="js-faq-h max-w-sm text-[0.9375rem] leading-relaxed text-muted">
-            Anything else, ask sales at sales@veracity.dev — you get the same answer in writing.
+            Anything else, ask sales at sales@veracity.dev - you get the same answer in writing.
           </p>
         </div>
 

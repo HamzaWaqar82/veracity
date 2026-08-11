@@ -66,7 +66,7 @@ export function ContactHero() {
           ref={badge}
           className="inline-flex items-center gap-2 rounded-full border border-hero-line px-3.5 py-1.5 text-[0.8125rem] font-semibold tracking-[0.02em]"
         >
-          No sales scripts · Straight answers
+          Straight answers · Direct to the right team
         </p>
         <h1 className="mx-auto mt-7 max-w-4xl font-display text-[clamp(2.5rem,4vw+1.5rem,4rem)] font-semibold leading-[1.06] tracking-[-0.03em]">
           {headlineWords.map((word, i) => (
@@ -79,7 +79,7 @@ export function ContactHero() {
           ))}
         </h1>
         <p ref={lede} className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-hero-muted">
-          A live demo, a pricing question, or help picking the right plan — the team behind
+          A live demo, a pricing question, or help picking the right plan - the team behind
           Veracity replies directly. {availability}
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -93,7 +93,7 @@ export function ContactHero() {
         <p ref={note} className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm font-medium text-hero-muted">
           <span>Response within one business day</span>
           <span className="text-hero-line" aria-hidden="true">·</span>
-          <span>Available Mon–Fri, 9 AM–6 PM UTC</span>
+          <span>Available Mon - Fri, 9 AM - 6 PM UTC</span>
         </p>
       </div>
     </section>

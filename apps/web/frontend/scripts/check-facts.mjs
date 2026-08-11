@@ -34,6 +34,16 @@ const RULES = [
     files: ["pages/pricing.md"],
     extract: /\$\s?(\d+)/,
   },
+  // Pricing JSON-LD is derived from the `tiers` constants (already gated by
+  // `prices` above). This presence rule additionally asserts that emitting the
+  // USD pricing schema requires all 9 canonical prices in the corpus — so a
+  // JSON-LD block can never state a price the corpus doesn't know.
+  {
+    id: "schema-prices",
+    files: ["pages/pricing.md"],
+    corpus: [/\$6/, /\$12/, /\$24/, /\$5/, /\$10/, /\$20/, /\$60/, /\$120/, /\$240/],
+    frontend: [/"priceCurrency"\s*:\s*"USD"/],
+  },
   {
     id: "trial-duration",
     files: ["pages/pricing.md"],
@@ -187,8 +197,8 @@ const RULES = [
   {
     id: "case-study-stats",
     files: ["pages/case-studies.md"],
-    corpus: [/60%/, /95%/, /100%/],
-    frontend: [/60%/, /95%/, /100%/],
+    corpus: [/60%/, /95%/, /100%/, /18%/, /28,000/],
+    frontend: [/60%/, /95%/, /100%/, /18%/, /28,000/],
   },
 ];
 
