@@ -19,6 +19,7 @@ type Message = {
   sources: Source[];
   pending: boolean;
   failed: boolean;
+  streaming: boolean;
 };
 
 type StreamEvent = {
@@ -68,7 +69,7 @@ function loadChat(): { messages: Message[]; sessionId: string | null } {
       sessionId?: string | null;
       messages?: Message[];
     };
-    const messages = (parsed.messages ?? []).filter((m) => !m.pending);
+    const messages = (parsed.messages ?? []).filter((m) => !m.pending && !m.streaming);
     return { messages, sessionId: parsed.sessionId ?? null };
   } catch {
     return { messages: [], sessionId: null };
@@ -180,7 +181,11 @@ export function ChatWidget() {
 
   const appendToken = (id: string, token: string) => {
     setMessages((prev) =>
-      prev.map((m) => (m.id === id ? { ...m, content: m.content + token, pending: false } : m))
+      prev.map((m) =>
+        m.id === id
+          ? { ...m, content: m.content + token, pending: false, streaming: true }
+          : m
+      )
     );
   };
 
@@ -201,6 +206,7 @@ export function ChatWidget() {
       sources: [],
       pending: false,
       failed: false,
+      streaming: false,
     };
     const assistantId = createId();
     const assistantMessage: Message = {
@@ -210,6 +216,7 @@ export function ChatWidget() {
       sources: [],
       pending: true,
       failed: false,
+      streaming: false,
     };
 
     setMessages((prev) => [...prev, userMessage, assistantMessage]);
@@ -277,6 +284,7 @@ export function ChatWidget() {
                       ...m,
                       pending: false,
                       failed: true,
+                      streaming: false,
                       content: m.content || CHAT_COPY.error,
                     }
                   : m
@@ -288,7 +296,9 @@ export function ChatWidget() {
       }
 
       setMessages((prev) =>
-        prev.map((m) => (m.id === assistantId ? { ...m, pending: false } : m))
+        prev.map((m) =>
+          m.id === assistantId ? { ...m, pending: false, streaming: false } : m
+        )
       );
       if (answerContent) {
         setAnnounce(`${CHAT_COPY.replyPrefix} ${plainText(answerContent)}`);
@@ -298,7 +308,7 @@ export function ChatWidget() {
       setMessages((prev) =>
         prev.map((m) =>
           m.id === assistantId
-            ? { ...m, pending: false, failed: true, content: CHAT_COPY.error }
+            ? { ...m, pending: false, failed: true, streaming: false, content: CHAT_COPY.error }
             : m
         )
       );

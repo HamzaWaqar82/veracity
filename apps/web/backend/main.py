@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import sys
 import time
 from contextlib import asynccontextmanager
 
@@ -28,6 +29,7 @@ logger = logging.getLogger("veracity_backend")
 # makes them appear in GET /metrics even before the first request.
 metrics.register("chat_requests_total", "counter", "Total chat requests completed (200 or error).")
 metrics.register("chat_errors_total", "counter", "Chat requests that raised an unhandled error.")
+metrics.register("chat_disconnects_total", "counter", "Chat requests the client abandoned mid-stream.")
 metrics.register("chat_total_ms", "histogram", "End-to-end latency of a chat request, ms.")
 metrics.register("chat_first_token_ms", "histogram", "Time to first streamed token, ms.")
 
@@ -117,27 +119,36 @@ async def chat_endpoint(req: ChatRequest):
             raise
         finally:
             ctx.total_ms = (time.monotonic() - ctx.started_at) * 1000
-            metrics.inc("chat_requests_total")
-            metrics.observe("chat_total_ms", ctx.total_ms)
-            if ctx.first_token_ms:
-                metrics.observe("chat_first_token_ms", ctx.first_token_ms)
-            # One summary line per request — the single place to look for
-            # everything that happened on the way to an answer.
-            logger.info(
-                "chat_request_completed",
-                extra={
-                    "session_id": req.session_id,
-                    "total_ms": round(ctx.total_ms, 1),
-                    "first_token_ms": round(ctx.first_token_ms, 1),
-                    "retrieval_count": ctx.retrieval_count,
-                    "retrieval_ms": round(ctx.retrieval_ms, 1),
-                    "provider": ctx.provider_used,
-                    "model": ctx.model_used,
-                    "rotation_count": ctx.rotation_count,
-                    "char_count": ctx.char_count,
-                    "error": ctx.error or None,
-                },
-            )
+            if sys.exc_info()[0] is GeneratorExit:
+                # The client closed the connection mid-stream (GeneratorExit is
+                # thrown into the generator, and being a BaseException it skips
+                # the `except Exception` above). Don't count it as a completed
+                # request or record its latency — a handful of abandoned tabs
+                # would otherwise inflate chat_total_ms and hide real p95.
+                metrics.inc("chat_disconnects_total")
+                logger.info(
+                    "chat_request_disconnected",
+                    extra={"total_ms": round(ctx.total_ms, 1)},
+                )
+            else:
+                metrics.inc("chat_requests_total")
+                metrics.observe("chat_total_ms", ctx.total_ms)
+                if ctx.first_token_ms:
+                    metrics.observe("chat_first_token_ms", ctx.first_token_ms)
+                # One summary line per request — the single place to look for
+                # everything that happened on the way to an answer.
+                logger.info(
+                    "chat_request_completed",
+                    extra={
+                        "session_id": req.session_id,
+                        "total_ms": round(ctx.total_ms, 1),
+                        "first_token_ms": round(ctx.first_token_ms, 1),
+                        "retrieval_count": ctx.retrieval_count,
+                        "retrieval_ms": round(ctx.retrieval_ms, 1),
+                        "provider": ctx.provider_used,
+                        "error": ctx.error,
+                    },
+                )
 
     return StreamingResponse(
         sse_wrapper(),

@@ -241,6 +241,11 @@ async def stream_rag_response(
                     "provider_error_terminal",
                     extra={"provider": provider.name, "model": model, "error": repr(e)},
                 )
+                # This request ends here with an error SSE event rather than a
+                # raised exception (the stream completes), so the endpoint layer
+                # can't see it — count it explicitly or it never reaches the
+                # error metric.
+                metrics.inc("chat_errors_total")
                 yield (
                     "data: "
                     + json.dumps({"type": "error", "message": f"Upstream error: {e}"})
@@ -253,6 +258,7 @@ async def stream_rag_response(
                 "providers_exhausted",
                 extra={"last_status": last_unavailable_status, "query": query},
             )
+            metrics.inc("chat_errors_total")
             yield (
                 "data: "
                 + json.dumps(

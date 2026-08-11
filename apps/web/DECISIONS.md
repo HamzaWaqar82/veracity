@@ -231,7 +231,7 @@ Two residual chat-state defects after D-008/D-009:
 
 ---
 
-## D-011 — Elevation: flat by default, shadow only on lifted objects
+## D-017 — Elevation: flat by default, shadow only on lifted objects
 
 **Status:** Accepted · **Date:** 2026-08-06 · **Scope:** `apps/web`
 
