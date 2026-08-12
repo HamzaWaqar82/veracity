@@ -18,11 +18,11 @@ export function DisclosureSection() {
           scrollTrigger: { trigger: root.current, start: "top 72%" },
         });
         enter
-          .fromTo(q(".js-disc-h"), { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.8 })
+          .fromTo(q(".js-disc-h"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8 })
           .fromTo(
             q(".js-disc-card"),
-            { autoAlpha: 0, y: 30 },
-            { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.12 },
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 },
             "-=0.5",
           );
       });

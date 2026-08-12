@@ -36,8 +36,8 @@ function PriceBlock({ tier, annual }: { tier: Tier; annual: boolean }) {
     if (capRef.current) {
       gsap.fromTo(
         capRef.current,
-        { autoAlpha: 0, y: 4 },
-        { autoAlpha: 1, y: 0, duration: 0.3, ease: EASE },
+        { opacity: 0, y: 4 },
+        { opacity: 1, y: 0, duration: 0.3, ease: EASE },
       );
     }
     return () => {
@@ -87,19 +87,19 @@ export function PlanSummary() {
         });
         tl.fromTo(
           q(".js-plan-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-plan-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-plan-panel"),
-            { autoAlpha: 0, y: 30 },
-            { autoAlpha: 1, y: 0, duration: 0.7 },
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.7 },
             "-=0.25",
           );
       });
@@ -143,8 +143,8 @@ export function PlanSummary() {
     if (annual && !prevAnnual.current && chipRef.current && window.matchMedia(MOTION).matches) {
       gsap.fromTo(
         chipRef.current,
-        { scale: 0.65, autoAlpha: 0.5 },
-        { scale: 1, autoAlpha: 1, duration: 0.4, ease: EASE, overwrite: true },
+        { scale: 0.65, opacity: 0.5 },
+        { scale: 1, opacity: 1, duration: 0.4, ease: EASE, overwrite: true },
       );
     }
     prevAnnual.current = annual;

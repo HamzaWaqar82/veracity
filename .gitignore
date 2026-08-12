@@ -13,6 +13,9 @@ out/
 # Lead capture (server-side form storage)
 apps/web/frontend/data/
 
+# Lighthouse raw per-audit reports (committed artifact = the summaries only)
+apps/web/lighthouse/raw/
+
 # Python
 __pycache__/
 *.py[cod]

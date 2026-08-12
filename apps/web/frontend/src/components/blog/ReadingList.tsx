@@ -21,19 +21,19 @@ export function ReadingList({ essays }: { essays: Essay[] }) {
         enter
           .fromTo(
             q(".js-rl-h"),
-            { autoAlpha: 0, y: 26, clipPath: "inset(0 0 100% 0)" },
-            { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+            { opacity: 0, y: 26, clipPath: "inset(0 0 100% 0)" },
+            { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
           )
           .fromTo(
             q(".js-rl-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-rl-card"),
-            { autoAlpha: 0, y: 32 },
-            { autoAlpha: 1, y: 0, duration: 0.75, stagger: 0.1 },
+            { opacity: 0, y: 32 },
+            { opacity: 1, y: 0, duration: 0.75, stagger: 0.1 },
             "-=0.5",
           );
       });

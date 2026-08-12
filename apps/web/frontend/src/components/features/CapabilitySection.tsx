@@ -30,13 +30,13 @@ export function CapabilitySection({ capability }: { capability: Capability }) {
         });
         tl.fromTo(
           q(".js-cap-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-cap-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           );
 
@@ -49,7 +49,7 @@ export function CapabilitySection({ capability }: { capability: Capability }) {
           const scrubTl = gsap.timeline({
             scrollTrigger: { trigger: wrap, start: "top 84%", end: "top 34%", scrub: 0.8 },
           });
-          scrubTl.fromTo(items, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, ease: "none", stagger: 0.11 });
+          scrubTl.fromTo(items, { opacity: 0, y: 40 }, { opacity: 1, y: 0, ease: "none", stagger: 0.11 });
           if (draws.length) {
             scrubTl.to(draws, { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut" }, "-=0.3");
           }
@@ -60,7 +60,7 @@ export function CapabilitySection({ capability }: { capability: Capability }) {
             scrollTrigger: { trigger: wrap, start: "top 82%" },
           });
           entriesTl
-            .fromTo(items, { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09 }, 0.1)
+            .fromTo(items, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, stagger: 0.09 }, 0.1)
             .fromTo(dividers, { scaleX: 0 }, { scaleX: 1, duration: 0.6, stagger: 0.06 }, "-=0.4");
           if (draws.length) {
             entriesTl.to(

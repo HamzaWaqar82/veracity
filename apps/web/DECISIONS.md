@@ -7,6 +7,159 @@ explicitly supersedes it rather than editing the old one.
 
 ---
 
+## D-019 — Lighthouse phase-2 fixes: AT-visible reveals, lazy shell widgets, viewport-gated tables, LCP-safe hero text
+
+**Status:** Accepted · **Date:** 2026-08-11 · **Scope:** `apps/web`
+
+### The problem
+
+The D-018 baseline sweep (2026-08-11, `summary-baseline.*`) showed every page
+failing one axe `heading-order` audit (a11y 98 on 7 routes), and mobile perf
+71–89 on 8 routes. Root causes found in the baseline trace:
+
+- **GSAP `autoAlpha` reveals.** All scroll-reveal animations used `autoAlpha`
+  (opacity + `visibility:hidden`). Below-fold sections were therefore absent
+  from the accessibility tree, so the heading sequence collapsed (h1 → footer
+  h3) — the axe flag was exposing a *real* defect: a screen-reader user could
+  not navigate the page by headings at all. `autoAlpha` was also used on hero
+  headings and the pricing h4 group headers.
+- **App-shell JS on the critical path.** `ChatWidget` and `CursorRing` were
+  statically imported in `layout.tsx`, so their code + effects loaded on every
+  page during the load window.
+- **Dual-viewport tables.** `ComparisonTable` rendered *both* the desktop
+  matrix (~700 cells) and the mobile card list, and React built + hydrated the
+  hidden variant on every viewport — the single largest long task (1.11s) on
+  `/pricing`.
+- **LCP text was animated.** Hero lede paragraphs started at `opacity: 0` in
+  their entrance timeline, so the largest contentful paint was delayed until
+  the fade completed (real-device LCP 272ms; simulated LCP 2.0s).
+
+### The decisions
+
+1. **Reveals use `opacity`, never `autoAlpha`.** All `autoAlpha:` usages
+   (53 component files + `lib/motion.ts` REVEAL) were replaced with `opacity`.
+   Visuals are identical (same fade/slide); content stays in the AT tree at all
+   times, so headings are navigable and axe `heading-order` passes. Non-heading
+   reveals keep the same treatment — revealed content remains AT-readable
+   instead of `visibility:hidden`. This is strictly better for screen readers.
+2. **Shell widgets load after idle.** New `components/DeferredMount.tsx`
+   (requestIdleCallback, ~1.5s timeout fallback) + `components/DeferredWidgets.tsx`
+   (`next/dynamic` + `ssr:false` for `ChatWidget`/`CursorRing`) move both off the
+   critical path in `layout.tsx`. The layout chunk shrank 27.5kB → 10.2kB raw.
+3. **Viewport-gated tables.** New `lib/useMediaQuery.ts`; `ComparisonTable`
+   renders only the variant matching the current viewport (desktop matrix vs
+   mobile cards). Below-fold swap on desktop is imperceptible; mobile no longer
+   builds the hidden desktop matrix.
+4. **LCP text is never faded.** Hero lede paragraphs in all 12 hero components
+   now animate only `y` (no `opacity`), so LCP fires at first paint (real 272ms
+   on `/pricing`). The premium mask-reveal on h1 words is unchanged.
+5. **Latent-markup a11y fixes surfaced by the reveal change:** pricing
+   `ComparisonTable` group headers `h4`→`h3` (the h4 followed the section h2 with
+   no h3); `BillingDetails` `dl/dt/dd` were nested two divs deep (invalid HTML)
+   and were converted to plain `p` markup (the content is not a definition list).
+
+### Why these are safe
+
+- `opacity`-only reveals: identical animation; content remains in the AT tree;
+  no tab-order change (headings and revealed cards are not focusable targets;
+  interactive elements become visible when focused/scroll-arrived).
+- Deferred widgets: both are below-the-fold/cosmetic (chat launcher, cursor
+  ring); the chat button appearing ~1.5s in is imperceptible; `ssr:false` avoids
+  hydration mismatch.
+- LCP text: the lede slide-up without fade reads identically; the h1 word-mask
+  reveal preserves the signature entrance.
+
+### Results
+
+Full 36-audit verification sweep (`apps/web/lighthouse/summary-verify.*`):
+
+- **Accessibility: 100 on all 36 audits** (was 98 on 7 routes).
+- **Desktop performance: 97–100 everywhere** (was 84 on `/pricing`).
+- **Mobile performance (13/18 ≥90):** case-studies 71→91, about 89→95,
+  integrations 87→96, compliance 82→88, home 87 (flat), why-veracity 79 (flat),
+  pricing 74→81, features 87→81 — the last four fluctuate ±10 between runs
+  (phase2c read features 90 / pricing 88 / why-veracity 83; the verify sweep ran
+  under machine load), confirming the simulated throttle is noise-sensitive at
+  the margins.
+- The five sub-90 mobile routes are the animation-heavy ones; their TBT
+  (470–745ms) is the discriminator vs passing routes (120–350ms). The residual
+  is simulated-4G amplification of React hydration + GSAP ScrollTrigger init —
+  real-device (unthrottled) LCP is ~270ms. Pushing past 90 requires deferring
+  below-fold animation setup until after idle, which risks a hero flash and has
+  uncertain payoff (hydration alone may keep TBT up). **Accepted as the perf
+  outcome for this phase**; tracked as follow-up issue #101 (mobile-perf overhaul).
+
+### How to work with this
+
+- New reveals must use `opacity` in `from`/`to`; never `autoAlpha` (content
+  would vanish from the AT tree again).
+- Interactive open/close states must not use opacity-only hiding (tab-order
+  leak); use conditional render or `inert`/`hidden` semantics.
+- Keep new table/dual-variant components viewport-gated via `useMediaQuery`.
+- Hero LCP text: animate `y` only.
+
+### References
+
+- `apps/web/frontend/src/lib/motion.ts`, `components/DeferredMount.tsx`,
+  `components/DeferredWidgets.tsx`, `lib/useMediaQuery.ts`
+- `components/pricing/ComparisonTable.tsx`, `components/pricing/BillingDetails.tsx`
+- `apps/web/lighthouse/summary-baseline.*` vs `summary-verify.*`
+
+---
+
+**Status:** Accepted · **Date:** 2026-08-11 · **Scope:** `apps/web`
+
+### The problem
+
+NFR-PERF-2 (#29), NFR-A11Y-1 (#30) and NFR-A11Y-2 (#31) require Lighthouse
+scores of 90+ on Performance and Accessibility, on every page, at both mobile
+and desktop viewports — but the site is not deployed yet, so there is no public
+URL to audit, and nothing in the repo could measure or record a score. A manual
+DevTools run per page is un-repeatable and produces no committed evidence.
+
+### The decision
+
+Add a zero-runtime-dependency harness, `frontend/scripts/lighthouse.mjs`, driven
+by the pinned `lighthouse` devDependency, that audits a **local production
+build** (`next start` on `LH_PORT`, default 3137):
+
+- Audits all 18 routes (15 static + 3 `/resources` essays) × mobile + desktop =
+  36 audits, categories performance/accessibility/best-practices/seo.
+- Mobile uses Lighthouse's simulated 4G throttling; desktop uses `--preset=desktop`.
+- Raw per-audit JSON goes to `apps/web/lighthouse/raw/<ts>/` (**gitignored** —
+  ~400KB × 36 is too heavy to commit); the committed artifact is the compact
+  `apps/web/lighthouse/summary-<ts>.json` + `.md` score table (route × viewport ×
+  category, LCP/TBT/CLS, a11y failures, gate result) — mirroring the eval-score
+  history convention in `eval/results/`.
+- The run **gates**: exit non-zero unless Performance & Accessibility are ≥
+  `--fail-below` (default 90) on every route × viewport.
+- Targeted re-runs for the fix loop: `--only <route>`, `--viewport mobile|desktop`.
+- Preflight: aborts if Chromium is missing, if `LH_PORT` is busy, or if `next dev`
+  is running on :3000 (dev and build share `.next` — see AGENTS.md gotcha).
+
+### How to work with this
+
+- `npm run build` (dev stopped) → `npm run lighthouse:report` → restart dev.
+- Chromium location: `LH_CHROME_PATH` (default `/usr/bin/chromium`), extra flags
+  via `LH_CHROME_FLAGS` (default `--headless=new --no-sandbox --disable-gpu`).
+- Keep the route list in the script in sync with `src/app/sitemap.ts`.
+
+### Consequences
+
+- Reproducible, committed Lighthouse evidence without deployment; closes
+  #29/#30/#31 with the summary artifact + the manual keyboard/screen-reader
+  matrix appended in the report.
+- A `lighthouse-ci` GitHub Action against a live/preview URL remains a
+  post-deployment follow-up (real TTFB/CDN numbers), not a prerequisite.
+
+### References
+
+- `apps/web/frontend/scripts/lighthouse.mjs`
+- `apps/web/lighthouse/summary-*.{json,md}` (committed), `apps/web/lighthouse/raw/` (gitignored)
+- `docs/web/srs-rag-chatbot-v1.md` §8.1–8.2 (NFR-PERF-2, NFR-A11Y-1/2)
+
+---
+
 ## D-011 — Chat widget root cause: closed `<dialog>` rendered visible by `.flex`
 
 **Status:** Accepted · **Date:** 2026-08-06 · **Scope:** `apps/web`

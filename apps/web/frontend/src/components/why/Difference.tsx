@@ -42,31 +42,31 @@ export function Difference() {
         });
         tl.fromTo(
           q(".js-diff-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-diff-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-diff-toggle"),
-            { autoAlpha: 0, y: 14 },
-            { autoAlpha: 1, y: 0, duration: 0.5 },
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.5 },
             "-=0.35",
           )
           .fromTo(
             q(".js-diff-col"),
-            { autoAlpha: 0, y: 30 },
-            { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.12, clearProps: "opacity,visibility" },
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, clearProps: "opacity,visibility" },
             "-=0.4",
           )
           .fromTo(
             q(".js-diff-row"),
-            { autoAlpha: 0, y: 10 },
-            { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.05 },
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.4, stagger: 0.05 },
             "-=0.55",
           )
           .to(q(".js-draw"), { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut", stagger: 0.05 }, "-=0.45");
@@ -89,7 +89,7 @@ export function Difference() {
         const targetW = btnRect.width;
 
         if (firstRun.current) {
-          gsap.set(thumbEl, { x: targetX, width: targetW, autoAlpha: 1 });
+          gsap.set(thumbEl, { x: targetX, width: targetW, opacity: 1 });
           firstRun.current = false;
           return;
         }

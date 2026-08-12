@@ -41,46 +41,46 @@ export function PricingHero() {
         const desktop = ctx.conditions?.desktop;
 
         const tl = gsap.timeline({ defaults: { ease: EASE } });
-        tl.fromTo(badge.current, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 0.08)
+        tl.fromTo(badge.current, { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.55 }, 0.08)
           .fromTo(
             q(".js-price-word"),
             { yPercent: 118 },
             { yPercent: 0, duration: 1.0, stagger: 0.05, ease: "power3.inOut" },
             0.28,
           )
-          .fromTo(lede.current, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.85)
+          .fromTo(lede.current, { y: 22 }, { y: 0, duration: 0.7 }, 0.85)
           .fromTo(
             q(".js-price-cta"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.09 },
             1.0,
           )
-          .fromTo(note.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.16)
-          .fromTo(jump.current, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 1.26)
+          .fromTo(note.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.16)
+          .fromTo(jump.current, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55 }, 1.26)
           .fromTo(
             receipt.current,
-            { autoAlpha: 0, y: 56, rotationX: -8, transformOrigin: "50% 0%" },
-            { autoAlpha: 1, y: 0, rotationX: 0, duration: 1.05 },
+            { opacity: 0, y: 56, rotationX: -8, transformOrigin: "50% 0%" },
+            { opacity: 1, y: 0, rotationX: 0, duration: 1.05 },
             0.72,
           )
           .fromTo(
             q(".js-price-receipt-row"),
-            { autoAlpha: 0, y: -6, clipPath: "inset(0 0 100% 0)" },
-            { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.45, stagger: 0.09 },
+            { opacity: 0, y: -6, clipPath: "inset(0 0 100% 0)" },
+            { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.45, stagger: 0.09 },
             1.4,
           )
           .fromTo(
             q(".js-price-receipt-foot"),
-            { autoAlpha: 0, y: 6 },
-            { autoAlpha: 1, y: 0, duration: 0.4 },
+            { opacity: 0, y: 6 },
+            { opacity: 1, y: 0, duration: 0.4 },
             1.85,
           );
 
         if (ping.current) {
           gsap.fromTo(
             ping.current,
-            { scale: 1, autoAlpha: 0.7 },
-            { scale: 3.2, autoAlpha: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 2.2 },
+            { scale: 1, opacity: 0.7 },
+            { scale: 3.2, opacity: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 2.2 },
           );
         }
 
@@ -89,13 +89,13 @@ export function PricingHero() {
         if (desktop) {
           // Depth stack, slowest → fastest: copy recedes · receipt pulls up fastest
           const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: scroll });
-          tl.to(content.current, { y: -72, scale: 0.93, autoAlpha: 0 }, 0)
+          tl.to(content.current, { y: -72, scale: 0.93, opacity: 0 }, 0)
             .to(receipt.current, { y: -56, scale: 0.97 }, 0)
             .to(receiptWrap.current, { y: -64 }, 0);
         } else {
           gsap.to(content.current, {
             y: -56,
-            autoAlpha: 0,
+            opacity: 0,
             ease: "none",
             scrollTrigger: scroll,
           });

@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { gsap, useGSAP, EASE, MOTION } from "@/lib/motion";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 import { CheckIcon, MinusIcon } from "@/components/icons";
 import { TableScroll } from "@/components/common/TableScroll";
 import { tiers, featureGroups, type TierCellValue, type TierCells } from "./pricing-data";
@@ -31,7 +32,7 @@ function MobileCardTable() {
     <div className="space-y-10">
       {featureGroups.map((group) => (
         <div key={group.id}>
-          <h4 className="font-display text-xl font-semibold">{group.name}</h4>
+          <h3 className="font-display text-xl font-semibold">{group.name}</h3>
           <div className="mt-5 space-y-5">
             {group.rows.map((row) => (
               <div key={row.feature} className="rounded-xl border border-line bg-bg">
@@ -67,6 +68,7 @@ export function ComparisonTable() {
   const root = useRef<HTMLElement>(null);
   const matrixRef = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState<number | null>(null);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   useGSAP(
     () => {
@@ -93,25 +95,25 @@ export function ComparisonTable() {
         });
         tl.fromTo(
           q(".js-table-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-table-matrix"),
-            { autoAlpha: 0, y: 24 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 24 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-table-group-row"),
-            { autoAlpha: 0, x: -10 },
-            { autoAlpha: 1, x: 0, duration: 0.4, stagger: 0.08 },
+            { opacity: 0, x: -10 },
+            { opacity: 1, x: 0, duration: 0.4, stagger: 0.08 },
             "-=0.35",
           )
           .fromTo(
             q(".js-table-row"),
-            { autoAlpha: 0, y: 8 },
-            { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.03 },
+            { opacity: 0, y: 8 },
+            { opacity: 1, y: 0, duration: 0.35, stagger: 0.03 },
             "-=0.3",
           )
           .to(
@@ -121,14 +123,14 @@ export function ComparisonTable() {
           )
           .fromTo(
             q(".js-table-mobile"),
-            { autoAlpha: 0, y: 24 },
-            { autoAlpha: 1, y: 0, duration: 0.55 },
+            { opacity: 0, y: 24 },
+            { opacity: 1, y: 0, duration: 0.55 },
             "-=0.4",
           )
           .fromTo(
             q(".js-table-note"),
-            { autoAlpha: 0, y: 16 },
-            { autoAlpha: 1, y: 0, duration: 0.5 },
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.5 },
             "-=0.3",
           );
       });
@@ -154,8 +156,9 @@ export function ComparisonTable() {
           </p>
         </div>
 
-        <div ref={matrixRef} className="js-table-matrix mt-10 hidden lg:block">
-          <TableScroll className="rounded-2xl border border-line bg-bg">
+        {isDesktop && (
+          <div ref={matrixRef} className="js-table-matrix mt-10 hidden lg:block">
+            <TableScroll className="rounded-2xl border border-line bg-bg">
             <table
               className="w-full min-w-[960px] table-fixed border-separate border-spacing-0 text-left"
               onMouseOver={handleHover}
@@ -207,10 +210,13 @@ export function ComparisonTable() {
             </table>
           </TableScroll>
         </div>
+      )}
 
-        <div className="js-table-mobile mt-10 lg:hidden">
-          <MobileCardTable />
-        </div>
+      {!isDesktop && (
+          <div className="js-table-mobile mt-10 lg:hidden">
+            <MobileCardTable />
+          </div>
+        )}
 
         <p className="js-table-note mt-6 max-w-2xl text-[0.8125rem] leading-relaxed text-muted">
           The minus mark signals a capability a plan does not include - and no add-on can add it;

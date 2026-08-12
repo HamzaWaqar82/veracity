@@ -41,19 +41,19 @@ export function HowItWorks() {
         });
         tl.fromTo(
           q(".js-how-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-how-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-how-col"),
-            { autoAlpha: 0, y: 34 },
-            { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.14 },
+            { opacity: 0, y: 34 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.14 },
             "-=0.2",
           );
 

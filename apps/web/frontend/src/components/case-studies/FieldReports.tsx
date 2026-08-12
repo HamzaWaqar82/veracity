@@ -22,20 +22,20 @@ export function FieldReports() {
         enter
           .fromTo(
             q(".js-reports-h"),
-            { autoAlpha: 0, y: 26, clipPath: "inset(0 0 100% 0)" },
-            { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+            { opacity: 0, y: 26, clipPath: "inset(0 0 100% 0)" },
+            { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
           )
           .fromTo(q(".js-reports-lead"), REVEAL.from, REVEAL.to, "-=0.4")
           .fromTo(
             q(".js-report-card"),
-            { autoAlpha: 0, y: 36 },
-            { autoAlpha: 1, y: 0, duration: 0.85, stagger: 0.14 },
+            { opacity: 0, y: 36 },
+            { opacity: 1, y: 0, duration: 0.85, stagger: 0.14 },
             "-=0.5",
           )
           .fromTo(
             q(".js-report-stat"),
-            { autoAlpha: 0, y: 14 },
-            { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.06 },
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.4, stagger: 0.06 },
             "-=0.5",
           );
       });

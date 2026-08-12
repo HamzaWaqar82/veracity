@@ -1,0 +1,591 @@
+{
+  "run_id": "verify",
+  "generated_at": "2026-08-11T11:55:38.160Z",
+  "chrome": "/usr/bin/chromium",
+  "viewports": [
+    "mobile",
+    "desktop"
+  ],
+  "fail_below": 90,
+  "rows": [
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.87,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2014.2919999999997,
+        "tbt_ms": 473.35400000000027,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 566.0268000000001,
+        "tbt_ms": 68,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/features",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.81,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2038.8317,
+        "tbt_ms": 736.9999999999995,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/features",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 561.17455,
+        "tbt_ms": 55.000000000000114,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/pricing",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.81,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2191.4461,
+        "tbt_ms": 745.138475,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/pricing",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 0.97,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 585.03355,
+        "tbt_ms": 147,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/why-veracity",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.79,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2928.39215,
+        "tbt_ms": 586,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/why-veracity",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 0.92,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 611.7192,
+        "tbt_ms": 226,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/resources",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.95,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2269.98945,
+        "tbt_ms": 214,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/resources",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 489.13194999999996,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/about",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.95,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2002.5764,
+        "tbt_ms": 246,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/about",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 562.24125,
+        "tbt_ms": 16.999999999999886,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/faq",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.94,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2317.5919,
+        "tbt_ms": 233,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/faq",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 508.6237,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/case-studies",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.91,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2008.5245,
+        "tbt_ms": 353,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/case-studies",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 559.5635500000001,
+        "tbt_ms": 1,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/integrations",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.96,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2001.0137,
+        "tbt_ms": 215,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/integrations",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 551.74435,
+        "tbt_ms": 10,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/compliance",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.88,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2012.2092,
+        "tbt_ms": 468.0000000000001,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/compliance",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 558.19235,
+        "tbt_ms": 43,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/contact-us",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.94,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2017.0119999999997,
+        "tbt_ms": 267.994,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/contact-us",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 518.74165,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/privacy",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 1864.3671,
+        "tbt_ms": 121,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/privacy",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 475.31510000000003,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/terms",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 1853.8145,
+        "tbt_ms": 91,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/terms",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 476.8003,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/trial",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.96,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 1856.1511,
+        "tbt_ms": 211,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/trial",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 521.19155,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/request-demo",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.97,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 1850.5861,
+        "tbt_ms": 199,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/request-demo",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 515.11245,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/resources/how-productivity-scoring-works",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.91,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2263.90135,
+        "tbt_ms": 329.19955000000004,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/resources/how-productivity-scoring-works",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 519.44815,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/resources/transparent-monitoring-for-modern-teams",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.95,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2010.5274,
+        "tbt_ms": 220,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/resources/transparent-monitoring-for-modern-teams",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 524.8603499999999,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/resources/smb-guide-to-workforce-analytics",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.97,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2015.8285999999998,
+        "tbt_ms": 153.4999999999999,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/resources/smb-guide-to-workforce-analytics",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 526.65375,
+        "tbt_ms": 0,
+        "cls": 0
+      },
+      "a11y_failures": []
+    }
+  ],
+  "passed": 31,
+  "total": 36,
+  "gate_pass": false
+}
