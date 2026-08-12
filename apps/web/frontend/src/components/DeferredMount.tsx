@@ -14,7 +14,7 @@ export function DeferredMount({ children, fallback = null, delay = 1500 }: Defer
   useEffect(() => {
     const done = () => setMounted(true);
     if (typeof requestIdleCallback === "function") {
-      const id = requestIdleCallback(done, { timeout: delay + 1000 });
+      const id = requestIdleCallback(done, { timeout: delay });
       return () => cancelIdleCallback(id);
     }
     const timeout = window.setTimeout(done, delay);
