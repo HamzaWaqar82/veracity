@@ -37,7 +37,10 @@ export async function POST(request: NextRequest) {
   try {
     upstream = await fetch(`${upstreamBase}/api/chat`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "X-Internal-Token": process.env.VERACITY_INTERNAL_TOKEN ?? "",
+      },
       body: JSON.stringify({ message, session_id: sessionId }),
       signal: AbortSignal.timeout(180_000),
     });

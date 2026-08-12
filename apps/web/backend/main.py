@@ -3,15 +3,17 @@
 from __future__ import annotations
 
 import logging
+import re
 import sys
 import time
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import Response, StreamingResponse
+from fastapi.responses import JSONResponse, Response, StreamingResponse
 
-from database import init_db
+from config import ALLOWED_ORIGINS, INTERNAL_TOKEN
+from database import init_db, store_lead
 from metrics import metrics
 from observability import (
     current_metrics,
@@ -20,7 +22,7 @@ from observability import (
     setup_logging,
 )
 from rag import stream_rag_response
-from schemas import ChatRequest, HealthResponse
+from schemas import ChatRequest, HealthResponse, LeadRequest
 
 setup_logging()
 logger = logging.getLogger("veracity_backend")
@@ -53,16 +55,52 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS middleware for local frontend development and production.
-# The chat API is unauthenticated and passes the session id in the request body
-# (no cookies), so credentials are disabled to keep the wildcard origin valid.
+# CORS: only the frontend origin(s) may call the API. A bare "*" is rejected
+# at startup — production must list explicit origins via ALLOWED_ORIGINS.
+if not ALLOWED_ORIGINS:
+    # Allow local dev convenience without weakening prod: if no origins are
+    # configured, fall back to open only when no internal token is set (local).
+    _cors_origins = ["*"] if not INTERNAL_TOKEN else []
+    if not _cors_origins:
+        logger.warning(
+            "ALLOWED_ORIGINS is empty and VERACITY_INTERNAL_TOKEN is set; "
+            "CORS will reject all browser cross-origin requests. Set ALLOWED_ORIGINS."
+        )
+else:
+    _cors_origins = ALLOWED_ORIGINS
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_cors_origins,
     allow_credentials=False,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type", "X-Internal-Token"],
 )
+
+# Routes that must only be reachable via the trusted Next.js server proxy.
+# The proxy forwards VERACITY_INTERNAL_TOKEN as the X-Internal-Token header;
+# any other caller (including a browser or rogue client) is rejected with 401,
+# which prevents anonymous quota-burn against the paid LLM providers.
+_PROTECTED_PREFIXES = ("/api/chat", "/api/lead")
+
+
+@app.middleware("http")
+async def require_internal_token(request: Request, call_next):
+    if request.url.path.startswith(_PROTECTED_PREFIXES):
+        expected = INTERNAL_TOKEN
+        if not expected:
+            logger.error(
+                "Refusing proxied request to %s: VERACITY_INTERNAL_TOKEN is not set.",
+                request.url.path,
+            )
+            return JSONResponse(
+                status_code=503,
+                content={"error": "Backend is not configured for proxied requests."},
+            )
+        if request.headers.get("X-Internal-Token") != expected:
+            logger.warning("Rejected unauthorized call to %s", request.url.path)
+            return JSONResponse(status_code=401, content={"error": "Unauthorized."})
+    return await call_next(request)
 
 
 @app.get("/health", response_model=HealthResponse)
@@ -160,3 +198,28 @@ async def chat_endpoint(req: ChatRequest):
             "X-Request-Id": request_id,
         },
     )
+
+
+_LEAD_KINDS = {"contact", "demo", "trial"}
+_EMAIL_RE = re.compile(r"^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")
+
+
+@app.post("/api/lead")
+async def lead_endpoint(req: LeadRequest):
+    """Persist a marketing-form lead.
+
+    Protected by the X-Internal-Token middleware (only the Next.js server proxy
+    may call this). Validation here is authoritative so leads are never lost to
+    a silent 500 even if a future client skips frontend checks.
+    """
+    kind = (req.kind or "").strip()
+    name = (req.name or "").strip()
+    email = (req.email or "").strip()
+    if kind not in _LEAD_KINDS:
+        raise HTTPException(status_code=400, detail="Unknown form type.")
+    if not name or not _EMAIL_RE.match(email):
+        raise HTTPException(status_code=400, detail="Name and a valid email are required.")
+
+    lead_id = store_lead(req.normalized())
+    return JSONResponse(status_code=201, content={"ok": True, "id": lead_id})
+

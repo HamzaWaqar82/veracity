@@ -1,14 +1,13 @@
-import { randomUUID } from "node:crypto";
-import { promises as fs } from "node:fs";
-import os from "node:os";
-import path from "node:path";
 import { NextRequest } from "next/server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_RE = /^[^\\s@]+@[^\\s@]+\.[^\\s@]+$/;
 const MAX_LEN = 2000;
+const BACKEND_URL = (process.env.VERACITY_BACKEND_URL ?? "").replace(/\/+$/, "");
+const LOCAL_DEV_URL = process.env.NODE_ENV !== "production" ? "http://localhost:8000" : "";
+const upstreamBase = BACKEND_URL || LOCAL_DEV_URL;
 
 type LeadBody = {
   kind?: unknown;
@@ -25,25 +24,6 @@ type LeadBody = {
 
 function clean(value: unknown, max = MAX_LEN): string {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
-}
-
-async function appendLead(record: object): Promise<boolean> {
-  const line = `${JSON.stringify(record)}\n`;
-  const day = new Date().toISOString().slice(0, 10);
-  const dirs = [
-    path.join(process.cwd(), "data", "leads"),
-    path.join(os.tmpdir(), "veracity-leads"),
-  ];
-  for (const dir of dirs) {
-    try {
-      await fs.mkdir(dir, { recursive: true });
-      await fs.appendFile(path.join(dir, `leads-${day}.jsonl`), line, "utf8");
-      return true;
-    } catch {
-      // Try the next writable location.
-    }
-  }
-  return false;
 }
 
 export async function POST(request: NextRequest) {
@@ -65,8 +45,16 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "Name and a valid email are required" }, { status: 400 });
   }
 
-  const record = {
-    id: randomUUID(),
+  // Proxy to the backend, which persists the lead in Postgres (survives
+  // serverless redeploys — the previous local-JSONL approach lost leads).
+  if (!upstreamBase) {
+    return Response.json(
+      { error: "Lead service is not configured. Set VERACITY_BACKEND_URL." },
+      { status: 503 },
+    );
+  }
+
+  const payload = {
     kind,
     name,
     email,
@@ -77,13 +65,23 @@ export async function POST(request: NextRequest) {
     topic: clean(body.topic, 100),
     message: clean(body.message),
     notes: clean(body.notes),
-    receivedAt: new Date().toISOString(),
   };
 
-  const stored = await appendLead(record);
-  if (!stored) {
-    return Response.json({ error: "Lead could not be stored" }, { status: 500 });
+  try {
+    const upstream = await fetch(`${upstreamBase}/api/lead`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Internal-Token": process.env.VERACITY_INTERNAL_TOKEN ?? "",
+      },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!upstream.ok) {
+      return Response.json({ error: "Lead service rejected the submission" }, { status: 502 });
+    }
+    return Response.json({ ok: true }, { status: 201 });
+  } catch {
+    return Response.json({ error: "Lead service unavailable" }, { status: 502 });
   }
-
-  return Response.json({ ok: true }, { status: 201 });
 }

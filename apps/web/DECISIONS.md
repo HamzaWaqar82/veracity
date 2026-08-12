@@ -851,3 +851,70 @@ a scheduler integration.
 - `docs/web/p1-execution-plan.md` — WS-5 + Implementation Status (2026-08-05)
 - `apps/web/frontend/src/components/form/` — the shared kit
 - `apps/web/frontend/src/components/{trial,demo,contact}/` — per-flow forms
+
+---
+
+## D-020 — Deployment topology, hosting, and secret-handling decisions
+
+**Status:** Accepted · **Date:** 2026-08-12 · **Scope:** `apps/web` (deploy)
+
+### The problem
+
+The site and bot had never been deployed (open issues #32, #49, #53, #55, #60, #61).
+Blocking gaps: no backend packaging/deploy manifest, leads were written to ephemeral
+serverless `data/` (silently lost in prod), backend CORS was `*` with no auth between
+the Next proxy and the backend (quota-burn risk), and hosting/DB/domain were undecided
+(DEL-5 reserved to the team). A deployment plan (`.hermes/plans/2026-08-12_104823-deployment-plan.md`)
+enumerated these; the decisions below are the answers to its Phase 0 blocker set, taking
+the plan's recommended defaults.
+
+### The decisions
+
+1. **Backend host:** container platform (Railway or Render) — Docker image + managed
+   Postgres add-on + private/internal networking + auto TLS. (Alt: single VM + Docker
+   Compose + Caddy.)
+2. **Postgres + pgvector:** managed provider that allows `CREATE EXTENSION vector`
+   (Neon or Supabase free tier). Bot-reachable only via the frontend proxy, not public.
+3. **Domain:** a `veracity`-brand `.com`/`.app` under evaluator-approved brand; site at
+   apex/www, bot at `https://<site>/api/chat` (same domain, no extra DNS). Satisfies the
+   "two live URLs" DoD-1/DEL-1 as site + bot endpoint.
+4. **Lead persistence:** move lead storage into the backend (new `POST /api/lead` +
+   `web_leads` table in Postgres). The frontend `/api/lead` route now proxies to the
+   backend instead of writing local JSONL. Removes the prod data-loss bug.
+5. **Frontend host:** Vercel, root = `apps/web/frontend`, production branch `main`.
+   `VERACITY_BACKEND_URL` set to the backend origin; no secrets in the client.
+6. **Next↔backend trust:** a shared `VERACITY_INTERNAL_TOKEN` (server-only, never
+   `NEXT_PUBLIC_`). The Next chat/lead routes forward it as `X-Internal-Token`; the
+   backend rejects `POST /api/chat` and `POST /api/lead` without a matching token. CORS
+   is tightened from `*` to the frontend origin(s) only. This closes the quota-burn and
+   keeps NFR-SEC-1 (no key reachable from the browser — the token lives in Vercel + the
+   backend's own env, never the client bundle).
+7. **CI eval:** point `API_URL` secret at prod (or a staging) backend; gate on
+   `vars.EVAL_ENABLED`; `OPENROUTER_API_KEY`/`GEMINI_API_KEY` as Actions secrets (#49/#53).
+
+### Why these are safe
+
+- `init_db()` (database.py) is already idempotent (CREATE EXTENSION/TABLE IF NOT EXISTS +
+  dimension reconciliation), so `bootstrap.py` is unnecessary — the existing lifespan call
+  is the bootstrap. No new init layer added.
+- Lead rewrite depends on backend uptime, but the bot already does, so it is not a new
+  failure mode. Backend returns 502/503 to the frontend if down, surfaced honestly.
+- Internal token is rotatable: changing it in both envs + redeploy is a no-code change.
+
+### How to work with this
+
+- Add any new server-side route the frontend proxies: require `X-Internal-Token`.
+- Never promote a `NEXT_PUBLIC_*` secret. Frontend env = only `VERACITY_BACKEND_URL` +
+  `VERACITY_INTERNAL_TOKEN` + `NODE_ENV`.
+- Keep the backend out of public ingress; expose it only to the Vercel egress range or
+  via the platform's private network.
+- See `apps/web/DEPLOYMENT.md` for the runbook (URLs, secret locations, key-rotation,
+  eval re-run, lead storage, walkthrough justification).
+
+### References
+
+- `.hermes/plans/2026-08-12_104823-deployment-plan.md`
+- `apps/web/backend/main.py` (CORS + `X-Internal-Token` middleware), `apps/web/backend/config.py`
+- `apps/web/backend/database.py` (`web_leads` table, idempotent `init_db`)
+- `apps/web/frontend/src/app/api/chat/route.ts`, `apps/web/frontend/src/app/api/lead/route.ts`
+- `apps/web/DEPLOYMENT.md`
