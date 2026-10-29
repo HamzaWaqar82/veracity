@@ -19,12 +19,30 @@ jobs:
           version: "latest"
       - run: uvx ruff check backend/ eval/
 
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scan for leaked secrets (NFR-SEC-1 / NFR-SEC-2)
+        # Uses the repo's detect-secrets baseline (pre-commit hook equivalent in CI).
+        run: |
+          pip install detect-secrets==1.5.0
+          detect-secrets scan --baseline .secrets.baseline > /tmp/secrets-report.json || true
+          # Fail if anything outside the allowlisted baseline is found.
+          git diff --no-index .secrets.baseline /tmp/secrets-report.json \
+            && { echo "New secrets detected — see diff above"; exit 1; } \
+            || echo "No new secrets detected."
+
   eval:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && vars.EVAL_ENABLED == 'true'
     env:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      VERACITY_INTERNAL_TOKEN: ${{ secrets.VERACITY_INTERNAL_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3

@@ -23,25 +23,25 @@ export function FinalCta() {
         });
         tl.fromTo(
           panel.current,
-          { autoAlpha: 0, scale: 0.9, y: 38 },
-          { autoAlpha: 1, scale: 1, y: 0, duration: 0.95 },
+          { opacity: 0, scale: 0.9, y: 38 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.95 },
         )
           .fromTo(
             q(".js-cta-h"),
-            { autoAlpha: 0, y: 22, clipPath: "inset(0 0 100% 0)" },
-            { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.8 },
+            { opacity: 0, y: 22, clipPath: "inset(0 0 100% 0)" },
+            { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.8 },
             "-=0.5",
           )
           .fromTo(
             q(".js-cta-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-cta-links"),
-            { autoAlpha: 0, y: 16 },
-            { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.08 },
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.08 },
             "-=0.3",
           );
 

@@ -27,19 +27,19 @@ export function NotRightFit() {
         });
         tl.fromTo(
           q(".js-fit-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-fit-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-fit-col"),
-            { autoAlpha: 0, y: 26 },
-            { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.12 },
+            { opacity: 0, y: 26 },
+            { opacity: 1, y: 0, duration: 0.65, stagger: 0.12 },
             "-=0.35",
           )
           .to(q(".js-draw"), { strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut", stagger: 0.08 }, "-=0.4");

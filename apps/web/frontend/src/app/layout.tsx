@@ -4,8 +4,7 @@ import { Figtree, Spectral } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { CursorRing } from "@/components/CursorRing";
-import { ChatWidget } from "@/components/chat/ChatWidget";
+import { DeferredWidgets } from "@/components/DeferredWidgets";
 import { nav, SITE_URL } from "@/lib/site";
 
 const figtree = Figtree({
@@ -55,8 +54,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header nav={nav.main} />
         <main id="main">{children}</main>
         <Footer />
-        <ChatWidget />
-        <CursorRing />
+        <DeferredWidgets />
       </body>
     </html>
   );

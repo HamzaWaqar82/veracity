@@ -130,6 +130,53 @@ def extract_sources(chunks: list[RetrievedChunk]) -> list[SourceItem]:
     return sources
 
 
+# --- Social-turn short-circuit -------------------------------------------------
+# Pure greetings and thanks get a deterministic, on-brand reply with NO LLM call.
+# This is injection-proof by construction (canned text, never reaches the model),
+# never touches the corpus, and keeps social turns out of the refusal path so the
+# bot does not bounce a "hi" to the contact page.
+SOCIAL_REPLY = (
+    "Hi! I'm the Veracity assistant. Ask me anything about how Veracity works "
+    "— what it captures, privacy and Private Time, pricing, or compliance — "
+    "and I'll answer from this site's published content."
+)
+_THANKS_REPLY = (
+    "You're welcome! If you have more questions about Veracity — what it "
+    "captures, privacy, pricing, or compliance — just ask."
+)
+_GREET_TOKENS = {
+    "hi", "hii", "hello", "hey", "heya", "heyya", "hiya", "yo", "sup", "howdy",
+    "greetings", "helo", "hallo", "hola", "morning", "afternoon", "evening",
+}
+_THANKS_TOKENS = {"thanks", "thank", "ty", "thx", "cheers", "appreciate", "appreciated"}
+_FILLER_TOKENS = {"there", "you", "ya", "y", "a", "the", "good"}
+
+
+def _social_reply(message: str) -> str | None:
+    """Return a canned reply for pure social turns, else None.
+
+    Conservative by design: only matches short messages made entirely of
+    greeting/thanks words plus harmless filler, so real questions never slip
+    through. Length is capped to keep long queries in the RAG path.
+    """
+    m = message.strip().lower()
+    if not m or len(m) > 50:
+        return None
+    tokens = re.findall(r"[a-z]+", m)
+    if not tokens:
+        return None
+    if any(
+        t not in _GREET_TOKENS and t not in _THANKS_TOKENS and t not in _FILLER_TOKENS
+        for t in tokens
+    ):
+        return None
+    if any(t in _GREET_TOKENS for t in tokens):
+        return SOCIAL_REPLY
+    if any(t in _THANKS_TOKENS for t in tokens):
+        return _THANKS_REPLY
+    return None
+
+
 async def stream_rag_response(
     query: str,
     session_id: str | None = None,
@@ -145,6 +192,17 @@ async def stream_rag_response(
       - {"type": "error", "message": "..."}
     """
     try:
+        # 0. Social-turn short-circuit: deterministic, no LLM call, injection-proof
+        # by construction. Keeps greetings/thanks out of the retrieval + refusal
+        # path so the bot does not bounce a "hi" to the contact page.
+        social = _social_reply(query)
+        if social is not None:
+            for word in social.split(" "):
+                yield f"data: {json.dumps({'type': 'token', 'content': word + ' '})}\n\n"
+            yield f"data: {json.dumps({'type': 'done'})}\n\n"
+            logger.info("chat_social_shortcircuit", extra={"mode": "social"})
+            return
+
         # 1. Retrieve session history if session_id provided
         history = (
             await asyncio.to_thread(get_session_history, session_id)

@@ -52,34 +52,34 @@ export function WhyHero() {
         const desktop = !!ctx.conditions?.desktop;
 
         const tl = gsap.timeline({ defaults: { ease: EASE } });
-        tl.fromTo(badge.current, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 0.08)
+        tl.fromTo(badge.current, { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.55 }, 0.08)
           .fromTo(
             q(".js-why-word"),
             { yPercent: 118 },
             { yPercent: 0, duration: 1.0, stagger: 0.05, ease: "power3.inOut" },
             0.28,
           )
-          .fromTo(lede.current, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.85)
+          .fromTo(lede.current, { y: 22 }, { y: 0, duration: 0.7 }, 0.85)
           .fromTo(
             q(".js-why-cta"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.09 },
             1.0,
           )
-          .fromTo(note.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.16)
+          .fromTo(note.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.16)
           .fromTo(
             stub.current,
-            { autoAlpha: 0, y: 40, scale: 0.95 },
-            { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 },
+            { opacity: 0, y: 40, scale: 0.95 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.9 },
             0.9,
           )
-          .fromTo(jump.current, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 1.4);
+          .fromTo(jump.current, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55 }, 1.4);
 
         if (ping.current) {
           gsap.fromTo(
             ping.current,
-            { scale: 1, autoAlpha: 0.7 },
-            { scale: 3.4, autoAlpha: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 2.2 },
+            { scale: 1, opacity: 0.7 },
+            { scale: 3.4, opacity: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 2.2 },
           );
         }
 
@@ -88,7 +88,7 @@ export function WhyHero() {
         if (desktop) {
           // Depth stack - copy recedes up, front layer (ledger stub) pulls up fastest.
           const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: scroll });
-          tl.to(content.current, { y: -72, scale: 0.93, autoAlpha: 0 }, 0).to(stub.current, { y: -96 }, 0);
+          tl.to(content.current, { y: -72, scale: 0.93, opacity: 0 }, 0).to(stub.current, { y: -96 }, 0);
 
           // Pointer tilt on the ledger stub (front-layer depth)
           const xTo = gsap.quickTo(stub.current, "rotationY", { duration: 0.7, ease: "power3.out" });
@@ -121,7 +121,7 @@ export function WhyHero() {
         // Non-desktop: a gentler single-layer recede only.
         gsap.to(content.current, {
           y: -56,
-          autoAlpha: 0,
+          opacity: 0,
           ease: "none",
           scrollTrigger: scroll,
         });

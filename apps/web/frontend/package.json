@@ -7,7 +7,8 @@
     "build": "npm run check:facts && next build",
     "start": "next start",
     "lint": "next lint",
-    "check:facts": "node scripts/check-facts.mjs"
+    "check:facts": "node scripts/check-facts.mjs",
+    "lighthouse:report": "node scripts/lighthouse.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -27,6 +28,7 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "^15.5.22",
+    "lighthouse": "^13.4.1",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0"
   }

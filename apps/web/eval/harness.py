@@ -8,6 +8,7 @@ Usage:
 import argparse
 import asyncio
 import json
+import os
 import re
 import secrets
 import sys
@@ -192,9 +193,16 @@ async def collect_sse_stream(
     stream_error = None
     start = time.monotonic()
     first_token = None
+    # Optional trust token: when the backend is deployed behind the internal-token
+    # gate, set VERACITY_INTERNAL_TOKEN so the harness can reach the protected
+    # /api/chat. Absent locally / in dev, the request is sent without it.
+    headers = {}
+    internal_token = os.environ.get("VERACITY_INTERNAL_TOKEN")
+    if internal_token:
+        headers["X-Internal-Token"] = internal_token
     try:
         async with client.stream(
-            "POST", url, json=payload, timeout=timeout
+            "POST", url, json=payload, timeout=timeout, headers=headers
         ) as resp:
             resp.raise_for_status()
             async for line in resp.aiter_lines():

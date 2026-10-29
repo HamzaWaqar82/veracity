@@ -77,3 +77,14 @@ SIMILARITY_THRESHOLD = float(os.getenv("SIMILARITY_THRESHOLD", "0.25"))
 # Refusal and Routing
 REFUSAL_CONTACT_URL = "/contact-us"
 REFUSAL_CONTACT_EMAIL = "sales@veracity.dev"
+
+# Internal shared secret for the Next.js server proxy (chat/lead routes).
+# Never expose this to the browser. If unset, the backend trusts no caller and
+# will reject proxied requests until a token is configured in both environments.
+INTERNAL_TOKEN = os.getenv("VERACITY_INTERNAL_TOKEN", "").strip()
+
+# Frontend origin(s) allowed to hit the API (CORS). Comma-separated; "*" is
+# rejected at startup (must be an explicit origin list in production).
+ALLOWED_ORIGINS = [
+    o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()
+]

@@ -29,22 +29,22 @@ export function BlogHero({ featured }: { featured?: Essay }) {
       mm.add({ motion: MOTION }, (ctx) => {
         if (!ctx.conditions?.motion) return;
         const tl = gsap.timeline({ defaults: { ease: EASE } });
-        tl.fromTo(badge.current, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 0.08)
+        tl.fromTo(badge.current, { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.55 }, 0.08)
           .fromTo(
             q(".js-blog-word"),
             { yPercent: 118 },
             { yPercent: 0, duration: 1.0, stagger: 0.05, ease: "power3.inOut" },
             0.28,
           )
-          .fromTo(lede.current, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.85)
-          .fromTo(meta.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.05)
+          .fromTo(lede.current, { y: 22 }, { y: 0, duration: 0.7 }, 0.85)
+          .fromTo(meta.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.05)
           .fromTo(
             card.current,
-            { autoAlpha: 0, x: 56, scale: 0.97 },
-            { autoAlpha: 1, x: 0, scale: 1, duration: 0.9 },
+            { opacity: 0, x: 56, scale: 0.97 },
+            { opacity: 1, x: 0, scale: 1, duration: 0.9 },
             0.6,
           )
-          .fromTo(jump.current, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 1.2);
+          .fromTo(jump.current, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55 }, 1.2);
       });
     },
     { scope: root },

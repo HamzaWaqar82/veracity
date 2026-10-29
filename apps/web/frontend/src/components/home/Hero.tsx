@@ -54,33 +54,33 @@ export function Hero() {
         const desktop = ctx.conditions?.desktop;
 
         const tl = gsap.timeline({ defaults: { ease: EASE } });
-        tl.fromTo(badge.current, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.55 }, 0.08)
+        tl.fromTo(badge.current, { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.55 }, 0.08)
           .fromTo(
             q(".js-h-word"),
             { yPercent: 118 },
             { yPercent: 0, duration: 1.0, stagger: 0.055, ease: "power3.inOut" },
             0.28,
           )
-          .fromTo(lede.current, { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.85)
+          .fromTo(lede.current, { y: 22 }, { y: 0, duration: 0.7 }, 0.85)
           .fromTo(
             q(".js-hero-cta"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.09 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.55, stagger: 0.09 },
             1.0,
           )
-          .fromTo(note.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 1.16)
+          .fromTo(note.current, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1.16)
           .fromTo(
             panel.current,
-            { autoAlpha: 0, x: 72, scale: 0.94, rotationY: -10 },
-            { autoAlpha: 1, x: 0, scale: 1, rotationY: 0, duration: 1.15 },
+            { opacity: 0, x: 72, scale: 0.94, rotationY: -10 },
+            { opacity: 1, x: 0, scale: 1, rotationY: 0, duration: 1.15 },
             0.55,
           );
 
         if (ping.current) {
           gsap.fromTo(
             ping.current,
-            { scale: 1, autoAlpha: 0.7 },
-            { scale: 3.4, autoAlpha: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 1.9 },
+            { scale: 1, opacity: 0.7 },
+            { scale: 3.4, opacity: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 1.9 },
           );
         }
 
@@ -90,7 +90,7 @@ export function Hero() {
           // Depth stack, slowest → fastest:
           // 1) copy recedes up · 2) front layer: ledger panel pulls up fastest
           const tl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: scroll });
-          tl.to(content.current, { y: -72, scale: 0.93, autoAlpha: 0 }, 0).to(panel.current, { y: -96 }, 0);
+          tl.to(content.current, { y: -72, scale: 0.93, opacity: 0 }, 0).to(panel.current, { y: -96 }, 0);
 
           // Pointer tilt on the ledger panel (front-layer depth)
           const xTo = gsap.quickTo(panel.current, "rotationY", { duration: 0.7, ease: "power3.out" });
@@ -124,7 +124,7 @@ export function Hero() {
         // Non-desktop: a gentler single-layer recede only.
         gsap.to(content.current, {
           y: -56,
-          autoAlpha: 0,
+          opacity: 0,
           ease: "none",
           scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: 0.8 },
         });

@@ -20,25 +20,25 @@ export function CustomersSay() {
         });
         tl.fromTo(
           q(".js-customers-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-customers-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-customers-card"),
-            { autoAlpha: 0, y: 26 },
-            { autoAlpha: 1, y: 0, duration: 0.65, stagger: 0.12 },
+            { opacity: 0, y: 26 },
+            { opacity: 1, y: 0, duration: 0.65, stagger: 0.12 },
             "-=0.35",
           )
           .fromTo(
             q(".js-customers-mark"),
-            { autoAlpha: 0, scale: 0.4 },
-            { autoAlpha: 1, scale: 1, duration: 0.55, ease: "back.out(1.8)", stagger: 0.12 },
+            { opacity: 0, scale: 0.4 },
+            { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.8)", stagger: 0.12 },
             "-=0.5",
           )
           .fromTo(

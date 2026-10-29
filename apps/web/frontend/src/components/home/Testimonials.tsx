@@ -31,25 +31,25 @@ export function Testimonials() {
         });
         tl.fromTo(
           q(".js-testi-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-testi-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-testi-quote"),
-            { autoAlpha: 0, y: 40 },
-            { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.16 },
+            { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: 0.7, stagger: 0.16 },
             "-=0.4",
           )
           .fromTo(
             q(".js-testi-fig"),
-            { autoAlpha: 0, y: 12 },
-            { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.16 },
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.16 },
             "-=0.3",
           );
       });

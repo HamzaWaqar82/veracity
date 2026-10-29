@@ -85,6 +85,26 @@ def init_db():
         )
     """)
 
+    # Table for marketing-form leads (contact / demo / trial). Persisted here so
+    # leads survive serverless redeploys (the previous local-JSONL approach lost
+    # them on ephemeral filesystems).
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS web_leads (
+            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+            kind VARCHAR(20) NOT NULL,
+            name VARCHAR(200) NOT NULL,
+            email VARCHAR(254) NOT NULL,
+            company VARCHAR(200),
+            company_size VARCHAR(50),
+            coverage VARCHAR(200),
+            preferred_time VARCHAR(200),
+            topic VARCHAR(100),
+            message TEXT,
+            notes TEXT,
+            received_at TIMESTAMPTZ DEFAULT NOW()
+        )
+    """)
+
     # Commit base DDL before the optional index so a failed index cannot roll it back
     conn.commit()
 
@@ -398,3 +418,39 @@ def append_to_session(
         cur.close()
         conn.close()
         return new_id
+
+
+def store_lead(lead: dict[str, object]) -> str:
+    """Persist a marketing lead to the web_leads table. Returns the new row id.
+
+    `lead` is the normalized dict from `LeadRequest.normalized()`. Caller is
+    responsible for prior validation (kind/name/email present and well-formed).
+    """
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        INSERT INTO web_leads (
+            kind, name, email, company, company_size, coverage,
+            preferred_time, topic, message, notes
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        RETURNING id
+        """,
+        (
+            lead["kind"],
+            lead["name"],
+            lead["email"],
+            lead.get("company"),
+            lead.get("company_size"),
+            lead.get("coverage"),
+            lead.get("preferred_time"),
+            lead.get("topic"),
+            lead.get("message"),
+            lead.get("notes"),
+        ),
+    )
+    new_id = str(cur.fetchone()[0])
+    conn.commit()
+    cur.close()
+    conn.close()
+    return new_id

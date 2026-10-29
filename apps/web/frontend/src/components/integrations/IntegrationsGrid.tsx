@@ -22,19 +22,19 @@ export function IntegrationsGrid() {
         enter
           .fromTo(
             q(".js-int-h"),
-            { autoAlpha: 0, y: 26, clipPath: "inset(0 0 100% 0)" },
-            { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+            { opacity: 0, y: 26, clipPath: "inset(0 0 100% 0)" },
+            { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
           )
           .fromTo(
             q(".js-int-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-int-card"),
-            { autoAlpha: 0, y: 30 },
-            { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.08 },
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.7, stagger: 0.08 },
             "-=0.5",
           );
       });

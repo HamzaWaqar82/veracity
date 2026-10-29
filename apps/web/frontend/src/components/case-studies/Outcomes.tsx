@@ -21,8 +21,8 @@ export function Outcomes() {
           .fromTo(q(".js-out-h"), REVEAL.from, REVEAL.to)
           .fromTo(
             q(".js-out-item"),
-            { autoAlpha: 0, y: 24 },
-            { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.08 },
+            { opacity: 0, y: 24 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
             "-=0.4",
           );
 

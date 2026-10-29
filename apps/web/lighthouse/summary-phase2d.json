@@ -1,0 +1,62 @@
+{
+  "run_id": "phase2d",
+  "generated_at": "2026-08-11T11:54:33.880Z",
+  "chrome": "/usr/bin/chromium",
+  "viewports": [
+    "desktop"
+  ],
+  "fail_below": 90,
+  "rows": [
+    {
+      "route": "/",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 0.99,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 598.03685,
+        "tbt_ms": 81,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/pricing",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 571.28865,
+        "tbt_ms": 64,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/case-studies",
+      "viewport": "desktop",
+      "scores": {
+        "performance": 1,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 568.6937,
+        "tbt_ms": 4.5,
+        "cls": 0
+      },
+      "a11y_failures": []
+    }
+  ],
+  "passed": 3,
+  "total": 3,
+  "gate_pass": true
+}

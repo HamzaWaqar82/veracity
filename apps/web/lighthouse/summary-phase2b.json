@@ -1,0 +1,94 @@
+{
+  "run_id": "phase2b",
+  "generated_at": "2026-08-11T11:31:15.835Z",
+  "chrome": "/usr/bin/chromium",
+  "viewports": [
+    "mobile"
+  ],
+  "fail_below": 90,
+  "rows": [
+    {
+      "route": "/",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.84,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2038.7512999999997,
+        "tbt_ms": 597.12435,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/features",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.85,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2425.4111,
+        "tbt_ms": 503.0981499999998,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/pricing",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.82,
+        "accessibility": 0.92,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2018.9987000000003,
+        "tbt_ms": 710.00065,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/why-veracity",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.82,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2435.5954,
+        "tbt_ms": 601.0000000000005,
+        "cls": 0
+      },
+      "a11y_failures": []
+    },
+    {
+      "route": "/compliance",
+      "viewport": "mobile",
+      "scores": {
+        "performance": 0.88,
+        "accessibility": 1,
+        "best_practices": 1,
+        "seo": 1
+      },
+      "metrics": {
+        "lcp_ms": 2014.0058,
+        "tbt_ms": 454,
+        "cls": 0
+      },
+      "a11y_failures": []
+    }
+  ],
+  "passed": 0,
+  "total": 5,
+  "gate_pass": false
+}

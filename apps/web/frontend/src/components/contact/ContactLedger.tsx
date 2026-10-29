@@ -14,9 +14,9 @@ export function ContactLedger({ children }: { children: ReactNode }) {
         if (!ctx.conditions?.motion) return;
         gsap.fromTo(
           q(".js-ledger-col"),
-          { autoAlpha: 0, y: 28 },
+          { opacity: 0, y: 28 },
           {
-            autoAlpha: 1,
+            opacity: 1,
             y: 0,
             duration: 0.7,
             stagger: 0.12,

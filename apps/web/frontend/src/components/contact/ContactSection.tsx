@@ -20,17 +20,17 @@ export function ContactSection() {
           scrollTrigger: { trigger: root.current, start: "top 72%" },
         });
         enter
-          .fromTo(q(".js-contact-h"), { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.8 })
+          .fromTo(q(".js-contact-h"), { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.8 })
           .fromTo(
             q(".js-contact-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-contact-col"),
-            { autoAlpha: 0, y: 28 },
-            { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.12 },
+            { opacity: 0, y: 28 },
+            { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 },
             "-=0.5",
           );
       });

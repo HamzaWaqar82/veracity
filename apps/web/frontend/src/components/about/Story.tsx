@@ -22,25 +22,25 @@ export function Story() {
         enter
           .fromTo(
             q(".js-story-kicker"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
           )
           .fromTo(
             q(".js-story-h"),
-            { autoAlpha: 0, y: 28 },
-            { autoAlpha: 1, y: 0, duration: 0.8 },
+            { opacity: 0, y: 28 },
+            { opacity: 1, y: 0, duration: 0.8 },
             "-=0.35",
           )
           .fromTo(
             q(".js-story-para"),
-            { autoAlpha: 0, y: 22 },
-            { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.1 },
+            { opacity: 0, y: 22 },
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 },
             "-=0.5",
           )
           .fromTo(
             q(".js-story-band"),
-            { autoAlpha: 0, y: 24 },
-            { autoAlpha: 1, y: 0, duration: 0.7 },
+            { opacity: 0, y: 24 },
+            { opacity: 1, y: 0, duration: 0.7 },
             "-=0.4",
           );
 

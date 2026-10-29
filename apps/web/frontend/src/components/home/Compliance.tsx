@@ -32,19 +32,19 @@ export function Compliance() {
         });
         tl.fromTo(
           q(".js-compliance-h"),
-          { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-          { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+          { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+          { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
         )
           .fromTo(
             q(".js-compliance-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             q(".js-compliance-item"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.06 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.4, stagger: 0.06 },
             "-=0.2",
           )
           .fromTo(

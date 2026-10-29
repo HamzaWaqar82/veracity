@@ -23,6 +23,42 @@ class HealthResponse(BaseModel):
     status: str = "ok"
 
 
+class LeadRequest(BaseModel):
+    """Inbound lead from a marketing form, proxied by the frontend /api/lead route.
+
+    Field rules mirror the frontend's LeadBody validation so the backend is the
+    single source of truth for what a valid lead looks like (the frontend still
+    validates first for fast UX, but the backend enforces it too).
+    """
+
+    kind: str
+    name: str
+    email: str
+    company: str | None = None
+    companySize: str | None = None
+    coverage: str | None = None
+    preferredTime: str | None = None
+    topic: str | None = None
+    message: str | None = None
+    notes: str | None = None
+
+    def normalized(self) -> dict[str, object]:
+        """Return a trimmed, length-capped dict ready for storage."""
+        cap = lambda v, n: (v.strip()[:n] if isinstance(v, str) else None)
+        return {
+            "kind": self.kind,
+            "name": cap(self.name, 200),
+            "email": cap(self.email, 254).lower() if self.email else "",
+            "company": cap(self.company, 200),
+            "company_size": cap(self.companySize, 50),
+            "coverage": cap(self.coverage, 200),
+            "preferred_time": cap(self.preferredTime, 200),
+            "topic": cap(self.topic, 100),
+            "message": cap(self.message, 2000),
+            "notes": cap(self.notes, 2000),
+        }
+
+
 class SourceItem(BaseModel):
     """Source item in citations list."""
 

@@ -32,8 +32,8 @@ export function ComparisonLedger() {
         if (ping.current) {
           gsap.fromTo(
             ping.current,
-            { scale: 1, autoAlpha: 0.7 },
-            { scale: 3.4, autoAlpha: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 1.2 },
+            { scale: 1, opacity: 0.7 },
+            { scale: 3.4, opacity: 0, duration: 2.4, ease: "power1.out", repeat: -1, delay: 1.2 },
           );
         }
 
@@ -44,32 +44,32 @@ export function ComparisonLedger() {
         enter
           .fromTo(
             q(".js-ledger-h"),
-            { autoAlpha: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
-            { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
+            { opacity: 0, y: 28, clipPath: "inset(0 0 100% 0)" },
+            { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: 0.9 },
           )
           .fromTo(
             q(".js-ledger-lead"),
-            { autoAlpha: 0, y: 18 },
-            { autoAlpha: 1, y: 0, duration: 0.6 },
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.6 },
             "-=0.4",
           )
           .fromTo(
             card.current,
-            { autoAlpha: 0, y: 34, scale: 0.98 },
-            { autoAlpha: 1, y: 0, scale: 1, duration: 0.95 },
+            { opacity: 0, y: 34, scale: 0.98 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.95 },
             "-=0.45",
           )
           .fromTo(
             q(".js-ledger-row"),
-            { autoAlpha: 0, y: 8 },
-            { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.045 },
+            { opacity: 0, y: 8 },
+            { opacity: 1, y: 0, duration: 0.35, stagger: 0.045 },
             "-=0.55",
           )
           .to(q(".js-draw"), { strokeDashoffset: 0, duration: 0.45, ease: "power1.inOut", stagger: 0.03 }, "-=0.4")
           .fromTo(
             q(".js-ledger-stamp"),
-            { autoAlpha: 0, scale: 0.7, rotation: -14 },
-            { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.5 },
+            { opacity: 0, scale: 0.7, rotation: -14 },
+            { opacity: 1, scale: 1, rotation: 0, duration: 0.5 },
             "-=0.5",
           );
       });
