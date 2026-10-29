@@ -4,6 +4,10 @@ docs/
 # Design-tool working state (DESIGN.md is the committed artifact)
 .impeccable/
 
+# Agent / assistant working state
+.hermes/
+.opencode/
+
 # JS/TS
 node_modules/
 .next/

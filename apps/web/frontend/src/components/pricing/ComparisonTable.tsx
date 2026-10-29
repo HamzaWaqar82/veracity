@@ -179,7 +179,7 @@ export function ComparisonTable() {
                       key={tier.id}
                       scope="col"
                       data-col={i}
-                      className={`border-b border-line px-6 py-5 align-bottom transition-colors duration-200 ${
+                      className={`border-b border-line bg-surface/95 px-6 py-5 align-bottom backdrop-blur transition-colors duration-200 ${
                         hovered === i ? "bg-primary-soft/40" : ""
                       }`}
                     >
